@@ -1,0 +1,32 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProjektZeiterfassung.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Datenbankname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ZEIT2017</Value>
+    </Setting>
+    <Setting Name="Personalnummer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FKMitarbeiter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Benutzername" Type="System.String" Scope="User">
+      <Value Profile="(Default)">digitalman</Value>
+    </Setting>
+    <Setting Name="Passwort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Jomoresa@31</Value>
+    </Setting>
+    <Setting Name="SqlServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.103</Value>
+    </Setting>
+    <Setting Name="ZEIT2017ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.\SQLEXPRESS;Initial Catalog=ZEIT2017;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.\SQLEXPRESS;Initial Catalog=ZEIT2017;Integrated Security=True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
