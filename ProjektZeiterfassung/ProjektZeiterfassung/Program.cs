@@ -16,7 +16,7 @@ namespace ProjektZeiterfassung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.Zeituebersicht());
+            Application.Run(new View.Zeiterfassung());
         }
     }
 }
