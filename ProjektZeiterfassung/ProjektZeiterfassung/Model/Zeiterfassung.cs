@@ -87,30 +87,6 @@ namespace ProjektZeiterfassung.Model
         /// <summary>
         /// Internes Hilfsfeld
         /// </summary>
-        private DateTime _PauseAnfang;
-        /// <summary>
-        /// Stellt eine Eigenschaft von PauseAnfang von Zeiterfassung bereit
-        /// </summary>
-        public DateTime PauseAnfang
-        {
-            get { return _PauseAnfang; }
-            set { _PauseAnfang = value; }
-        }
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
-        private DateTime _PauseEnde;
-        /// <summary>
-        /// Stellt eine Eigenschaft von PauseEnde von Zeiterfassung bereit
-        /// </summary>
-        public DateTime PauseEnde
-        {
-            get { return _PauseEnde; }
-            set { _PauseEnde = value; }
-        }
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
         private DateTime _ArbeitsEnde;
         /// <summary>
         /// Stellt eine Eigenschaft von ArbeitsEnde von Zeiterfassung bereit
@@ -155,11 +131,8 @@ namespace ProjektZeiterfassung.Model
                     cmd.Parameters.Add("@FK_Mitarbeiter", System.Data.SqlDbType.Int).Value = p.FK_Mitarbeiter_ID;
                     cmd.Parameters.Add("@TagesDatum", System.Data.SqlDbType.SmallDateTime).Value = p.TagesDatum;
                     cmd.Parameters.Add("@ArbeitsAnfang", System.Data.SqlDbType.SmallDateTime).Value = p.ArbeitsAnfang;
-                    cmd.Parameters.Add("@PauseAnfang", System.Data.SqlDbType.SmallDateTime).Value = p.PauseAnfang;
-                    cmd.Parameters.Add("@PauseEnde", System.Data.SqlDbType.SmallDateTime).Value = p.PauseEnde;
                     cmd.Parameters.Add("@ArbeitsEnde", System.Data.SqlDbType.SmallDateTime).Value = p.ArbeitsEnde;
                     cmd.Parameters.Add("@TagesIstZeit", System.Data.SqlDbType.SmallDateTime).Value = p.TagesIstZeit;
-
                     //Rückgabewert ob funktioniert oder nicht
                     cmd.Parameters.Add("@RC", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
 

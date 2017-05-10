@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Model\Datenbankverbindung.cs" />
     <Compile Include="Model\Mitarbeiter.cs" />
+    <Compile Include="Model\PauseZeiten.cs" />
     <Compile Include="Model\SetDbVerbindung.cs" />
     <Compile Include="Model\Uebersicht.cs" />
     <Compile Include="Model\Zeiterfassung.cs" />
@@ -92,6 +93,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ZEIT2017DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ZEIT2017FullDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,6 +150,17 @@
     </None>
     <None Include="ZEIT2017DataSet1.xss">
       <DependentUpon>ZEIT2017DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ZEIT2017FullDataSet.xsc">
+      <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ZEIT2017FullDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZEIT2017FullDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ZEIT2017FullDataSet.xss">
+      <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
