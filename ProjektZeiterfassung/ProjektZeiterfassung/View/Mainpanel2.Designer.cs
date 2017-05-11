@@ -29,43 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.BedienungsPanel = new System.Windows.Forms.Panel();
-            this.BtnBuchen = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.BtnÜbersicht = new System.Windows.Forms.Button();
-            this.BtnZeiterfassung = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mainpanel2));
             this.AnmeldeLabel = new System.Windows.Forms.Label();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TxtBenutzerdaten = new System.Windows.Forms.TextBox();
+            this.LblBenutzerdaten = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.LablPin = new System.Windows.Forms.Label();
+            this.TxtPin = new System.Windows.Forms.TextBox();
+            this.LblPersonalnummer = new System.Windows.Forms.Label();
+            this.BtnAnmelden = new System.Windows.Forms.Button();
+            this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.BtnBuchen = new System.Windows.Forms.Button();
+            this.LblEndDatum = new System.Windows.Forms.Label();
+            this.LblStartDatum = new System.Windows.Forms.Label();
+            this.LblBuchungsart = new System.Windows.Forms.Label();
+            this.LblTagesDifferenz = new System.Windows.Forms.Label();
+            this.TxtTagesDifferenz = new System.Windows.Forms.TextBox();
+            this.LblTagesIstZeit = new System.Windows.Forms.Label();
+            this.TxtTagesIstZeit = new System.Windows.Forms.TextBox();
+            this.LblTagesSollZeit = new System.Windows.Forms.Label();
+            this.TxtTagesSollZeit = new System.Windows.Forms.TextBox();
+            this.BtnExport = new System.Windows.Forms.Button();
+            this.DateTimeEndDatum = new System.Windows.Forms.DateTimePicker();
+            this.DateTimeStartDatum = new System.Windows.Forms.DateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.BedienungsPanel.SuspendLayout();
+            this.TxtZeiterfassung = new System.Windows.Forms.TextBox();
+            this.LblUebersichtZeiterfassung = new System.Windows.Forms.Label();
+            this.ComboBoxBuchungsart = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -73,62 +68,6 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BedienungsPanel
-            // 
-            this.BedienungsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BedienungsPanel.Controls.Add(this.BtnBuchen);
-            this.BedienungsPanel.Controls.Add(this.comboBox1);
-            this.BedienungsPanel.Controls.Add(this.BtnÜbersicht);
-            this.BedienungsPanel.Controls.Add(this.BtnZeiterfassung);
-            this.BedienungsPanel.Location = new System.Drawing.Point(13, 177);
-            this.BedienungsPanel.Name = "BedienungsPanel";
-            this.BedienungsPanel.Size = new System.Drawing.Size(659, 372);
-            this.BedienungsPanel.TabIndex = 5;
-            // 
-            // BtnBuchen
-            // 
-            this.BtnBuchen.Location = new System.Drawing.Point(137, 24);
-            this.BtnBuchen.Name = "BtnBuchen";
-            this.BtnBuchen.Size = new System.Drawing.Size(75, 23);
-            this.BtnBuchen.TabIndex = 8;
-            this.BtnBuchen.Text = "Buchen";
-            this.BtnBuchen.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Arbeitsbeginn",
-            "Pausenbeginn",
-            "Pausenende",
-            "Arbeitsende"});
-            this.comboBox1.Location = new System.Drawing.Point(9, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
-            // 
-            // BtnÜbersicht
-            // 
-            this.BtnÜbersicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnÜbersicht.Location = new System.Drawing.Point(9, 321);
-            this.BtnÜbersicht.Name = "BtnÜbersicht";
-            this.BtnÜbersicht.Padding = new System.Windows.Forms.Padding(5);
-            this.BtnÜbersicht.Size = new System.Drawing.Size(140, 44);
-            this.BtnÜbersicht.TabIndex = 6;
-            this.BtnÜbersicht.Text = "Zeitübersicht...";
-            this.BtnÜbersicht.UseVisualStyleBackColor = true;
-            // 
-            // BtnZeiterfassung
-            // 
-            this.BtnZeiterfassung.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnZeiterfassung.Location = new System.Drawing.Point(294, 321);
-            this.BtnZeiterfassung.Name = "BtnZeiterfassung";
-            this.BtnZeiterfassung.Padding = new System.Windows.Forms.Padding(5);
-            this.BtnZeiterfassung.Size = new System.Drawing.Size(140, 44);
-            this.BtnZeiterfassung.TabIndex = 5;
-            this.BtnZeiterfassung.Text = "Zeiterfassung...";
-            this.BtnZeiterfassung.UseVisualStyleBackColor = true;
             // 
             // AnmeldeLabel
             // 
@@ -138,7 +77,8 @@
             this.AnmeldeLabel.Name = "AnmeldeLabel";
             this.AnmeldeLabel.Size = new System.Drawing.Size(171, 20);
             this.AnmeldeLabel.TabIndex = 0;
-            this.AnmeldeLabel.Text = "Wifi Stundenerfassung";
+            this.AnmeldeLabel.Text = "Wifi Arbeitszeitfassung";
+            this.AnmeldeLabel.Click += new System.EventHandler(this.AnmeldeLabel_Click);
             // 
             // mitarbeiterBindingSource
             // 
@@ -157,276 +97,276 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.TxtBenutzerdaten);
+            this.panel1.Controls.Add(this.LblBenutzerdaten);
             this.panel1.Location = new System.Drawing.Point(311, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(361, 55);
             this.panel1.TabIndex = 4;
             // 
-            // textBox1
+            // TxtBenutzerdaten
             // 
-            this.textBox1.BackColor = System.Drawing.Color.PeachPuff;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBox1.Location = new System.Drawing.Point(8, 23);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(341, 21);
-            this.textBox1.TabIndex = 2;
+            this.TxtBenutzerdaten.BackColor = System.Drawing.Color.PeachPuff;
+            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBenutzerdaten.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.TxtBenutzerdaten.Location = new System.Drawing.Point(8, 23);
+            this.TxtBenutzerdaten.Multiline = true;
+            this.TxtBenutzerdaten.Name = "TxtBenutzerdaten";
+            this.TxtBenutzerdaten.ReadOnly = true;
+            this.TxtBenutzerdaten.Size = new System.Drawing.Size(341, 21);
+            this.TxtBenutzerdaten.TabIndex = 2;
             // 
-            // label1
+            // LblBenutzerdaten
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Benutzerdaten:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.LblBenutzerdaten.AutoSize = true;
+            this.LblBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBenutzerdaten.Location = new System.Drawing.Point(5, 4);
+            this.LblBenutzerdaten.Name = "LblBenutzerdaten";
+            this.LblBenutzerdaten.Size = new System.Drawing.Size(79, 13);
+            this.LblBenutzerdaten.TabIndex = 1;
+            this.LblBenutzerdaten.Text = "Benutzerdaten:";
+            this.LblBenutzerdaten.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.textBox7);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.LablPin);
+            this.panel2.Controls.Add(this.TxtPin);
+            this.panel2.Controls.Add(this.LblPersonalnummer);
+            this.panel2.Controls.Add(this.BtnAnmelden);
+            this.panel2.Controls.Add(this.TxtPersonalnummer);
             this.panel2.Location = new System.Drawing.Point(12, 28);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(293, 55);
             this.panel2.TabIndex = 3;
             // 
-            // label3
+            // LablPin
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Personalnr.:";
+            this.LablPin.AutoSize = true;
+            this.LablPin.Location = new System.Drawing.Point(96, 4);
+            this.LablPin.Name = "LablPin";
+            this.LablPin.Size = new System.Drawing.Size(69, 13);
+            this.LablPin.TabIndex = 14;
+            this.LablPin.Text = "Pin (6-stellig):";
             // 
-            // button1
+            // TxtPin
             // 
-            this.button1.Location = new System.Drawing.Point(182, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Anmelden";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.TxtPin.Location = new System.Drawing.Point(96, 23);
+            this.TxtPin.MaxLength = 6;
+            this.TxtPin.Name = "TxtPin";
+            this.TxtPin.PasswordChar = '*';
+            this.TxtPin.Size = new System.Drawing.Size(80, 20);
+            this.TxtPin.TabIndex = 13;
             // 
-            // textBox4
+            // LblPersonalnummer
             // 
-            this.textBox4.Location = new System.Drawing.Point(10, 23);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(80, 20);
-            this.textBox4.TabIndex = 5;
+            this.LblPersonalnummer.AutoSize = true;
+            this.LblPersonalnummer.Location = new System.Drawing.Point(10, 4);
+            this.LblPersonalnummer.Name = "LblPersonalnummer";
+            this.LblPersonalnummer.Size = new System.Drawing.Size(63, 13);
+            this.LblPersonalnummer.TabIndex = 12;
+            this.LblPersonalnummer.Text = "Personalnr.:";
+            // 
+            // BtnAnmelden
+            // 
+            this.BtnAnmelden.Location = new System.Drawing.Point(182, 21);
+            this.BtnAnmelden.Name = "BtnAnmelden";
+            this.BtnAnmelden.Size = new System.Drawing.Size(100, 23);
+            this.BtnAnmelden.TabIndex = 11;
+            this.BtnAnmelden.Text = "Anmelden";
+            this.BtnAnmelden.UseVisualStyleBackColor = true;
+            this.BtnAnmelden.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TxtPersonalnummer
+            // 
+            this.TxtPersonalnummer.Location = new System.Drawing.Point(10, 23);
+            this.TxtPersonalnummer.Name = "TxtPersonalnummer";
+            this.TxtPersonalnummer.Size = new System.Drawing.Size(80, 20);
+            this.TxtPersonalnummer.TabIndex = 5;
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.textBox6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.dateTimePicker2);
-            this.panel3.Controls.Add(this.dateTimePicker1);
+            this.panel3.Controls.Add(this.BtnBuchen);
+            this.panel3.Controls.Add(this.LblEndDatum);
+            this.panel3.Controls.Add(this.LblStartDatum);
+            this.panel3.Controls.Add(this.LblBuchungsart);
+            this.panel3.Controls.Add(this.LblTagesDifferenz);
+            this.panel3.Controls.Add(this.TxtTagesDifferenz);
+            this.panel3.Controls.Add(this.LblTagesIstZeit);
+            this.panel3.Controls.Add(this.TxtTagesIstZeit);
+            this.panel3.Controls.Add(this.LblTagesSollZeit);
+            this.panel3.Controls.Add(this.TxtTagesSollZeit);
+            this.panel3.Controls.Add(this.BtnExport);
+            this.panel3.Controls.Add(this.DateTimeEndDatum);
+            this.panel3.Controls.Add(this.DateTimeStartDatum);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Location = new System.Drawing.Point(13, 89);
+            this.panel3.Controls.Add(this.ComboBoxBuchungsart);
+            this.panel3.Location = new System.Drawing.Point(12, 89);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(659, 460);
             this.panel3.TabIndex = 5;
             // 
-            // button2
+            // BtnBuchen
             // 
-            this.button2.Location = new System.Drawing.Point(135, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Buchen";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnBuchen.Location = new System.Drawing.Point(135, 22);
+            this.BtnBuchen.Name = "BtnBuchen";
+            this.BtnBuchen.Size = new System.Drawing.Size(100, 23);
+            this.BtnBuchen.TabIndex = 13;
+            this.BtnBuchen.Text = "Buchen";
+            this.BtnBuchen.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // LblEndDatum
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(444, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Enddatum Übersicht:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.LblEndDatum.AutoSize = true;
+            this.LblEndDatum.Location = new System.Drawing.Point(444, 8);
+            this.LblEndDatum.Name = "LblEndDatum";
+            this.LblEndDatum.Size = new System.Drawing.Size(106, 13);
+            this.LblEndDatum.TabIndex = 20;
+            this.LblEndDatum.Text = "Enddatum Übersicht:";
+            this.LblEndDatum.Click += new System.EventHandler(this.label9_Click);
             // 
-            // label8
+            // LblStartDatum
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(238, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Startdatum Übersicht:";
+            this.LblStartDatum.AutoSize = true;
+            this.LblStartDatum.Location = new System.Drawing.Point(238, 9);
+            this.LblStartDatum.Name = "LblStartDatum";
+            this.LblStartDatum.Size = new System.Drawing.Size(109, 13);
+            this.LblStartDatum.TabIndex = 19;
+            this.LblStartDatum.Text = "Startdatum Übersicht:";
             // 
-            // label7
+            // LblBuchungsart
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Buchungsart:";
+            this.LblBuchungsart.AutoSize = true;
+            this.LblBuchungsart.Location = new System.Drawing.Point(9, 8);
+            this.LblBuchungsart.Name = "LblBuchungsart";
+            this.LblBuchungsart.Size = new System.Drawing.Size(70, 13);
+            this.LblBuchungsart.TabIndex = 13;
+            this.LblBuchungsart.Text = "Buchungsart:";
             // 
-            // label6
+            // LblTagesDifferenz
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(261, 413);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Tages-Differenz:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.LblTagesDifferenz.AutoSize = true;
+            this.LblTagesDifferenz.Location = new System.Drawing.Point(261, 413);
+            this.LblTagesDifferenz.Name = "LblTagesDifferenz";
+            this.LblTagesDifferenz.Size = new System.Drawing.Size(85, 13);
+            this.LblTagesDifferenz.TabIndex = 18;
+            this.LblTagesDifferenz.Text = "Tages-Differenz:";
+            this.LblTagesDifferenz.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox6
+            // TxtTagesDifferenz
             // 
-            this.textBox6.Location = new System.Drawing.Point(261, 429);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(120, 20);
-            this.textBox6.TabIndex = 17;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.TxtTagesDifferenz.Location = new System.Drawing.Point(261, 429);
+            this.TxtTagesDifferenz.Name = "TxtTagesDifferenz";
+            this.TxtTagesDifferenz.Size = new System.Drawing.Size(120, 20);
+            this.TxtTagesDifferenz.TabIndex = 17;
+            this.TxtTagesDifferenz.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
-            // label5
+            // LblTagesIstZeit
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(135, 413);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Tages-Ist-Zeit:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.LblTagesIstZeit.AutoSize = true;
+            this.LblTagesIstZeit.Location = new System.Drawing.Point(135, 413);
+            this.LblTagesIstZeit.Name = "LblTagesIstZeit";
+            this.LblTagesIstZeit.Size = new System.Drawing.Size(75, 13);
+            this.LblTagesIstZeit.TabIndex = 16;
+            this.LblTagesIstZeit.Text = "Tages-Ist-Zeit:";
+            this.LblTagesIstZeit.Click += new System.EventHandler(this.label5_Click);
             // 
-            // textBox5
+            // TxtTagesIstZeit
             // 
-            this.textBox5.Location = new System.Drawing.Point(135, 429);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(120, 20);
-            this.textBox5.TabIndex = 15;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.TxtTagesIstZeit.Location = new System.Drawing.Point(135, 429);
+            this.TxtTagesIstZeit.Name = "TxtTagesIstZeit";
+            this.TxtTagesIstZeit.Size = new System.Drawing.Size(120, 20);
+            this.TxtTagesIstZeit.TabIndex = 15;
+            this.TxtTagesIstZeit.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // label4
+            // LblTagesSollZeit
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 413);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Tages-Soll-Zeit:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.LblTagesSollZeit.AutoSize = true;
+            this.LblTagesSollZeit.Location = new System.Drawing.Point(6, 413);
+            this.LblTagesSollZeit.Name = "LblTagesSollZeit";
+            this.LblTagesSollZeit.Size = new System.Drawing.Size(81, 13);
+            this.LblTagesSollZeit.TabIndex = 14;
+            this.LblTagesSollZeit.Text = "Tages-Soll-Zeit:";
+            this.LblTagesSollZeit.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox2
+            // TxtTagesSollZeit
             // 
-            this.textBox2.Location = new System.Drawing.Point(9, 429);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 20);
-            this.textBox2.TabIndex = 13;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.TxtTagesSollZeit.Location = new System.Drawing.Point(9, 429);
+            this.TxtTagesSollZeit.Name = "TxtTagesSollZeit";
+            this.TxtTagesSollZeit.Size = new System.Drawing.Size(120, 20);
+            this.TxtTagesSollZeit.TabIndex = 13;
+            this.TxtTagesSollZeit.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // button5
+            // BtnExport
             // 
-            this.button5.Location = new System.Drawing.Point(547, 426);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 23);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "Export";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.BtnExport.Location = new System.Drawing.Point(547, 426);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(100, 23);
+            this.BtnExport.TabIndex = 13;
+            this.BtnExport.Text = "Export";
+            this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.button5_Click);
             // 
-            // dateTimePicker2
+            // DateTimeEndDatum
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(447, 25);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 10;
+            this.DateTimeEndDatum.Location = new System.Drawing.Point(447, 25);
+            this.DateTimeEndDatum.Name = "DateTimeEndDatum";
+            this.DateTimeEndDatum.Size = new System.Drawing.Size(200, 20);
+            this.DateTimeEndDatum.TabIndex = 10;
             // 
-            // dateTimePicker1
+            // DateTimeStartDatum
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(241, 25);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.DateTimeStartDatum.Location = new System.Drawing.Point(241, 25);
+            this.DateTimeStartDatum.Name = "DateTimeStartDatum";
+            this.DateTimeStartDatum.Size = new System.Drawing.Size(200, 20);
+            this.DateTimeStartDatum.TabIndex = 9;
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.textBox3);
-            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.TxtZeiterfassung);
+            this.panel4.Controls.Add(this.LblUebersichtZeiterfassung);
             this.panel4.Location = new System.Drawing.Point(9, 53);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(648, 354);
             this.panel4.TabIndex = 5;
             // 
-            // textBox3
+            // TxtZeiterfassung
             // 
-            this.textBox3.BackColor = System.Drawing.Color.PeachPuff;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBox3.Location = new System.Drawing.Point(3, 23);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(633, 324);
-            this.textBox3.TabIndex = 2;
+            this.TxtZeiterfassung.BackColor = System.Drawing.Color.PeachPuff;
+            this.TxtZeiterfassung.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtZeiterfassung.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.TxtZeiterfassung.Location = new System.Drawing.Point(3, 23);
+            this.TxtZeiterfassung.Multiline = true;
+            this.TxtZeiterfassung.Name = "TxtZeiterfassung";
+            this.TxtZeiterfassung.ReadOnly = true;
+            this.TxtZeiterfassung.Size = new System.Drawing.Size(633, 324);
+            this.TxtZeiterfassung.TabIndex = 2;
             // 
-            // label2
+            // LblUebersichtZeiterfassung
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Übersicht Zeiterfassung:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.LblUebersichtZeiterfassung.AutoSize = true;
+            this.LblUebersichtZeiterfassung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblUebersichtZeiterfassung.Location = new System.Drawing.Point(3, 7);
+            this.LblUebersichtZeiterfassung.Name = "LblUebersichtZeiterfassung";
+            this.LblUebersichtZeiterfassung.Size = new System.Drawing.Size(122, 13);
+            this.LblUebersichtZeiterfassung.TabIndex = 1;
+            this.LblUebersichtZeiterfassung.Text = "Übersicht Zeiterfassung:";
+            this.LblUebersichtZeiterfassung.Click += new System.EventHandler(this.label2_Click);
             // 
-            // comboBox2
+            // ComboBoxBuchungsart
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.ComboBoxBuchungsart.FormattingEnabled = true;
+            this.ComboBoxBuchungsart.Items.AddRange(new object[] {
             "Arbeitsbeginn",
             "Pausenbeginn",
             "Pausenende",
             "Arbeitsende"});
-            this.comboBox2.Location = new System.Drawing.Point(9, 24);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(120, 21);
-            this.comboBox2.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(96, 4);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 13);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Pin (6-stellig):";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(96, 23);
-            this.textBox7.MaxLength = 6;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.PasswordChar = '*';
-            this.textBox7.Size = new System.Drawing.Size(80, 20);
-            this.textBox7.TabIndex = 13;
+            this.ComboBoxBuchungsart.Location = new System.Drawing.Point(9, 24);
+            this.ComboBoxBuchungsart.Name = "ComboBoxBuchungsart";
+            this.ComboBoxBuchungsart.Size = new System.Drawing.Size(120, 21);
+            this.ComboBoxBuchungsart.TabIndex = 7;
             // 
             // Mainpanel2
             // 
@@ -434,13 +374,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.BedienungsPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AnmeldeLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Mainpanel2";
-            this.Text = "Mainpanel2";
-            this.BedienungsPanel.ResumeLayout(false);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Wifi Arbeitszeitfassung";
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -457,42 +397,36 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel BedienungsPanel;
-        private System.Windows.Forms.Button BtnÜbersicht;
-        private System.Windows.Forms.Button BtnZeiterfassung;
         private System.Windows.Forms.Label AnmeldeLabel;
         private System.Windows.Forms.BindingSource mitarbeiterBindingSource;
         private ZEIT2017DataSet zEIT2017DataSet;
         private ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter mitarbeiterTableAdapter;
-        private System.Windows.Forms.Button BtnBuchen;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TxtBenutzerdaten;
+        private System.Windows.Forms.Label LblBenutzerdaten;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox TxtZeiterfassung;
+        private System.Windows.Forms.Label LblUebersichtZeiterfassung;
+        private System.Windows.Forms.ComboBox ComboBoxBuchungsart;
+        private System.Windows.Forms.DateTimePicker DateTimeStartDatum;
+        private System.Windows.Forms.DateTimePicker DateTimeEndDatum;
+        private System.Windows.Forms.Label LblPersonalnummer;
+        private System.Windows.Forms.Button BtnAnmelden;
+        private System.Windows.Forms.TextBox TxtPersonalnummer;
+        private System.Windows.Forms.Label LblTagesDifferenz;
+        private System.Windows.Forms.TextBox TxtTagesDifferenz;
+        private System.Windows.Forms.Label LblTagesIstZeit;
+        private System.Windows.Forms.TextBox TxtTagesIstZeit;
+        private System.Windows.Forms.Label LblTagesSollZeit;
+        private System.Windows.Forms.TextBox TxtTagesSollZeit;
+        private System.Windows.Forms.Button BtnExport;
+        private System.Windows.Forms.Label LblBuchungsart;
+        private System.Windows.Forms.Label LblEndDatum;
+        private System.Windows.Forms.Label LblStartDatum;
+        private System.Windows.Forms.Button BtnBuchen;
+        private System.Windows.Forms.Label LablPin;
+        private System.Windows.Forms.TextBox TxtPin;
     }
 }

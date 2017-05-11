@@ -71,5 +71,10 @@ namespace ProjektZeiterfassung.View
         {
 
         }
+
+        private void AnmeldeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
