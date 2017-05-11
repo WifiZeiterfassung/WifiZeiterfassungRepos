@@ -44,10 +44,8 @@
             this.BtnAnmelden = new System.Windows.Forms.Button();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.BtnBuchen = new System.Windows.Forms.Button();
             this.LblEndDatum = new System.Windows.Forms.Label();
             this.LblStartDatum = new System.Windows.Forms.Label();
-            this.LblBuchungsart = new System.Windows.Forms.Label();
             this.LblTagesDifferenz = new System.Windows.Forms.Label();
             this.TxtTagesDifferenz = new System.Windows.Forms.TextBox();
             this.LblTagesIstZeit = new System.Windows.Forms.Label();
@@ -60,7 +58,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.TxtZeiterfassung = new System.Windows.Forms.TextBox();
             this.LblUebersichtZeiterfassung = new System.Windows.Forms.Label();
-            this.ComboBoxBuchungsart = new System.Windows.Forms.ComboBox();
+            this.BtnArbeitsbeginn = new System.Windows.Forms.Button();
+            this.BtnPausenbeginn = new System.Windows.Forms.Button();
+            this.BtnPausenende = new System.Windows.Forms.Button();
+            this.BtnArbeitsende = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -187,10 +188,10 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.BtnBuchen);
-            this.panel3.Controls.Add(this.LblEndDatum);
-            this.panel3.Controls.Add(this.LblStartDatum);
-            this.panel3.Controls.Add(this.LblBuchungsart);
+            this.panel3.Controls.Add(this.BtnArbeitsende);
+            this.panel3.Controls.Add(this.BtnPausenbeginn);
+            this.panel3.Controls.Add(this.BtnPausenende);
+            this.panel3.Controls.Add(this.BtnArbeitsbeginn);
             this.panel3.Controls.Add(this.LblTagesDifferenz);
             this.panel3.Controls.Add(this.TxtTagesDifferenz);
             this.panel3.Controls.Add(this.LblTagesIstZeit);
@@ -198,28 +199,16 @@
             this.panel3.Controls.Add(this.LblTagesSollZeit);
             this.panel3.Controls.Add(this.TxtTagesSollZeit);
             this.panel3.Controls.Add(this.BtnExport);
-            this.panel3.Controls.Add(this.DateTimeEndDatum);
-            this.panel3.Controls.Add(this.DateTimeStartDatum);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.ComboBoxBuchungsart);
             this.panel3.Location = new System.Drawing.Point(12, 89);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(659, 460);
             this.panel3.TabIndex = 5;
             // 
-            // BtnBuchen
-            // 
-            this.BtnBuchen.Location = new System.Drawing.Point(135, 22);
-            this.BtnBuchen.Name = "BtnBuchen";
-            this.BtnBuchen.Size = new System.Drawing.Size(100, 23);
-            this.BtnBuchen.TabIndex = 13;
-            this.BtnBuchen.Text = "Buchen";
-            this.BtnBuchen.UseVisualStyleBackColor = true;
-            // 
             // LblEndDatum
             // 
             this.LblEndDatum.AutoSize = true;
-            this.LblEndDatum.Location = new System.Drawing.Point(444, 8);
+            this.LblEndDatum.Location = new System.Drawing.Point(432, 6);
             this.LblEndDatum.Name = "LblEndDatum";
             this.LblEndDatum.Size = new System.Drawing.Size(106, 13);
             this.LblEndDatum.TabIndex = 20;
@@ -229,20 +218,11 @@
             // LblStartDatum
             // 
             this.LblStartDatum.AutoSize = true;
-            this.LblStartDatum.Location = new System.Drawing.Point(238, 9);
+            this.LblStartDatum.Location = new System.Drawing.Point(226, 7);
             this.LblStartDatum.Name = "LblStartDatum";
             this.LblStartDatum.Size = new System.Drawing.Size(109, 13);
             this.LblStartDatum.TabIndex = 19;
             this.LblStartDatum.Text = "Startdatum Übersicht:";
-            // 
-            // LblBuchungsart
-            // 
-            this.LblBuchungsart.AutoSize = true;
-            this.LblBuchungsart.Location = new System.Drawing.Point(9, 8);
-            this.LblBuchungsart.Name = "LblBuchungsart";
-            this.LblBuchungsart.Size = new System.Drawing.Size(70, 13);
-            this.LblBuchungsart.TabIndex = 13;
-            this.LblBuchungsart.Text = "Buchungsart:";
             // 
             // LblTagesDifferenz
             // 
@@ -310,14 +290,14 @@
             // 
             // DateTimeEndDatum
             // 
-            this.DateTimeEndDatum.Location = new System.Drawing.Point(447, 25);
+            this.DateTimeEndDatum.Location = new System.Drawing.Point(435, 23);
             this.DateTimeEndDatum.Name = "DateTimeEndDatum";
             this.DateTimeEndDatum.Size = new System.Drawing.Size(200, 20);
             this.DateTimeEndDatum.TabIndex = 10;
             // 
             // DateTimeStartDatum
             // 
-            this.DateTimeStartDatum.Location = new System.Drawing.Point(241, 25);
+            this.DateTimeStartDatum.Location = new System.Drawing.Point(229, 23);
             this.DateTimeStartDatum.Name = "DateTimeStartDatum";
             this.DateTimeStartDatum.Size = new System.Drawing.Size(200, 20);
             this.DateTimeStartDatum.TabIndex = 9;
@@ -326,7 +306,11 @@
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.TxtZeiterfassung);
+            this.panel4.Controls.Add(this.LblEndDatum);
             this.panel4.Controls.Add(this.LblUebersichtZeiterfassung);
+            this.panel4.Controls.Add(this.LblStartDatum);
+            this.panel4.Controls.Add(this.DateTimeStartDatum);
+            this.panel4.Controls.Add(this.DateTimeEndDatum);
             this.panel4.Location = new System.Drawing.Point(9, 53);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(648, 354);
@@ -337,11 +321,11 @@
             this.TxtZeiterfassung.BackColor = System.Drawing.Color.PeachPuff;
             this.TxtZeiterfassung.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtZeiterfassung.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TxtZeiterfassung.Location = new System.Drawing.Point(3, 23);
+            this.TxtZeiterfassung.Location = new System.Drawing.Point(3, 50);
             this.TxtZeiterfassung.Multiline = true;
             this.TxtZeiterfassung.Name = "TxtZeiterfassung";
             this.TxtZeiterfassung.ReadOnly = true;
-            this.TxtZeiterfassung.Size = new System.Drawing.Size(633, 324);
+            this.TxtZeiterfassung.Size = new System.Drawing.Size(633, 297);
             this.TxtZeiterfassung.TabIndex = 2;
             // 
             // LblUebersichtZeiterfassung
@@ -355,18 +339,41 @@
             this.LblUebersichtZeiterfassung.Text = "Übersicht Zeiterfassung:";
             this.LblUebersichtZeiterfassung.Click += new System.EventHandler(this.label2_Click);
             // 
-            // ComboBoxBuchungsart
+            // BtnArbeitsbeginn
             // 
-            this.ComboBoxBuchungsart.FormattingEnabled = true;
-            this.ComboBoxBuchungsart.Items.AddRange(new object[] {
-            "Arbeitsbeginn",
-            "Pausenbeginn",
-            "Pausenende",
-            "Arbeitsende"});
-            this.ComboBoxBuchungsart.Location = new System.Drawing.Point(9, 24);
-            this.ComboBoxBuchungsart.Name = "ComboBoxBuchungsart";
-            this.ComboBoxBuchungsart.Size = new System.Drawing.Size(120, 21);
-            this.ComboBoxBuchungsart.TabIndex = 7;
+            this.BtnArbeitsbeginn.Location = new System.Drawing.Point(9, 14);
+            this.BtnArbeitsbeginn.Name = "BtnArbeitsbeginn";
+            this.BtnArbeitsbeginn.Size = new System.Drawing.Size(100, 23);
+            this.BtnArbeitsbeginn.TabIndex = 19;
+            this.BtnArbeitsbeginn.Text = "Arbeitsbeginn";
+            this.BtnArbeitsbeginn.UseVisualStyleBackColor = true;
+            // 
+            // BtnPausenbeginn
+            // 
+            this.BtnPausenbeginn.Location = new System.Drawing.Point(191, 14);
+            this.BtnPausenbeginn.Name = "BtnPausenbeginn";
+            this.BtnPausenbeginn.Size = new System.Drawing.Size(100, 23);
+            this.BtnPausenbeginn.TabIndex = 19;
+            this.BtnPausenbeginn.Text = "Pausenbeginn";
+            this.BtnPausenbeginn.UseVisualStyleBackColor = true;
+            // 
+            // BtnPausenende
+            // 
+            this.BtnPausenende.Location = new System.Drawing.Point(371, 14);
+            this.BtnPausenende.Name = "BtnPausenende";
+            this.BtnPausenende.Size = new System.Drawing.Size(100, 23);
+            this.BtnPausenende.TabIndex = 19;
+            this.BtnPausenende.Text = "Pausenende";
+            this.BtnPausenende.UseVisualStyleBackColor = true;
+            // 
+            // BtnArbeitsende
+            // 
+            this.BtnArbeitsende.Location = new System.Drawing.Point(546, 14);
+            this.BtnArbeitsende.Name = "BtnArbeitsende";
+            this.BtnArbeitsende.Size = new System.Drawing.Size(100, 23);
+            this.BtnArbeitsende.TabIndex = 19;
+            this.BtnArbeitsende.Text = "Arbeitsende";
+            this.BtnArbeitsende.UseVisualStyleBackColor = true;
             // 
             // Mainpanel2
             // 
@@ -409,7 +416,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox TxtZeiterfassung;
         private System.Windows.Forms.Label LblUebersichtZeiterfassung;
-        private System.Windows.Forms.ComboBox ComboBoxBuchungsart;
         private System.Windows.Forms.DateTimePicker DateTimeStartDatum;
         private System.Windows.Forms.DateTimePicker DateTimeEndDatum;
         private System.Windows.Forms.Label LblPersonalnummer;
@@ -422,11 +428,13 @@
         private System.Windows.Forms.Label LblTagesSollZeit;
         private System.Windows.Forms.TextBox TxtTagesSollZeit;
         private System.Windows.Forms.Button BtnExport;
-        private System.Windows.Forms.Label LblBuchungsart;
         private System.Windows.Forms.Label LblEndDatum;
         private System.Windows.Forms.Label LblStartDatum;
-        private System.Windows.Forms.Button BtnBuchen;
         private System.Windows.Forms.Label LablPin;
         private System.Windows.Forms.TextBox TxtPin;
+        private System.Windows.Forms.Button BtnArbeitsende;
+        private System.Windows.Forms.Button BtnPausenbeginn;
+        private System.Windows.Forms.Button BtnPausenende;
+        private System.Windows.Forms.Button BtnArbeitsbeginn;
     }
 }
