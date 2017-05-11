@@ -72,6 +72,12 @@
     <Compile Include="View\Mainpanel.Designer.cs">
       <DependentUpon>Mainpanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Mainpanel2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Mainpanel2.Designer.cs">
+      <DependentUpon>Mainpanel2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Zeiterfassung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Mainpanel.resx">
       <DependentUpon>Mainpanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Mainpanel2.resx">
+      <DependentUpon>Mainpanel2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Zeiterfassung.resx">
       <DependentUpon>Zeiterfassung.cs</DependentUpon>

@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeiterfassung));
             this.AnmeldePanel = new System.Windows.Forms.Panel();
+            this.TxtBenutzer = new System.Windows.Forms.TextBox();
             this.BedienungsPanel = new System.Windows.Forms.Panel();
+            this.TxtTagesarbeitszeit = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.TxtArbeitsende = new System.Windows.Forms.TextBox();
+            this.TxtPausenende = new System.Windows.Forms.TextBox();
+            this.TxtPausenbeginn = new System.Windows.Forms.TextBox();
+            this.TxtArbeitsbeginn = new System.Windows.Forms.TextBox();
+            this.BtnArbeitsende = new System.Windows.Forms.Button();
+            this.BtnPausenende = new System.Windows.Forms.Button();
+            this.BtnPausenbeginn = new System.Windows.Forms.Button();
             this.BtnZeitUebersicht = new System.Windows.Forms.Button();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter();
-            this.TxtBenutzer = new System.Windows.Forms.TextBox();
-            this.TxtArbeitsbeginn = new System.Windows.Forms.TextBox();
-            this.BtnPausenbeginn = new System.Windows.Forms.Button();
-            this.TxtPausenbeginn = new System.Windows.Forms.TextBox();
-            this.BtnPausenende = new System.Windows.Forms.Button();
-            this.TxtPausenende = new System.Windows.Forms.TextBox();
-            this.BtnArbeitsende = new System.Windows.Forms.Button();
-            this.TxtArbeitsende = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.TxtTagesarbeitszeit = new System.Windows.Forms.TextBox();
             this.AnmeldePanel.SuspendLayout();
             this.BedienungsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
@@ -60,6 +60,18 @@
             this.AnmeldePanel.Name = "AnmeldePanel";
             this.AnmeldePanel.Size = new System.Drawing.Size(600, 143);
             this.AnmeldePanel.TabIndex = 3;
+            // 
+            // TxtBenutzer
+            // 
+            this.TxtBenutzer.BackColor = System.Drawing.Color.PeachPuff;
+            this.TxtBenutzer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBenutzer.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.TxtBenutzer.Location = new System.Drawing.Point(11, 15);
+            this.TxtBenutzer.Multiline = true;
+            this.TxtBenutzer.Name = "TxtBenutzer";
+            this.TxtBenutzer.ReadOnly = true;
+            this.TxtBenutzer.Size = new System.Drawing.Size(578, 96);
+            this.TxtBenutzer.TabIndex = 2;
             // 
             // BedienungsPanel
             // 
@@ -78,6 +90,95 @@
             this.BedienungsPanel.Name = "BedienungsPanel";
             this.BedienungsPanel.Size = new System.Drawing.Size(600, 202);
             this.BedienungsPanel.TabIndex = 5;
+            // 
+            // TxtTagesarbeitszeit
+            // 
+            this.TxtTagesarbeitszeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTagesarbeitszeit.Location = new System.Drawing.Point(302, 146);
+            this.TxtTagesarbeitszeit.Name = "TxtTagesarbeitszeit";
+            this.TxtTagesarbeitszeit.ReadOnly = true;
+            this.TxtTagesarbeitszeit.Size = new System.Drawing.Size(286, 44);
+            this.TxtTagesarbeitszeit.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(10, 29);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(5);
+            this.button1.Size = new System.Drawing.Size(140, 44);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Arbeitsbeginn";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // TxtArbeitsende
+            // 
+            this.TxtArbeitsende.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtArbeitsende.Location = new System.Drawing.Point(448, 79);
+            this.TxtArbeitsende.Name = "TxtArbeitsende";
+            this.TxtArbeitsende.ReadOnly = true;
+            this.TxtArbeitsende.Size = new System.Drawing.Size(140, 44);
+            this.TxtArbeitsende.TabIndex = 8;
+            // 
+            // TxtPausenende
+            // 
+            this.TxtPausenende.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPausenende.Location = new System.Drawing.Point(302, 79);
+            this.TxtPausenende.Name = "TxtPausenende";
+            this.TxtPausenende.ReadOnly = true;
+            this.TxtPausenende.Size = new System.Drawing.Size(140, 44);
+            this.TxtPausenende.TabIndex = 8;
+            // 
+            // TxtPausenbeginn
+            // 
+            this.TxtPausenbeginn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPausenbeginn.Location = new System.Drawing.Point(156, 79);
+            this.TxtPausenbeginn.Name = "TxtPausenbeginn";
+            this.TxtPausenbeginn.ReadOnly = true;
+            this.TxtPausenbeginn.Size = new System.Drawing.Size(140, 44);
+            this.TxtPausenbeginn.TabIndex = 8;
+            // 
+            // TxtArbeitsbeginn
+            // 
+            this.TxtArbeitsbeginn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtArbeitsbeginn.Location = new System.Drawing.Point(10, 79);
+            this.TxtArbeitsbeginn.Name = "TxtArbeitsbeginn";
+            this.TxtArbeitsbeginn.ReadOnly = true;
+            this.TxtArbeitsbeginn.Size = new System.Drawing.Size(140, 44);
+            this.TxtArbeitsbeginn.TabIndex = 8;
+            // 
+            // BtnArbeitsende
+            // 
+            this.BtnArbeitsende.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnArbeitsende.Location = new System.Drawing.Point(448, 29);
+            this.BtnArbeitsende.Name = "BtnArbeitsende";
+            this.BtnArbeitsende.Padding = new System.Windows.Forms.Padding(5);
+            this.BtnArbeitsende.Size = new System.Drawing.Size(140, 44);
+            this.BtnArbeitsende.TabIndex = 6;
+            this.BtnArbeitsende.Text = "Arbeitsende";
+            this.BtnArbeitsende.UseVisualStyleBackColor = true;
+            // 
+            // BtnPausenende
+            // 
+            this.BtnPausenende.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPausenende.Location = new System.Drawing.Point(302, 29);
+            this.BtnPausenende.Name = "BtnPausenende";
+            this.BtnPausenende.Padding = new System.Windows.Forms.Padding(5);
+            this.BtnPausenende.Size = new System.Drawing.Size(140, 44);
+            this.BtnPausenende.TabIndex = 6;
+            this.BtnPausenende.Text = "Pausenende";
+            this.BtnPausenende.UseVisualStyleBackColor = true;
+            // 
+            // BtnPausenbeginn
+            // 
+            this.BtnPausenbeginn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPausenbeginn.Location = new System.Drawing.Point(156, 29);
+            this.BtnPausenbeginn.Name = "BtnPausenbeginn";
+            this.BtnPausenbeginn.Padding = new System.Windows.Forms.Padding(5);
+            this.BtnPausenbeginn.Size = new System.Drawing.Size(140, 44);
+            this.BtnPausenbeginn.TabIndex = 6;
+            this.BtnPausenbeginn.Text = "Pausenbeginn";
+            this.BtnPausenbeginn.UseVisualStyleBackColor = true;
             // 
             // BtnZeitUebersicht
             // 
@@ -104,107 +205,6 @@
             // 
             this.mitarbeiterTableAdapter.ClearBeforeFill = true;
             // 
-            // TxtBenutzer
-            // 
-            this.TxtBenutzer.BackColor = System.Drawing.Color.PeachPuff;
-            this.TxtBenutzer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBenutzer.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TxtBenutzer.Location = new System.Drawing.Point(11, 15);
-            this.TxtBenutzer.Multiline = true;
-            this.TxtBenutzer.Name = "TxtBenutzer";
-            this.TxtBenutzer.ReadOnly = true;
-            this.TxtBenutzer.Size = new System.Drawing.Size(578, 96);
-            this.TxtBenutzer.TabIndex = 2;
-            // 
-            // TxtArbeitsbeginn
-            // 
-            this.TxtArbeitsbeginn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtArbeitsbeginn.Location = new System.Drawing.Point(10, 79);
-            this.TxtArbeitsbeginn.Name = "TxtArbeitsbeginn";
-            this.TxtArbeitsbeginn.ReadOnly = true;
-            this.TxtArbeitsbeginn.Size = new System.Drawing.Size(140, 44);
-            this.TxtArbeitsbeginn.TabIndex = 8;
-            // 
-            // BtnPausenbeginn
-            // 
-            this.BtnPausenbeginn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPausenbeginn.Location = new System.Drawing.Point(156, 29);
-            this.BtnPausenbeginn.Name = "BtnPausenbeginn";
-            this.BtnPausenbeginn.Padding = new System.Windows.Forms.Padding(5);
-            this.BtnPausenbeginn.Size = new System.Drawing.Size(140, 44);
-            this.BtnPausenbeginn.TabIndex = 6;
-            this.BtnPausenbeginn.Text = "Pausenbeginn";
-            this.BtnPausenbeginn.UseVisualStyleBackColor = true;
-            // 
-            // TxtPausenbeginn
-            // 
-            this.TxtPausenbeginn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPausenbeginn.Location = new System.Drawing.Point(156, 79);
-            this.TxtPausenbeginn.Name = "TxtPausenbeginn";
-            this.TxtPausenbeginn.ReadOnly = true;
-            this.TxtPausenbeginn.Size = new System.Drawing.Size(140, 44);
-            this.TxtPausenbeginn.TabIndex = 8;
-            // 
-            // BtnPausenende
-            // 
-            this.BtnPausenende.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPausenende.Location = new System.Drawing.Point(302, 29);
-            this.BtnPausenende.Name = "BtnPausenende";
-            this.BtnPausenende.Padding = new System.Windows.Forms.Padding(5);
-            this.BtnPausenende.Size = new System.Drawing.Size(140, 44);
-            this.BtnPausenende.TabIndex = 6;
-            this.BtnPausenende.Text = "Pausenende";
-            this.BtnPausenende.UseVisualStyleBackColor = true;
-            // 
-            // TxtPausenende
-            // 
-            this.TxtPausenende.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPausenende.Location = new System.Drawing.Point(302, 79);
-            this.TxtPausenende.Name = "TxtPausenende";
-            this.TxtPausenende.ReadOnly = true;
-            this.TxtPausenende.Size = new System.Drawing.Size(140, 44);
-            this.TxtPausenende.TabIndex = 8;
-            // 
-            // BtnArbeitsende
-            // 
-            this.BtnArbeitsende.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnArbeitsende.Location = new System.Drawing.Point(448, 29);
-            this.BtnArbeitsende.Name = "BtnArbeitsende";
-            this.BtnArbeitsende.Padding = new System.Windows.Forms.Padding(5);
-            this.BtnArbeitsende.Size = new System.Drawing.Size(140, 44);
-            this.BtnArbeitsende.TabIndex = 6;
-            this.BtnArbeitsende.Text = "Arbeitsende";
-            this.BtnArbeitsende.UseVisualStyleBackColor = true;
-            // 
-            // TxtArbeitsende
-            // 
-            this.TxtArbeitsende.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtArbeitsende.Location = new System.Drawing.Point(448, 79);
-            this.TxtArbeitsende.Name = "TxtArbeitsende";
-            this.TxtArbeitsende.ReadOnly = true;
-            this.TxtArbeitsende.Size = new System.Drawing.Size(140, 44);
-            this.TxtArbeitsende.TabIndex = 8;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(10, 29);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(5);
-            this.button1.Size = new System.Drawing.Size(140, 44);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Arbeitsbeginn";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // TxtTagesarbeitszeit
-            // 
-            this.TxtTagesarbeitszeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTagesarbeitszeit.Location = new System.Drawing.Point(302, 146);
-            this.TxtTagesarbeitszeit.Name = "TxtTagesarbeitszeit";
-            this.TxtTagesarbeitszeit.ReadOnly = true;
-            this.TxtTagesarbeitszeit.Size = new System.Drawing.Size(286, 44);
-            this.TxtTagesarbeitszeit.TabIndex = 10;
-            // 
             // Zeiterfassung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +216,7 @@
             this.Name = "Zeiterfassung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zeiterfassung";
+            this.Load += new System.EventHandler(this.Zeiterfassung_Load);
             this.AnmeldePanel.ResumeLayout(false);
             this.AnmeldePanel.PerformLayout();
             this.BedienungsPanel.ResumeLayout(false);
