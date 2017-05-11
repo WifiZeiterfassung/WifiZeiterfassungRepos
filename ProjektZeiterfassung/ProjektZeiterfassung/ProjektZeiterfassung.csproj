@@ -129,6 +129,7 @@
     <EmbeddedResource Include="View\Zeituebersicht.resx">
       <DependentUpon>Zeituebersicht.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="MS_Sql\ZEIT2017Full.bak" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
