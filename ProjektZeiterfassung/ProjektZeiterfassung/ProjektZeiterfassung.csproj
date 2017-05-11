@@ -181,7 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MS_Sql\ZEIT2017Final.sql" />
-    <Content Include="MS_Sql\Zeit2017FullDiagramm.PNG" />
+    <Content Include="MS_Sql\Zeit2017FullDiagramm.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
