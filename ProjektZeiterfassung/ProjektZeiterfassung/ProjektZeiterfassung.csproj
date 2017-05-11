@@ -179,9 +179,8 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MS_Sql\DatenbankdiagrammZEIT2017Full.JPG" />
-    <Content Include="MS_Sql\WifiZEIT2017FullProjekt.sql" />
-    <Content Include="MS_Sql\WifiZEIT2017Projekt.sql" />
+    <Content Include="MS_Sql\ZEIT2017Final.sql" />
+    <Content Include="MS_Sql\Zeit2017FullDiagramm.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
