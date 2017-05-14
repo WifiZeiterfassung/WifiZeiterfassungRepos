@@ -16,5 +16,10 @@ namespace ProjektZeiterfassung.View
         {
             InitializeComponent();
         }
+
+        private void Zeiterfassung_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

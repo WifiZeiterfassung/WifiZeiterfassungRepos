@@ -42,18 +42,7 @@ namespace ProjektZeiterfassung.Model
             get { return _Personalnummer; }
             set { _Personalnummer = value; }
         }
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
-        private DateTime _EintrittsDatum;
-        /// <summary>
-        /// Stellt eine Eigenschaft für Eintrittsdatum von Mitarbeiter bereit
-        /// </summary>
-        public DateTime EintrittsDatum
-        {
-            get { return _EintrittsDatum; }
-            set { _EintrittsDatum = value; }
-        }
+        
         /// <summary>
         /// Internes Hilfsfeld
         /// </summary>
@@ -78,18 +67,7 @@ namespace ProjektZeiterfassung.Model
             get { return _Nachname; }
             set { _Nachname = value; }
         }
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
-        private Decimal _TagesSollZeit;
-        /// <summary>
-        /// Stellt eine Eigenschaft für Tagessollzeit von Mitarbeiter bereit 
-        /// </summary>
-        public Decimal TagesSollZeit
-        {
-            get { return _TagesSollZeit; }
-            set { _TagesSollZeit = value; }
-        }
+        
         /// <summary>
         /// Internes Hilfsfeld
         /// </summary>

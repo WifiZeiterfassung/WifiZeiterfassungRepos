@@ -70,11 +70,12 @@ namespace ProjektZeiterfassung.Model
         /// <returns></returns>
         private string Con()
         {
-            var ConBauer = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            ConBauer.DataSource = this.SqlServerAdresse;
-            ConBauer.InitialCatalog = Datenbankname;
-            ConBauer.IntegratedSecurity = true;
-            this._DbConnection = ConBauer.ConnectionString;
+            //var ConBauer = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            //ConBauer.DataSource = this.SqlServerAdresse;
+            //ConBauer.InitialCatalog = Datenbankname;
+            //ConBauer.IntegratedSecurity = true;
+            //this._DbConnection = ConBauer.ConnectionString;
+            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString;
             return _DbConnection;
         }
     }
