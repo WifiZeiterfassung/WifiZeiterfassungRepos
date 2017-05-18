@@ -61,23 +61,41 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\DatenbankEinstellen.cs">
+    <Compile Include="View\alte Designs\DatenbankEinstellen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DatenbankEinstellen.Designer.cs">
+    <Compile Include="View\alte Designs\DatenbankEinstellen.Designer.cs">
       <DependentUpon>DatenbankEinstellen.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Mainpanel.cs">
+    <Compile Include="View\alte Designs\Mainpanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Mainpanel.Designer.cs">
+    <Compile Include="View\alte Designs\Mainpanel.Designer.cs">
       <DependentUpon>Mainpanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Mainpanel2.cs">
+    <Compile Include="View\alte Designs\Mainpanel2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Mainpanel2.Designer.cs">
+    <Compile Include="View\alte Designs\Mainpanel2.Designer.cs">
       <DependentUpon>Mainpanel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MitarbeiterAnlegen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MitarbeiterAnlegen.Designer.cs">
+      <DependentUpon>MitarbeiterAnlegen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MitarbeiterBearbeiten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MitarbeiterBearbeiten.Designer.cs">
+      <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PasswortAendern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PasswortAendern.Designer.cs">
+      <DependentUpon>PasswortAendern.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Zeiterfassung.cs">
       <SubType>Form</SubType>
@@ -85,10 +103,16 @@
     <Compile Include="View\Zeiterfassung.Designer.cs">
       <DependentUpon>Zeiterfassung.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Zeituebersicht.cs">
+    <Compile Include="View\Zeitkorrektur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Zeituebersicht.Designer.cs">
+    <Compile Include="View\Zeitkorrektur.Designer.cs">
+      <DependentUpon>Zeitkorrektur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\alte Designs\Zeituebersicht.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\alte Designs\Zeituebersicht.Designer.cs">
       <DependentUpon>Zeituebersicht.cs</DependentUpon>
     </Compile>
     <Compile Include="ZEIT2017DataSet.Designer.cs">
@@ -115,19 +139,31 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\DatenbankEinstellen.resx">
+    <EmbeddedResource Include="View\alte Designs\DatenbankEinstellen.resx">
       <DependentUpon>DatenbankEinstellen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Mainpanel.resx">
+    <EmbeddedResource Include="View\alte Designs\Mainpanel.resx">
       <DependentUpon>Mainpanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Mainpanel2.resx">
+    <EmbeddedResource Include="View\alte Designs\Mainpanel2.resx">
       <DependentUpon>Mainpanel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MitarbeiterAnlegen.resx">
+      <DependentUpon>MitarbeiterAnlegen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MitarbeiterBearbeiten.resx">
+      <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PasswortAendern.resx">
+      <DependentUpon>PasswortAendern.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Zeiterfassung.resx">
       <DependentUpon>Zeiterfassung.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Zeituebersicht.resx">
+    <EmbeddedResource Include="View\Zeitkorrektur.resx">
+      <DependentUpon>Zeitkorrektur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\alte Designs\Zeituebersicht.resx">
       <DependentUpon>Zeituebersicht.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
