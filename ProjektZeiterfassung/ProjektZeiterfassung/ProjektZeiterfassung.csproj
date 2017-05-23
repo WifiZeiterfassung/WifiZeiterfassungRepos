@@ -216,11 +216,6 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MS_Sql\StempelzeitenBerechnenZEIT2017V2.sql" />
-    <Content Include="MS_Sql\Zeit2017V2.sql" />
-    <Content Include="MS_Sql\ZEIT2017V2Diagramm.JPG" />
-    <Content Include="MS_Sql\Zeit2017V3.JPG" />
-    <Content Include="MS_Sql\ZEIT2017V3.sql" />
     <Content Include="MS_Sql\Zeit2017V4.JPG" />
     <Content Include="MS_Sql\ZEIT2017V4.sql" />
   </ItemGroup>
