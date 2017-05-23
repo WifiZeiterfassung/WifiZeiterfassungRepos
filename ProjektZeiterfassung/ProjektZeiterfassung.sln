@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlToExcel", "SQLExports\SqlToExcel\SqlToExcel.csproj", "{2835D8D3-5230-45B5-B860-2722C8083269}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashPasswort", "HashPasswort\HashPasswort.csproj", "{BD93E0A3-7057-4D07-8EC4-2C075ADB4904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2835D8D3-5230-45B5-B860-2722C8083269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2835D8D3-5230-45B5-B860-2722C8083269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2835D8D3-5230-45B5-B860-2722C8083269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD93E0A3-7057-4D07-8EC4-2C075ADB4904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD93E0A3-7057-4D07-8EC4-2C075ADB4904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD93E0A3-7057-4D07-8EC4-2C075ADB4904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD93E0A3-7057-4D07-8EC4-2C075ADB4904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
