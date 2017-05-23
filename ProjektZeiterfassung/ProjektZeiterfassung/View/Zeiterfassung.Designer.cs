@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.LblAdministrationsbereich = new System.Windows.Forms.Label();
+            this.PanelAdministrationsbereich = new System.Windows.Forms.Panel();
             this.BtnBenutzerUpdate = new System.Windows.Forms.Button();
             this.BtnZeitkorrektur = new System.Windows.Forms.Button();
             this.BtnBenutzerNeu = new System.Windows.Forms.Button();
@@ -53,7 +53,7 @@
             this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AnmeldeLabel = new System.Windows.Forms.Label();
-            this.panel4.SuspendLayout();
+            this.PanelAdministrationsbereich.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -61,26 +61,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // LblAdministrationsbereich
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 220);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 20);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Administratorbereich:";
+            this.LblAdministrationsbereich.AutoSize = true;
+            this.LblAdministrationsbereich.Enabled = false;
+            this.LblAdministrationsbereich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAdministrationsbereich.Location = new System.Drawing.Point(12, 220);
+            this.LblAdministrationsbereich.Name = "LblAdministrationsbereich";
+            this.LblAdministrationsbereich.Size = new System.Drawing.Size(159, 20);
+            this.LblAdministrationsbereich.TabIndex = 27;
+            this.LblAdministrationsbereich.Text = "Administratorbereich:";
             // 
-            // panel4
+            // PanelAdministrationsbereich
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.BtnBenutzerUpdate);
-            this.panel4.Controls.Add(this.BtnZeitkorrektur);
-            this.panel4.Controls.Add(this.BtnBenutzerNeu);
-            this.panel4.Location = new System.Drawing.Point(12, 243);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(484, 70);
-            this.panel4.TabIndex = 26;
+            this.PanelAdministrationsbereich.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelAdministrationsbereich.Controls.Add(this.BtnBenutzerUpdate);
+            this.PanelAdministrationsbereich.Controls.Add(this.BtnZeitkorrektur);
+            this.PanelAdministrationsbereich.Controls.Add(this.BtnBenutzerNeu);
+            this.PanelAdministrationsbereich.Enabled = false;
+            this.PanelAdministrationsbereich.Location = new System.Drawing.Point(12, 243);
+            this.PanelAdministrationsbereich.Name = "PanelAdministrationsbereich";
+            this.PanelAdministrationsbereich.Size = new System.Drawing.Size(484, 70);
+            this.PanelAdministrationsbereich.TabIndex = 26;
             // 
             // BtnBenutzerUpdate
             // 
@@ -114,6 +116,7 @@
             // 
             // BtnPausenbeginn
             // 
+            this.BtnPausenbeginn.Enabled = false;
             this.BtnPausenbeginn.Location = new System.Drawing.Point(129, 14);
             this.BtnPausenbeginn.Name = "BtnPausenbeginn";
             this.BtnPausenbeginn.Size = new System.Drawing.Size(100, 23);
@@ -123,6 +126,7 @@
             // 
             // BtnPausenende
             // 
+            this.BtnPausenende.Enabled = false;
             this.BtnPausenende.Location = new System.Drawing.Point(249, 14);
             this.BtnPausenende.Name = "BtnPausenende";
             this.BtnPausenende.Size = new System.Drawing.Size(100, 23);
@@ -132,6 +136,7 @@
             // 
             // BtnArbeitsbeginn
             // 
+            this.BtnArbeitsbeginn.Enabled = false;
             this.BtnArbeitsbeginn.Location = new System.Drawing.Point(9, 14);
             this.BtnArbeitsbeginn.Name = "BtnArbeitsbeginn";
             this.BtnArbeitsbeginn.Size = new System.Drawing.Size(100, 23);
@@ -178,6 +183,7 @@
             // 
             // BtnArbeitsende
             // 
+            this.BtnArbeitsende.Enabled = false;
             this.BtnArbeitsende.Location = new System.Drawing.Point(369, 14);
             this.BtnArbeitsende.Name = "BtnArbeitsende";
             this.BtnArbeitsende.Size = new System.Drawing.Size(100, 23);
@@ -205,6 +211,7 @@
             this.BtnAnmelden.TabIndex = 7;
             this.BtnAnmelden.Text = "Anmelden";
             this.BtnAnmelden.UseVisualStyleBackColor = true;
+            this.BtnAnmelden.Click += new System.EventHandler(this.BtnAnmelden_Click);
             // 
             // panel2
             // 
@@ -230,7 +237,7 @@
             // TxtBenutzerdaten
             // 
             this.TxtBenutzerdaten.BackColor = System.Drawing.Color.PeachPuff;
-            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBenutzerdaten.ForeColor = System.Drawing.Color.MidnightBlue;
             this.TxtBenutzerdaten.Location = new System.Drawing.Point(8, 23);
             this.TxtBenutzerdaten.Multiline = true;
@@ -288,8 +295,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 321);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.LblAdministrationsbereich);
+            this.Controls.Add(this.PanelAdministrationsbereich);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -297,7 +304,7 @@
             this.Name = "Zeiterfassung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
-            this.panel4.ResumeLayout(false);
+            this.PanelAdministrationsbereich.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -312,14 +319,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label LblAdministrationsbereich;
+        private System.Windows.Forms.Panel PanelAdministrationsbereich;
         private System.Windows.Forms.Button BtnBenutzerUpdate;
         private System.Windows.Forms.Button BtnZeitkorrektur;
         private System.Windows.Forms.Button BtnBenutzerNeu;
         private System.Windows.Forms.Button BtnPausenbeginn;
         private System.Windows.Forms.Button BtnPausenende;
-        private System.Windows.Forms.Button BtnArbeitsbeginn;
+        internal System.Windows.Forms.Button BtnArbeitsbeginn;
         private System.Windows.Forms.Label LablPin;
         private System.Windows.Forms.Button BtnPasswortAendern;
         private System.Windows.Forms.TextBox TxtPin;
