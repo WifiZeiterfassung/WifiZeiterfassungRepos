@@ -1,4 +1,5 @@
-﻿Bitte beachten wenn man mit SqlExpress oder mit einem Sql-Server über eine Ip-Adresse zugreifen will.
+﻿****************************************Eintrag von Josef am 24.05.2017:****************************************
+Bitte beachten wenn man mit SqlExpress oder mit einem Sql-Server über eine Ip-Adresse zugreifen will.
 
 Ausführung:
 -----Rechtsklick auf Projekt Zeiterfassung
@@ -13,4 +14,8 @@ Datenbankscript ZEIT2017 erstellt jetzt eine Datenbank mit dem Namen ZEIT2017 mi
 -----ArbeitsEnde
 -----PauseBeginn
 -----PauseEnde
+
+HAshPasswort Konsolenanwendung erzeugt 7 mal ein Hashwert des einzugebenen Klartextpasswortes und speichert ihn in der Datenbank 
+für die Mitarbeiter
+**************************************************Ende Eintrag**************************************************
 Hier ist noch Platz für andere Informationen....
