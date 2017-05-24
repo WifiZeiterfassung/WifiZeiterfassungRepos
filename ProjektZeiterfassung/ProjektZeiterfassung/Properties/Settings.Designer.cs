@@ -108,9 +108,9 @@ namespace ProjektZeiterfassung.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.103;Initial Catalog=ZEIT2017;Integrated Security=True")]
-        public string ZEIT2017FullConnectionString {
+        public string ZEIT2017ConnServer {
             get {
-                return ((string)(this["ZEIT2017FullConnectionString"]));
+                return ((string)(this["ZEIT2017ConnServer"]));
             }
         }
     }
