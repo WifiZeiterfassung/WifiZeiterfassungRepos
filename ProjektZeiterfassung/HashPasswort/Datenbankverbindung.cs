@@ -43,7 +43,8 @@ namespace HashPasswort
             //ConBauer.InitialCatalog = Datenbankname;
             //ConBauer.IntegratedSecurity = true;
             //this._DbConnection = ConBauer.ConnectionString;
-            this._DbConnection = HashPasswort.Properties.Settings.Default.ZEIT2017ConnectionString;
+            //this._DbConnection = HashPasswort.Properties.Settings.Default.ZEIT2017ConnectionString;
+            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer;
             return _DbConnection;
         }
     }

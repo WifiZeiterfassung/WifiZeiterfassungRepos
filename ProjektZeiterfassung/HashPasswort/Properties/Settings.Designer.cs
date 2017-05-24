@@ -25,13 +25,25 @@ namespace HashPasswort.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=ZEIT2017V4;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=ZEIT2017;Integrated Security=True")]
         public string ZEIT2017ConnectionString {
             get {
                 return ((string)(this["ZEIT2017ConnectionString"]));
             }
             set {
                 this["ZEIT2017ConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.103;Initial Catalog=ZEIT2017;Integrated Security=True")]
+        public string ZEIT2017ConnServer {
+            get {
+                return ((string)(this["ZEIT2017ConnServer"]));
+            }
+            set {
+                this["ZEIT2017ConnServer"] = value;
             }
         }
     }

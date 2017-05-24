@@ -12,29 +12,39 @@ namespace HashPasswort
         private string _Klartextpasswort;
         private byte[] _Passwort;
         private int _ID;
-        private string _Connection;
-        private string _SqlString = "";//Hier den SQL String fürs Update
+        private string _SqlString = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Passwort] = @Passwort WHERE [ID] = @ID;";//Hier den SQL String fürs Update
 
+        /// <summary>
+        /// schreibt den eingegebenen String als Hashwert in die Datenbank zu den Mitarbeitern mit einer While schleife da 7 Personen
+        /// Passwort kann frei gewählt werden einmal für alle 7 das gleiche standardpasswort
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Program p = new Program();
-            Console.Write("Id des Mitarbeiters eingeben :");
-            p._ID = Convert.ToInt32(Console.ReadLine());
             Console.Write("Bitte Klartextpasswort eingeben :");
             p._Klartextpasswort = Console.ReadLine();
             p._Passwort = Helper.GetHash(p._Klartextpasswort);
-
-            Datenbankverbindung con = new Datenbankverbindung();
-            using (var Connection = new System.Data.SqlClient.SqlConnection(con.DbConnection))
+            p._ID = 1;
+            while (p._ID <= 7)
             {
-                using(var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
+                Datenbankverbindung con = new Datenbankverbindung();
+                using (var Connection = new System.Data.SqlClient.SqlConnection(con.DbConnection))
                 {
-                    Befehl.CommandType = System.Data.CommandType.TableDirect;
-                    Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = p._ID;
-                    Befehl.Parameters.Add("@Passwort", System.Data.SqlDbType.VarBinary).Value = p._Passwort;
-
+                    Connection.Open();
+                    using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
+                    {
+                        Befehl.CommandText = p._SqlString;
+                        Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = p._ID;
+                        Befehl.Parameters.Add("@Passwort", System.Data.SqlDbType.VarBinary).Value = p._Passwort;
+                        Befehl.ExecuteNonQuery();
+                    }
+                    Connection.Close();
                 }
+                p._ID += 1;
             }
+            Console.ReadLine();
+            
             
 
 
