@@ -66,6 +66,7 @@ namespace ProjektZeiterfassung.Model
         }
         /// <summary>
         /// Methode welche den Connection String zur Datenbankverbindung herrstellt
+        /// Aufpassen welchen Connectionstring verwendet wird bei dir ZuHause oder Wifi
         /// </summary>
         /// <returns></returns>
         private string Con()
@@ -75,8 +76,8 @@ namespace ProjektZeiterfassung.Model
             //ConBauer.InitialCatalog = Datenbankname;
             //ConBauer.IntegratedSecurity = true;
             //this._DbConnection = ConBauer.ConnectionString;
-            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer;
-            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden
+            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer; //SqlServerAdresse-SERVER 192.168.1.103
+            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden SQLEXPRESS
             return _DbConnection;
         }
     }
