@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProjektZeiterfassung.Model.Datenbankverbindung">
+    <Position X="0.5" Y="0.75" Width="2" />
+    <Members>
+      <Field Name="_Datenbankname" Hidden="true" />
+      <Field Name="_DbConnection" Hidden="true" />
+      <Field Name="_SqlServerAdresse" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAIAAAAAAAAAAAAAAAAEAAAEAAAACAgAAgAA=</HashCode>
+      <FileName>Model\Datenbankverbindung.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.EintrittAustritt">
+    <Position X="8.5" Y="0.5" Width="2" />
+    <Members>
+      <Field Name="_AustrittsDatum" Hidden="true" />
+      <Field Name="_EintrittsDatum" Hidden="true" />
+      <Field Name="_FK_Mitarbeiter" Hidden="true" />
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_IsAdmin" Hidden="true" />
+      <Field Name="_Personalnummer" Hidden="true" />
+      <Field Name="_TagesSollZeit" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIAAAAABIAAAgAEAAAAAAAAAGAAASAAAAAAAAAAEgyA=</HashCode>
+      <FileName>Model\EintrittAustritt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.Helper">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.ListeMitarbeiter">
+    <Position X="5.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Mitarbeiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.Mitarbeiter">
+    <Position X="5.75" Y="3" Width="2" />
+    <Members>
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_KlartextPasswort" Hidden="true" />
+      <Field Name="_Nachname" Hidden="true" />
+      <Field Name="_Passwort" Hidden="true" />
+      <Field Name="_Vorname" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAIgEAAAAAAAAAAAAAAAAAAAAAAAgAkgkA=</HashCode>
+      <FileName>Model\Mitarbeiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.Stempelzeiten">
+    <Position X="2.75" Y="0.75" Width="2" />
+    <Members>
+      <Field Name="_FK_Mitarbeiter" Hidden="true" />
+      <Field Name="_Zeitpunkt" Hidden="true" />
+      <Field Name="_ZeitTyp" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAMAAAAAIAAAAAAAAAAAAAQAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\Stempelzeiten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.UebersichtsListe">
+    <Position X="11" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Uebersicht.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.Uebersicht">
+    <Position X="11" Y="1.75" Width="2" />
+    <Members>
+      <Field Name="_Bis" Hidden="true" />
+      <Field Name="_FullName" Hidden="true" />
+      <Field Name="_Personalnummer" Hidden="true" />
+      <Field Name="_Von" Hidden="true" />
+      <Field Name="_Wochensumme" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIBCAAAAIAACgAAAAAAEAAgAAAIAAAAAAAABCA=</HashCode>
+      <FileName>Model\Uebersicht.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjektZeiterfassung.Model.Zeittypen">
+    <Position X="11" Y="4.75" Width="2" />
+    <Members>
+      <Field Name="_Bezeichnung" Hidden="true" />
+      <Field Name="_Hauptsatz" Hidden="true" />
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_Modus" Hidden="true" />
+      <Field Name="_Von" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACQAAgAAAAAAAAAAAAABgBAAAAAAAAAAEABA=</HashCode>
+      <FileName>Model\Zeittypen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
