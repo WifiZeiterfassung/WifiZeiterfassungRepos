@@ -30,18 +30,6 @@ namespace ProjektZeiterfassung.Model
             get { return _ID; }
             set { _ID = value; }
         }
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
-        private string _Personalnummer = String.Empty;
-        /// <summary>
-        /// Eigenschaft für Personalnummer von Mitarbeiter
-        /// </summary>
-        public string Personalnummer
-        {
-            get { return _Personalnummer; }
-            set { _Personalnummer = value; }
-        }
         
         /// <summary>
         /// Internes Hilfsfeld
@@ -67,19 +55,31 @@ namespace ProjektZeiterfassung.Model
             get { return _Nachname; }
             set { _Nachname = value; }
         }
-        
         /// <summary>
-        /// Internes Hilfsfeld
+        /// internes Hilfsfeld
         /// </summary>
-        private bool _IstAktiv;
+        private string _KlartextPasswort;
         /// <summary>
-        /// Stellt eine Eigenschaft für IstAktiv von Mitarbeiter bereit
+        /// Stellt die Eigenschaft für das Klartextpasswort bereit
         /// </summary>
-        public bool IstAktiv
+        public string KlartextPasswort
         {
-            get { return _IstAktiv; }
-            set { _IstAktiv = value; }
+            get { return _KlartextPasswort; }
+            set { _KlartextPasswort = value; }
         }
+        /// <summary>
+        /// internes Hilfsfeld
+        /// </summary>
+        private byte[] _Passwort;
+        /// <summary>
+        /// Stellt die Eigenschaft Passwort als Hashwert bereit für die Datenbank zum prüfen
+        /// </summary>
+        public byte[] Passwort
+        {
+            get { return _Passwort; }
+            set { _Passwort = value; }
+        }
+
 
     }
 }

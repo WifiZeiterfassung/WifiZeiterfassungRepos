@@ -75,7 +75,8 @@ namespace ProjektZeiterfassung.Model
             //ConBauer.InitialCatalog = Datenbankname;
             //ConBauer.IntegratedSecurity = true;
             //this._DbConnection = ConBauer.ConnectionString;
-            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString;
+            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer;
+            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden
             return _DbConnection;
         }
     }

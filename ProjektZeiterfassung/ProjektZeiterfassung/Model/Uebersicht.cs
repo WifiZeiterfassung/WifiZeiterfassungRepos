@@ -16,7 +16,7 @@ namespace ProjektZeiterfassung.Model
     /// <summary>
     /// Klasse für ein Objekt der Übersichtsansicht aus Mitarbeiter und Zeiterfassung
     /// </summary>
-    public class Uebersicht : Zeiterfassung
+    public class Uebersicht : Zeittypen
     {
         /// <summary>
         /// Internes Hilfsfeld
@@ -84,7 +84,8 @@ namespace ProjektZeiterfassung.Model
         /// <param name="m">Mitarbeiter objekt</param>
         public Uebersicht(Mitarbeiter m)
         {
-            this.Personalnummer = m.Personalnummer;
+            EintrittAustritt ea = new EintrittAustritt();
+            this.Personalnummer = ea.Personalnummer;
             this.FullName = GetFullName(m.Vorname, m.Nachname);
         }
         /// <summary>
