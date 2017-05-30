@@ -31,15 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MitarbeiterAnlegen));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxAktiv = new System.Windows.Forms.CheckBox();
-            this.LblAustrittsdatum = new System.Windows.Forms.Label();
             this.LblNachname = new System.Windows.Forms.Label();
             this.BtnSpeichern = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.LblEintrittsdatum = new System.Windows.Forms.Label();
             this.LblVorname = new System.Windows.Forms.Label();
             this.LblPersonalnummer = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
             this.LblMitarbeiterAnlegen = new System.Windows.Forms.Label();
@@ -50,15 +47,12 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.checkBoxAktiv);
-            this.panel2.Controls.Add(this.LblAustrittsdatum);
             this.panel2.Controls.Add(this.LblNachname);
             this.panel2.Controls.Add(this.BtnSpeichern);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.LblEintrittsdatum);
             this.panel2.Controls.Add(this.LblVorname);
             this.panel2.Controls.Add(this.LblPersonalnummer);
-            this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.TxtPersonalnummer);
             this.panel2.Location = new System.Drawing.Point(12, 27);
@@ -72,25 +66,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(210, 20);
             this.dateTimePicker2.TabIndex = 8;
-            // 
-            // checkBoxAktiv
-            // 
-            this.checkBoxAktiv.AutoSize = true;
-            this.checkBoxAktiv.Location = new System.Drawing.Point(10, 182);
-            this.checkBoxAktiv.Name = "checkBoxAktiv";
-            this.checkBoxAktiv.Size = new System.Drawing.Size(50, 17);
-            this.checkBoxAktiv.TabIndex = 10;
-            this.checkBoxAktiv.Text = "Aktiv";
-            this.checkBoxAktiv.UseVisualStyleBackColor = true;
-            // 
-            // LblAustrittsdatum
-            // 
-            this.LblAustrittsdatum.AutoSize = true;
-            this.LblAustrittsdatum.Location = new System.Drawing.Point(249, 111);
-            this.LblAustrittsdatum.Name = "LblAustrittsdatum";
-            this.LblAustrittsdatum.Size = new System.Drawing.Size(76, 13);
-            this.LblAustrittsdatum.TabIndex = 14;
-            this.LblAustrittsdatum.Text = "Austrittsdatum:";
             // 
             // LblNachname
             // 
@@ -146,14 +121,6 @@
             this.LblPersonalnummer.TabIndex = 12;
             this.LblPersonalnummer.Text = "Personalnr.:";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(250, 128);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(220, 20);
-            this.textBox3.TabIndex = 9;
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(10, 75);
@@ -200,15 +167,12 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.CheckBox checkBoxAktiv;
-        private System.Windows.Forms.Label LblAustrittsdatum;
         private System.Windows.Forms.Label LblNachname;
         private System.Windows.Forms.Button BtnSpeichern;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label LblEintrittsdatum;
         private System.Windows.Forms.Label LblVorname;
         private System.Windows.Forms.Label LblPersonalnummer;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox TxtPersonalnummer;
         private System.Windows.Forms.Label LblMitarbeiterAnlegen;

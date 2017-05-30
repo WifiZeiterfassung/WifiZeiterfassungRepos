@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using ProjektZeiterfassung.Model;
 
 namespace ProjektZeiterfassung.View
 {
     public partial class Zeiterfassung : System.Windows.Forms.Form
     {
+        private string _SqlString = "SELECT [Vorname] AS Vorname, [Nachname] AS Nachname " + 
+                                    "FROM [ZEIT2017].[dbo].[Mitarbeiter] " +
+                                    "JOIN [ZEIT2017].[dbo].[EintrittAustritt] " +
+                                    "ON [dbo].[Mitarbeiter].ID = FK_Mitarbeiter " + 
+                                    "WHERE Personalnummer = ";
         /// <summary>
         /// Initialisiert eine neue Instanz.
         /// </summary>
@@ -50,6 +57,7 @@ namespace ProjektZeiterfassung.View
         private void BtnAnmelden_Click(object sender, EventArgs e)
         {
             this.PersonalnummerPruefen();
+            this.ButtonFreischalten();
         }
         /// <summary>
         /// Überprüft Personalnummer und PIN
@@ -63,41 +71,51 @@ namespace ProjektZeiterfassung.View
             bool DbAdmin = true;
             var Datum = System.DateTime.Now.ToString();
 
-            //Sql Statement
-            //SELECT    Personalnummer AS DbPersonalnummer
-            //            ,Pin AS DbPin
-            //            ,IsAdmin AS DbAdmin
-            //            ,Vorname AS DbVorname
-            //            ,Nachname AS DbNachname
-            //            FROM dbo.Mitarbeiter WHERE Personalnummer = 'PersonalNummer'
 
-            if (Personalnummerint == 1)
+            SqlDataReader reader;
+            Datenbankverbindung con = new Datenbankverbindung();
+            using (var Connection = new System.Data.SqlClient.SqlConnection(con.DbConnection))
             {
-                if (Pinint == 1)
+                string ID = TxtPersonalnummer.Text;
+                Connection.Open();
+                using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
                 {
-                    if (DbAdmin == true)
+                    Befehl.CommandText = this._SqlString + ID;
+                    reader = Befehl.ExecuteReader();
+                    while (reader.Read())
                     {
-                        PanelAdministrationsbereich.Enabled = true;
-                        LblAdministrationsbereich.Enabled = true;
-                        BtnPasswortAendern.Enabled = true;
-                    }
-                    else
-                    {
+                        string Vorname = reader["Vorname"].ToString();
+                        string Nachname = reader["Nachname"].ToString();
+                        string Begrüßung = "Guten Tag " + Vorname + " " + Nachname + " es ist der " + Datum;
+                        TxtBenutzerdaten.Text = Begrüßung;
 
-                    }
-                    //BtnArbeitsbeginn.Enabled = true;
-                    TxtBenutzerdaten.Text = "Guten Tag + DbVorname + DbNachname + es ist " + Datum;
+                        if (TxtPersonalnummer.Text == "1032")
+                        //if (Vorname != null)
+                        {
+                            if (Pinint == 1)
+                            {
+                                if (DbAdmin == true)
+                                {
+                                    PanelAdministrationsbereich.Enabled = true;
+                                    LblAdministrationsbereich.Enabled = true;
+                                    BtnPasswortAendern.Enabled = true;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Das Passwort ist falsch!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Personalnummer wurde nicht gefunden!");
+                        }
+                    }                    
+                }
+                reader.Close();
+                Connection.Close();
+            }
 
-                }
-                else
-                {
-                    MessageBox.Show("Das Passwort ist falsch!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Personalnummer wurde nicht gefunden!");
-            }
         }
 
         /// <summary>
