@@ -97,6 +97,7 @@
             this.TxtNeuesPasswort1.Location = new System.Drawing.Point(10, 75);
             this.TxtNeuesPasswort1.MaxLength = 6;
             this.TxtNeuesPasswort1.Name = "TxtNeuesPasswort1";
+            this.TxtNeuesPasswort1.PasswordChar = '*';
             this.TxtNeuesPasswort1.Size = new System.Drawing.Size(210, 20);
             this.TxtNeuesPasswort1.TabIndex = 8;
             // 
@@ -105,6 +106,7 @@
             this.TxtNeuesPasswort.Location = new System.Drawing.Point(10, 23);
             this.TxtNeuesPasswort.MaxLength = 6;
             this.TxtNeuesPasswort.Name = "TxtNeuesPasswort";
+            this.TxtNeuesPasswort.PasswordChar = '*';
             this.TxtNeuesPasswort.Size = new System.Drawing.Size(210, 20);
             this.TxtNeuesPasswort.TabIndex = 5;
             // 

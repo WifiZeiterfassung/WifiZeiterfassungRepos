@@ -167,6 +167,7 @@
             this.BtnSuchen.TabIndex = 6;
             this.BtnSuchen.Text = "Suchen";
             this.BtnSuchen.UseVisualStyleBackColor = true;
+            this.BtnSuchen.Click += new System.EventHandler(this.BtnSuchen_Click);
             // 
             // textBox3
             // 

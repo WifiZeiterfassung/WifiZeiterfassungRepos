@@ -16,5 +16,10 @@ namespace ProjektZeiterfassung.View
         {
             InitializeComponent();
         }
+
+        private void BtnSuchen_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
