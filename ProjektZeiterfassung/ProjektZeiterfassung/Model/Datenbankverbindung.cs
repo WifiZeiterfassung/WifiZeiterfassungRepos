@@ -11,30 +11,7 @@ namespace ProjektZeiterfassung.Model
     /// </summary>
     public class Datenbankverbindung
     {
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
-        private string _Datenbankname = String.Empty;
-        /// <summary>
-        /// Stellt eine Eigenschaft für den Datenbanknamen bereit
-        /// </summary>
-        public string Datenbankname
-        {
-            get { return _Datenbankname; }
-            set { _Datenbankname = value; }
-        }
-        /// <summary>
-        /// Internes Hilfsfeld
-        /// </summary>
-        private string _SqlServerAdresse = String.Empty;
-        /// <summary>
-        /// Stellt die Eigenschaft von der SqlServerAdresse bereit
-        /// </summary>
-        public string SqlServerAdresse
-        {
-            get { return _SqlServerAdresse; }
-            set { _SqlServerAdresse = value; }
-        }
+
         /// <summary>
         /// Internes Hilfsfeld
         /// </summary>
@@ -59,8 +36,6 @@ namespace ProjektZeiterfassung.Model
         /// </summary>
         public Datenbankverbindung()
         {
-            this.Datenbankname = Properties.Settings.Default.Datenbankname;
-            this.SqlServerAdresse = Properties.Settings.Default.SqlServer;
             this.DbConnection = _DbConnection;
             
         }
@@ -76,8 +51,8 @@ namespace ProjektZeiterfassung.Model
             //ConBauer.InitialCatalog = Datenbankname;
             //ConBauer.IntegratedSecurity = true;
             //this._DbConnection = ConBauer.ConnectionString;
-            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer; //SqlServerAdresse-SERVER 192.168.1.103
-            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden .\SQLEXPRESS
+            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer; //SqlServerAdresse-SERVER 192.168.1.103
+            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden .\SQLEXPRESS
             return _DbConnection;
         }
     }
