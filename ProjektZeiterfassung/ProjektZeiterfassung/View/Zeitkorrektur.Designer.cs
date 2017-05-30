@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeitkorrektur));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dateTimePickerUhrzeit = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
             this.LblDatum = new System.Windows.Forms.Label();
             this.LblUhrzeit = new System.Windows.Forms.Label();
@@ -37,15 +39,14 @@
             this.BtnPausenende = new System.Windows.Forms.Button();
             this.BtnArbeitsbeginn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TxtBenutzerdaten = new System.Windows.Forms.TextBox();
             this.BtnSuchen = new System.Windows.Forms.Button();
+            this.LblBenutzerdaten = new System.Windows.Forms.Label();
             this.LblPersonalnummer = new System.Windows.Forms.Label();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TxtBenutzerdaten = new System.Windows.Forms.TextBox();
-            this.LblBenutzerdaten = new System.Windows.Forms.Label();
-            this.AnmeldeLabel = new System.Windows.Forms.Label();
-            this.dateTimePickerUhrzeit = new System.Windows.Forms.DateTimePicker();
             this.TextBoxPasswort = new System.Windows.Forms.RichTextBox();
+            this.AnmeldeLabel = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -67,13 +68,22 @@
             this.panel3.Size = new System.Drawing.Size(484, 87);
             this.panel3.TabIndex = 25;
             // 
+            // dateTimePickerUhrzeit
+            // 
+            this.dateTimePickerUhrzeit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerUhrzeit.Location = new System.Drawing.Point(129, 21);
+            this.dateTimePickerUhrzeit.Name = "dateTimePickerUhrzeit";
+            this.dateTimePickerUhrzeit.ShowUpDown = true;
+            this.dateTimePickerUhrzeit.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePickerUhrzeit.TabIndex = 5;
+            // 
             // dateTimePickerDatum
             // 
             this.dateTimePickerDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDatum.Location = new System.Drawing.Point(9, 21);
             this.dateTimePickerDatum.Name = "dateTimePickerDatum";
             this.dateTimePickerDatum.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePickerDatum.TabIndex = 3;
+            this.dateTimePickerDatum.TabIndex = 4;
             // 
             // LblDatum
             // 
@@ -98,7 +108,7 @@
             this.BtnArbeitsende.Location = new System.Drawing.Point(369, 47);
             this.BtnArbeitsende.Name = "BtnArbeitsende";
             this.BtnArbeitsende.Size = new System.Drawing.Size(100, 23);
-            this.BtnArbeitsende.TabIndex = 8;
+            this.BtnArbeitsende.TabIndex = 9;
             this.BtnArbeitsende.Text = "Arbeitsende";
             this.BtnArbeitsende.UseVisualStyleBackColor = true;
             this.BtnArbeitsende.Click += new System.EventHandler(this.BtnArbeitsende_Click);
@@ -108,7 +118,7 @@
             this.BtnPausenbeginn.Location = new System.Drawing.Point(129, 47);
             this.BtnPausenbeginn.Name = "BtnPausenbeginn";
             this.BtnPausenbeginn.Size = new System.Drawing.Size(100, 23);
-            this.BtnPausenbeginn.TabIndex = 6;
+            this.BtnPausenbeginn.TabIndex = 7;
             this.BtnPausenbeginn.Text = "Pausenbeginn";
             this.BtnPausenbeginn.UseVisualStyleBackColor = true;
             this.BtnPausenbeginn.Click += new System.EventHandler(this.BtnPausenbeginn_Click);
@@ -118,7 +128,7 @@
             this.BtnPausenende.Location = new System.Drawing.Point(249, 47);
             this.BtnPausenende.Name = "BtnPausenende";
             this.BtnPausenende.Size = new System.Drawing.Size(100, 23);
-            this.BtnPausenende.TabIndex = 7;
+            this.BtnPausenende.TabIndex = 8;
             this.BtnPausenende.Text = "Pausenende";
             this.BtnPausenende.UseVisualStyleBackColor = true;
             this.BtnPausenende.Click += new System.EventHandler(this.BtnPausenende_Click);
@@ -128,7 +138,7 @@
             this.BtnArbeitsbeginn.Location = new System.Drawing.Point(9, 47);
             this.BtnArbeitsbeginn.Name = "BtnArbeitsbeginn";
             this.BtnArbeitsbeginn.Size = new System.Drawing.Size(100, 23);
-            this.BtnArbeitsbeginn.TabIndex = 5;
+            this.BtnArbeitsbeginn.TabIndex = 6;
             this.BtnArbeitsbeginn.Text = "Arbeitsbeginn";
             this.BtnArbeitsbeginn.UseVisualStyleBackColor = true;
             this.BtnArbeitsbeginn.Click += new System.EventHandler(this.BtnArbeitsbeginn_Click);
@@ -146,6 +156,19 @@
             this.panel2.Size = new System.Drawing.Size(484, 55);
             this.panel2.TabIndex = 23;
             // 
+            // TxtBenutzerdaten
+            // 
+            this.TxtBenutzerdaten.BackColor = System.Drawing.Color.PeachPuff;
+            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBenutzerdaten.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.TxtBenutzerdaten.Location = new System.Drawing.Point(249, 23);
+            this.TxtBenutzerdaten.Multiline = true;
+            this.TxtBenutzerdaten.Name = "TxtBenutzerdaten";
+            this.TxtBenutzerdaten.ReadOnly = true;
+            this.TxtBenutzerdaten.Size = new System.Drawing.Size(221, 21);
+            this.TxtBenutzerdaten.TabIndex = 100;
+            this.TxtBenutzerdaten.TabStop = false;
+            // 
             // BtnSuchen
             // 
             this.BtnSuchen.Location = new System.Drawing.Point(129, 21);
@@ -155,6 +178,16 @@
             this.BtnSuchen.Text = "Suchen";
             this.BtnSuchen.UseVisualStyleBackColor = true;
             this.BtnSuchen.Click += new System.EventHandler(this.BtnSuchen_Click);
+            // 
+            // LblBenutzerdaten
+            // 
+            this.LblBenutzerdaten.AutoSize = true;
+            this.LblBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBenutzerdaten.Location = new System.Drawing.Point(246, 4);
+            this.LblBenutzerdaten.Name = "LblBenutzerdaten";
+            this.LblBenutzerdaten.Size = new System.Drawing.Size(79, 13);
+            this.LblBenutzerdaten.TabIndex = 1;
+            this.LblBenutzerdaten.Text = "Benutzerdaten:";
             // 
             // LblPersonalnummer
             // 
@@ -181,27 +214,15 @@
             this.panel1.Size = new System.Drawing.Size(484, 55);
             this.panel1.TabIndex = 24;
             // 
-            // TxtBenutzerdaten
+            // TextBoxPasswort
             // 
-            this.TxtBenutzerdaten.BackColor = System.Drawing.Color.PeachPuff;
-            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBenutzerdaten.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TxtBenutzerdaten.Location = new System.Drawing.Point(249, 23);
-            this.TxtBenutzerdaten.Multiline = true;
-            this.TxtBenutzerdaten.Name = "TxtBenutzerdaten";
-            this.TxtBenutzerdaten.ReadOnly = true;
-            this.TxtBenutzerdaten.Size = new System.Drawing.Size(221, 21);
-            this.TxtBenutzerdaten.TabIndex = 2;
-            // 
-            // LblBenutzerdaten
-            // 
-            this.LblBenutzerdaten.AutoSize = true;
-            this.LblBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblBenutzerdaten.Location = new System.Drawing.Point(246, 4);
-            this.LblBenutzerdaten.Name = "LblBenutzerdaten";
-            this.LblBenutzerdaten.Size = new System.Drawing.Size(79, 13);
-            this.LblBenutzerdaten.TabIndex = 1;
-            this.LblBenutzerdaten.Text = "Benutzerdaten:";
+            this.TextBoxPasswort.Location = new System.Drawing.Point(-2, -1);
+            this.TextBoxPasswort.Name = "TextBoxPasswort";
+            this.TextBoxPasswort.ReadOnly = true;
+            this.TextBoxPasswort.Size = new System.Drawing.Size(484, 59);
+            this.TextBoxPasswort.TabIndex = 26;
+            this.TextBoxPasswort.TabStop = false;
+            this.TextBoxPasswort.Text = "";
             // 
             // AnmeldeLabel
             // 
@@ -213,25 +234,6 @@
             this.AnmeldeLabel.TabIndex = 22;
             this.AnmeldeLabel.Text = "Zeitkorrektur";
             // 
-            // dateTimePickerUhrzeit
-            // 
-            this.dateTimePickerUhrzeit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerUhrzeit.Location = new System.Drawing.Point(129, 21);
-            this.dateTimePickerUhrzeit.Name = "dateTimePickerUhrzeit";
-            this.dateTimePickerUhrzeit.ShowUpDown = true;
-            this.dateTimePickerUhrzeit.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePickerUhrzeit.TabIndex = 4;
-            // 
-            // TextBoxPasswort
-            // 
-            this.TextBoxPasswort.Location = new System.Drawing.Point(3, 3);
-            this.TextBoxPasswort.Name = "TextBoxPasswort";
-            this.TextBoxPasswort.ReadOnly = true;
-            this.TextBoxPasswort.Size = new System.Drawing.Size(467, 45);
-            this.TextBoxPasswort.TabIndex = 26;
-            this.TextBoxPasswort.TabStop = false;
-            this.TextBoxPasswort.Text = "";
-            // 
             // Zeitkorrektur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,6 +244,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AnmeldeLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Zeitkorrektur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";

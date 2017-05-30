@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MitarbeiterAnlegen));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.checkBoxAktiv = new System.Windows.Forms.CheckBox();
@@ -184,6 +185,7 @@
             this.ClientSize = new System.Drawing.Size(504, 256);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.LblMitarbeiterAnlegen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MitarbeiterAnlegen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";

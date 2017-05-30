@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeiterfassung));
             this.LblAdministrationsbereich = new System.Windows.Forms.Label();
             this.PanelAdministrationsbereich = new System.Windows.Forms.Panel();
             this.BtnBenutzerUpdate = new System.Windows.Forms.Button();
@@ -302,6 +303,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AnmeldeLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Zeiterfassung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
