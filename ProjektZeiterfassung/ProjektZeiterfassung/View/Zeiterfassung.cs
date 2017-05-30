@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjektZeiterfassung.View
 {
-    public partial class Zeiterfassung : Form
+    public partial class Zeiterfassung : System.Windows.Forms.Form
     {
+        /// <summary>
+        /// Initialisiert eine neue Instanz.
+        /// </summary>
         public Zeiterfassung()
         {
             InitializeComponent();
@@ -25,31 +28,38 @@ namespace ProjektZeiterfassung.View
         //Das Fenster MitarbeiterBearbeiten wird geöffnet
         private void BtnBenutzerUpdate_Click(object sender, EventArgs e)
         {
-            MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
-            mitarbeiterbearbeiten.ShowDialog();
+            MitarbeiterAnlegen mitarbeiteranlegen = new MitarbeiterAnlegen();
+            mitarbeiteranlegen.ShowDialog(this);
+
         }
         //Das Fenster MitarbeiterAnlegen wird geöffnet
         private void BtnBenutzerNeu_Click(object sender, EventArgs e)
         {
-            MitarbeiterAnlegen mitarbeiteranlegen = new MitarbeiterAnlegen();
-            mitarbeiteranlegen.ShowDialog();
+            MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
+            mitarbeiterbearbeiten.ShowDialog(this);
         }
         //Das Fenster Zeitkorrektur wird geöffnet
         private void BtnZeitkorrektur_Click(object sender, EventArgs e)
         {
-            //Zeitkorrektur zeitkorrigieren = new View.Zeitkorrektur();
-            //zeitkorrigieren.ShowDialog();
-            CheckButton();
+            Zeitkorrektur zeitkorrigieren = new View.Zeitkorrektur();
+            zeitkorrigieren.ShowDialog();
         }
-        //Überprüft Personalnummer und PIN
+        /// <summary>
+        ///Überprüft Personalnummer und PIN und schaltet dann die Schaltflächen frei.
+        /// </summary>
         private void BtnAnmelden_Click(object sender, EventArgs e)
         {
-            var PersonalNummer = TxtPersonalnummer.Text;
-            var Pin = TxtPin.Text;
+            this.PersonalnummerPruefen();
+        }
+        /// <summary>
+        /// Überprüft Personalnummer und PIN
+        /// </summary>
+        public void PersonalnummerPruefen()
+            {
             int Personalnummerint;
             int Pinint;
-            bool parsed = Int32.TryParse(PersonalNummer, out Personalnummerint);
-            bool parsed2 = Int32.TryParse(Pin, out Pinint);
+            bool parsed = Int32.TryParse(TxtPersonalnummer.Text, out Personalnummerint);
+            bool parsed2 = Int32.TryParse(TxtPin.Text, out Pinint);
             bool DbAdmin = true;
             var Datum = System.DateTime.Now.ToString();
 
@@ -69,6 +79,7 @@ namespace ProjektZeiterfassung.View
                     {
                         PanelAdministrationsbereich.Enabled = true;
                         LblAdministrationsbereich.Enabled = true;
+                        BtnPasswortAendern.Enabled = true;
                     }
                     else
                     {
@@ -88,10 +99,12 @@ namespace ProjektZeiterfassung.View
                 MessageBox.Show("Personalnummer wurde nicht gefunden!");
             }
         }
+
         /// <summary>
-        /// Überprüft welcher "Zeittyp" kommen muss und schaltet den jeweiligen Button aktiv.
+        /// Überprüft den letzten Datenbankeintrag 
+        /// und Schaltet die zulässigen Button frei.
         /// </summary>
-        public void CheckButton()
+        public void ButtonFreischalten()
         {
             //SELECT[ZeitTyp]
             //FROM[ZEIT2017V4].[dbo].[Stempelzeiten]
@@ -105,48 +118,28 @@ namespace ProjektZeiterfassung.View
             //Arbeitsende = 2
             //Pausenbeginn = 3
             //Pausenende = 4
+            int Typ = 3;
 
-            int Typ = 2;
-
-            if (Typ == 2)
+            switch (Typ)
             {
-                BtnArbeitsbeginn.Enabled = true;
-                MessageBox.Show("dsfad");
-            }
-            else
-            {
-
-                if (Typ == 1 || Typ == 4)
-                {
-                    BtnArbeitsende.Enabled = true;
+                case 1:
                     BtnPausenbeginn.Enabled = true;
-                }
-                if (Typ == 3)
-                {
+                    BtnArbeitsende.Enabled = true;
+                    break;
+                case 2:
+                    BtnArbeitsbeginn.Enabled = true;
+                    break;
+                case 3:
                     BtnPausenende.Enabled = true;
-                }
+                    break;
+                case 4:
+                    BtnPausenbeginn.Enabled = true;
+                    BtnArbeitsende.Enabled = true;
+                    break;
+                default:
+                    MessageBox.Show("Eintrag fehlt");
+                    break;
             }
-
-
-            //switch (Typ)
-            //{
-            //    case 2:
-            //        ButtonAktiv = "Arbeitsbeginn";
-            //        break;
-            //    case 1:
-            //        ButtonAktiv = "Arbeitsende";
-            //        break;
-            //    case 1:
-            //        ButtonAktiv = "Pausenbeginn";
-            //        break;
-            //    case 4:
-            //        ButtonAktiv = "Pausenende";
-            //        break;
-            //    default:
-            //        ButtonAktiv = "Eintragfehlt";
-            //        break;
-            //}
-            //MessageBox.Show(ButtonAktiv);
-        }
+        }        
     }
 }

@@ -155,6 +155,7 @@
             // 
             // BtnPasswortAendern
             // 
+            this.BtnPasswortAendern.Enabled = false;
             this.BtnPasswortAendern.Location = new System.Drawing.Point(369, 21);
             this.BtnPasswortAendern.Name = "BtnPasswortAendern";
             this.BtnPasswortAendern.Size = new System.Drawing.Size(100, 23);
@@ -319,29 +320,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Label LblAdministrationsbereich;
-        private System.Windows.Forms.Panel PanelAdministrationsbereich;
-        private System.Windows.Forms.Button BtnBenutzerUpdate;
-        private System.Windows.Forms.Button BtnZeitkorrektur;
-        private System.Windows.Forms.Button BtnBenutzerNeu;
-        private System.Windows.Forms.Button BtnPausenbeginn;
-        private System.Windows.Forms.Button BtnPausenende;
+        internal System.Windows.Forms.Label LblAdministrationsbereich;
+        internal System.Windows.Forms.Panel PanelAdministrationsbereich;
+        internal System.Windows.Forms.Button BtnBenutzerUpdate;
+        internal System.Windows.Forms.Button BtnZeitkorrektur;
+        internal System.Windows.Forms.Button BtnBenutzerNeu;
+        internal System.Windows.Forms.Button BtnPausenbeginn;
+        internal System.Windows.Forms.Button BtnPausenende;
         internal System.Windows.Forms.Button BtnArbeitsbeginn;
-        private System.Windows.Forms.Label LablPin;
-        private System.Windows.Forms.Button BtnPasswortAendern;
-        private System.Windows.Forms.TextBox TxtPin;
-        private System.Windows.Forms.Label LblPersonalnummer;
-        private System.Windows.Forms.Button BtnArbeitsende;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button BtnAnmelden;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox TxtPersonalnummer;
-        private System.Windows.Forms.TextBox TxtBenutzerdaten;
-        private System.Windows.Forms.Label LblBenutzerdaten;
-        private System.Windows.Forms.Panel panel1;
-        private ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter mitarbeiterTableAdapter;
-        private ZEIT2017DataSet zEIT2017DataSet;
-        private System.Windows.Forms.BindingSource mitarbeiterBindingSource;
-        private System.Windows.Forms.Label AnmeldeLabel;
+        internal System.Windows.Forms.Label LablPin;
+        internal System.Windows.Forms.Button BtnPasswortAendern;
+        internal System.Windows.Forms.TextBox TxtPin;
+        internal System.Windows.Forms.Label LblPersonalnummer;
+        internal System.Windows.Forms.Button BtnArbeitsende;
+        internal System.Windows.Forms.Panel panel3;
+        internal System.Windows.Forms.Button BtnAnmelden;
+        internal System.Windows.Forms.Panel panel2;
+        internal System.Windows.Forms.TextBox TxtPersonalnummer;
+        internal System.Windows.Forms.TextBox TxtBenutzerdaten;
+        internal System.Windows.Forms.Label LblBenutzerdaten;
+        internal System.Windows.Forms.Panel panel1;
+        internal ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter mitarbeiterTableAdapter;
+        internal ZEIT2017DataSet zEIT2017DataSet;
+        internal System.Windows.Forms.BindingSource mitarbeiterBindingSource;
+        internal System.Windows.Forms.Label AnmeldeLabel;
     }
 }

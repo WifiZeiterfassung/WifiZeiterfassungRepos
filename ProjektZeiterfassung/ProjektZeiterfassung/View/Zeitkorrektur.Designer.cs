@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
             this.LblDatum = new System.Windows.Forms.Label();
             this.LblUhrzeit = new System.Windows.Forms.Label();
             this.BtnArbeitsende = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.BtnPausenbeginn = new System.Windows.Forms.Button();
             this.BtnPausenende = new System.Windows.Forms.Button();
             this.BtnArbeitsbeginn = new System.Windows.Forms.Button();
@@ -45,6 +44,8 @@
             this.TxtBenutzerdaten = new System.Windows.Forms.TextBox();
             this.LblBenutzerdaten = new System.Windows.Forms.Label();
             this.AnmeldeLabel = new System.Windows.Forms.Label();
+            this.dateTimePickerUhrzeit = new System.Windows.Forms.DateTimePicker();
+            this.TextBoxPasswort = new System.Windows.Forms.RichTextBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -53,25 +54,26 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.dateTimePicker2);
+            this.panel3.Controls.Add(this.dateTimePickerUhrzeit);
+            this.panel3.Controls.Add(this.dateTimePickerDatum);
             this.panel3.Controls.Add(this.LblDatum);
             this.panel3.Controls.Add(this.LblUhrzeit);
             this.panel3.Controls.Add(this.BtnArbeitsende);
-            this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.BtnPausenbeginn);
             this.panel3.Controls.Add(this.BtnPausenende);
             this.panel3.Controls.Add(this.BtnArbeitsbeginn);
-            this.panel3.Location = new System.Drawing.Point(12, 153);
+            this.panel3.Location = new System.Drawing.Point(12, 92);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(484, 87);
             this.panel3.TabIndex = 25;
             // 
-            // dateTimePicker2
+            // dateTimePickerDatum
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(9, 21);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(220, 20);
-            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePickerDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDatum.Location = new System.Drawing.Point(9, 21);
+            this.dateTimePickerDatum.Name = "dateTimePickerDatum";
+            this.dateTimePickerDatum.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePickerDatum.TabIndex = 3;
             // 
             // LblDatum
             // 
@@ -85,7 +87,7 @@
             // LblUhrzeit
             // 
             this.LblUhrzeit.AutoSize = true;
-            this.LblUhrzeit.Location = new System.Drawing.Point(249, 2);
+            this.LblUhrzeit.Location = new System.Drawing.Point(126, 3);
             this.LblUhrzeit.Name = "LblUhrzeit";
             this.LblUhrzeit.Size = new System.Drawing.Size(43, 13);
             this.LblUhrzeit.TabIndex = 25;
@@ -99,13 +101,7 @@
             this.BtnArbeitsende.TabIndex = 8;
             this.BtnArbeitsende.Text = "Arbeitsende";
             this.BtnArbeitsende.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(249, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.BtnArbeitsende.Click += new System.EventHandler(this.BtnArbeitsende_Click);
             // 
             // BtnPausenbeginn
             // 
@@ -115,6 +111,7 @@
             this.BtnPausenbeginn.TabIndex = 6;
             this.BtnPausenbeginn.Text = "Pausenbeginn";
             this.BtnPausenbeginn.UseVisualStyleBackColor = true;
+            this.BtnPausenbeginn.Click += new System.EventHandler(this.BtnPausenbeginn_Click);
             // 
             // BtnPausenende
             // 
@@ -124,6 +121,7 @@
             this.BtnPausenende.TabIndex = 7;
             this.BtnPausenende.Text = "Pausenende";
             this.BtnPausenende.UseVisualStyleBackColor = true;
+            this.BtnPausenende.Click += new System.EventHandler(this.BtnPausenende_Click);
             // 
             // BtnArbeitsbeginn
             // 
@@ -133,11 +131,14 @@
             this.BtnArbeitsbeginn.TabIndex = 5;
             this.BtnArbeitsbeginn.Text = "Arbeitsbeginn";
             this.BtnArbeitsbeginn.UseVisualStyleBackColor = true;
+            this.BtnArbeitsbeginn.Click += new System.EventHandler(this.BtnArbeitsbeginn_Click);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.TxtBenutzerdaten);
             this.panel2.Controls.Add(this.BtnSuchen);
+            this.panel2.Controls.Add(this.LblBenutzerdaten);
             this.panel2.Controls.Add(this.LblPersonalnummer);
             this.panel2.Controls.Add(this.TxtPersonalnummer);
             this.panel2.Location = new System.Drawing.Point(12, 32);
@@ -153,6 +154,7 @@
             this.BtnSuchen.TabIndex = 2;
             this.BtnSuchen.Text = "Suchen";
             this.BtnSuchen.UseVisualStyleBackColor = true;
+            this.BtnSuchen.Click += new System.EventHandler(this.BtnSuchen_Click);
             // 
             // LblPersonalnummer
             // 
@@ -173,9 +175,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.TxtBenutzerdaten);
-            this.panel1.Controls.Add(this.LblBenutzerdaten);
-            this.panel1.Location = new System.Drawing.Point(12, 92);
+            this.panel1.Controls.Add(this.TextBoxPasswort);
+            this.panel1.Location = new System.Drawing.Point(12, 184);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(484, 55);
             this.panel1.TabIndex = 24;
@@ -183,20 +184,20 @@
             // TxtBenutzerdaten
             // 
             this.TxtBenutzerdaten.BackColor = System.Drawing.Color.PeachPuff;
-            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBenutzerdaten.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TxtBenutzerdaten.Location = new System.Drawing.Point(8, 23);
+            this.TxtBenutzerdaten.Location = new System.Drawing.Point(249, 23);
             this.TxtBenutzerdaten.Multiline = true;
             this.TxtBenutzerdaten.Name = "TxtBenutzerdaten";
             this.TxtBenutzerdaten.ReadOnly = true;
-            this.TxtBenutzerdaten.Size = new System.Drawing.Size(461, 21);
+            this.TxtBenutzerdaten.Size = new System.Drawing.Size(221, 21);
             this.TxtBenutzerdaten.TabIndex = 2;
             // 
             // LblBenutzerdaten
             // 
             this.LblBenutzerdaten.AutoSize = true;
             this.LblBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblBenutzerdaten.Location = new System.Drawing.Point(5, 4);
+            this.LblBenutzerdaten.Location = new System.Drawing.Point(246, 4);
             this.LblBenutzerdaten.Name = "LblBenutzerdaten";
             this.LblBenutzerdaten.Size = new System.Drawing.Size(79, 13);
             this.LblBenutzerdaten.TabIndex = 1;
@@ -211,6 +212,25 @@
             this.AnmeldeLabel.Size = new System.Drawing.Size(99, 20);
             this.AnmeldeLabel.TabIndex = 22;
             this.AnmeldeLabel.Text = "Zeitkorrektur";
+            // 
+            // dateTimePickerUhrzeit
+            // 
+            this.dateTimePickerUhrzeit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerUhrzeit.Location = new System.Drawing.Point(129, 21);
+            this.dateTimePickerUhrzeit.Name = "dateTimePickerUhrzeit";
+            this.dateTimePickerUhrzeit.ShowUpDown = true;
+            this.dateTimePickerUhrzeit.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePickerUhrzeit.TabIndex = 4;
+            // 
+            // TextBoxPasswort
+            // 
+            this.TextBoxPasswort.Location = new System.Drawing.Point(3, 3);
+            this.TextBoxPasswort.Name = "TextBoxPasswort";
+            this.TextBoxPasswort.ReadOnly = true;
+            this.TextBoxPasswort.Size = new System.Drawing.Size(467, 45);
+            this.TextBoxPasswort.TabIndex = 26;
+            this.TextBoxPasswort.TabStop = false;
+            this.TextBoxPasswort.Text = "";
             // 
             // Zeitkorrektur
             // 
@@ -230,7 +250,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,8 +270,9 @@
         private System.Windows.Forms.Label AnmeldeLabel;
         private System.Windows.Forms.Button BtnSuchen;
         private System.Windows.Forms.Label LblUhrzeit;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDatum;
         private System.Windows.Forms.Label LblDatum;
+        private System.Windows.Forms.DateTimePicker dateTimePickerUhrzeit;
+        private System.Windows.Forms.RichTextBox TextBoxPasswort;
     }
 }

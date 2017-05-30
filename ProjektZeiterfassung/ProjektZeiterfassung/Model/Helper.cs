@@ -29,6 +29,7 @@ namespace ProjektZeiterfassung.Model
             Byte[] result = windows1252.GetBytes(text);
             hashbytes = alg.ComputeHash(result);
             return hashbytes;
+
         }
     }
 }

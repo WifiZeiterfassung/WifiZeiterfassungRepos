@@ -12,9 +12,33 @@ namespace ProjektZeiterfassung.View
 {
     public partial class PasswortAendern : Form
     {
+        private string _Klartextpasswort;
+        private byte[] _Passwort;
+        private int _ID;
+        private string _SqlString = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Passwort] = @Passwort WHERE [ID] = @ID;";//Hier den SQL String fürs Update
+
         public PasswortAendern()
         {
             InitializeComponent();
+            TxtNeuesPasswort.PasswordChar = '*';
+            TxtNeuesPasswort.MaxLength = 6;
+            TxtNeuesPasswort1.PasswordChar = '*';
+            TxtNeuesPasswort1.MaxLength = 6;
+        }
+
+        private void BtnSpeichern_Click(object sender, EventArgs e)
+        {
+            if (TxtNeuesPasswort.Text == TxtNeuesPasswort1.Text)
+            {
+                _Klartextpasswort = TxtNeuesPasswort.Text;
+                _Passwort = Model.Helper.GetHash(_Klartextpasswort);
+
+                TextBoxPasswort.Text = System.Text.Encoding.UTF8.GetString(_Passwort) +  "Ihr Passwort wurde erfolgreich geändert!";
+            }
+            else
+            {
+                TextBoxPasswort.Text = "Die eingegebenen Passwörter sind nicht identisch. Bitte versuchen sie es erneut!";
+            }
         }
     }
 }
