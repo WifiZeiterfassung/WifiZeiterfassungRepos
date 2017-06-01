@@ -34,21 +34,25 @@
             this.BtnSpeichern = new System.Windows.Forms.Button();
             this.LblVorname = new System.Windows.Forms.Label();
             this.LblPersonalnummer = new System.Windows.Forms.Label();
-            this.TxtNeuesPasswort1 = new System.Windows.Forms.TextBox();
             this.TxtNeuesPasswort = new System.Windows.Forms.TextBox();
+            this.TxtAltesPasswort = new System.Windows.Forms.TextBox();
             this.LblPasswortAendern = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtNeuesPasswort1 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.TxtNeuesPasswort1);
             this.panel2.Controls.Add(this.TextBoxPasswort);
             this.panel2.Controls.Add(this.BtnSpeichern);
             this.panel2.Controls.Add(this.LblVorname);
             this.panel2.Controls.Add(this.LblPersonalnummer);
-            this.panel2.Controls.Add(this.TxtNeuesPasswort1);
             this.panel2.Controls.Add(this.TxtNeuesPasswort);
+            this.panel2.Controls.Add(this.TxtAltesPasswort);
             this.panel2.Location = new System.Drawing.Point(12, 32);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(484, 135);
@@ -69,7 +73,7 @@
             this.BtnSpeichern.Location = new System.Drawing.Point(370, 101);
             this.BtnSpeichern.Name = "BtnSpeichern";
             this.BtnSpeichern.Size = new System.Drawing.Size(100, 23);
-            this.BtnSpeichern.TabIndex = 12;
+            this.BtnSpeichern.TabIndex = 4;
             this.BtnSpeichern.Text = "Speichern";
             this.BtnSpeichern.UseVisualStyleBackColor = true;
             this.BtnSpeichern.Click += new System.EventHandler(this.BtnSpeichern_Click);
@@ -77,38 +81,38 @@
             // LblVorname
             // 
             this.LblVorname.AutoSize = true;
-            this.LblVorname.Location = new System.Drawing.Point(10, 56);
+            this.LblVorname.Location = new System.Drawing.Point(10, 46);
             this.LblVorname.Name = "LblVorname";
-            this.LblVorname.Size = new System.Drawing.Size(105, 13);
+            this.LblVorname.Size = new System.Drawing.Size(87, 13);
             this.LblVorname.TabIndex = 12;
-            this.LblVorname.Text = "Passwort bestätigen:";
+            this.LblVorname.Text = "Neues Passwort:";
             // 
             // LblPersonalnummer
             // 
             this.LblPersonalnummer.AutoSize = true;
-            this.LblPersonalnummer.Location = new System.Drawing.Point(10, 4);
+            this.LblPersonalnummer.Location = new System.Drawing.Point(10, 9);
             this.LblPersonalnummer.Name = "LblPersonalnummer";
-            this.LblPersonalnummer.Size = new System.Drawing.Size(87, 13);
+            this.LblPersonalnummer.Size = new System.Drawing.Size(79, 13);
             this.LblPersonalnummer.TabIndex = 12;
-            this.LblPersonalnummer.Text = "Neues Passwort:";
-            // 
-            // TxtNeuesPasswort1
-            // 
-            this.TxtNeuesPasswort1.Location = new System.Drawing.Point(10, 75);
-            this.TxtNeuesPasswort1.MaxLength = 6;
-            this.TxtNeuesPasswort1.Name = "TxtNeuesPasswort1";
-            this.TxtNeuesPasswort1.PasswordChar = '*';
-            this.TxtNeuesPasswort1.Size = new System.Drawing.Size(210, 20);
-            this.TxtNeuesPasswort1.TabIndex = 8;
+            this.LblPersonalnummer.Text = "Altes Passwort:";
             // 
             // TxtNeuesPasswort
             // 
-            this.TxtNeuesPasswort.Location = new System.Drawing.Point(10, 23);
+            this.TxtNeuesPasswort.Location = new System.Drawing.Point(10, 60);
             this.TxtNeuesPasswort.MaxLength = 6;
             this.TxtNeuesPasswort.Name = "TxtNeuesPasswort";
             this.TxtNeuesPasswort.PasswordChar = '*';
             this.TxtNeuesPasswort.Size = new System.Drawing.Size(210, 20);
-            this.TxtNeuesPasswort.TabIndex = 5;
+            this.TxtNeuesPasswort.TabIndex = 2;
+            // 
+            // TxtAltesPasswort
+            // 
+            this.TxtAltesPasswort.Location = new System.Drawing.Point(10, 23);
+            this.TxtAltesPasswort.MaxLength = 6;
+            this.TxtAltesPasswort.Name = "TxtAltesPasswort";
+            this.TxtAltesPasswort.PasswordChar = '*';
+            this.TxtAltesPasswort.Size = new System.Drawing.Size(210, 20);
+            this.TxtAltesPasswort.TabIndex = 1;
             // 
             // LblPasswortAendern
             // 
@@ -119,6 +123,24 @@
             this.LblPasswortAendern.Size = new System.Drawing.Size(132, 20);
             this.LblPasswortAendern.TabIndex = 6;
             this.LblPasswortAendern.Text = "Passwort ändern:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Passwort bestätigen:";
+            // 
+            // TxtNeuesPasswort1
+            // 
+            this.TxtNeuesPasswort1.Location = new System.Drawing.Point(10, 101);
+            this.TxtNeuesPasswort1.MaxLength = 6;
+            this.TxtNeuesPasswort1.Name = "TxtNeuesPasswort1";
+            this.TxtNeuesPasswort1.PasswordChar = '*';
+            this.TxtNeuesPasswort1.Size = new System.Drawing.Size(210, 20);
+            this.TxtNeuesPasswort1.TabIndex = 3;
             // 
             // PasswortAendern
             // 
@@ -144,9 +166,11 @@
         private System.Windows.Forms.Button BtnSpeichern;
         private System.Windows.Forms.Label LblVorname;
         private System.Windows.Forms.Label LblPersonalnummer;
-        private System.Windows.Forms.TextBox TxtNeuesPasswort1;
         private System.Windows.Forms.TextBox TxtNeuesPasswort;
+        private System.Windows.Forms.TextBox TxtAltesPasswort;
         private System.Windows.Forms.Label LblPasswortAendern;
         private System.Windows.Forms.RichTextBox TextBoxPasswort;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TxtNeuesPasswort1;
     }
 }

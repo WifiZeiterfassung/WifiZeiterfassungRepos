@@ -12,17 +12,17 @@ using ProjektZeiterfassung.Model;
 
 namespace ProjektZeiterfassung.View
 {
-    public partial class Zeiterfassung : System.Windows.Forms.Form
+    public partial class FormZeiterfassung : System.Windows.Forms.Form
     {
-        private string _SqlString = "SELECT [Vorname] AS Vorname, [Nachname] AS Nachname " + 
-                                    "FROM [ZEIT2017].[dbo].[Mitarbeiter] " +
-                                    "JOIN [ZEIT2017].[dbo].[EintrittAustritt] " +
-                                    "ON [dbo].[Mitarbeiter].ID = FK_Mitarbeiter " + 
+        private string _SqlString = "SELECT [Personalnummer] AS Personalnummer, [Vorname] AS Vorname, [Nachname] AS Nachname, [IsAdmin] AS IsAdmin "+
+                                    "FROM[ZEIT2017].[dbo].[Mitarbeiter] "+
+                                    "JOIN[ZEIT2017].[dbo].[EintrittAustritt] "+
+                                    "ON FK_Mitarbeiter = [ZEIT2017].[dbo].[Mitarbeiter].ID "+
                                     "WHERE Personalnummer = ";
         /// <summary>
         /// Initialisiert eine neue Instanz.
         /// </summary>
-        public Zeiterfassung()
+        public FormZeiterfassung()
         {
             InitializeComponent();
         }
@@ -30,6 +30,7 @@ namespace ProjektZeiterfassung.View
         private void BtnPasswortAendern_Click(object sender, EventArgs e)
         {
             PasswortAendern neuespasswort = new PasswortAendern();
+            neuespasswort.Personalnummer = TxtPersonalnummer.Text;
             neuespasswort.ShowDialog(this);
         }
         //Das Fenster MitarbeiterBearbeiten wird geöffnet
@@ -63,12 +64,11 @@ namespace ProjektZeiterfassung.View
         /// Überprüft Personalnummer und PIN
         /// </summary>
         public void PersonalnummerPruefen()
-            {
+        {
             int Personalnummerint;
             int Pinint;
             bool parsed = Int32.TryParse(TxtPersonalnummer.Text, out Personalnummerint);
             bool parsed2 = Int32.TryParse(TxtPin.Text, out Pinint);
-            bool DbAdmin = true;
             var Datum = System.DateTime.Now.ToString();
 
 
@@ -86,19 +86,26 @@ namespace ProjektZeiterfassung.View
                     {
                         string Vorname = reader["Vorname"].ToString();
                         string Nachname = reader["Nachname"].ToString();
+                        string IsAdmin = reader["IsAdmin"].ToString();
+                        string Personalnummer = reader["Personalnummer"].ToString();
                         string Begrüßung = "Guten Tag " + Vorname + " " + Nachname + " es ist der " + Datum;
-                        TxtBenutzerdaten.Text = Begrüßung;
+                        
 
-                        if (TxtPersonalnummer.Text == "1032")
-                        //if (Vorname != null)
+                        if (Personalnummer == TxtPersonalnummer.Text)
                         {
                             if (Pinint == 1)
                             {
-                                if (DbAdmin == true)
+                                BtnPasswortAendern.Enabled = true;
+                                TxtBenutzerdaten.Text = Begrüßung;
+
+                                if (IsAdmin == "1")
                                 {
-                                    PanelAdministrationsbereich.Enabled = true;
-                                    LblAdministrationsbereich.Enabled = true;
+                                    this.Height = 360;
                                     BtnPasswortAendern.Enabled = true;
+                                }
+                                else
+                                {
+                                    this.Height = 255;
                                 }
                             }
                             else
@@ -110,12 +117,11 @@ namespace ProjektZeiterfassung.View
                         {
                             MessageBox.Show("Personalnummer wurde nicht gefunden!");
                         }
-                    }                    
+                    }
                 }
                 reader.Close();
                 Connection.Close();
             }
-
         }
 
         /// <summary>

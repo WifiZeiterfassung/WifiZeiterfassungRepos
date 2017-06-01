@@ -1,6 +1,6 @@
 ﻿namespace ProjektZeiterfassung.View
 {
-    partial class Zeiterfassung
+    partial class FormZeiterfassung
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeiterfassung));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormZeiterfassung));
             this.LblAdministrationsbereich = new System.Windows.Forms.Label();
             this.PanelAdministrationsbereich = new System.Windows.Forms.Panel();
             this.BtnBenutzerUpdate = new System.Windows.Forms.Button();
@@ -292,11 +292,11 @@
             this.AnmeldeLabel.TabIndex = 22;
             this.AnmeldeLabel.Text = "Wifi Arbeitszeitfassung";
             // 
-            // Zeiterfassung
+            // FormZeiterfassung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 321);
+            this.ClientSize = new System.Drawing.Size(504, 216);
             this.Controls.Add(this.LblAdministrationsbereich);
             this.Controls.Add(this.PanelAdministrationsbereich);
             this.Controls.Add(this.panel3);
@@ -304,7 +304,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AnmeldeLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Zeiterfassung";
+            this.Name = "FormZeiterfassung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
             this.PanelAdministrationsbereich.ResumeLayout(false);

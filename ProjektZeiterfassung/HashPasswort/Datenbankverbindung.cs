@@ -10,7 +10,6 @@ namespace HashPasswort
 {
     class Datenbankverbindung
     {
-        //asjf
         //SQL String fürs Update des Passwortes
         private string _SqlString = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Passwort] = @Passwort WHERE [ID] = @ID;";
         //Insert statement für Mitarbeiter in der Datenbank
