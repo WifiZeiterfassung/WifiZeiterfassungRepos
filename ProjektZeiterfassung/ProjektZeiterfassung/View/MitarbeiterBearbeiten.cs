@@ -14,13 +14,17 @@ namespace ProjektZeiterfassung.View
 {
     public partial class MitarbeiterBearbeiten : Form
     {
-        
+
         private string _SqlString = "SELECT [Vorname] AS Vorname, [Nachname] AS Nachname, [EintrittsDatum] AS Eintrittsdatum " +
                                     "FROM [ZEIT2017].[dbo].[Mitarbeiter] JOIN [ZEIT2017].[dbo].[EintrittAustritt] " +
                                     "ON [dbo].[Mitarbeiter].ID = FK_Mitarbeiter " +
-                                    "WHERE ([dbo].[Mitarbeiter].Vorname like '%Hans%' " +
-                                    "OR [dbo].[Mitarbeiter].Nachname like '%Moser%' " +
-                                    "OR [dbo].[EintrittAustritt].Personalnummer like '%1030%')";
+                                    "WHERE ([dbo].[Mitarbeiter].Vorname like '%1000%' " +
+                                    "OR [dbo].[Mitarbeiter].Nachname like '%1000%' " +
+                                    "OR [dbo].[EintrittAustritt].Personalnummer like '%1032%')";
+        //private string _SqlString = "SELECT [Vorname] AS Vorname, [Nachname] AS Nachname, [EintrittsDatum] AS Eintrittsdatum " +
+        //                    "FROM [ZEIT2017].[dbo].[Mitarbeiter] JOIN [ZEIT2017].[dbo].[EintrittAustritt] " +
+        //                    "ON [dbo].[Mitarbeiter].ID = FK_Mitarbeiter " +
+        //                    "WHERE ([dbo].[Mitarbeiter].Vorname like '%";
         /// <summary>
         /// Privates Hilfsfeld
         /// </summary>
@@ -56,22 +60,6 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void BtnSuchen_Click(object sender, EventArgs e)
         {
-
-
-            //if (!string.IsNullOrEmpty(textBoxVorname.Text))
-            //{
-            //    SuchVariable = "Vorname = " + textBoxVorname.Text;
-            //}
-            //if (!string.IsNullOrEmpty(textBoxNachname.Text))
-            //{
-            //    SuchVariable = "Nachname = " + textBoxNachname.Text;
-            //}
-            //if (!string.IsNullOrEmpty(TxtPersonalnummer.Text))
-            //{
-            //    SuchVariable = "Personalnummer = " + TxtPersonalnummer.Text;
-            //}
-
-
             SqlDataReader reader;
             Datenbankverbindung con = new Datenbankverbindung();
             using (var Connection = new System.Data.SqlClient.SqlConnection(con.DbConnection))
@@ -79,21 +67,31 @@ namespace ProjektZeiterfassung.View
                 Connection.Open();
                 using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
                 {
-                    int i = 1;
-                    Befehl.CommandText = this._SqlString + textBoxVorname.Text + "%' OR [dbo].[Mitarbeiter].Nachname like '%" + textBoxNachname.Text + "%' OR [dbo].[EintrittAustritt].Personalnummer like '%" + TxtPersonalnummer.Text + "%')";
+                    int i = 0;
+                    string Vorname = null;
+                    string Nachname = null;
+                    //Befehl.CommandText = this._SqlString + textBoxVorname.Text + "%' OR [dbo].[Mitarbeiter].Nachname like '%" + textBoxNachname.Text + "%' OR [dbo].[EintrittAustritt].Personalnummer like '%" + TxtPersonalnummer.Text + "%')";
+                    Befehl.CommandText = this._SqlString;
                     reader = Befehl.ExecuteReader();
                     while (reader.Read())
                     {
-                        string Vorname = reader["Vorname"].ToString();
-                        string Nachname = reader["Nachname"].ToString();
+                        Vorname = reader["Vorname"].ToString();
+                        Nachname = reader["Nachname"].ToString();
                         DateTime Eintrittsdatum = Convert.ToDateTime( reader["Eintrittsdatum"].ToString());
-
-                        textBoxVorname.Text = Vorname;
-                        textBoxNachname.Text = Nachname;
                         //textBoxEintrittsdatum.Text = Eintrittsdatum.ToShortDateString();
                         i++;
                     }
-                    textBoxEintrittsdatum.Text = i.ToString();
+                    if (i <= 1)
+                    {
+                        textBoxVorname.Text = Vorname;
+                        textBoxNachname.Text = Nachname;
+                        textBoxEintrittsdatum.Text = i.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("faskaslöf");
+                    }
+
                 }
                 reader.Close();
                 Connection.Close();

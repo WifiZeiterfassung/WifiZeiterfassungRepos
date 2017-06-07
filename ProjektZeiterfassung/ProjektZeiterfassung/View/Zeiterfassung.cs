@@ -86,7 +86,7 @@ namespace ProjektZeiterfassung.View
                     {
                         string Vorname = reader["Vorname"].ToString();
                         string Nachname = reader["Nachname"].ToString();
-                        string IsAdmin = reader["IsAdmin"].ToString();
+                        bool IsAdmin = reader.GetBoolean(reader.GetOrdinal("IsAdmin"));
                         string Personalnummer = reader["Personalnummer"].ToString();
                         string Begrüßung = "Guten Tag " + Vorname + " " + Nachname + " es ist der " + Datum;
                         
@@ -98,7 +98,7 @@ namespace ProjektZeiterfassung.View
                                 BtnPasswortAendern.Enabled = true;
                                 TxtBenutzerdaten.Text = Begrüßung;
 
-                                if (IsAdmin == "1")
+                                if (IsAdmin = true)
                                 {
                                     this.Height = 360;
                                     BtnPasswortAendern.Enabled = true;

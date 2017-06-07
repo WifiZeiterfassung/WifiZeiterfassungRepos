@@ -65,7 +65,6 @@
             // LblAdministrationsbereich
             // 
             this.LblAdministrationsbereich.AutoSize = true;
-            this.LblAdministrationsbereich.Enabled = false;
             this.LblAdministrationsbereich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblAdministrationsbereich.Location = new System.Drawing.Point(12, 220);
             this.LblAdministrationsbereich.Name = "LblAdministrationsbereich";
@@ -79,7 +78,6 @@
             this.PanelAdministrationsbereich.Controls.Add(this.BtnBenutzerUpdate);
             this.PanelAdministrationsbereich.Controls.Add(this.BtnZeitkorrektur);
             this.PanelAdministrationsbereich.Controls.Add(this.BtnBenutzerNeu);
-            this.PanelAdministrationsbereich.Enabled = false;
             this.PanelAdministrationsbereich.Location = new System.Drawing.Point(12, 243);
             this.PanelAdministrationsbereich.Name = "PanelAdministrationsbereich";
             this.PanelAdministrationsbereich.Size = new System.Drawing.Size(484, 70);
