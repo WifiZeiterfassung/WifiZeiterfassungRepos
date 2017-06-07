@@ -78,6 +78,7 @@ namespace ProjektZeiterfassung.View
                         Vorname = reader["Vorname"].ToString();
                         Nachname = reader["Nachname"].ToString();
                         DateTime Eintrittsdatum = Convert.ToDateTime( reader["Eintrittsdatum"].ToString());
+                        
                         //textBoxEintrittsdatum.Text = Eintrittsdatum.ToShortDateString();
                         i++;
                     }
@@ -89,6 +90,8 @@ namespace ProjektZeiterfassung.View
                     }
                     else
                     {
+                        var t = new DataTable();
+                        
                         MessageBox.Show("faskaslöf");
                     }
 

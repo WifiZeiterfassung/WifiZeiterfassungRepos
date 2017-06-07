@@ -36,11 +36,8 @@ namespace ProjektZeiterfassung.View
         //Das Fenster MitarbeiterBearbeiten wird geöffnet
         private void BtnBenutzerUpdate_Click(object sender, EventArgs e)
         {
-            //MitarbeiterAnlegen mitarbeiteranlegen = new MitarbeiterAnlegen();
-            //mitarbeiteranlegen.ShowDialog(this);
-            MitarbeiterAuswahl mitarbeiterauswaehlen = new MitarbeiterAuswahl();
-            mitarbeiterauswaehlen.ShowDialog(this);
-
+            MitarbeiterAnlegen mitarbeiteranlegen = new MitarbeiterAnlegen();
+            mitarbeiteranlegen.ShowDialog(this);
         }
         //Das Fenster MitarbeiterAnlegen wird geöffnet
         private void BtnBenutzerNeu_Click(object sender, EventArgs e)
