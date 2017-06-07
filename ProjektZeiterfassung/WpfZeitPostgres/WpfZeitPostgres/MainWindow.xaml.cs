@@ -67,7 +67,6 @@ namespace WpfZeitPostgres
                 {
                     TextBoxMeldung.Text = "Eingaben falsch oder nicht vorhanden!";
                 }
-
             }
             else
             {
