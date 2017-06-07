@@ -228,7 +228,7 @@ namespace DatabaseConnections
                         {                           
                             s.FK_Mitarbeiter = reader.GetInt32(reader.GetOrdinal("FK_Mitarbeiter"));
                             s.Zeitpunkt = reader.GetDateTime(reader.GetOrdinal("Zeitpunkt"));
-                            s.ZeitTyp = reader.GetInt16(reader.GetOrdinal("ZeitTyp"));
+                            s.ZeitTyp = reader.GetInt32(reader.GetOrdinal("ZeitTyp"));
                             query.Add(s);
                         }
                     }
