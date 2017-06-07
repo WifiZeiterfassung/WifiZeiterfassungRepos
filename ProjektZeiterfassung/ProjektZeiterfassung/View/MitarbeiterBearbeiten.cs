@@ -17,31 +17,70 @@ namespace ProjektZeiterfassung.View
         
         private string _SqlString = "SELECT [Vorname] AS Vorname, [Nachname] AS Nachname, [EintrittsDatum] AS Eintrittsdatum " +
                                     "FROM [ZEIT2017].[dbo].[Mitarbeiter] JOIN [ZEIT2017].[dbo].[EintrittAustritt] " +
-                                    "ON [dbo].[Mitarbeiter].ID = FK_Mitarbeiter " + 
-                                    "WHERE Personalnummer = ";
+                                    "ON [dbo].[Mitarbeiter].ID = FK_Mitarbeiter " +
+                                    "WHERE ([dbo].[Mitarbeiter].Vorname like '%Hans%' " +
+                                    "OR [dbo].[Mitarbeiter].Nachname like '%Moser%' " +
+                                    "OR [dbo].[EintrittAustritt].Personalnummer like '%1030%')";
+        /// <summary>
+        /// Privates Hilfsfeld
+        /// </summary>
+        private string _SuchVariable = null;
 
+        /// <summary>
+        /// Stellt eine Eigenschaft für die Such-Variable zur Verfügung
+        /// </summary>
+        public string SuchVariable
+        {
+            get
+            {
+                return _SuchVariable;
+            }
+            set
+            {
+                this._SuchVariable = value;
+            }
+        }
+
+        /// <summary>
+        /// Initalisiert das Fenster "MitarbeiterBearbeiten"
+        /// </summary>
         public MitarbeiterBearbeiten()
         {
             InitializeComponent();
             dateTimePickerAustrittsdatum.Format = DateTimePickerFormat.Custom;
             dateTimePickerAustrittsdatum.CustomFormat = " ";
         }
+
         /// <summary>
-        /// Sucht in der Datenbank an Hand der Personalnummer nach den Mitarbeiterdaten
+        /// Sucht in der Datenbank an Hand der Personalnummer, Vorname oder Nachname nach den Mitarbeiterdaten
         /// </summary>
         private void BtnSuchen_Click(object sender, EventArgs e)
         {
+
+
+            //if (!string.IsNullOrEmpty(textBoxVorname.Text))
+            //{
+            //    SuchVariable = "Vorname = " + textBoxVorname.Text;
+            //}
+            //if (!string.IsNullOrEmpty(textBoxNachname.Text))
+            //{
+            //    SuchVariable = "Nachname = " + textBoxNachname.Text;
+            //}
+            //if (!string.IsNullOrEmpty(TxtPersonalnummer.Text))
+            //{
+            //    SuchVariable = "Personalnummer = " + TxtPersonalnummer.Text;
+            //}
+
+
             SqlDataReader reader;
             Datenbankverbindung con = new Datenbankverbindung();
             using (var Connection = new System.Data.SqlClient.SqlConnection(con.DbConnection))
             {
-                string ID = TxtPersonalnummer.Text;
                 Connection.Open();
                 using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
                 {
-                    Befehl.CommandText = this._SqlString + ID;
-                    //Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = this._ID;
-                    //Befehl.ExecuteNonQuery();
+                    int i = 1;
+                    Befehl.CommandText = this._SqlString + textBoxVorname.Text + "%' OR [dbo].[Mitarbeiter].Nachname like '%" + textBoxNachname.Text + "%' OR [dbo].[EintrittAustritt].Personalnummer like '%" + TxtPersonalnummer.Text + "%')";
                     reader = Befehl.ExecuteReader();
                     while (reader.Read())
                     {
@@ -51,8 +90,10 @@ namespace ProjektZeiterfassung.View
 
                         textBoxVorname.Text = Vorname;
                         textBoxNachname.Text = Nachname;
-                        textBoxEintrittsdatum.Text = Eintrittsdatum.ToShortDateString();
-                    }                    
+                        //textBoxEintrittsdatum.Text = Eintrittsdatum.ToShortDateString();
+                        i++;
+                    }
+                    textBoxEintrittsdatum.Text = i.ToString();
                 }
                 reader.Close();
                 Connection.Close();
