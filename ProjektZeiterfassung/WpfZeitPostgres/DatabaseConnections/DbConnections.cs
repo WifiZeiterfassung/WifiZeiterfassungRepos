@@ -202,5 +202,40 @@ namespace DatabaseConnections
                 Connection.Close();
             }
         }
+        //sql-String welcher die Stempelzeiten eines bestimmten Mitarbeiters ausliest aus der Datenbank
+        private string _StempelzeitAuslesen = "SELECT * FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s WHERE s.FK_Mitarbeiter = @FkMitarbeiter;";
+        /// <summary>
+        /// Methode die eine Liste von stempelzeiten einer bestimmten Person liefert
+        /// </summary>
+        /// <param name="mbid"> mitarbeiter Id</param>
+        /// <returns>Liste von Stempelzeiten</returns>
+        public ListeStempelzeiten StempelzeitMitarbeiter(int mbid)
+        {
+            ListeStempelzeiten query = new ListeStempelzeiten();
+            Stempelzeiten s = new Stempelzeiten();
+            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
+            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._StempelzeitAuslesen, Connection))
+                {
+                    Befehl.Parameters.Add("@FkMitarbeiter", System.Data.SqlDbType.Int).Value = mbid;
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {                           
+                            s.FK_Mitarbeiter = reader.GetInt32(reader.GetOrdinal("FK_Mitarbeiter"));
+                            s.Zeitpunkt = reader.GetDateTime(reader.GetOrdinal("Zeitpunkt"));
+                            s.ZeitTyp = reader.GetInt16(reader.GetOrdinal("ZeitTyp"));
+                            query.Add(s);
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return query;
+        }
     }
 }

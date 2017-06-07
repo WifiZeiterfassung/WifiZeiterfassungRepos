@@ -100,19 +100,19 @@
                 Margin="10,10"
                 Content="Arbeitsende"
                 FontSize="20"
-                x:Name="ButtonArbeitsEnde"/>
+                x:Name="ButtonArbeitsEnde" Click="ButtonArbeitsEnde_Click"/>
         <Button Grid.Column="2"
                 Grid.Row="3"
                 Margin="10,10"
                 Content="Pausebeginn"
                 FontSize="20"
-                x:Name="ButtonPauseBeginn"/>
+                x:Name="ButtonPauseBeginn" Click="ButtonPauseBeginn_Click"/>
         <Button Grid.Column="2"
                 Grid.Row="4"
                 Margin="10,10"
                 Content="Pauseende"
                 FontSize="20"
-                x:Name="ButtonPauseEnde"/>
+                x:Name="ButtonPauseEnde" Click="ButtonPauseEnde_Click"/>
         <Label Grid.Column="0" 
                Grid.Row="5" 
                Content="Administrationsbereich" 

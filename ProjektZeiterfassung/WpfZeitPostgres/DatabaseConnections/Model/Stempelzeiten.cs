@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 namespace DatabaseConnections.Model
 {
     /// <summary>
+    /// Stellt eine Klasse für eine Liste von Stempelzeiten bereit
+    /// </summary>
+    public class ListeStempelzeiten : System.Collections.Generic.List<Stempelzeiten>
+    {
+
+    }
+    /// <summary>
     /// Klasse stellt Methoden und Eigenschaften bereit
     /// </summary>
     public class Stempelzeiten
@@ -30,11 +37,11 @@ namespace DatabaseConnections.Model
             get { return _Zeitpunkt; }
             set { _Zeitpunkt = value; }
         }
-        private DateTime _ZeitTyp;
+        private int _ZeitTyp;
         /// <summary>
         /// Stellt die Eigenschaft PauseEnde bereit
         /// </summary>
-        public DateTime ZeitTyp
+        public int ZeitTyp
         {
             get { return _ZeitTyp; }
             set { _ZeitTyp = value; }
