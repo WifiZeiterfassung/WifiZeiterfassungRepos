@@ -87,6 +87,12 @@
     <Compile Include="View\MitarbeiterAnlegen.Designer.cs">
       <DependentUpon>MitarbeiterAnlegen.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MitarbeiterAuswahl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MitarbeiterAuswahl.Designer.cs">
+      <DependentUpon>MitarbeiterAuswahl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MitarbeiterBearbeiten.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterAnlegen.resx">
       <DependentUpon>MitarbeiterAnlegen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MitarbeiterAuswahl.resx">
+      <DependentUpon>MitarbeiterAuswahl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterBearbeiten.resx">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
