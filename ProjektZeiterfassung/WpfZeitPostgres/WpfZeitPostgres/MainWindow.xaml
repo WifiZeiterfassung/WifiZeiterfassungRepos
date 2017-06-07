@@ -65,7 +65,7 @@
         <Button Grid.Column="2"
                 Grid.Row="0"
                 Margin="20,10,10,10"
-                Content="Passwortänderung"
+                Content="Passwortänderung..."
                 FontSize="20"
                 x:Name="ButtonPasswortAendern"/>
         <TextBox Grid.Column="0"
@@ -94,7 +94,7 @@
                 Margin="10,10"
                 Content="Arbeitsbeginn"
                 FontSize="20"
-                x:Name="ButtonArbeitsBeginn"/>
+                x:Name="ButtonArbeitsBeginn" Click="ButtonArbeitsBeginn_Click"/>
         <Button Grid.Column="0"
                 Grid.Row="4"
                 Margin="10,10"

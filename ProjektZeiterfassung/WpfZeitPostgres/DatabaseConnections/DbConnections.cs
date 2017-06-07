@@ -12,26 +12,6 @@ namespace DatabaseConnections
     /// </summary>
     public class DbConnections
     {
-        //SQL String fürs Update des Passwortes
-        private string _SqlString = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Passwort] = @Passwort WHERE [ID] = @ID;";
-        //Insert statement für Mitarbeiter in der Datenbank
-        private string _sqlStringInsertMitarbeiter = "INSERT INTO [ZEIT2017].[dbo].[Mitarbeiter](Vorname,Nachname,Passwort) " +
-                                                                                        "VALUES (@Vorname,@Nachname,@Passwort);";
-        //Insert für Eintrittaustritt tabelle in der Datenbank
-        private string _sqlStringInsertEintrittAustritt = "INSERT INTO [ZEIT2017].[dbo].[EintrittAustritt](FK_Mitarbeiter,Personalnummer,EintrittsDatum,TagesSollZeit,IsAdmin) " +
-                                                                                                  "VALUES (@ID,@PerNr,@EDatum,@SollZeit,@IsAdmin);";
-        private string _sqlSucheMitarbeiter = "SELECT  m.ID, "+
-                                                      "ea.Personalnummer, " +
-                                                      "ea.EintrittsDatum, " +
-                                                      "ea.TagesSollZeit, " +
-                                                      "m.Vorname, " + 
-                                                      "m.Nachname, "+
-                                                      "ea.IsAdmin "+
-                                              "FROM[ZEIT2017].[dbo].[Mitarbeiter] "+ "AS m "+
-                                                "JOIN[ZEIT2017].[dbo].[EintrittAustritt] "+"AS ea "+
-                                                    "ON m.ID = ea.FK_Mitarbeiter "+
-                                              "WHERE ea.Personalnummer = @PNR AND m.Passwort = @PWD; ";
-
         /// <summary>
         /// Internes Hilfsfeld
         /// </summary>
@@ -57,7 +37,6 @@ namespace DatabaseConnections
         public DbConnections()
         {
             this.DbConnection = _DbConnection;
-            this.Ergebnis = _ergebnis;
         }
         /// <summary>
         /// Methode welche den Connection String zur Datenbankverbindung herrstellt
@@ -75,7 +54,8 @@ namespace DatabaseConnections
             //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden .\SQLEXPRESS
             return _DbConnection;
         }
-
+        //SQL String fürs Update des Passwortes
+        private string _SqlString = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Passwort] = @Passwort WHERE [ID] = @ID;";
         /// <summary>
         /// Methode ändert das Passwort des Mitarbeiters
         /// </summary>
@@ -98,6 +78,12 @@ namespace DatabaseConnections
             }
         }
 
+        //Insert statement für Mitarbeiter in der Datenbank
+        private string _sqlStringInsertMitarbeiter = "INSERT INTO [ZEIT2017].[dbo].[Mitarbeiter](Vorname,Nachname,Passwort) " +
+                                                                                        "VALUES (@Vorname,@Nachname,@Passwort);";
+        //Insert für Eintrittaustritt tabelle in der Datenbank
+        private string _sqlStringInsertEintrittAustritt = "INSERT INTO [ZEIT2017].[dbo].[EintrittAustritt](FK_Mitarbeiter,Personalnummer,EintrittsDatum,TagesSollZeit,IsAdmin) " +
+                                                                                                  "VALUES (@ID,@PerNr,@EDatum,@SollZeit,@IsAdmin);";
         /// <summary>
         /// Methode speichert einen neuen Mitarbeiter in die Datenbank nur für Admin. 
         /// Dafür müssen Daten in zwei Tabellen geschrieben werden dbo.Mitarbeiter und dbo.EintrittAustritt
@@ -136,16 +122,17 @@ namespace DatabaseConnections
             }
         }
 
-        private List<string> _ergebnis;
-        /// <summary>
-        /// stellt eine Eigenschaft für eine Liste von string bereit
-        /// </summary>
-        public List<string> Ergebnis
-        {
-            get { return _ergebnis; }
-            set { _ergebnis = value; }
-        }
-
+        private string _sqlSucheMitarbeiter = "SELECT  m.ID, " +
+                                                     "ea.Personalnummer, " +
+                                                     "ea.EintrittsDatum, " +
+                                                     "ea.TagesSollZeit, " +
+                                                     "m.Vorname, " +
+                                                     "m.Nachname, " +
+                                                     "ea.IsAdmin " +
+                                             "FROM[ZEIT2017].[dbo].[Mitarbeiter] " + "AS m " +
+                                               "JOIN[ZEIT2017].[dbo].[EintrittAustritt] " + "AS ea " +
+                                                   "ON m.ID = ea.FK_Mitarbeiter " +
+                                             "WHERE ea.Personalnummer = @PNR AND m.Passwort = @PWD; ";
         /// <summary>
         /// Sucht den aktuellen Mitarbeiter in der Datenbank
         /// </summary>
@@ -188,6 +175,32 @@ namespace DatabaseConnections
             }
             return query;
         }
-
+        //SQL Speichert eine Arbeitszeit in der Datenbank
+        private string _SaveArbeitsBeginn = "INSERT INTO [ZEIT2017].[dbo].[Stempelzeiten](FK_Mitarbeiter,Zeitpunkt,ZeitTyp) VALUES (@IdMitarbeiter,@Zeitpunkt,@ZeitTyp);";
+        /// <summary>
+        /// Methode speichert einen Zeitpunkt in die Datenbank
+        /// </summary>
+        /// <param name="mbId">Id des Mitarbeiters</param>
+        /// <param name="zeit">Zeitpunkt der Stempelung</param>
+        /// <param name="typId">ZeitTyp Id für Eroierung</param>
+        public void ZeitSpeichern(int mbId, DateTime zeit, int typId)
+        {
+            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
+            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            {
+                Connection.Open();
+                //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Stempelzeiten", Connection))
+                {
+                    Befehl.CommandText = this._SaveArbeitsBeginn;
+                    Befehl.Parameters.Add("@IdMitarbeiter", System.Data.SqlDbType.Int).Value = mbId;
+                    Befehl.Parameters.Add("@Zeitpunkt", System.Data.SqlDbType.DateTime).Value = zeit;
+                    Befehl.Parameters.Add("@ZeitTyp", System.Data.SqlDbType.TinyInt).Value = typId;
+                    Befehl.ExecuteNonQuery();
+                }
+                Connection.Close();
+            }
+        }
     }
 }
