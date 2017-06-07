@@ -20,7 +20,9 @@ namespace ProjektZeiterfassung.View
                                     "WHERE Personalnummer = ";
         private string _Klartextpasswort;
         private byte[] _Passwort;
-
+        /// <summary>
+        /// Initialisiert das Fenster "PasswortAendern"
+        /// </summary>
         public PasswortAendern()
         {
             InitializeComponent();
