@@ -59,6 +59,7 @@ namespace WpfZeitPostgres
                 {
                     TextBoxMeldung.Text = String.Format("Hallo {1} {2}",suche[0].ID,suche[0].Vorname,suche[0].Nachname);
                     MaxHeight = 320;
+                    //was geschieht wenn der Benutzer auch schon PauseAnfang gestempelt hat sql Abfrage überdenken!!!!
                     if(stList.Count > 0 && stList[0].ZeitTyp == 1)
                     {
                         ButtonPasswortAendern.Visibility = Visibility.Visible;
