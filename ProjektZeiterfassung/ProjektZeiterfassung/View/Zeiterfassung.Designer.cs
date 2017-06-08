@@ -166,11 +166,11 @@
             // TxtPin
             // 
             this.TxtPin.Location = new System.Drawing.Point(130, 23);
-            this.TxtPin.MaxLength = 6;
+            this.TxtPin.MaxLength = 10;
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.PasswordChar = '*';
             this.TxtPin.Size = new System.Drawing.Size(100, 20);
-            this.TxtPin.TabIndex = 6;
+            this.TxtPin.TabIndex = 10;
             // 
             // LblPersonalnummer
             // 

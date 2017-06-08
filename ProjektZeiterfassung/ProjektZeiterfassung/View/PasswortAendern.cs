@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ProjektZeiterfassung.Model;
+//Klassenbibliothek DatabaseConnection einbinden
+using DatabaseConnections;
+using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
@@ -55,7 +58,7 @@ namespace ProjektZeiterfassung.View
                                 if (TxtNeuesPasswort.Text == TxtNeuesPasswort1.Text)
                                 {
                                     _Klartextpasswort = TxtAltesPasswort.Text;
-                                    _Passwort = Model.Helper.GetHash(_Klartextpasswort);
+                                    _Passwort = Helper.GetHash(_Klartextpasswort);
 
                                     TextBoxPasswort.Text = this.Personalnummer;
                                 }

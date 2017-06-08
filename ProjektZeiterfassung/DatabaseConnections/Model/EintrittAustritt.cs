@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjektZeiterfassung.Model
+namespace DatabaseConnections.Model
 {
     /// <summary>
     /// Stellt eine Klasse für EintritAustritt der Datenabk bereit
@@ -100,6 +100,5 @@ namespace ProjektZeiterfassung.Model
             get { return _IsAdmin; }
             set { _IsAdmin = value; }
         }
-
     }
 }

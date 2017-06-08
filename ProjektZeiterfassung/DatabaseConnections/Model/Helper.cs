@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjektZeiterfassung.Model
+namespace DatabaseConnections.Model
 {
     /// <summary>
     /// Hilfsklasse für spezielle Methoden

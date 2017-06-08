@@ -4,18 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjektZeiterfassung.Model
+namespace DatabaseConnections.Model
 {
-    /// <summary>
-    /// Stellt eine Klasse für Liste von Mitarbeitern zur Verfügung 
-    /// </summary>
-    public class ListeMitarbeiter : System.Collections.Generic.List<Mitarbeiter>
-    {
-
-    }
-    /// <summary>
-    /// Klasse Stellt die Eigenschaften für das Mitarbeiter Objekt bereit
-    /// </summary>
     public class Mitarbeiter
     {
         /// <summary>
@@ -30,7 +20,7 @@ namespace ProjektZeiterfassung.Model
             get { return _ID; }
             set { _ID = value; }
         }
-        
+
         /// <summary>
         /// Internes Hilfsfeld
         /// </summary>
@@ -79,7 +69,5 @@ namespace ProjektZeiterfassung.Model
             get { return _Passwort; }
             set { _Passwort = value; }
         }
-
-
     }
 }

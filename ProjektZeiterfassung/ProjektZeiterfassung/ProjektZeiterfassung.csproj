@@ -53,13 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Datenbankverbindung.cs" />
-    <Compile Include="Model\EintrittAustritt.cs" />
-    <Compile Include="Model\Helper.cs" />
-    <Compile Include="Model\Mitarbeiter.cs" />
-    <Compile Include="Model\Stempelzeiten.cs" />
     <Compile Include="Model\SetDbVerbindung.cs" />
-    <Compile Include="Model\Uebersicht.cs" />
-    <Compile Include="Model\Zeittypen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -173,7 +167,6 @@
     <EmbeddedResource Include="View\alte Designs\Zeituebersicht.resx">
       <DependentUpon>Zeituebersicht.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Model\ModelKlassen.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -238,6 +231,12 @@
     <Content Include="MS_Sql\Beschreibung Sql String.txt" />
     <Content Include="MS_Sql\Zeit2017V4.JPG" />
     <Content Include="MS_Sql\ZEIT2017.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseConnections\DatabaseConnections.csproj">
+      <Project>{e8c4ade7-7338-47a0-a052-10b0df372207}</Project>
+      <Name>DatabaseConnections</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,11 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ProjektZeiterfassung.Model;
+//Hier wird die Klassenbibliothek DatabaseConnections eingebunden
+//vorher im Projekt Zeiterfassung unter Verweise die neue DatabaseConnection.dll als Verweis einbinden
+using DatabaseConnections;
+using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
+    /// <summary>
+    /// Windowsfenster wo man Zeiten stempeln kann
+    /// </summary>
     public partial class FormZeiterfassung : System.Windows.Forms.Form
     {
+        //***************Von Josef Klassen von Klassenbibliothek instanzieren für alle Buttons klickevents******************
+        Mitarbeiter m = new Mitarbeiter();
+        EintrittAustritt ea = new EintrittAustritt();
+        DbConnections con = new DbConnections();
+        //Liste mit allen Werten des Mitarbeiters
+        ListeMitarbeiter suche = new ListeMitarbeiter();
+        //Liste mit Stempelzeit eines Mitarbeiters
+        ListeStempelzeiten stList = new ListeStempelzeiten();
+
+        //******************************************************************************************************************
+
+
+
         private string _SqlString = "SELECT [Personalnummer] AS Personalnummer, [Vorname] AS Vorname, [Nachname] AS Nachname, [IsAdmin] AS IsAdmin "+
                                     "FROM[ZEIT2017].[dbo].[Mitarbeiter] "+
                                     "JOIN[ZEIT2017].[dbo].[EintrittAustritt] "+
@@ -56,8 +76,96 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void BtnAnmelden_Click(object sender, EventArgs e)
         {
-            this.PersonalnummerPruefen();
-            this.ButtonFreischalten();
+            //von Josef mit Klassenbibliothek **********************************************************************************
+            if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()) && !String.IsNullOrWhiteSpace(TxtPin.Text.Trim()))
+            {
+                ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+                m.KlartextPasswort = TxtPin.Text.Trim();
+                m.Passwort = Helper.GetHash(m.KlartextPasswort);
+                suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
+                stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche[0].ID));
+                //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
+                if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
+                {
+                    TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
+                    BtnArbeitsbeginn.Enabled = true;
+                    BtnArbeitsende.Enabled = false;
+                    BtnPausenbeginn.Enabled = false;
+                    BtnPausenende.Enabled = false;
+                    if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                    {
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                    {
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = true;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                    {
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                    }
+                    else
+                    {
+                        BtnArbeitsbeginn.Enabled = true;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = false;
+                    }
+                }
+                //Fälle für den Benutzer ohne Admin rechte
+                else if (suche.Count > 0)
+                {
+                    TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
+                    if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                    {
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                    {
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = true;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                    {
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                    }
+                    else
+                    {
+                        BtnArbeitsbeginn.Enabled = true;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = false;
+                    }
+                }
+                else
+                {
+                    TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden!";
+                }
+            }
+            else
+            {
+                TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
+            }
+            //************************Josef Ende ***********************************************************************************
+            //this.PersonalnummerPruefen();
+            //this.ButtonFreischalten();
         }
         /// <summary>
         /// Überprüft Personalnummer und PIN
@@ -97,7 +205,7 @@ namespace ProjektZeiterfassung.View
                                 BtnPasswortAendern.Enabled = true;
                                 TxtBenutzerdaten.Text = Begrüßung;
 
-                                if (IsAdmin = true)
+                                if (IsAdmin)
                                 {
                                     this.Height = 360;
                                     BtnPasswortAendern.Enabled = true;
