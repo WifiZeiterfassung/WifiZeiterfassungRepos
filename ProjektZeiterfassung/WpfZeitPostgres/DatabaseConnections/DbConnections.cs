@@ -202,8 +202,12 @@ namespace DatabaseConnections
                 Connection.Close();
             }
         }
+        /*SELECT TOP(1)*
+          FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s 
+          WHERE s.FK_Mitarbeiter = 1
+          ORDER BY s.Zeitpunkt DESC;*/
         //sql-String welcher die Stempelzeiten eines bestimmten Mitarbeiters ausliest aus der Datenbank
-        private string _StempelzeitAuslesen = "SELECT * FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s WHERE s.FK_Mitarbeiter = @FkMitarbeiter;";
+        private string _StempelzeitAuslesen = "SELECT TOP(1)* FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s WHERE s.FK_Mitarbeiter = @FkMitarbeiter ORDER BY s.Zeitpunkt DESC;";
         /// <summary>
         /// Methode die eine Liste von stempelzeiten einer bestimmten Person liefert
         /// </summary>

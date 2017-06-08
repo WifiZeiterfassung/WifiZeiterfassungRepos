@@ -79,8 +79,8 @@ namespace WpfZeitPostgres
                     else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
                     {
                         ButtonPasswortAendern.Visibility = Visibility.Visible;
-                        ButtonArbeitsBeginn.Visibility = Visibility.Visible;
-                        ButtonPauseBeginn.Visibility = Visibility.Hidden;
+                        ButtonArbeitsBeginn.Visibility = Visibility.Hidden;
+                        ButtonPauseBeginn.Visibility = Visibility.Visible;
                         ButtonArbeitsEnde.Visibility = Visibility.Visible;
                         ButtonPauseEnde.Visibility = Visibility.Hidden;
                     }
@@ -167,8 +167,8 @@ namespace WpfZeitPostgres
             {
                 con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 4);
                 TextBoxMeldung.Text = String.Format("Pauseende {0} gespeichert!", DateTime.Now);
-                ButtonArbeitsBeginn.Visibility = Visibility.Visible;
-                ButtonPauseBeginn.Visibility = Visibility.Hidden;
+                ButtonArbeitsBeginn.Visibility = Visibility.Hidden;
+                ButtonPauseBeginn.Visibility = Visibility.Visible;
                 ButtonArbeitsEnde.Visibility = Visibility.Visible;
                 ButtonPauseEnde.Visibility = Visibility.Hidden;
             }
