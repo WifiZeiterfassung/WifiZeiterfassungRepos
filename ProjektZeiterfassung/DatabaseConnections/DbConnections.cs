@@ -61,10 +61,10 @@ namespace DatabaseConnections
         /// </summary>
         /// <param name="id">Id des Mitarbeiters</param>
         /// <param name="pwd">Hashwert des Klartextpassworts</param>
-        private void PasswortAendern(int id, byte[] pwd)
+        public void PasswortAendern(int id, byte[] pwd)
         {
             //Später wenn alles in Ortnung einen TRy Catch und finally block einfügen
-            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
                 using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
@@ -90,11 +90,11 @@ namespace DatabaseConnections
         /// </summary>
         /// <param name="m">Mitarbeiter Objekt</param>
         /// <param name="ea">EintrittAustritt Objekt</param>
-        private void NeuenMitarbeiterSpeichern(Mitarbeiter m, EintrittAustritt ea)
+        public void NeuenMitarbeiterSpeichern(Mitarbeiter m, EintrittAustritt ea)
         {
             //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
             //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
-            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
                 //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
@@ -187,7 +187,7 @@ namespace DatabaseConnections
         {
             //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
             //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
-            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
                 //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 

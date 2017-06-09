@@ -50,9 +50,20 @@ namespace ProjektZeiterfassung.View
         //Das Fenster zum PasswortAendern wird geöffnet
         private void BtnPasswortAendern_Click(object sender, EventArgs e)
         {
-            PasswortAendern neuespasswort = new PasswortAendern();
-            neuespasswort.Personalnummer = TxtPersonalnummer.Text;
-            neuespasswort.ShowDialog(this);
+            if(suche.Count > 0)
+            {
+                //Daten in den Einstellungen zwischenspeichern für neues Fenster
+                Properties.Settings.Default.FKMitarbeiter = Convert.ToInt32(suche[0].ID);
+                Properties.Settings.Default.KlartextPasswort = m.KlartextPasswort;
+                PasswortAendern neuespasswort = new PasswortAendern();
+                //neuespasswort.Personalnummer = TxtPersonalnummer.Text;
+                neuespasswort.ShowDialog(this);
+               
+            }else
+            {
+                TxtBenutzerdaten.Text = "Bitte nochmal anmelden zum Passwort ändern!";
+            }
+            
         }
         //Das Fenster MitarbeiterBearbeiten wird geöffnet
         private void BtnBenutzerUpdate_Click(object sender, EventArgs e)
@@ -84,7 +95,11 @@ namespace ProjektZeiterfassung.View
                 m.KlartextPasswort = TxtPin.Text.Trim();
                 m.Passwort = Helper.GetHash(m.KlartextPasswort);
                 suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
-                stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche[0].ID));
+                //Absicherung wenn 0 bei Id daherkommt
+                if(suche.Count > 0)
+                {
+                    stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
+                }                
                 //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
                 if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
                 {

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswortAendern));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtNeuesPasswort1 = new System.Windows.Forms.TextBox();
             this.TextBoxPasswort = new System.Windows.Forms.RichTextBox();
             this.BtnSpeichern = new System.Windows.Forms.Button();
             this.LblVorname = new System.Windows.Forms.Label();
@@ -37,8 +39,6 @@
             this.TxtNeuesPasswort = new System.Windows.Forms.TextBox();
             this.TxtAltesPasswort = new System.Windows.Forms.TextBox();
             this.LblPasswortAendern = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TxtNeuesPasswort1 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(484, 135);
             this.panel2.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Passwort bestätigen:";
+            // 
+            // TxtNeuesPasswort1
+            // 
+            this.TxtNeuesPasswort1.Location = new System.Drawing.Point(10, 101);
+            this.TxtNeuesPasswort1.MaxLength = 8;
+            this.TxtNeuesPasswort1.Name = "TxtNeuesPasswort1";
+            this.TxtNeuesPasswort1.PasswordChar = '*';
+            this.TxtNeuesPasswort1.Size = new System.Drawing.Size(210, 20);
+            this.TxtNeuesPasswort1.TabIndex = 3;
             // 
             // TextBoxPasswort
             // 
@@ -99,7 +117,7 @@
             // TxtNeuesPasswort
             // 
             this.TxtNeuesPasswort.Location = new System.Drawing.Point(10, 60);
-            this.TxtNeuesPasswort.MaxLength = 6;
+            this.TxtNeuesPasswort.MaxLength = 8;
             this.TxtNeuesPasswort.Name = "TxtNeuesPasswort";
             this.TxtNeuesPasswort.PasswordChar = '*';
             this.TxtNeuesPasswort.Size = new System.Drawing.Size(210, 20);
@@ -108,7 +126,7 @@
             // TxtAltesPasswort
             // 
             this.TxtAltesPasswort.Location = new System.Drawing.Point(10, 23);
-            this.TxtAltesPasswort.MaxLength = 6;
+            this.TxtAltesPasswort.MaxLength = 8;
             this.TxtAltesPasswort.Name = "TxtAltesPasswort";
             this.TxtAltesPasswort.PasswordChar = '*';
             this.TxtAltesPasswort.Size = new System.Drawing.Size(210, 20);
@@ -123,24 +141,6 @@
             this.LblPasswortAendern.Size = new System.Drawing.Size(132, 20);
             this.LblPasswortAendern.TabIndex = 6;
             this.LblPasswortAendern.Text = "Passwort ändern:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Passwort bestätigen:";
-            // 
-            // TxtNeuesPasswort1
-            // 
-            this.TxtNeuesPasswort1.Location = new System.Drawing.Point(10, 101);
-            this.TxtNeuesPasswort1.MaxLength = 6;
-            this.TxtNeuesPasswort1.Name = "TxtNeuesPasswort1";
-            this.TxtNeuesPasswort1.PasswordChar = '*';
-            this.TxtNeuesPasswort1.Size = new System.Drawing.Size(210, 20);
-            this.TxtNeuesPasswort1.TabIndex = 3;
             // 
             // PasswortAendern
             // 

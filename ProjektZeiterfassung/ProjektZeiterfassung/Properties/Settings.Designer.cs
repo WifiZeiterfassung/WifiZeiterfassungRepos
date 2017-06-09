@@ -113,5 +113,17 @@ namespace ProjektZeiterfassung.Properties {
                 return ((string)(this["ZEIT2017ConnServer"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string KlartextPasswort {
+            get {
+                return ((string)(this["KlartextPasswort"]));
+            }
+            set {
+                this["KlartextPasswort"] = value;
+            }
+        }
     }
 }
