@@ -122,6 +122,7 @@
             this.BtnPausenbeginn.TabIndex = 10;
             this.BtnPausenbeginn.Text = "Pausenbeginn";
             this.BtnPausenbeginn.UseVisualStyleBackColor = true;
+            this.BtnPausenbeginn.Click += new System.EventHandler(this.BtnPausenbeginn_Click);
             // 
             // BtnPausenende
             // 
@@ -132,6 +133,7 @@
             this.BtnPausenende.TabIndex = 11;
             this.BtnPausenende.Text = "Pausenende";
             this.BtnPausenende.UseVisualStyleBackColor = true;
+            this.BtnPausenende.Click += new System.EventHandler(this.BtnPausenende_Click);
             // 
             // BtnArbeitsbeginn
             // 
@@ -142,15 +144,16 @@
             this.BtnArbeitsbeginn.TabIndex = 9;
             this.BtnArbeitsbeginn.Text = "Arbeitsbeginn";
             this.BtnArbeitsbeginn.UseVisualStyleBackColor = true;
+            this.BtnArbeitsbeginn.Click += new System.EventHandler(this.BtnArbeitsbeginn_Click);
             // 
             // LablPin
             // 
             this.LablPin.AutoSize = true;
             this.LablPin.Location = new System.Drawing.Point(129, 4);
             this.LablPin.Name = "LablPin";
-            this.LablPin.Size = new System.Drawing.Size(69, 13);
+            this.LablPin.Size = new System.Drawing.Size(91, 13);
             this.LablPin.TabIndex = 14;
-            this.LablPin.Text = "Pin (6-stellig):";
+            this.LablPin.Text = "Pin (max 8-stellig):";
             // 
             // BtnPasswortAendern
             // 
@@ -190,6 +193,7 @@
             this.BtnArbeitsende.TabIndex = 12;
             this.BtnArbeitsende.Text = "Arbeitsende";
             this.BtnArbeitsende.UseVisualStyleBackColor = true;
+            this.BtnArbeitsende.Click += new System.EventHandler(this.BtnArbeitsende_Click);
             // 
             // panel3
             // 
@@ -294,7 +298,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 216);
+            this.ClientSize = new System.Drawing.Size(504, 319);
             this.Controls.Add(this.LblAdministrationsbereich);
             this.Controls.Add(this.PanelAdministrationsbereich);
             this.Controls.Add(this.panel3);

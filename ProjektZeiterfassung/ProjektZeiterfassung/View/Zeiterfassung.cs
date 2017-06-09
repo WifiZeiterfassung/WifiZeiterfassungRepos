@@ -45,6 +45,7 @@ namespace ProjektZeiterfassung.View
         public FormZeiterfassung()
         {
             InitializeComponent();
+            this.Height = 255;
         }
         //Das Fenster zum PasswortAendern wird geöffnet
         private void BtnPasswortAendern_Click(object sender, EventArgs e)
@@ -88,37 +89,41 @@ namespace ProjektZeiterfassung.View
                 if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
                 {
                     TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
-                    BtnArbeitsbeginn.Enabled = true;
-                    BtnArbeitsende.Enabled = false;
-                    BtnPausenbeginn.Enabled = false;
-                    BtnPausenende.Enabled = false;
                     if (stList.Count > 0 && stList[0].ZeitTyp == 1)
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = false;
                         BtnPausenbeginn.Enabled = true;
                         BtnArbeitsende.Enabled = true;
                         BtnPausenende.Enabled = false;
+                        this.Height = 360;
                     }
                     else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = false;
                         BtnPausenbeginn.Enabled = false;
                         BtnArbeitsende.Enabled = false;
                         BtnPausenende.Enabled = true;
+                        this.Height = 360;
                     }
                     else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = false;
                         BtnPausenbeginn.Enabled = true;
                         BtnArbeitsende.Enabled = true;
                         BtnPausenende.Enabled = false;
+                        this.Height = 360;
                     }
                     else
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = true;
                         BtnPausenbeginn.Enabled = false;
                         BtnArbeitsende.Enabled = false;
                         BtnPausenende.Enabled = false;
+                        this.Height = 360;
                     }
                 }
                 //Fälle für den Benutzer ohne Admin rechte
@@ -127,31 +132,39 @@ namespace ProjektZeiterfassung.View
                     TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
                     if (stList.Count > 0 && stList[0].ZeitTyp == 1)
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = false;
                         BtnPausenbeginn.Enabled = true;
                         BtnArbeitsende.Enabled = true;
                         BtnPausenende.Enabled = false;
+                        this.Height = 255;
                     }
                     else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = false;
                         BtnPausenbeginn.Enabled = false;
                         BtnArbeitsende.Enabled = false;
                         BtnPausenende.Enabled = true;
+                        this.Height = 255;
                     }
                     else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = false;
                         BtnPausenbeginn.Enabled = true;
                         BtnArbeitsende.Enabled = true;
                         BtnPausenende.Enabled = false;
+                        this.Height = 255;
                     }
                     else
                     {
+                        BtnPasswortAendern.Enabled = true;
                         BtnArbeitsbeginn.Enabled = true;
                         BtnPausenbeginn.Enabled = false;
                         BtnArbeitsende.Enabled = false;
                         BtnPausenende.Enabled = false;
+                        this.Height = 255;
                     }
                 }
                 else
@@ -271,6 +284,76 @@ namespace ProjektZeiterfassung.View
                     MessageBox.Show("Eintrag fehlt");
                     break;
             }
-        }        
+        }
+        /// <summary>
+        /// Event Speichert den Arbeitsbeginn in die Datenbank in die Tabelle Stempelzeiten
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnArbeitsbeginn_Click(object sender, EventArgs e)
+        {
+            if (suche.Count > 0)
+            {
+
+                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 1);
+                TxtBenutzerdaten.Text = String.Format("Arbeitsbeginn {0} gespeichert!", DateTime.Now);
+                BtnArbeitsbeginn.Enabled = false;
+                BtnArbeitsende.Enabled = true;
+                BtnPausenbeginn.Enabled = true;
+                BtnPausenende.Enabled = false;
+            
+            }
+        }
+        /// <summary>
+        /// Event das den Pausebeginn in die Datenbank schreibt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPausenbeginn_Click(object sender, EventArgs e)
+        {
+            if (suche.Count > 0)
+            {
+                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 3);
+                TxtBenutzerdaten.Text = String.Format("Pausebeginn {0} gespeichert!", DateTime.Now);
+                BtnArbeitsbeginn.Enabled = false;
+                BtnArbeitsende.Enabled = false;
+                BtnPausenbeginn.Enabled = false;
+                BtnPausenende.Enabled = true;
+            }
+        }
+        /// <summary>
+        /// Speichert das PauseEnde in die Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPausenende_Click(object sender, EventArgs e)
+        {
+            if (suche.Count > 0)
+            {
+                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 4);
+                TxtBenutzerdaten.Text = String.Format("Pauseende {0} gespeichert!", DateTime.Now);
+                BtnPausenende.Enabled = false;
+                BtnPausenbeginn.Enabled = true;
+                BtnArbeitsende.Enabled = true;
+                BtnArbeitsbeginn.Enabled = false;
+            }
+        }
+        /// <summary>
+        /// Speichert das Arbeitsende in die Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnArbeitsende_Click(object sender, EventArgs e)
+        {
+            if (suche.Count > 0)
+            {
+                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 2);
+                TxtBenutzerdaten.Text = String.Format("Pausebeginn {0} gespeichert!", DateTime.Now);
+                BtnArbeitsende.Enabled = false;
+                BtnArbeitsbeginn.Enabled = true;
+                BtnPausenbeginn.Enabled = false;
+                BtnPausenende.Enabled = false;
+            }
+        }
     }
 }
