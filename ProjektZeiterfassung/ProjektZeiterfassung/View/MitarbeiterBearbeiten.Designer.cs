@@ -84,6 +84,7 @@
             this.BtnPasswortZuruecksetzen.TabIndex = 7;
             this.BtnPasswortZuruecksetzen.Text = "Passwort zurücksetzen";
             this.BtnPasswortZuruecksetzen.UseVisualStyleBackColor = true;
+            this.BtnPasswortZuruecksetzen.Click += new System.EventHandler(this.BtnPasswortZuruecksetzen_Click);
             // 
             // LblAustrittsdatum
             // 
@@ -111,6 +112,7 @@
             this.BtnSpeichern.TabIndex = 8;
             this.BtnSpeichern.Text = "Speichern";
             this.BtnSpeichern.UseVisualStyleBackColor = true;
+            this.BtnSpeichern.Click += new System.EventHandler(this.BtnSpeichern_Click);
             // 
             // textBoxNachname
             // 
