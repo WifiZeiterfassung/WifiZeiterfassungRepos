@@ -61,10 +61,10 @@ namespace DatabaseConnections
         /// </summary>
         /// <param name="id">Id des Mitarbeiters</param>
         /// <param name="pwd">Hashwert des Klartextpassworts</param>
-        private void PasswortAendern(int id, byte[] pwd)
+        public void PasswortAendern(int id, byte[] pwd)
         {
             //Später wenn alles in Ortnung einen TRy Catch und finally block einfügen
-            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
                 using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
@@ -78,6 +78,59 @@ namespace DatabaseConnections
             }
         }
 
+        //SQL String fürs Update des AustrittsDatums
+        private string _SqlStringAustritt = "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [AustrittsDatum] = @OutDate WHERE [FK_Mitarbeiter] = @FK_ID;";
+        /// <summary>
+        /// Methode speichert den Austritt eines Mitarbeiters
+        /// </summary>
+        /// <param name="fk_id">Id des Mitarbeiters</param>
+        /// <param name="outdate">Hashwert des Klartextpassworts</param>
+        public void AustrittMitarbeiter(int fk_id, DateTime outdate)
+        {
+            //Später wenn alles in Ortnung einen TRy Catch und finally block einfügen
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(_SqlStringAustritt, Connection))
+                {
+                    Befehl.Parameters.Add("@FK_ID", System.Data.SqlDbType.Int).Value = fk_id;
+                    Befehl.Parameters.Add("@OutDate", System.Data.SqlDbType.DateTime).Value = outdate;
+                    Befehl.ExecuteNonQuery();
+                }
+                Connection.Close();
+            }
+        }
+
+        //Suche Höchte Mitarbeiter ID
+        private string _SucheHoechsteMitarbeiterId = "SELECT TOP(1)m.ID FROM dbo.Mitarbeiter AS m ORDER BY m.ID DESC";
+        /// <summary>
+        /// Holt aus der Datenbank die höchste Mitarbeiter ID aus der Tabelle Mitarbeiter
+        /// </summary>
+        /// <returns>Mitarbeiter Id als Integer</returns>
+        public int HoleTopMitarbeiterId()
+        {
+            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            int TopId = 0;
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._SucheHoechsteMitarbeiterId, Connection))
+                {
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            TopId = reader.GetInt32(reader.GetOrdinal("ID"));                          
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return TopId;
+        }
+
+
         //Insert statement für Mitarbeiter in der Datenbank
         private string _sqlStringInsertMitarbeiter = "INSERT INTO [ZEIT2017].[dbo].[Mitarbeiter](Vorname,Nachname,Passwort) " +
                                                                                         "VALUES (@Vorname,@Nachname,@Passwort);";
@@ -90,11 +143,11 @@ namespace DatabaseConnections
         /// </summary>
         /// <param name="m">Mitarbeiter Objekt</param>
         /// <param name="ea">EintrittAustritt Objekt</param>
-        private void NeuenMitarbeiterSpeichern(Mitarbeiter m, EintrittAustritt ea)
+        public void NeuenMitarbeiterSpeichern(Mitarbeiter m, EintrittAustritt ea)
         {
             //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
             //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
-            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
                 //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
@@ -106,7 +159,8 @@ namespace DatabaseConnections
                     Befehl.Parameters.Add("@Passwort", System.Data.SqlDbType.VarBinary).Value = m.Passwort;
                     Befehl.ExecuteNonQuery();
                 }
-
+                //Speichert die Mitarbeiter Id für die weitere Verarbeitung
+                ea.FK_Mitarbeiter = this.HoleTopMitarbeiterId();
                 //Tabelle EintrittAustritt mit Id vom Mitarbeiter,Personalnummer,EintrittsDatum,SollZeit und IsAdmin befüllen
                 using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.EintrittAustritt", Connection))
                 {
@@ -134,7 +188,7 @@ namespace DatabaseConnections
                                                    "ON m.ID = ea.FK_Mitarbeiter " +
                                              "WHERE ea.Personalnummer = @PNR AND m.Passwort = @PWD; ";
         /// <summary>
-        /// Sucht den aktuellen Mitarbeiter in der Datenbank
+        /// Sucht den aktuellen Mitarbeiter in der Datenbank für die Anmeldung
         /// </summary>
         /// <param name="m">Passwort des Mitarbeiters</param>
         /// <param name="ea">Personalnummer des Mitrbeiters</param>
@@ -175,6 +229,59 @@ namespace DatabaseConnections
             }
             return query;
         }
+
+        private string _sqlSucheMitarbeiterPersonalnummer = "SELECT  m.ID, " +
+                                                            "ea.Personalnummer, " +
+                                                            "ea.EintrittsDatum, " +
+                                                            "ea.TagesSollZeit, " +
+                                                            "m.Vorname, " +
+                                                            "m.Nachname, " +
+                                                            "ea.IsAdmin " +
+                                                            "FROM[ZEIT2017].[dbo].[Mitarbeiter] " + "AS m " +
+                                                            "JOIN[ZEIT2017].[dbo].[EintrittAustritt] " + "AS ea " +
+                                                            "ON m.ID = ea.FK_Mitarbeiter " +
+                                                            "WHERE ea.Personalnummer = @PNR;";
+        /// <summary>
+        /// Sucht den aktuellen Mitarbeiter mit der Personalnummer in der Datenbank
+        /// </summary>
+        /// <param name="ea">Personalnummer des Mitrbeiters</param>
+        public ListeMitarbeiter MitarbeiterPersonalnummerSuchen(string ea)
+        {
+            ListeMitarbeiter query = new ListeMitarbeiter();
+            MitarbeiterListe ml = new MitarbeiterListe();
+            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
+            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._sqlSucheMitarbeiterPersonalnummer, Connection))
+                {
+                    Befehl.Parameters.Add("@PNR", System.Data.SqlDbType.NVarChar).Value = ea;
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader.GetInt32(reader.GetOrdinal("ID")).ToString() != null)
+                                ml.ID = reader.GetInt32(reader.GetOrdinal("ID")).ToString();
+                            if (reader.GetString(reader.GetOrdinal("Vorname")) != null)
+                                ml.Vorname = reader.GetString(reader.GetOrdinal("Vorname"));
+                            if (reader.GetString(reader.GetOrdinal("Nachname")) != null)
+                                ml.Nachname = reader.GetString(reader.GetOrdinal("Nachname"));
+                            if (reader.GetString(reader.GetOrdinal("Personalnummer")) != null)
+                                ml.Personalnummer = reader.GetString(reader.GetOrdinal("Personalnummer"));
+                            ml.EintrittsDatum = reader.GetDateTime(reader.GetOrdinal("EintrittsDatum"));
+                            ml.IsAdmin = reader.GetBoolean(reader.GetOrdinal("IsAdmin"));
+                            ml.TagesSollZeit = reader.GetDecimal(reader.GetOrdinal("TagesSollZeit"));
+                            query.Add(ml);
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return query;
+        }
+
         //SQL Speichert eine Arbeitszeit in der Datenbank
         private string _SaveArbeitsBeginn = "INSERT INTO [ZEIT2017].[dbo].[Stempelzeiten](FK_Mitarbeiter,Zeitpunkt,ZeitTyp) VALUES (@IdMitarbeiter,@Zeitpunkt,@ZeitTyp);";
         /// <summary>
@@ -187,7 +294,7 @@ namespace DatabaseConnections
         {
             //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
             //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
-            using (var Connection = new System.Data.SqlClient.SqlConnection(this._DbConnection))
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
                 //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
@@ -206,13 +313,13 @@ namespace DatabaseConnections
           FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s 
           WHERE s.FK_Mitarbeiter = 1
           ORDER BY s.Zeitpunkt DESC;*/
-        //sql-String welcher die Stempelzeiten eines bestimmten Mitarbeiters ausliest aus der Datenbank
+        //sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank
         private string _StempelzeitAuslesen = "SELECT TOP(1)* FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s WHERE s.FK_Mitarbeiter = @FkMitarbeiter ORDER BY s.Zeitpunkt DESC;";
         /// <summary>
         /// Methode die eine Liste von stempelzeiten einer bestimmten Person liefert
         /// </summary>
         /// <param name="mbid"> mitarbeiter Id</param>
-        /// <returns>Liste von Stempelzeiten</returns>
+        /// <returns>Liste von Stempelzeiten eines Mitarbeiters</returns>
         public ListeStempelzeiten StempelzeitMitarbeiter(int mbid)
         {
             ListeStempelzeiten query = new ListeStempelzeiten();
@@ -240,6 +347,37 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return query;
+        }
+
+        //sql-String welcher die höchste Personalnummer aus der Datenbank der Tabelle EintrittAustritt holt
+        private string _HoleTopPersonalnummer = "SELECT TOP(1)ea.Personalnummer FROM dbo.EintrittAustritt AS ea ORDER BY ea.Personalnummer DESC;";
+        /// <summary>
+        /// Holt aus der Datenbank die höchste Personalnummer 
+        /// </summary>
+        /// <returns>Personalnummer als Integer</returns>
+        public int HoleTopPersonalnummer()
+        {
+            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            int TopPersonalnummer = 0;
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._HoleTopPersonalnummer, Connection))
+                {
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string tmpPersonalnummer = String.Empty;
+                            tmpPersonalnummer = reader.GetSqlString(reader.GetOrdinal("Personalnummer")).ToString();
+                            TopPersonalnummer = Convert.ToInt32(tmpPersonalnummer);                            
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return TopPersonalnummer;
         }
     }
 }
