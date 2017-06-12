@@ -7,19 +7,23 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ZEIT2017ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ZEIT2017ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ProjektZeiterfassung.Properties.Settings.GlobalReference.Default.ZEIT2017ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MitarbeiterTableAdapter" GeneratorDataComponentClassName="MitarbeiterTableAdapter" Name="Mitarbeiter" UserDataComponentName="MitarbeiterTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_1TableAdapter" GeneratorDataComponentClassName="View_1TableAdapter" Name="View_1" UserDataComponentName="View_1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ZEIT2017ConnectionString (Settings)" DbObjectName="ZEIT2017.dbo.Mitarbeiter" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ZEIT2017ConnectionString (Settings)" DbObjectName="ZEIT2017.dbo.View_1" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Vorname, Nachname
-FROM            Mitarbeiter</CommandText>
+                    <CommandText>SELECT Personalnummer, Vorname, Nachname, EintrittsDatum, AustrittsDatum, TagesSollZeit, IsAdmin FROM dbo.View_1</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
+              <Mapping SourceColumn="Personalnummer" DataSetColumn="Personalnummer" />
+              <Mapping SourceColumn="EintrittsDatum" DataSetColumn="EintrittsDatum" />
+              <Mapping SourceColumn="AustrittsDatum" DataSetColumn="AustrittsDatum" />
+              <Mapping SourceColumn="TagesSollZeit" DataSetColumn="TagesSollZeit" />
+              <Mapping SourceColumn="IsAdmin" DataSetColumn="IsAdmin" />
               <Mapping SourceColumn="Vorname" DataSetColumn="Vorname" />
               <Mapping SourceColumn="Nachname" DataSetColumn="Nachname" />
             </Mappings>
@@ -33,9 +37,20 @@ FROM            Mitarbeiter</CommandText>
   <xs:element name="ZEIT2017DataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ZEIT2017DataSet3" msprop:Generator_UserDSName="ZEIT2017DataSet3">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Mitarbeiter" msprop:Generator_TableClassName="MitarbeiterDataTable" msprop:Generator_TableVarName="tableMitarbeiter" msprop:Generator_TablePropName="Mitarbeiter" msprop:Generator_RowDeletingName="MitarbeiterRowDeleting" msprop:Generator_RowChangingName="MitarbeiterRowChanging" msprop:Generator_RowEvHandlerName="MitarbeiterRowChangeEventHandler" msprop:Generator_RowDeletedName="MitarbeiterRowDeleted" msprop:Generator_UserTableName="Mitarbeiter" msprop:Generator_RowChangedName="MitarbeiterRowChanged" msprop:Generator_RowEvArgName="MitarbeiterRowChangeEvent" msprop:Generator_RowClassName="MitarbeiterRow">
+        <xs:element name="View_1" msprop:Generator_TableClassName="View_1DataTable" msprop:Generator_TableVarName="tableView_1" msprop:Generator_TablePropName="View_1" msprop:Generator_RowDeletingName="View_1RowDeleting" msprop:Generator_RowChangingName="View_1RowChanging" msprop:Generator_RowEvHandlerName="View_1RowChangeEventHandler" msprop:Generator_RowDeletedName="View_1RowDeleted" msprop:Generator_UserTableName="View_1" msprop:Generator_RowChangedName="View_1RowChanged" msprop:Generator_RowEvArgName="View_1RowChangeEvent" msprop:Generator_RowClassName="View_1Row">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="Personalnummer" msprop:Generator_ColumnVarNameInTable="columnPersonalnummer" msprop:Generator_ColumnPropNameInRow="Personalnummer" msprop:Generator_ColumnPropNameInTable="PersonalnummerColumn" msprop:Generator_UserColumnName="Personalnummer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EintrittsDatum" msprop:Generator_ColumnVarNameInTable="columnEintrittsDatum" msprop:Generator_ColumnPropNameInRow="EintrittsDatum" msprop:Generator_ColumnPropNameInTable="EintrittsDatumColumn" msprop:Generator_UserColumnName="EintrittsDatum" type="xs:dateTime" />
+              <xs:element name="AustrittsDatum" msprop:Generator_ColumnVarNameInTable="columnAustrittsDatum" msprop:Generator_ColumnPropNameInRow="AustrittsDatum" msprop:Generator_ColumnPropNameInTable="AustrittsDatumColumn" msprop:Generator_UserColumnName="AustrittsDatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TagesSollZeit" msprop:Generator_ColumnVarNameInTable="columnTagesSollZeit" msprop:Generator_ColumnPropNameInRow="TagesSollZeit" msprop:Generator_ColumnPropNameInTable="TagesSollZeitColumn" msprop:Generator_UserColumnName="TagesSollZeit" type="xs:decimal" />
+              <xs:element name="IsAdmin" msprop:Generator_ColumnVarNameInTable="columnIsAdmin" msprop:Generator_ColumnPropNameInRow="IsAdmin" msprop:Generator_ColumnPropNameInTable="IsAdminColumn" msprop:Generator_UserColumnName="IsAdmin" type="xs:boolean" minOccurs="0" />
               <xs:element name="Vorname" msprop:Generator_ColumnVarNameInTable="columnVorname" msprop:Generator_ColumnPropNameInRow="Vorname" msprop:Generator_ColumnPropNameInTable="VornameColumn" msprop:Generator_UserColumnName="Vorname">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

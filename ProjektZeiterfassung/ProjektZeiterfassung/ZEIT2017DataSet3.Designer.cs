@@ -24,7 +24,7 @@ namespace ProjektZeiterfassung {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class ZEIT2017DataSet3 : global::System.Data.DataSet {
         
-        private MitarbeiterDataTable tableMitarbeiter;
+        private View_1DataTable tableView_1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace ProjektZeiterfassung {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Mitarbeiter"] != null)) {
-                    base.Tables.Add(new MitarbeiterDataTable(ds.Tables["Mitarbeiter"]));
+                if ((ds.Tables["View_1"] != null)) {
+                    base.Tables.Add(new View_1DataTable(ds.Tables["View_1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace ProjektZeiterfassung {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public MitarbeiterDataTable Mitarbeiter {
+        public View_1DataTable View_1 {
             get {
-                return this.tableMitarbeiter;
+                return this.tableView_1;
             }
         }
         
@@ -152,8 +152,8 @@ namespace ProjektZeiterfassung {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Mitarbeiter"] != null)) {
-                    base.Tables.Add(new MitarbeiterDataTable(ds.Tables["Mitarbeiter"]));
+                if ((ds.Tables["View_1"] != null)) {
+                    base.Tables.Add(new View_1DataTable(ds.Tables["View_1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace ProjektZeiterfassung {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableMitarbeiter = ((MitarbeiterDataTable)(base.Tables["Mitarbeiter"]));
+            this.tableView_1 = ((View_1DataTable)(base.Tables["View_1"]));
             if ((initTable == true)) {
-                if ((this.tableMitarbeiter != null)) {
-                    this.tableMitarbeiter.InitVars();
+                if ((this.tableView_1 != null)) {
+                    this.tableView_1.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace ProjektZeiterfassung {
             this.Namespace = "http://tempuri.org/ZEIT2017DataSet3.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableMitarbeiter = new MitarbeiterDataTable();
-            base.Tables.Add(this.tableMitarbeiter);
+            this.tableView_1 = new View_1DataTable();
+            base.Tables.Add(this.tableView_1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeMitarbeiter() {
+        private bool ShouldSerializeView_1() {
             return false;
         }
         
@@ -270,14 +270,24 @@ namespace ProjektZeiterfassung {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void MitarbeiterRowChangeEventHandler(object sender, MitarbeiterRowChangeEvent e);
+        public delegate void View_1RowChangeEventHandler(object sender, View_1RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class MitarbeiterDataTable : global::System.Data.TypedTableBase<MitarbeiterRow> {
+        public partial class View_1DataTable : global::System.Data.TypedTableBase<View_1Row> {
+            
+            private global::System.Data.DataColumn columnPersonalnummer;
+            
+            private global::System.Data.DataColumn columnEintrittsDatum;
+            
+            private global::System.Data.DataColumn columnAustrittsDatum;
+            
+            private global::System.Data.DataColumn columnTagesSollZeit;
+            
+            private global::System.Data.DataColumn columnIsAdmin;
             
             private global::System.Data.DataColumn columnVorname;
             
@@ -285,8 +295,8 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MitarbeiterDataTable() {
-                this.TableName = "Mitarbeiter";
+            public View_1DataTable() {
+                this.TableName = "View_1";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -294,7 +304,7 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MitarbeiterDataTable(global::System.Data.DataTable table) {
+            internal View_1DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -311,9 +321,49 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected MitarbeiterDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected View_1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PersonalnummerColumn {
+                get {
+                    return this.columnPersonalnummer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EintrittsDatumColumn {
+                get {
+                    return this.columnEintrittsDatum;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AustrittsDatumColumn {
+                get {
+                    return this.columnAustrittsDatum;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TagesSollZeitColumn {
+                get {
+                    return this.columnTagesSollZeit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsAdminColumn {
+                get {
+                    return this.columnIsAdmin;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -343,46 +393,51 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MitarbeiterRow this[int index] {
+            public View_1Row this[int index] {
                 get {
-                    return ((MitarbeiterRow)(this.Rows[index]));
+                    return ((View_1Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MitarbeiterRowChangeEventHandler MitarbeiterRowChanging;
+            public event View_1RowChangeEventHandler View_1RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MitarbeiterRowChangeEventHandler MitarbeiterRowChanged;
+            public event View_1RowChangeEventHandler View_1RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MitarbeiterRowChangeEventHandler MitarbeiterRowDeleting;
+            public event View_1RowChangeEventHandler View_1RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MitarbeiterRowChangeEventHandler MitarbeiterRowDeleted;
+            public event View_1RowChangeEventHandler View_1RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddMitarbeiterRow(MitarbeiterRow row) {
+            public void AddView_1Row(View_1Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MitarbeiterRow AddMitarbeiterRow(string Vorname, string Nachname) {
-                MitarbeiterRow rowMitarbeiterRow = ((MitarbeiterRow)(this.NewRow()));
+            public View_1Row AddView_1Row(string Personalnummer, System.DateTime EintrittsDatum, System.DateTime AustrittsDatum, decimal TagesSollZeit, bool IsAdmin, string Vorname, string Nachname) {
+                View_1Row rowView_1Row = ((View_1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        Personalnummer,
+                        EintrittsDatum,
+                        AustrittsDatum,
+                        TagesSollZeit,
+                        IsAdmin,
                         Vorname,
                         Nachname};
-                rowMitarbeiterRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowMitarbeiterRow);
-                return rowMitarbeiterRow;
+                rowView_1Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowView_1Row);
+                return rowView_1Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                MitarbeiterDataTable cln = ((MitarbeiterDataTable)(base.Clone()));
+                View_1DataTable cln = ((View_1DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -390,12 +445,17 @@ namespace ProjektZeiterfassung {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new MitarbeiterDataTable();
+                return new View_1DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnPersonalnummer = base.Columns["Personalnummer"];
+                this.columnEintrittsDatum = base.Columns["EintrittsDatum"];
+                this.columnAustrittsDatum = base.Columns["AustrittsDatum"];
+                this.columnTagesSollZeit = base.Columns["TagesSollZeit"];
+                this.columnIsAdmin = base.Columns["IsAdmin"];
                 this.columnVorname = base.Columns["Vorname"];
                 this.columnNachname = base.Columns["Nachname"];
             }
@@ -403,10 +463,23 @@ namespace ProjektZeiterfassung {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnPersonalnummer = new global::System.Data.DataColumn("Personalnummer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersonalnummer);
+                this.columnEintrittsDatum = new global::System.Data.DataColumn("EintrittsDatum", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEintrittsDatum);
+                this.columnAustrittsDatum = new global::System.Data.DataColumn("AustrittsDatum", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAustrittsDatum);
+                this.columnTagesSollZeit = new global::System.Data.DataColumn("TagesSollZeit", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTagesSollZeit);
+                this.columnIsAdmin = new global::System.Data.DataColumn("IsAdmin", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsAdmin);
                 this.columnVorname = new global::System.Data.DataColumn("Vorname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVorname);
                 this.columnNachname = new global::System.Data.DataColumn("Nachname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNachname);
+                this.columnPersonalnummer.MaxLength = 4;
+                this.columnEintrittsDatum.AllowDBNull = false;
+                this.columnTagesSollZeit.AllowDBNull = false;
                 this.columnVorname.AllowDBNull = false;
                 this.columnVorname.MaxLength = 20;
                 this.columnNachname.AllowDBNull = false;
@@ -415,28 +488,28 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MitarbeiterRow NewMitarbeiterRow() {
-                return ((MitarbeiterRow)(this.NewRow()));
+            public View_1Row NewView_1Row() {
+                return ((View_1Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new MitarbeiterRow(builder);
+                return new View_1Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(MitarbeiterRow);
+                return typeof(View_1Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.MitarbeiterRowChanged != null)) {
-                    this.MitarbeiterRowChanged(this, new MitarbeiterRowChangeEvent(((MitarbeiterRow)(e.Row)), e.Action));
+                if ((this.View_1RowChanged != null)) {
+                    this.View_1RowChanged(this, new View_1RowChangeEvent(((View_1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -444,8 +517,8 @@ namespace ProjektZeiterfassung {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.MitarbeiterRowChanging != null)) {
-                    this.MitarbeiterRowChanging(this, new MitarbeiterRowChangeEvent(((MitarbeiterRow)(e.Row)), e.Action));
+                if ((this.View_1RowChanging != null)) {
+                    this.View_1RowChanging(this, new View_1RowChangeEvent(((View_1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -453,8 +526,8 @@ namespace ProjektZeiterfassung {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.MitarbeiterRowDeleted != null)) {
-                    this.MitarbeiterRowDeleted(this, new MitarbeiterRowChangeEvent(((MitarbeiterRow)(e.Row)), e.Action));
+                if ((this.View_1RowDeleted != null)) {
+                    this.View_1RowDeleted(this, new View_1RowChangeEvent(((View_1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -462,14 +535,14 @@ namespace ProjektZeiterfassung {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.MitarbeiterRowDeleting != null)) {
-                    this.MitarbeiterRowDeleting(this, new MitarbeiterRowChangeEvent(((MitarbeiterRow)(e.Row)), e.Action));
+                if ((this.View_1RowDeleting != null)) {
+                    this.View_1RowDeleting(this, new View_1RowChangeEvent(((View_1Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveMitarbeiterRow(MitarbeiterRow row) {
+            public void RemoveView_1Row(View_1Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -496,7 +569,7 @@ namespace ProjektZeiterfassung {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "MitarbeiterDataTable";
+                attribute2.FixedValue = "View_1DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -540,25 +613,95 @@ namespace ProjektZeiterfassung {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class MitarbeiterRow : global::System.Data.DataRow {
+        public partial class View_1Row : global::System.Data.DataRow {
             
-            private MitarbeiterDataTable tableMitarbeiter;
+            private View_1DataTable tableView_1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MitarbeiterRow(global::System.Data.DataRowBuilder rb) : 
+            internal View_1Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableMitarbeiter = ((MitarbeiterDataTable)(this.Table));
+                this.tableView_1 = ((View_1DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Personalnummer {
+                get {
+                    try {
+                        return ((string)(this[this.tableView_1.PersonalnummerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Personalnummer in Tabelle View_1 ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableView_1.PersonalnummerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime EintrittsDatum {
+                get {
+                    return ((global::System.DateTime)(this[this.tableView_1.EintrittsDatumColumn]));
+                }
+                set {
+                    this[this.tableView_1.EintrittsDatumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime AustrittsDatum {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableView_1.AustrittsDatumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte AustrittsDatum in Tabelle View_1 ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableView_1.AustrittsDatumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal TagesSollZeit {
+                get {
+                    return ((decimal)(this[this.tableView_1.TagesSollZeitColumn]));
+                }
+                set {
+                    this[this.tableView_1.TagesSollZeitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAdmin {
+                get {
+                    try {
+                        return ((bool)(this[this.tableView_1.IsAdminColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IsAdmin in Tabelle View_1 ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableView_1.IsAdminColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vorname {
                 get {
-                    return ((string)(this[this.tableMitarbeiter.VornameColumn]));
+                    return ((string)(this[this.tableView_1.VornameColumn]));
                 }
                 set {
-                    this[this.tableMitarbeiter.VornameColumn] = value;
+                    this[this.tableView_1.VornameColumn] = value;
                 }
             }
             
@@ -566,11 +709,47 @@ namespace ProjektZeiterfassung {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Nachname {
                 get {
-                    return ((string)(this[this.tableMitarbeiter.NachnameColumn]));
+                    return ((string)(this[this.tableView_1.NachnameColumn]));
                 }
                 set {
-                    this[this.tableMitarbeiter.NachnameColumn] = value;
+                    this[this.tableView_1.NachnameColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPersonalnummerNull() {
+                return this.IsNull(this.tableView_1.PersonalnummerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPersonalnummerNull() {
+                this[this.tableView_1.PersonalnummerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAustrittsDatumNull() {
+                return this.IsNull(this.tableView_1.AustrittsDatumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAustrittsDatumNull() {
+                this[this.tableView_1.AustrittsDatumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIsAdminNull() {
+                return this.IsNull(this.tableView_1.IsAdminColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIsAdminNull() {
+                this[this.tableView_1.IsAdminColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -578,22 +757,22 @@ namespace ProjektZeiterfassung {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class MitarbeiterRowChangeEvent : global::System.EventArgs {
+        public class View_1RowChangeEvent : global::System.EventArgs {
             
-            private MitarbeiterRow eventRow;
+            private View_1Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MitarbeiterRowChangeEvent(MitarbeiterRow row, global::System.Data.DataRowAction action) {
+            public View_1RowChangeEvent(View_1Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MitarbeiterRow Row {
+            public View_1Row Row {
                 get {
                     return this.eventRow;
                 }
@@ -621,7 +800,7 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class MitarbeiterTableAdapter : global::System.ComponentModel.Component {
+    public partial class View_1TableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -635,7 +814,7 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public MitarbeiterTableAdapter() {
+        public View_1TableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -732,7 +911,12 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Mitarbeiter";
+            tableMapping.DataSetTable = "View_1";
+            tableMapping.ColumnMappings.Add("Personalnummer", "Personalnummer");
+            tableMapping.ColumnMappings.Add("EintrittsDatum", "EintrittsDatum");
+            tableMapping.ColumnMappings.Add("AustrittsDatum", "AustrittsDatum");
+            tableMapping.ColumnMappings.Add("TagesSollZeit", "TagesSollZeit");
+            tableMapping.ColumnMappings.Add("IsAdmin", "IsAdmin");
             tableMapping.ColumnMappings.Add("Vorname", "Vorname");
             tableMapping.ColumnMappings.Add("Nachname", "Nachname");
             this._adapter.TableMappings.Add(tableMapping);
@@ -751,7 +935,8 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Vorname, Nachname\r\nFROM            Mitarbeiter";
+            this._commandCollection[0].CommandText = "SELECT Personalnummer, Vorname, Nachname, EintrittsDatum, AustrittsDatum, TagesSo" +
+                "llZeit, IsAdmin FROM dbo.View_1";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -759,7 +944,7 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ZEIT2017DataSet3.MitarbeiterDataTable dataTable) {
+        public virtual int Fill(ZEIT2017DataSet3.View_1DataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -772,9 +957,9 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ZEIT2017DataSet3.MitarbeiterDataTable GetData() {
+        public virtual ZEIT2017DataSet3.View_1DataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ZEIT2017DataSet3.MitarbeiterDataTable dataTable = new ZEIT2017DataSet3.MitarbeiterDataTable();
+            ZEIT2017DataSet3.View_1DataTable dataTable = new ZEIT2017DataSet3.View_1DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
