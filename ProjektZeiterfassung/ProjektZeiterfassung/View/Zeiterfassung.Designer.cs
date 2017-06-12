@@ -173,7 +173,7 @@
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.PasswordChar = '*';
             this.TxtPin.Size = new System.Drawing.Size(100, 20);
-            this.TxtPin.TabIndex = 10;
+            this.TxtPin.TabIndex = 2;
             // 
             // LblPersonalnummer
             // 
@@ -212,7 +212,7 @@
             this.BtnAnmelden.Location = new System.Drawing.Point(250, 21);
             this.BtnAnmelden.Name = "BtnAnmelden";
             this.BtnAnmelden.Size = new System.Drawing.Size(100, 23);
-            this.BtnAnmelden.TabIndex = 7;
+            this.BtnAnmelden.TabIndex = 3;
             this.BtnAnmelden.Text = "Anmelden";
             this.BtnAnmelden.UseVisualStyleBackColor = true;
             this.BtnAnmelden.Click += new System.EventHandler(this.BtnAnmelden_Click);
@@ -236,7 +236,7 @@
             this.TxtPersonalnummer.Location = new System.Drawing.Point(10, 23);
             this.TxtPersonalnummer.Name = "TxtPersonalnummer";
             this.TxtPersonalnummer.Size = new System.Drawing.Size(100, 20);
-            this.TxtPersonalnummer.TabIndex = 5;
+            this.TxtPersonalnummer.TabIndex = 1;
             // 
             // TxtBenutzerdaten
             // 
@@ -248,7 +248,7 @@
             this.TxtBenutzerdaten.Name = "TxtBenutzerdaten";
             this.TxtBenutzerdaten.ReadOnly = true;
             this.TxtBenutzerdaten.Size = new System.Drawing.Size(461, 21);
-            this.TxtBenutzerdaten.TabIndex = 2;
+            this.TxtBenutzerdaten.TabIndex = 4;
             // 
             // LblBenutzerdaten
             // 

@@ -126,6 +126,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ZEIT2017DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ZEIT2017DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ZEIT2017FullDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -208,6 +213,17 @@
     </None>
     <None Include="ZEIT2017DataSet2.xss">
       <DependentUpon>ZEIT2017DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ZEIT2017DataSet3.xsc">
+      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ZEIT2017DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZEIT2017DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ZEIT2017DataSet3.xss">
+      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
     </None>
     <None Include="ZEIT2017FullDataSet.xsc">
       <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
