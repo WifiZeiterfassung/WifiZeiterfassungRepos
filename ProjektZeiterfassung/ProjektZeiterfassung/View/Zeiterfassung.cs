@@ -74,10 +74,8 @@ namespace ProjektZeiterfassung.View
         //Das Fenster MitarbeiterAnlegen wird geöffnet
         private void BtnBenutzerNeu_Click(object sender, EventArgs e)
         {
-            //MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
-            //mitarbeiterbearbeiten.ShowDialog(this);
-            MitarbeiterUpdate mitarbeiterupdate = new MitarbeiterUpdate();
-            mitarbeiterupdate.ShowDialog();
+            MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
+            mitarbeiterbearbeiten.ShowDialog(this);
         }
         //Das Fenster Zeitkorrektur wird geöffnet
         private void BtnZeitkorrektur_Click(object sender, EventArgs e)
