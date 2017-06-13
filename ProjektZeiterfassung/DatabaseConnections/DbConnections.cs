@@ -50,8 +50,8 @@ namespace DatabaseConnections
             //ConBauer.InitialCatalog = Datenbankname;
             //ConBauer.IntegratedSecurity = true;
             //this._DbConnection = ConBauer.ConnectionString;
-            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer; //SqlServerAdresse-SERVER 192.168.1.103
-            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden .\SQLEXPRESS
+            //this._DbConnection = Properties.Settings.Default.ZEIT2017ConnServer; //SqlServerAdresse-SERVER 192.168.1.103
+            this._DbConnection = Properties.Settings.Default.ZEIT2017ConnectionString; //In der wifi diese zuweisung verwenden .\SQLEXPRESS
             return _DbConnection;
         }
         //SQL String fürs Update des Passwortes
@@ -67,9 +67,9 @@ namespace DatabaseConnections
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
-                using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Mitarbeiter", Connection))
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(_SqlString, Connection))
                 {
-                    Befehl.CommandText = this._SqlString;
+                    //Befehl.CommandText = this._SqlString;
                     Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = id;
                     Befehl.Parameters.Add("@Passwort", System.Data.SqlDbType.VarBinary).Value = pwd;
                     Befehl.ExecuteNonQuery();
@@ -298,9 +298,9 @@ namespace DatabaseConnections
             {
                 Connection.Open();
                 //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
-                using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.Stempelzeiten", Connection))
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(_SaveArbeitsBeginn, Connection))
                 {
-                    Befehl.CommandText = this._SaveArbeitsBeginn;
+                    //Befehl.CommandText = this._SaveArbeitsBeginn;
                     Befehl.Parameters.Add("@IdMitarbeiter", System.Data.SqlDbType.Int).Value = mbId;
                     Befehl.Parameters.Add("@Zeitpunkt", System.Data.SqlDbType.DateTime).Value = zeit;
                     Befehl.Parameters.Add("@ZeitTyp", System.Data.SqlDbType.TinyInt).Value = typId;
