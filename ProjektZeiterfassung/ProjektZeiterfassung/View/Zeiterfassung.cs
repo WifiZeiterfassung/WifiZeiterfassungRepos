@@ -88,7 +88,7 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void BtnAnmelden_Click(object sender, EventArgs e)
         {
-            von Josef mit Klassenbibliothek **********************************************************************************
+            //von Josef mit Klassenbibliothek **********************************************************************************
             if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()) && !String.IsNullOrWhiteSpace(TxtPin.Text.Trim()))
             {
                 ea.Personalnummer = TxtPersonalnummer.Text.Trim();
