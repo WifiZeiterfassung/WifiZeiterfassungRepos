@@ -191,7 +191,7 @@ namespace ProjektZeiterfassung.View
             {
                 TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
             }
-            //************************Josef Ende ***********************************************************************************
+            //************************Josef Ende * **********************************************************************************
             //this.PersonalnummerPruefen();
             //this.ButtonFreischalten();
         }
