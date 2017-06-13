@@ -87,6 +87,12 @@
     <Compile Include="View\MitarbeiterBearbeiten.Designer.cs">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MitarbeiterSuchen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MitarbeiterSuchen.Designer.cs">
+      <DependentUpon>MitarbeiterSuchen.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\PasswortAendern.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterBearbeiten.resx">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MitarbeiterSuchen.resx">
+      <DependentUpon>MitarbeiterSuchen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PasswortAendern.resx">
       <DependentUpon>PasswortAendern.cs</DependentUpon>

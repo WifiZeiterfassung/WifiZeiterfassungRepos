@@ -74,8 +74,8 @@ namespace ProjektZeiterfassung.View
         //Das Fenster MitarbeiterAnlegen wird geöffnet
         private void BtnBenutzerNeu_Click(object sender, EventArgs e)
         {
-            MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
-            mitarbeiterbearbeiten.ShowDialog(this);
+            MitarbeiterSuchen mitarbeitersuchen = new MitarbeiterSuchen();
+            mitarbeitersuchen.ShowDialog(this);
         }
         //Das Fenster Zeitkorrektur wird geöffnet
         private void BtnZeitkorrektur_Click(object sender, EventArgs e)
@@ -89,111 +89,111 @@ namespace ProjektZeiterfassung.View
         private void BtnAnmelden_Click(object sender, EventArgs e)
         {
             //von Josef mit Klassenbibliothek **********************************************************************************
-            //if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()) && !String.IsNullOrWhiteSpace(TxtPin.Text.Trim()))
-            //{
-            //    ea.Personalnummer = TxtPersonalnummer.Text.Trim();
-            //    m.KlartextPasswort = TxtPin.Text.Trim();
-            //    m.Passwort = Helper.GetHash(m.KlartextPasswort);
-            //    suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
-            //    //Absicherung wenn 0 bei Id daherkommt
-            //    if(suche.Count > 0)
-            //    {
-            //        stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
-            //    }                
-            //    //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
-            //    if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
-            //    {
-            //        TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
-            //        if (stList.Count > 0 && stList[0].ZeitTyp == 1)
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = false;
-            //            BtnPausenbeginn.Enabled = true;
-            //            BtnArbeitsende.Enabled = true;
-            //            BtnPausenende.Enabled = false;
-            //            this.Height = 360;
-            //        }
-            //        else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = false;
-            //            BtnPausenbeginn.Enabled = false;
-            //            BtnArbeitsende.Enabled = false;
-            //            BtnPausenende.Enabled = true;
-            //            this.Height = 360;
-            //        }
-            //        else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = false;
-            //            BtnPausenbeginn.Enabled = true;
-            //            BtnArbeitsende.Enabled = true;
-            //            BtnPausenende.Enabled = false;
-            //            this.Height = 360;
-            //        }
-            //        else
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = true;
-            //            BtnPausenbeginn.Enabled = false;
-            //            BtnArbeitsende.Enabled = false;
-            //            BtnPausenende.Enabled = false;
-            //            this.Height = 360;
-            //        }
-            //    }
-            //    //Fälle für den Benutzer ohne Admin rechte
-            //    else if (suche.Count > 0)
-            //    {
-            //        TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
-            //        if (stList.Count > 0 && stList[0].ZeitTyp == 1)
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = false;
-            //            BtnPausenbeginn.Enabled = true;
-            //            BtnArbeitsende.Enabled = true;
-            //            BtnPausenende.Enabled = false;
-            //            this.Height = 255;
-            //        }
-            //        else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = false;
-            //            BtnPausenbeginn.Enabled = false;
-            //            BtnArbeitsende.Enabled = false;
-            //            BtnPausenende.Enabled = true;
-            //            this.Height = 255;
-            //        }
-            //        else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = false;
-            //            BtnPausenbeginn.Enabled = true;
-            //            BtnArbeitsende.Enabled = true;
-            //            BtnPausenende.Enabled = false;
-            //            this.Height = 255;
-            //        }
-            //        else
-            //        {
-            //            BtnPasswortAendern.Enabled = true;
-            //            BtnArbeitsbeginn.Enabled = true;
-            //            BtnPausenbeginn.Enabled = false;
-            //            BtnArbeitsende.Enabled = false;
-            //            BtnPausenende.Enabled = false;
-            //            this.Height = 255;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden!";
-            //    }
-            //}
-            //else
-            //{
-            //    TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
-            //}
+            if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()) && !String.IsNullOrWhiteSpace(TxtPin.Text.Trim()))
+            {
+                ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+                m.KlartextPasswort = TxtPin.Text.Trim();
+                m.Passwort = Helper.GetHash(m.KlartextPasswort);
+                suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
+                //Absicherung wenn 0 bei Id daherkommt
+                if (suche.Count > 0)
+                {
+                    stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
+                }
+                //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
+                if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
+                {
+                    TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
+                    if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                        this.Height = 360;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = true;
+                        this.Height = 360;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                        this.Height = 360;
+                    }
+                    else
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = true;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = false;
+                        this.Height = 360;
+                    }
+                }
+                //Fälle für den Benutzer ohne Admin rechte
+                else if (suche.Count > 0)
+                {
+                    TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
+                    if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                        this.Height = 255;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = true;
+                        this.Height = 255;
+                    }
+                    else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = false;
+                        BtnPausenbeginn.Enabled = true;
+                        BtnArbeitsende.Enabled = true;
+                        BtnPausenende.Enabled = false;
+                        this.Height = 255;
+                    }
+                    else
+                    {
+                        BtnPasswortAendern.Enabled = true;
+                        BtnArbeitsbeginn.Enabled = true;
+                        BtnPausenbeginn.Enabled = false;
+                        BtnArbeitsende.Enabled = false;
+                        BtnPausenende.Enabled = false;
+                        this.Height = 255;
+                    }
+                }
+                else
+                {
+                    TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden!";
+                }
+            }
+            else
+            {
+                TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
+            }
             //************************Josef Ende ***********************************************************************************
-            this.PersonalnummerPruefen();
-            this.ButtonFreischalten();
+            //this.PersonalnummerPruefen();
+            //this.ButtonFreischalten();
         }
         /// <summary>
         /// Überprüft Personalnummer und PIN

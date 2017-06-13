@@ -39,7 +39,6 @@
             this.LblEintrittsdatum = new System.Windows.Forms.Label();
             this.LblVorname = new System.Windows.Forms.Label();
             this.LblPersonalnummer = new System.Windows.Forms.Label();
-            this.BtnSuchen = new System.Windows.Forms.Button();
             this.textBoxEintrittsdatum = new System.Windows.Forms.TextBox();
             this.textBoxVorname = new System.Windows.Forms.TextBox();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.CausesValidation = false;
             this.panel2.Controls.Add(this.dateTimePickerAustrittsdatum);
             this.panel2.Controls.Add(this.BtnPasswortZuruecksetzen);
             this.panel2.Controls.Add(this.LblAustrittsdatum);
@@ -59,7 +59,6 @@
             this.panel2.Controls.Add(this.LblEintrittsdatum);
             this.panel2.Controls.Add(this.LblVorname);
             this.panel2.Controls.Add(this.LblPersonalnummer);
-            this.panel2.Controls.Add(this.BtnSuchen);
             this.panel2.Controls.Add(this.textBoxEintrittsdatum);
             this.panel2.Controls.Add(this.textBoxVorname);
             this.panel2.Controls.Add(this.TxtPersonalnummer);
@@ -149,16 +148,6 @@
             this.LblPersonalnummer.TabIndex = 12;
             this.LblPersonalnummer.Text = "Personalnr.:";
             // 
-            // BtnSuchen
-            // 
-            this.BtnSuchen.Location = new System.Drawing.Point(250, 21);
-            this.BtnSuchen.Name = "BtnSuchen";
-            this.BtnSuchen.Size = new System.Drawing.Size(100, 23);
-            this.BtnSuchen.TabIndex = 2;
-            this.BtnSuchen.Text = "Suchen";
-            this.BtnSuchen.UseVisualStyleBackColor = true;
-            this.BtnSuchen.Click += new System.EventHandler(this.BtnSuchen_Click);
-            // 
             // textBoxEintrittsdatum
             // 
             this.textBoxEintrittsdatum.Location = new System.Drawing.Point(10, 129);
@@ -184,6 +173,7 @@
             // LblMitarbeiterBerarbeiten
             // 
             this.LblMitarbeiterBerarbeiten.AutoSize = true;
+            this.LblMitarbeiterBerarbeiten.CausesValidation = false;
             this.LblMitarbeiterBerarbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblMitarbeiterBerarbeiten.Location = new System.Drawing.Point(12, 9);
             this.LblMitarbeiterBerarbeiten.Name = "LblMitarbeiterBerarbeiten";
@@ -202,6 +192,7 @@
             this.Name = "MitarbeiterBearbeiten";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
+            this.Load += new System.EventHandler(this.MitarbeiterBearbeiten_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -223,7 +214,6 @@
         private System.Windows.Forms.TextBox textBoxVorname;
         private System.Windows.Forms.TextBox TxtPersonalnummer;
         private System.Windows.Forms.Label LblMitarbeiterBerarbeiten;
-        private System.Windows.Forms.Button BtnSuchen;
         private System.Windows.Forms.Button BtnPasswortZuruecksetzen;
         private System.Windows.Forms.DateTimePicker dateTimePickerAustrittsdatum;
     }

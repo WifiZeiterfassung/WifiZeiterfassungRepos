@@ -281,14 +281,6 @@ namespace ProjektZeiterfassung {
             
             private global::System.Data.DataColumn columnPersonalnummer;
             
-            private global::System.Data.DataColumn columnEintrittsDatum;
-            
-            private global::System.Data.DataColumn columnAustrittsDatum;
-            
-            private global::System.Data.DataColumn columnTagesSollZeit;
-            
-            private global::System.Data.DataColumn columnIsAdmin;
-            
             private global::System.Data.DataColumn columnVorname;
             
             private global::System.Data.DataColumn columnNachname;
@@ -331,38 +323,6 @@ namespace ProjektZeiterfassung {
             public global::System.Data.DataColumn PersonalnummerColumn {
                 get {
                     return this.columnPersonalnummer;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EintrittsDatumColumn {
-                get {
-                    return this.columnEintrittsDatum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AustrittsDatumColumn {
-                get {
-                    return this.columnAustrittsDatum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TagesSollZeitColumn {
-                get {
-                    return this.columnTagesSollZeit;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IsAdminColumn {
-                get {
-                    return this.columnIsAdmin;
                 }
             }
             
@@ -419,14 +379,10 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public View_1Row AddView_1Row(string Personalnummer, System.DateTime EintrittsDatum, System.DateTime AustrittsDatum, decimal TagesSollZeit, bool IsAdmin, string Vorname, string Nachname) {
+            public View_1Row AddView_1Row(string Personalnummer, string Vorname, string Nachname) {
                 View_1Row rowView_1Row = ((View_1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Personalnummer,
-                        EintrittsDatum,
-                        AustrittsDatum,
-                        TagesSollZeit,
-                        IsAdmin,
                         Vorname,
                         Nachname};
                 rowView_1Row.ItemArray = columnValuesArray;
@@ -452,10 +408,6 @@ namespace ProjektZeiterfassung {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnPersonalnummer = base.Columns["Personalnummer"];
-                this.columnEintrittsDatum = base.Columns["EintrittsDatum"];
-                this.columnAustrittsDatum = base.Columns["AustrittsDatum"];
-                this.columnTagesSollZeit = base.Columns["TagesSollZeit"];
-                this.columnIsAdmin = base.Columns["IsAdmin"];
                 this.columnVorname = base.Columns["Vorname"];
                 this.columnNachname = base.Columns["Nachname"];
             }
@@ -465,21 +417,11 @@ namespace ProjektZeiterfassung {
             private void InitClass() {
                 this.columnPersonalnummer = new global::System.Data.DataColumn("Personalnummer", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPersonalnummer);
-                this.columnEintrittsDatum = new global::System.Data.DataColumn("EintrittsDatum", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEintrittsDatum);
-                this.columnAustrittsDatum = new global::System.Data.DataColumn("AustrittsDatum", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAustrittsDatum);
-                this.columnTagesSollZeit = new global::System.Data.DataColumn("TagesSollZeit", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTagesSollZeit);
-                this.columnIsAdmin = new global::System.Data.DataColumn("IsAdmin", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsAdmin);
                 this.columnVorname = new global::System.Data.DataColumn("Vorname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVorname);
                 this.columnNachname = new global::System.Data.DataColumn("Nachname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNachname);
                 this.columnPersonalnummer.MaxLength = 4;
-                this.columnEintrittsDatum.AllowDBNull = false;
-                this.columnTagesSollZeit.AllowDBNull = false;
                 this.columnVorname.AllowDBNull = false;
                 this.columnVorname.MaxLength = 20;
                 this.columnNachname.AllowDBNull = false;
@@ -642,60 +584,6 @@ namespace ProjektZeiterfassung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime EintrittsDatum {
-                get {
-                    return ((global::System.DateTime)(this[this.tableView_1.EintrittsDatumColumn]));
-                }
-                set {
-                    this[this.tableView_1.EintrittsDatumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime AustrittsDatum {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableView_1.AustrittsDatumColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte AustrittsDatum in Tabelle View_1 ist DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableView_1.AustrittsDatumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TagesSollZeit {
-                get {
-                    return ((decimal)(this[this.tableView_1.TagesSollZeitColumn]));
-                }
-                set {
-                    this[this.tableView_1.TagesSollZeitColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAdmin {
-                get {
-                    try {
-                        return ((bool)(this[this.tableView_1.IsAdminColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IsAdmin in Tabelle View_1 ist DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableView_1.IsAdminColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vorname {
                 get {
                     return ((string)(this[this.tableView_1.VornameColumn]));
@@ -726,30 +614,6 @@ namespace ProjektZeiterfassung {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPersonalnummerNull() {
                 this[this.tableView_1.PersonalnummerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAustrittsDatumNull() {
-                return this.IsNull(this.tableView_1.AustrittsDatumColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAustrittsDatumNull() {
-                this[this.tableView_1.AustrittsDatumColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIsAdminNull() {
-                return this.IsNull(this.tableView_1.IsAdminColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIsAdminNull() {
-                this[this.tableView_1.IsAdminColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -913,10 +777,6 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "View_1";
             tableMapping.ColumnMappings.Add("Personalnummer", "Personalnummer");
-            tableMapping.ColumnMappings.Add("EintrittsDatum", "EintrittsDatum");
-            tableMapping.ColumnMappings.Add("AustrittsDatum", "AustrittsDatum");
-            tableMapping.ColumnMappings.Add("TagesSollZeit", "TagesSollZeit");
-            tableMapping.ColumnMappings.Add("IsAdmin", "IsAdmin");
             tableMapping.ColumnMappings.Add("Vorname", "Vorname");
             tableMapping.ColumnMappings.Add("Nachname", "Nachname");
             this._adapter.TableMappings.Add(tableMapping);
@@ -935,8 +795,7 @@ namespace ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Personalnummer, Vorname, Nachname, EintrittsDatum, AustrittsDatum, TagesSo" +
-                "llZeit, IsAdmin FROM dbo.View_1";
+            this._commandCollection[0].CommandText = "SELECT        Personalnummer, Vorname, Nachname\r\nFROM            View_1";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

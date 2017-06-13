@@ -64,37 +64,43 @@ namespace ProjektZeiterfassung.View
         EintrittAustritt ea = new EintrittAustritt();
         DbConnections con = new DbConnections();        
         ListeMitarbeiter suche = new ListeMitarbeiter();
+        public string PersonalnummerBearbeiten { get; set; }
 
         /// <summary>
         /// Sucht in der Datenbank an Hand der Personalnummer, Vorname oder Nachname nach den Mitarbeiterdaten
         /// </summary>
         private void BtnSuchen_Click(object sender, EventArgs e)
         {
-            //Prüfe ob Textbox befüllt ist
-            if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()))
-            {
-                ea.Personalnummer = TxtPersonalnummer.Text.Trim();
-                suche = con.MitarbeiterPersonalnummerSuchen(ea.Personalnummer);
-                if(suche.Count > 0)
-                {
-                    textBoxVorname.Text = suche.FirstOrDefault().Vorname;
-                    textBoxNachname.Text = suche.FirstOrDefault().Nachname;
-                    textBoxEintrittsdatum.Text = suche.FirstOrDefault().EintrittsDatum.ToShortDateString();
-                    //BtnSuchen.Enabled = false;
-                    //BtnPasswortZuruecksetzen.Enabled = true;
-                    //BtnSpeichern.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Personalnummer nicht existent!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    TxtPersonalnummer.BackColor = Color.Yellow;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Bitte eine Personalnummer eingeben!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                TxtPersonalnummer.BackColor = Color.Yellow;
-            }
+            MitarbeiterSuchen mitarbeitersuchen = new MitarbeiterSuchen();
+            mitarbeitersuchen.ShowDialog();
+
+            ////Prüfe ob Textbox befüllt ist
+            //if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()))
+            //{
+            //    ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+            //    suche = con.MitarbeiterPersonalnummerSuchen(ea.Personalnummer);
+            //    if(suche.Count > 0)
+            //    {
+            //        textBoxVorname.Text = suche.FirstOrDefault().Vorname;
+            //        textBoxNachname.Text = suche.FirstOrDefault().Nachname;
+            //        textBoxEintrittsdatum.Text = suche.FirstOrDefault().EintrittsDatum.ToShortDateString();
+            //        //BtnSuchen.Enabled = false;
+            //        //BtnPasswortZuruecksetzen.Enabled = true;
+            //        //BtnSpeichern.Enabled = true;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Personalnummer nicht existent!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        TxtPersonalnummer.BackColor = Color.Yellow;
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Bitte eine Personalnummer eingeben!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    TxtPersonalnummer.BackColor = Color.Yellow;
+            //}
+
+
             //SqlDataReader reader;
             //Datenbankverbindung con = new Datenbankverbindung();
             //using (var Connection = new System.Data.SqlClient.SqlConnection(con.DbConnection))
@@ -165,6 +171,19 @@ namespace ProjektZeiterfassung.View
                 
                 MessageBox.Show("Austrittsdatum muß Heute oder in der Zukunft sein!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
+        private void MitarbeiterBearbeiten_Load(object sender, EventArgs e)
+        {
+            MitarbeiterSuchen mitarbeitersuchen = new MitarbeiterSuchen();
+            mitarbeitersuchen.Close();
+            
+            ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+            textBoxVorname.Text = ErgebnisSuche.FirstOrDefault().Vorname;
+            textBoxNachname.Text = ErgebnisSuche.FirstOrDefault().Nachname;
+            textBoxEintrittsdatum.Text = ErgebnisSuche.FirstOrDefault().EintrittsDatum.ToShortDateString();
+            TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+
         }
     }
 }
