@@ -19,3 +19,12 @@ HAshPasswort Konsolenanwendung erzeugt 7 mal ein Hashwert des einzugebenen Klart
 für die Mitarbeiter
 **************************************************Ende Eintrag**************************************************
 Hier ist noch Platz für andere Informationen....
+
+Wir benötigen für die Zeitkorrektur eine Methode mit Rückgabewert einer Liste wo die Werte der Tabelle ZeitTypen enthält!!
+Weiters macht Florian ein Datagrid mit Dropdown Auswahl wo man die ZeiTypen auswählen kann um die Zeitkorrektur zu speichern.
+
+Abfrage von bis
+select *
+from dbo.Stempelzeiten as s
+where s.FK_Mitarbeiter = 7 and s.Zeitpunkt >= '2017-13-06'
+order by s.Zeitpunkt DESC
