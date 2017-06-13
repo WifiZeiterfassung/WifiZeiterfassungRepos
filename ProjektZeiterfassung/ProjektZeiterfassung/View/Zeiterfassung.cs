@@ -80,8 +80,8 @@ namespace ProjektZeiterfassung.View
         //Das Fenster Zeitkorrektur wird geöffnet
         private void BtnZeitkorrektur_Click(object sender, EventArgs e)
         {
-            Zeitkorrektur zeitkorrigieren = new View.Zeitkorrektur();
-            zeitkorrigieren.ShowDialog();
+            MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
+            mitarbeitersuchenzeitkorrektur.ShowDialog();
         }
         /// <summary>
         ///Überprüft Personalnummer und PIN und schaltet dann die Schaltflächen frei.

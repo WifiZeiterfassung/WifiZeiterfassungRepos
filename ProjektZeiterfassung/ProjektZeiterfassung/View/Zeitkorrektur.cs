@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//Klassenbibliothek einbinden
+using DatabaseConnections;
+using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
@@ -25,6 +28,8 @@ namespace ProjektZeiterfassung.View
         {
             InitializeComponent();
         }
+
+        public string PersonalnummerBearbeiten { get; set; } 
 
         private void BtnSuchen_Click(object sender, EventArgs e)
         {
@@ -67,6 +72,23 @@ namespace ProjektZeiterfassung.View
         private void BtnArbeitsende_Click(object sender, EventArgs e)
         {
             TextBoxPasswort.Text = "Folgende Zeitkorrektur wurde durchgeführt: " + Korrekturdatum + ": Arbeitsende: " + Korrekturzeit;
+        }
+
+
+        DbConnections con = new DbConnections();
+        ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
+
+        /// <summary>
+        /// Lädt das Fenster Zeitkorrektur mit der gewählten Personalnummer
+        /// </summary>
+        private void Zeitkorrektur_Load(object sender, EventArgs e)
+        {
+            MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
+            mitarbeitersuchenzeitkorrektur.Close();
+
+            ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+            TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+            TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
         }
     }
 }

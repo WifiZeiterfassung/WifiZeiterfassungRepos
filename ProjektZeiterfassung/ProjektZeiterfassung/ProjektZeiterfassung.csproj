@@ -87,6 +87,12 @@
     <Compile Include="View\MitarbeiterBearbeiten.Designer.cs">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MitarbeiterSuchenZeitkorrektur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MitarbeiterSuchenZeitkorrektur.Designer.cs">
+      <DependentUpon>MitarbeiterSuchenZeitkorrektur.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MitarbeiterSuchen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterBearbeiten.resx">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MitarbeiterSuchenZeitkorrektur.resx">
+      <DependentUpon>MitarbeiterSuchenZeitkorrektur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterSuchen.resx">
       <DependentUpon>MitarbeiterSuchen.cs</DependentUpon>

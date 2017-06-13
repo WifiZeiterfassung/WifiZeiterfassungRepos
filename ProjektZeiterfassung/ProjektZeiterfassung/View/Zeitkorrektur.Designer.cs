@@ -40,7 +40,6 @@
             this.BtnArbeitsbeginn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TxtBenutzerdaten = new System.Windows.Forms.TextBox();
-            this.BtnSuchen = new System.Windows.Forms.Button();
             this.LblBenutzerdaten = new System.Windows.Forms.Label();
             this.LblPersonalnummer = new System.Windows.Forms.Label();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
@@ -147,7 +146,6 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.TxtBenutzerdaten);
-            this.panel2.Controls.Add(this.BtnSuchen);
             this.panel2.Controls.Add(this.LblBenutzerdaten);
             this.panel2.Controls.Add(this.LblPersonalnummer);
             this.panel2.Controls.Add(this.TxtPersonalnummer);
@@ -161,29 +159,19 @@
             this.TxtBenutzerdaten.BackColor = System.Drawing.Color.PeachPuff;
             this.TxtBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBenutzerdaten.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TxtBenutzerdaten.Location = new System.Drawing.Point(249, 23);
+            this.TxtBenutzerdaten.Location = new System.Drawing.Point(130, 23);
             this.TxtBenutzerdaten.Multiline = true;
             this.TxtBenutzerdaten.Name = "TxtBenutzerdaten";
             this.TxtBenutzerdaten.ReadOnly = true;
-            this.TxtBenutzerdaten.Size = new System.Drawing.Size(221, 21);
+            this.TxtBenutzerdaten.Size = new System.Drawing.Size(339, 21);
             this.TxtBenutzerdaten.TabIndex = 100;
             this.TxtBenutzerdaten.TabStop = false;
-            // 
-            // BtnSuchen
-            // 
-            this.BtnSuchen.Location = new System.Drawing.Point(129, 21);
-            this.BtnSuchen.Name = "BtnSuchen";
-            this.BtnSuchen.Size = new System.Drawing.Size(100, 23);
-            this.BtnSuchen.TabIndex = 2;
-            this.BtnSuchen.Text = "Suchen";
-            this.BtnSuchen.UseVisualStyleBackColor = true;
-            this.BtnSuchen.Click += new System.EventHandler(this.BtnSuchen_Click);
             // 
             // LblBenutzerdaten
             // 
             this.LblBenutzerdaten.AutoSize = true;
             this.LblBenutzerdaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblBenutzerdaten.Location = new System.Drawing.Point(246, 4);
+            this.LblBenutzerdaten.Location = new System.Drawing.Point(127, 4);
             this.LblBenutzerdaten.Name = "LblBenutzerdaten";
             this.LblBenutzerdaten.Size = new System.Drawing.Size(79, 13);
             this.LblBenutzerdaten.TabIndex = 1;
@@ -248,6 +236,7 @@
             this.Name = "Zeitkorrektur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
+            this.Load += new System.EventHandler(this.Zeitkorrektur_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -271,7 +260,6 @@
         private System.Windows.Forms.TextBox TxtBenutzerdaten;
         private System.Windows.Forms.Label LblBenutzerdaten;
         private System.Windows.Forms.Label AnmeldeLabel;
-        private System.Windows.Forms.Button BtnSuchen;
         private System.Windows.Forms.Label LblUhrzeit;
         private System.Windows.Forms.DateTimePicker dateTimePickerDatum;
         private System.Windows.Forms.Label LblDatum;
