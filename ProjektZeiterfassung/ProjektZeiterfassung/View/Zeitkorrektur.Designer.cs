@@ -32,9 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeitkorrektur));
             this.panel3 = new System.Windows.Forms.Panel();
             this.stempelzeitenDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stempelzeitenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
             this.dateTimePickerDatumBeginn = new System.Windows.Forms.DateTimePicker();
@@ -62,6 +59,9 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stempelzeitenBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingSource)).BeginInit();
@@ -94,27 +94,6 @@
             this.stempelzeitenDataGridView.Name = "stempelzeitenDataGridView";
             this.stempelzeitenDataGridView.Size = new System.Drawing.Size(474, 250);
             this.stempelzeitenDataGridView.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "FK_Mitarbeiter";
-            this.dataGridViewTextBoxColumn1.HeaderText = "FK_Mitarbeiter";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Zeitpunkt";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Zeitpunkt";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ZeitTyp";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ZeitTyp";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // stempelzeitenBindingSource
             // 
@@ -361,6 +340,29 @@
             this.stempelzeitenBindingNavigatorSaveItem.Text = "Daten speichern";
             this.stempelzeitenBindingNavigatorSaveItem.Click += new System.EventHandler(this.stempelzeitenBindingNavigatorSaveItem_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "FK_Mitarbeiter";
+            this.dataGridViewTextBoxColumn1.HeaderText = "FK_Mitarbeiter";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Zeitpunkt";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Zeitpunkt";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ZeitTyp";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ZeitTyp";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // Zeitkorrektur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,10 +421,10 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton stempelzeitenBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView stempelzeitenDataGridView;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDatumEnde;
+        private System.Windows.Forms.Label LblDatumEnde;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDatumEnde;
-        private System.Windows.Forms.Label LblDatumEnde;
     }
 }
