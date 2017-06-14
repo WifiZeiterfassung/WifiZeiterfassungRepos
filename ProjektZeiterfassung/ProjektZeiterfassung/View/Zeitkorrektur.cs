@@ -17,11 +17,7 @@ namespace ProjektZeiterfassung.View
     {
         public string Korrekturdatum
         {
-            get { return dateTimePickerDatum.Text; }
-        }
-        public string Korrekturzeit
-        {
-            get { return dateTimePickerUhrzeit.Text; }
+            get { return dateTimePickerDatumBeginn.Text; }
         }
 
         public Zeitkorrektur()
@@ -54,27 +50,6 @@ namespace ProjektZeiterfassung.View
             }
         }
 
-        private void BtnArbeitsbeginn_Click(object sender, EventArgs e)
-        {
-            TextBoxPasswort.Text = "Folgende Zeitkorrektur wurde durchgeführt: " + Korrekturdatum + ": Arbeitsbeginn: " + Korrekturzeit;
-        }
-
-        private void BtnPausenbeginn_Click(object sender, EventArgs e)
-        {
-            TextBoxPasswort.Text = "Folgende Zeitkorrektur wurde durchgeführt: " + Korrekturdatum + ": Pausenbeginn: " + Korrekturzeit;
-        }
-
-        private void BtnPausenende_Click(object sender, EventArgs e)
-        {
-            TextBoxPasswort.Text = "Folgende Zeitkorrektur wurde durchgeführt: " + Korrekturdatum + ": Pausenende: " + Korrekturzeit;
-        }
-
-        private void BtnArbeitsende_Click(object sender, EventArgs e)
-        {
-            TextBoxPasswort.Text = "Folgende Zeitkorrektur wurde durchgeführt: " + Korrekturdatum + ": Arbeitsende: " + Korrekturzeit;
-        }
-
-
         DbConnections con = new DbConnections();
         ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
 
@@ -83,12 +58,54 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void Zeitkorrektur_Load(object sender, EventArgs e)
         {
+            //string Datum = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
+
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Stempelzeiten". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.stempelzeitenTableAdapter.Fill(this.zEIT2017DataSet3.Stempelzeiten);
             MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
             mitarbeitersuchenzeitkorrektur.Close();
+
+            //DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
+            //DV.RowFilter = "Zeitpunkt >= #" + Datum + "#";
+            //stempelzeitenDataGridView.DataSource = DV;
+            DataViewUpdater();
+
 
             ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
             TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
             TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
+            
+
+
+        }
+
+        private void stempelzeitenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.stempelzeitenBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.zEIT2017DataSet3);
+
+        }
+
+        private void dateTimePickerDatum_ValueChanged(object sender, EventArgs e)
+        {
+            DataViewUpdater();
+        }
+
+        private void dateTimePickerDatumEnde_ValueChanged(object sender, EventArgs e)
+        {
+            DataViewUpdater();
+        }
+
+        private void DataViewUpdater()
+        {
+            string DatumBeginn = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
+            string DatumEnde = dateTimePickerDatumEnde.Value.AddDays(1).Date.ToString("MM/dd/yyyy").Replace(".", "/");
+            int FKMitarbeiter = con.HoleFK_Mitarbeiter(TxtPersonalnummer.Text);
+
+            DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
+            DV.RowFilter = "Zeitpunkt > #" + DatumBeginn + "# And Zeitpunkt < #" + DatumEnde + "# And FK_Mitarbeiter = '"  + FKMitarbeiter + "'";
+            stempelzeitenDataGridView.DataSource = DV;
         }
     }
 }

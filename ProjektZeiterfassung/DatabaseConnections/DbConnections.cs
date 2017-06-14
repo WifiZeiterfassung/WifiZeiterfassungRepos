@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseConnections.Model;
+using System.Data.SqlTypes;
 
 namespace DatabaseConnections
 {
@@ -378,6 +379,46 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return TopPersonalnummer;
+        }
+
+        //sql-String welcher den FK_Mitarbeiter auf Grund der Personalnummer aus der Tabelle EintrittAustritt holt
+        //private string _HoleFK_Mitarbeiter = "SELECT ea.FK_Mitarbeiter FROM dbo.EintrittAustritt AS ea WHERE ea.Personalnummer = @PNR;";
+        private string _HoleFK_Mitarbeiter = "SELECT FK_Mitarbeiter FROM dbo.EintrittAustritt WHERE Personalnummer = @PNR;";
+        /// <summary>
+        /// Holt aus der Datenbank den FK_Mitarbeiter 
+        /// </summary>
+        /// <param name="ea">Personalnummer des Mitrbeiters</param>
+        /// <returns>Personalnummer als Integer</returns>
+        public int HoleFK_Mitarbeiter(string ea)
+        {
+            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            int FK_Mitarbeiter = 0;
+
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._HoleFK_Mitarbeiter, Connection))
+                {
+                    Befehl.Parameters.Add("@PNR", System.Data.SqlDbType.NVarChar).Value = ea;
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader.HasRows)
+                            { 
+                                //string tmpFK_Mitarbeiter = String.Empty;
+                                //tmpFK_Mitarbeiter = reader.GetValue(0).ToString();
+                                //FK_Mitarbeiter = Convert.ToInt32(tmpFK_Mitarbeiter);
+
+                                FK_Mitarbeiter = reader.GetInt32(reader.GetOrdinal("FK_Mitarbeiter"));
+                            }
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return FK_Mitarbeiter;
         }
     }
 }
