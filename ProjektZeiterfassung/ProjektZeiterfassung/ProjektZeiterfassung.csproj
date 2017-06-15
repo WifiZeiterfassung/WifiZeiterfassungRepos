@@ -123,6 +123,12 @@
     <Compile Include="View\alte Designs\Zeituebersicht.Designer.cs">
       <DependentUpon>Zeituebersicht.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ZeitTypenBearbeiten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ZeitTypenBearbeiten.Designer.cs">
+      <DependentUpon>ZeitTypenBearbeiten.cs</DependentUpon>
+    </Compile>
     <Compile Include="ZEIT2017DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +143,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ZEIT2017DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ZEIT2017DataSet3.cs">
+      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="ZEIT2017DataSet3.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -58,22 +58,30 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void Zeitkorrektur_Load(object sender, EventArgs e)
         {
-            //string Datum = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
+            try
+            {
+                //string Datum = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
 
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Stempelzeiten". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.stempelzeitenTableAdapter.Fill(this.zEIT2017DataSet3.Stempelzeiten);
-            MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
-            mitarbeitersuchenzeitkorrektur.Close();
+                // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Stempelzeiten". Sie können sie bei Bedarf verschieben oder entfernen.
+                this.stempelzeitenTableAdapter.Fill(this.zEIT2017DataSet3.Stempelzeiten);
+                MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
+                mitarbeitersuchenzeitkorrektur.Close();
 
-            //DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
-            //DV.RowFilter = "Zeitpunkt >= #" + Datum + "#";
-            //stempelzeitenDataGridView.DataSource = DV;
-            DataViewUpdater();
+                //DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
+                //DV.RowFilter = "Zeitpunkt >= #" + Datum + "#";
+                //stempelzeitenDataGridView.DataSource = DV;
+                DataViewUpdater();
 
 
-            ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
-            TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
-            TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
+                ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+                TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+                TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+            }
             
 
 
@@ -99,13 +107,21 @@ namespace ProjektZeiterfassung.View
 
         private void DataViewUpdater()
         {
-            string DatumBeginn = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
-            string DatumEnde = dateTimePickerDatumEnde.Value.AddDays(1).Date.ToString("MM/dd/yyyy").Replace(".", "/");
-            int FKMitarbeiter = con.HoleFK_Mitarbeiter(TxtPersonalnummer.Text);
+            try
+            {
+                string DatumBeginn = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
+                string DatumEnde = dateTimePickerDatumEnde.Value.AddDays(1).Date.ToString("MM/dd/yyyy").Replace(".", "/");
+                int FKMitarbeiter = con.HoleFK_Mitarbeiter(TxtPersonalnummer.Text);
 
-            DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
-            DV.RowFilter = "Zeitpunkt > #" + DatumBeginn + "# And Zeitpunkt < #" + DatumEnde + "# And FK_Mitarbeiter = '"  + FKMitarbeiter + "'";
-            stempelzeitenDataGridView.DataSource = DV;
+                DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
+                DV.RowFilter = "Zeitpunkt > #" + DatumBeginn + "# And Zeitpunkt < #" + DatumEnde + "# And FK_Mitarbeiter = '" + FKMitarbeiter + "'";
+                stempelzeitenDataGridView.DataSource = DV;
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+            }
         }
     }
 }

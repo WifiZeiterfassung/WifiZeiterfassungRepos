@@ -144,8 +144,16 @@ namespace ProjektZeiterfassung.View
         //Setzt das Passwort wieder zurück auf das Standardpasswort 123user!
         private void BtnPasswortZuruecksetzen_Click(object sender, EventArgs e)
         {
-            con.PasswortAendern(Convert.ToInt32(suche.FirstOrDefault().ID), Helper.GetHash("123user!"));
-            MessageBox.Show("Passwort wurde zurückgesetzt!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                con.PasswortAendern(Convert.ToInt32(suche.FirstOrDefault().ID), Helper.GetHash("123user!"));
+                MessageBox.Show("Passwort wurde zurückgesetzt!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+            }
         }
         /// <summary>
         /// Speichert das Austrittsdatum des Mitarbeiters
@@ -154,37 +162,52 @@ namespace ProjektZeiterfassung.View
         /// <param name="e"></param>
         private void BtnSpeichern_Click(object sender, EventArgs e)
         {
-            //Hilfsvariablen erzeugen
-            //Aktuelles Datum 
-            DateTime tmpDate = DateTime.Now;
-            //Eingegebenes Datum
-            DateTime tmpAkt = Convert.ToDateTime(dateTimePickerAustrittsdatum.Text);
-            //Wenn eingegebenes Datum Gleich oder grösser Aktuellem Datum ist dann 
-            //Da Mitarbeiter nicht in der Vergangenheit gekündigt werden kann
-            if(tmpAkt >= tmpDate)
+            try
             {
-                con.AustrittMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID), tmpAkt);
-                MessageBox.Show("Austrittsdatum wurde gespeichert!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Hilfsvariablen erzeugen
+                //Aktuelles Datum 
+                DateTime tmpDate = DateTime.Now;
+                //Eingegebenes Datum
+                DateTime tmpAkt = Convert.ToDateTime(dateTimePickerAustrittsdatum.Text);
+                //Wenn eingegebenes Datum Gleich oder grösser Aktuellem Datum ist dann 
+                //Da Mitarbeiter nicht in der Vergangenheit gekündigt werden kann
+                if (tmpAkt >= tmpDate)
+                {
+                    con.AustrittMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID), tmpAkt);
+                    MessageBox.Show("Austrittsdatum wurde gespeichert!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    MessageBox.Show("Austrittsdatum muß Heute oder in der Zukunft sein!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                
-                MessageBox.Show("Austrittsdatum muß Heute oder in der Zukunft sein!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Helper.LogError(ex.ToString());
+                MessageBox.Show("Speichern nicht erfolgreich!");
             }
         }
         ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
         private void MitarbeiterBearbeiten_Load(object sender, EventArgs e)
         {
-            MitarbeiterSuchen mitarbeitersuchen = new MitarbeiterSuchen();
-            mitarbeitersuchen.Close();
-            
-            ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
-            textBoxVorname.Text = ErgebnisSuche.FirstOrDefault().Vorname;
-            textBoxNachname.Text = ErgebnisSuche.FirstOrDefault().Nachname;
-            textBoxEintrittsdatum.Text = ErgebnisSuche.FirstOrDefault().EintrittsDatum.ToShortDateString();
-            TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
-            //dasfjklas
+            try
+            {
+                MitarbeiterSuchen mitarbeitersuchen = new MitarbeiterSuchen();
+                mitarbeitersuchen.Close();
 
+                ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+                textBoxVorname.Text = ErgebnisSuche.FirstOrDefault().Vorname;
+                textBoxNachname.Text = ErgebnisSuche.FirstOrDefault().Nachname;
+                textBoxEintrittsdatum.Text = ErgebnisSuche.FirstOrDefault().EintrittsDatum.ToShortDateString();
+                TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+            }
         }
     }
 }

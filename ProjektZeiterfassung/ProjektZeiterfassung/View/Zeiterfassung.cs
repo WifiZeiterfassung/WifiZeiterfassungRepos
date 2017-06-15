@@ -89,107 +89,115 @@ namespace ProjektZeiterfassung.View
         private void BtnAnmelden_Click(object sender, EventArgs e)
         {
             //von Josef mit Klassenbibliothek **********************************************************************************
-            if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()) && !String.IsNullOrWhiteSpace(TxtPin.Text.Trim()))
+            try
             {
-                ea.Personalnummer = TxtPersonalnummer.Text.Trim();
-                m.KlartextPasswort = TxtPin.Text.Trim();
-                m.Passwort = Helper.GetHash(m.KlartextPasswort);
-                suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
-                //Absicherung wenn 0 bei Id daherkommt
-                if (suche.Count > 0)
+                if (!String.IsNullOrWhiteSpace(TxtPersonalnummer.Text.Trim()) && !String.IsNullOrWhiteSpace(TxtPin.Text.Trim()))
                 {
-                    stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
-                }
-                //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
-                if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
-                {
-                    TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
-                    if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                    ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+                    m.KlartextPasswort = TxtPin.Text.Trim();
+                    m.Passwort = Helper.GetHash(m.KlartextPasswort);
+                    suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
+                    //Absicherung wenn 0 bei Id daherkommt
+                    if (suche.Count > 0)
                     {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = false;
-                        BtnPausenbeginn.Enabled = true;
-                        BtnArbeitsende.Enabled = true;
-                        BtnPausenende.Enabled = false;
-                        this.Height = 360;
+                        stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
                     }
-                    else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                    //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
+                    if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
                     {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = false;
-                        BtnPausenbeginn.Enabled = false;
-                        BtnArbeitsende.Enabled = false;
-                        BtnPausenende.Enabled = true;
-                        this.Height = 360;
+                        TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
+                        if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = false;
+                            BtnPausenbeginn.Enabled = true;
+                            BtnArbeitsende.Enabled = true;
+                            BtnPausenende.Enabled = false;
+                            this.Height = 360;
+                        }
+                        else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = false;
+                            BtnPausenbeginn.Enabled = false;
+                            BtnArbeitsende.Enabled = false;
+                            BtnPausenende.Enabled = true;
+                            this.Height = 360;
+                        }
+                        else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = false;
+                            BtnPausenbeginn.Enabled = true;
+                            BtnArbeitsende.Enabled = true;
+                            BtnPausenende.Enabled = false;
+                            this.Height = 360;
+                        }
+                        else
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = true;
+                            BtnPausenbeginn.Enabled = false;
+                            BtnArbeitsende.Enabled = false;
+                            BtnPausenende.Enabled = false;
+                            this.Height = 360;
+                        }
                     }
-                    else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                    //Fälle für den Benutzer ohne Admin rechte
+                    else if (suche.Count > 0)
                     {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = false;
-                        BtnPausenbeginn.Enabled = true;
-                        BtnArbeitsende.Enabled = true;
-                        BtnPausenende.Enabled = false;
-                        this.Height = 360;
+                        TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
+                        if (stList.Count > 0 && stList[0].ZeitTyp == 1)
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = false;
+                            BtnPausenbeginn.Enabled = true;
+                            BtnArbeitsende.Enabled = true;
+                            BtnPausenende.Enabled = false;
+                            this.Height = 255;
+                        }
+                        else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = false;
+                            BtnPausenbeginn.Enabled = false;
+                            BtnArbeitsende.Enabled = false;
+                            BtnPausenende.Enabled = true;
+                            this.Height = 255;
+                        }
+                        else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = false;
+                            BtnPausenbeginn.Enabled = true;
+                            BtnArbeitsende.Enabled = true;
+                            BtnPausenende.Enabled = false;
+                            this.Height = 255;
+                        }
+                        else
+                        {
+                            BtnPasswortAendern.Enabled = true;
+                            BtnArbeitsbeginn.Enabled = true;
+                            BtnPausenbeginn.Enabled = false;
+                            BtnArbeitsende.Enabled = false;
+                            BtnPausenende.Enabled = false;
+                            this.Height = 255;
+                        }
                     }
                     else
                     {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = true;
-                        BtnPausenbeginn.Enabled = false;
-                        BtnArbeitsende.Enabled = false;
-                        BtnPausenende.Enabled = false;
-                        this.Height = 360;
-                    }
-                }
-                //Fälle für den Benutzer ohne Admin rechte
-                else if (suche.Count > 0)
-                {
-                    TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
-                    if (stList.Count > 0 && stList[0].ZeitTyp == 1)
-                    {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = false;
-                        BtnPausenbeginn.Enabled = true;
-                        BtnArbeitsende.Enabled = true;
-                        BtnPausenende.Enabled = false;
-                        this.Height = 255;
-                    }
-                    else if (stList.Count > 0 && stList[0].ZeitTyp == 3)
-                    {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = false;
-                        BtnPausenbeginn.Enabled = false;
-                        BtnArbeitsende.Enabled = false;
-                        BtnPausenende.Enabled = true;
-                        this.Height = 255;
-                    }
-                    else if (stList.Count > 0 && stList[0].ZeitTyp == 4)
-                    {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = false;
-                        BtnPausenbeginn.Enabled = true;
-                        BtnArbeitsende.Enabled = true;
-                        BtnPausenende.Enabled = false;
-                        this.Height = 255;
-                    }
-                    else
-                    {
-                        BtnPasswortAendern.Enabled = true;
-                        BtnArbeitsbeginn.Enabled = true;
-                        BtnPausenbeginn.Enabled = false;
-                        BtnArbeitsende.Enabled = false;
-                        BtnPausenende.Enabled = false;
-                        this.Height = 255;
+                        TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden!";
                     }
                 }
                 else
                 {
-                    TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden!";
+                    TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
                 }
             }
-            else
-            {
-                TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
+            catch (Exception ex)
+            {                
+                Helper.LogError(ex.ToString());
+                MessageBox.Show("Fehler mit der Datenbankverbindung");
             }
             //************************Josef Ende * **********************************************************************************
             //this.PersonalnummerPruefen();
@@ -307,16 +315,24 @@ namespace ProjektZeiterfassung.View
         /// <param name="e"></param>
         private void BtnArbeitsbeginn_Click(object sender, EventArgs e)
         {
-            if (suche.Count > 0)
+            try
             {
+                if (suche.Count > 0)
+                {
 
-                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 1);
-                TxtBenutzerdaten.Text = String.Format("Arbeitsbeginn {0} gespeichert!", DateTime.Now);
-                BtnArbeitsbeginn.Enabled = false;
-                BtnArbeitsende.Enabled = true;
-                BtnPausenbeginn.Enabled = true;
-                BtnPausenende.Enabled = false;
-            
+                    con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 1);
+                    TxtBenutzerdaten.Text = String.Format("Arbeitsbeginn {0} gespeichert!", DateTime.Now);
+                    BtnArbeitsbeginn.Enabled = false;
+                    BtnArbeitsende.Enabled = true;
+                    BtnPausenbeginn.Enabled = true;
+                    BtnPausenende.Enabled = false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Helper.LogError(ex.ToString());
+                TxtBenutzerdaten.Text = "Arbeitsbeginn konnte nicht gespeichert werden!";
             }
         }
         /// <summary>
@@ -326,14 +342,22 @@ namespace ProjektZeiterfassung.View
         /// <param name="e"></param>
         private void BtnPausenbeginn_Click(object sender, EventArgs e)
         {
-            if (suche.Count > 0)
+            try
             {
-                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 3);
-                TxtBenutzerdaten.Text = String.Format("Pausebeginn {0} gespeichert!", DateTime.Now);
-                BtnArbeitsbeginn.Enabled = false;
-                BtnArbeitsende.Enabled = false;
-                BtnPausenbeginn.Enabled = false;
-                BtnPausenende.Enabled = true;
+                if (suche.Count > 0)
+                {
+                    con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 3);
+                    TxtBenutzerdaten.Text = String.Format("Pausebeginn {0} gespeichert!", DateTime.Now);
+                    BtnArbeitsbeginn.Enabled = false;
+                    BtnArbeitsende.Enabled = false;
+                    BtnPausenbeginn.Enabled = false;
+                    BtnPausenende.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Helper.LogError(ex.ToString());
+                TxtBenutzerdaten.Text = "Pausebeginn konnte nicht gespeichert werden!";
             }
         }
         /// <summary>
@@ -343,14 +367,23 @@ namespace ProjektZeiterfassung.View
         /// <param name="e"></param>
         private void BtnPausenende_Click(object sender, EventArgs e)
         {
-            if (suche.Count > 0)
+            try
             {
-                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 4);
-                TxtBenutzerdaten.Text = String.Format("Pauseende {0} gespeichert!", DateTime.Now);
-                BtnPausenende.Enabled = false;
-                BtnPausenbeginn.Enabled = true;
-                BtnArbeitsende.Enabled = true;
-                BtnArbeitsbeginn.Enabled = false;
+                if (suche.Count > 0)
+                {
+                    con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 4);
+                    TxtBenutzerdaten.Text = String.Format("Pauseende {0} gespeichert!", DateTime.Now);
+                    BtnPausenende.Enabled = false;
+                    BtnPausenbeginn.Enabled = true;
+                    BtnArbeitsende.Enabled = true;
+                    BtnArbeitsbeginn.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+                TxtBenutzerdaten.Text = "Pauseende konnte nicht gespeichert werden!";
             }
         }
         /// <summary>
@@ -360,14 +393,23 @@ namespace ProjektZeiterfassung.View
         /// <param name="e"></param>
         private void BtnArbeitsende_Click(object sender, EventArgs e)
         {
-            if (suche.Count > 0)
+            try
             {
-                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 2);
-                TxtBenutzerdaten.Text = String.Format("Pausebeginn {0} gespeichert!", DateTime.Now);
-                BtnArbeitsende.Enabled = false;
-                BtnArbeitsbeginn.Enabled = true;
-                BtnPausenbeginn.Enabled = false;
-                BtnPausenende.Enabled = false;
+                if (suche.Count > 0)
+                {
+                    con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, 2);
+                    TxtBenutzerdaten.Text = String.Format("Pausebeginn {0} gespeichert!", DateTime.Now);
+                    BtnArbeitsende.Enabled = false;
+                    BtnArbeitsbeginn.Enabled = true;
+                    BtnPausenbeginn.Enabled = false;
+                    BtnPausenende.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+                TxtBenutzerdaten.Text = "Arbeitsende konnte nicht gespeichert werden!";
             }
         }
     }

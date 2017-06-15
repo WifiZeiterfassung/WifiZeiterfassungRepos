@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
+//errorLog
+using System.IO;
 
 namespace DatabaseConnections.Model
 {
@@ -30,6 +29,47 @@ namespace DatabaseConnections.Model
             hashbytes = alg.ComputeHash(result);
             return hashbytes;
 
+        }
+        /// <summary>
+        /// Methode welche die Errormessage eines catchblocks in eine Datei schreibt oder erweitert um einen Log Eintrag
+        /// </summary>
+        /// <param name="message">Fehlermeldung als string</param>
+        public static void LogError(string message)
+        {
+            try
+            {
+                string path = @"LogFile.txt";
+                //Überprüfe ob der Dateipfad existiert wenn nicht wird er erzeugt
+                if (!File.Exists(path))
+                {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        string error = "\r\nLog geschrieben um : " + DateTime.Now.ToString() + "\r\nError in :\n" + message;
+                        sw.WriteLine(error);
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("-------------------------------------------------------------------");
+                        sb.Append(Environment.NewLine);
+                        sb.Append(DateTime.Now);
+                        sb.Append(" \t");
+                        sb.Append(message);
+                        sb.Append("----------------------------Ende-----------------------------------");
+                        sb.Append(Environment.NewLine);
+                        sw.WriteLine(sb);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

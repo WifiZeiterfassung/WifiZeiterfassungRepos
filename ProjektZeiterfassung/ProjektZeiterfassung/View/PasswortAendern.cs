@@ -44,56 +44,64 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void BtnSpeichern_Click(object sender, EventArgs e)
         {
-            //© by Josef
-            // Id des Benutzers aus Einstellungsdatei sprich Zwischenspeicher holen für Formübergreifende Daten 
-            m.ID = Properties.Settings.Default.FKMitarbeiter;
-            //prüfe ob auf Id ein Wert ungleich 0 steht
-            if(m.ID != 0)
+            try
             {
-                //Um das Passwort zu ändern müssen erst die Wert in den Textboxen gegengeprüft werden
-                //Lokale temporäre Hilfsvariablen anlegen
-                string tmpAltesPasswort = string.Empty;
-                string tmpHauptfensterPasswort = String.Empty;
-                string tmpPasswortvergleich = String.Empty;
-                string tmpNeuesPasswort = String.Empty;
-                //Abfrage/Vergleich mit Eingabe Altes Passwort
-                //Klartextpasswort aus Hauptfenster übernehmen
-                tmpHauptfensterPasswort = Properties.Settings.Default.KlartextPasswort;
-                //Prüfen ob Textboxen befüllt sind
-                if (!String.IsNullOrWhiteSpace(TxtAltesPasswort.Text)&&!String.IsNullOrWhiteSpace(TxtNeuesPasswort.Text)&&!String.IsNullOrWhiteSpace(TxtNeuesPasswort1.Text))
+                //© by Josef
+                // Id des Benutzers aus Einstellungsdatei sprich Zwischenspeicher holen für Formübergreifende Daten 
+                m.ID = Properties.Settings.Default.FKMitarbeiter;
+                //prüfe ob auf Id ein Wert ungleich 0 steht
+                if (m.ID != 0)
                 {
-                    //Mappen der Textboxdaten auf lokale Variable
-                    tmpAltesPasswort = TxtAltesPasswort.Text.Trim();
-                    //Prüfe ob gleiche Eingaben
-                    if (tmpAltesPasswort == tmpHauptfensterPasswort)
+                    //Um das Passwort zu ändern müssen erst die Wert in den Textboxen gegengeprüft werden
+                    //Lokale temporäre Hilfsvariablen anlegen
+                    string tmpAltesPasswort = string.Empty;
+                    string tmpHauptfensterPasswort = String.Empty;
+                    string tmpPasswortvergleich = String.Empty;
+                    string tmpNeuesPasswort = String.Empty;
+                    //Abfrage/Vergleich mit Eingabe Altes Passwort
+                    //Klartextpasswort aus Hauptfenster übernehmen
+                    tmpHauptfensterPasswort = Properties.Settings.Default.KlartextPasswort;
+                    //Prüfen ob Textboxen befüllt sind
+                    if (!String.IsNullOrWhiteSpace(TxtAltesPasswort.Text) && !String.IsNullOrWhiteSpace(TxtNeuesPasswort.Text) && !String.IsNullOrWhiteSpace(TxtNeuesPasswort1.Text))
                     {
-                        //Mappen der Textboxdaten auf die lokale Hilfsvariablen
-                        tmpNeuesPasswort = TxtNeuesPasswort.Text.Trim();
-                        tmpPasswortvergleich = TxtNeuesPasswort1.Text.Trim();
-                        //Prüfen ob Eingaben übereinstimmen
-                        if(tmpNeuesPasswort == tmpPasswortvergleich)
+                        //Mappen der Textboxdaten auf lokale Variable
+                        tmpAltesPasswort = TxtAltesPasswort.Text.Trim();
+                        //Prüfe ob gleiche Eingaben
+                        if (tmpAltesPasswort == tmpHauptfensterPasswort)
                         {
-                            //KlartextPasswort Hashen für Datenbank
-                            m.Passwort = Helper.GetHash(tmpNeuesPasswort);
-                            //Methode zum speichern der Daten in der Datenbank sprich Passwort des angemeldeten Benutzers
-                            con.PasswortAendern(m.ID, m.Passwort);
-                            //Meldung an Benutzer
-                            TextBoxPasswort.Text = "Passwort erfolgreich geändert!";
+                            //Mappen der Textboxdaten auf die lokale Hilfsvariablen
+                            tmpNeuesPasswort = TxtNeuesPasswort.Text.Trim();
+                            tmpPasswortvergleich = TxtNeuesPasswort1.Text.Trim();
+                            //Prüfen ob Eingaben übereinstimmen
+                            if (tmpNeuesPasswort == tmpPasswortvergleich)
+                            {
+                                //KlartextPasswort Hashen für Datenbank
+                                m.Passwort = Helper.GetHash(tmpNeuesPasswort);
+                                //Methode zum speichern der Daten in der Datenbank sprich Passwort des angemeldeten Benutzers
+                                con.PasswortAendern(m.ID, m.Passwort);
+                                //Meldung an Benutzer
+                                TextBoxPasswort.Text = "Passwort erfolgreich geändert!";
+                            }
+                            else
+                            {
+                                TextBoxPasswort.Text = "Neues Passwort stimmt nicht mit Passwortvergleich überein!";
+                            }
                         }
                         else
                         {
-                            TextBoxPasswort.Text = "Neues Passwort stimmt nicht mit Passwortvergleich überein!";
+                            TextBoxPasswort.Text = "Altes Passwort falsch!";
                         }
                     }
                     else
                     {
-                        TextBoxPasswort.Text = "Altes Passwort falsch!";
+                        TextBoxPasswort.Text = "Eingaben fehlen!";
                     }
                 }
-                else
-                {
-                    TextBoxPasswort.Text = "Eingaben fehlen!";
-                }                
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
             }
         // End of My ***********************************************************************************************************************    
         //    SqlDataReader reader;
