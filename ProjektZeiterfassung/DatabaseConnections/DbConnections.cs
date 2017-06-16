@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseConnections.Model;
 using System.Data.SqlTypes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace DatabaseConnections
 {
@@ -419,6 +421,30 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return FK_Mitarbeiter;
+        }
+
+        //sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank
+        private string _GetModus = "SELECT [Modus] FROM [ZEIT2017].[dbo].[Zeittypen]";
+
+        public DataTable GetModus()
+        {
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
+            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._GetModus, Connection))
+                {
+                    adapter.SelectCommand = Befehl;
+                    table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                    adapter.Fill(table);
+                }
+                Connection.Close();
+            }
+            return table;
         }
     }
 }

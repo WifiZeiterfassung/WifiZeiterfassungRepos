@@ -54,6 +54,7 @@
             this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AnmeldeLabel = new System.Windows.Forms.Label();
+            this.BtnZeittypenBearbeiten = new System.Windows.Forms.Button();
             this.PanelAdministrationsbereich.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -75,6 +76,7 @@
             // PanelAdministrationsbereich
             // 
             this.PanelAdministrationsbereich.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelAdministrationsbereich.Controls.Add(this.BtnZeittypenBearbeiten);
             this.PanelAdministrationsbereich.Controls.Add(this.BtnBenutzerUpdate);
             this.PanelAdministrationsbereich.Controls.Add(this.BtnZeitkorrektur);
             this.PanelAdministrationsbereich.Controls.Add(this.BtnBenutzerNeu);
@@ -294,6 +296,16 @@
             this.AnmeldeLabel.TabIndex = 22;
             this.AnmeldeLabel.Text = "Wifi Arbeitszeitfassung";
             // 
+            // BtnZeittypenBearbeiten
+            // 
+            this.BtnZeittypenBearbeiten.Location = new System.Drawing.Point(369, 14);
+            this.BtnZeittypenBearbeiten.Name = "BtnZeittypenBearbeiten";
+            this.BtnZeittypenBearbeiten.Size = new System.Drawing.Size(100, 37);
+            this.BtnZeittypenBearbeiten.TabIndex = 16;
+            this.BtnZeittypenBearbeiten.Text = "Zeittypen bearbeiten";
+            this.BtnZeittypenBearbeiten.UseVisualStyleBackColor = true;
+            this.BtnZeittypenBearbeiten.Click += new System.EventHandler(this.BtnZeittypenBearbeiten_Click);
+            // 
             // FormZeiterfassung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,5 +361,6 @@
         internal ZEIT2017DataSet zEIT2017DataSet;
         internal System.Windows.Forms.BindingSource mitarbeiterBindingSource;
         internal System.Windows.Forms.Label AnmeldeLabel;
+        internal System.Windows.Forms.Button BtnZeittypenBearbeiten;
     }
 }

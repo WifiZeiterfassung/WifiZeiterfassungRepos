@@ -60,18 +60,12 @@ namespace ProjektZeiterfassung.View
         {
             try
             {
-                //string Datum = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
-
                 // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Stempelzeiten". Sie können sie bei Bedarf verschieben oder entfernen.
                 this.stempelzeitenTableAdapter.Fill(this.zEIT2017DataSet3.Stempelzeiten);
                 MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
                 mitarbeitersuchenzeitkorrektur.Close();
 
-                //DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
-                //DV.RowFilter = "Zeitpunkt >= #" + Datum + "#";
-                //stempelzeitenDataGridView.DataSource = DV;
                 DataViewUpdater();
-
 
                 ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
                 TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
@@ -82,9 +76,6 @@ namespace ProjektZeiterfassung.View
 
                 Helper.LogError(ex.ToString());
             }
-            
-
-
         }
 
         private void stempelzeitenBindingNavigatorSaveItem_Click(object sender, EventArgs e)

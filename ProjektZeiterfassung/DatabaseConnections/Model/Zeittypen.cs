@@ -9,6 +9,13 @@ namespace DatabaseConnections.Model
     /// <summary>
     /// Stellt die Klasse für das Objekt einer Zeiterfassung bereit 
     /// </summary>
+    public class ListeZeittypen : System.Collections.Generic.List<Zeittypen>
+    {
+
+    }
+    /// <summary>
+    /// Stellt die Klasse für das Objekt einer Zeiterfassung bereit 
+    /// </summary>
     public class Zeittypen
     {
         /// <summary>
@@ -39,12 +46,12 @@ namespace DatabaseConnections.Model
         /// <summary>
         /// internes Hilfsfeld
         /// </summary>
-        private char _Modus;
+        private string _Modus;
 
         /// <summary>
         /// Stellt eine Eigenschaft für den Modus A-Anfang E-Ende bereit
         /// </summary>
-        public char Modus
+        public string Modus
         {
             get { return _Modus; }
             set { _Modus = value; }

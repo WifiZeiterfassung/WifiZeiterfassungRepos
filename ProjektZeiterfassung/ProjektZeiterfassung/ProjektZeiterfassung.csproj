@@ -87,6 +87,12 @@
     <Compile Include="View\MitarbeiterBearbeiten.Designer.cs">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ZeittypenBearbeiten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ZeittypenBearbeiten.Designer.cs">
+      <DependentUpon>ZeittypenBearbeiten.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MitarbeiterSuchenZeitkorrektur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +128,6 @@
     </Compile>
     <Compile Include="View\alte Designs\Zeituebersicht.Designer.cs">
       <DependentUpon>Zeituebersicht.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\ZeitTypenBearbeiten.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ZeitTypenBearbeiten.Designer.cs">
-      <DependentUpon>ZeitTypenBearbeiten.cs</DependentUpon>
     </Compile>
     <Compile Include="ZEIT2017DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -180,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterBearbeiten.resx">
       <DependentUpon>MitarbeiterBearbeiten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ZeittypenBearbeiten.resx">
+      <DependentUpon>ZeittypenBearbeiten.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterSuchenZeitkorrektur.resx">
       <DependentUpon>MitarbeiterSuchenZeitkorrektur.cs</DependentUpon>
