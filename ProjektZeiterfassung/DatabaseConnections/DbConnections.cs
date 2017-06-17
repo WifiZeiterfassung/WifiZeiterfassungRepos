@@ -425,7 +425,10 @@ namespace DatabaseConnections
 
         //sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank
         private string _GetModus = "SELECT [Modus] FROM [ZEIT2017].[dbo].[Zeittypen]";
-
+        /// <summary>
+        /// Methode die die Zeit-Modi zurück gibt
+        /// </summary>
+        /// <returns></returns>
         public DataTable GetModus()
         {
             DataTable table = new DataTable();

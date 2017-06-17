@@ -14,24 +14,24 @@ using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
+    /// <summary>
+    /// Methode um die Datenbankeinträge für die Zeittypen zu bearbeiten
+    /// </summary>
     public partial class ZeittypenBearbeiten : Form
     {
-        DataTable datatable;
-        DbConnections con = new DbConnections();
-        ListeZeittypen stList = new ListeZeittypen();
+        /// <summary>
+        /// Initalisiert das Fenster "Zeittypen bearbeiten"
+        /// </summary>
         public ZeittypenBearbeiten()
         {
             InitializeComponent();
         }
         private void ZeittypenBearbeiten_Load(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
-            fillComboBox();
             try
             {
-
+                // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
+                this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
             }
             catch (Exception ex)
             {
@@ -40,47 +40,26 @@ namespace ProjektZeiterfassung.View
                 
             }
         }
+        
         //private void fillComboBox()
         //{
+
+        //    datatable = con.GetModus();
         //    DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-
         //    combo.HeaderText = "Modus";
-        //    combo.Name = "Modus";
-        //    combo.Items.Add("A");
-        //    combo.Items.Add("E");
-        //    combo.DisplayMember = "A";
-        //    combo.ValueMember = "E";
+        //    combo.Name = "combo";
+        //    //combo.DataSource = datatable;
 
+        //    ArrayList row = new ArrayList();
+        //    foreach (DataRow r in datatable.Rows)
+        //    {
+        //        combo.Items.Add(r["Modus"].ToString());
+        //    }
+
+        //    //ADD THE COMBO TO DATAGRIDVIEW
         //    zeittypenDataGridView.Columns.Add(combo);
+        //    combo.DefaultCellStyle.NullValue = datatable.Rows[0][0].ToString();
+        //    combo.DefaultCellStyle.DataSourceNullValue = datatable.Rows[0][0].ToString();
         //}
-
-        private void fillComboBox()
-        {
-
-            datatable = con.GetModus();
-            DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-            combo.HeaderText = "Modus";
-            combo.Name = "combo";
-            //combo.DataSource = datatable;
-
-
-            ArrayList row = new ArrayList();
-
-            foreach (DataRow r in datatable.Rows)
-            {
-                //    row.Add(r["Modus"].ToString());
-                combo.Items.Add(r["Modus"].ToString());
-                //MessageBox.Show(r["Modus"].ToString());
-            }
-            ////ADD TO COMBO
-            //combo.Items.AddRange(row.ToArray());
-
-
-
-            //ADD THE COMBO TO DATAGRIDVIEW
-            zeittypenDataGridView.Columns.Add(combo);
-            combo.DefaultCellStyle.NullValue = datatable.Rows[0][0].ToString();
-            combo.DefaultCellStyle.DataSourceNullValue = datatable.Rows[0][0].ToString();
-        }
     }
 }

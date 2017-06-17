@@ -69,8 +69,10 @@
             // 
             // dateTimePickerAustrittsdatum
             // 
+            this.dateTimePickerAustrittsdatum.Checked = false;
             this.dateTimePickerAustrittsdatum.Location = new System.Drawing.Point(250, 128);
             this.dateTimePickerAustrittsdatum.Name = "dateTimePickerAustrittsdatum";
+            this.dateTimePickerAustrittsdatum.ShowCheckBox = true;
             this.dateTimePickerAustrittsdatum.Size = new System.Drawing.Size(220, 20);
             this.dateTimePickerAustrittsdatum.TabIndex = 6;
             // 

@@ -54,6 +54,10 @@ namespace ProjektZeiterfassung.View
         public MitarbeiterBearbeiten()
         {
             InitializeComponent();
+            dateTimePickerAustrittsdatum.Enabled = false;
+            dateTimePickerAustrittsdatum.Format = DateTimePickerFormat.Custom;
+            dateTimePickerAustrittsdatum.CustomFormat = " ";
+
             //dateTimePickerAustrittsdatum.Format = DateTimePickerFormat.Custom;
             //dateTimePickerAustrittsdatum.CustomFormat = " ";
             //BtnPasswortZuruecksetzen.Enabled = false;
@@ -162,24 +166,36 @@ namespace ProjektZeiterfassung.View
         /// <param name="e"></param>
         private void BtnSpeichern_Click(object sender, EventArgs e)
         {
+            //Hilfsvariablen erzeugen
+            //Aktuelles Datum 
+            DateTime tmpDate = DateTime.Now;
+            //Eingegebenes Datum
+            DateTime tmpAkt = Convert.ToDateTime(dateTimePickerAustrittsdatum.Text);
             try
             {
-                //Hilfsvariablen erzeugen
-                //Aktuelles Datum 
-                DateTime tmpDate = DateTime.Now;
-                //Eingegebenes Datum
-                DateTime tmpAkt = Convert.ToDateTime(dateTimePickerAustrittsdatum.Text);
-                //Wenn eingegebenes Datum Gleich oder grösser Aktuellem Datum ist dann 
-                //Da Mitarbeiter nicht in der Vergangenheit gekündigt werden kann
-                if (tmpAkt >= tmpDate)
+                if (dateTimePickerAustrittsdatum.Checked == true)
                 {
-                    con.AustrittMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID), tmpAkt);
-                    MessageBox.Show("Austrittsdatum wurde gespeichert!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dateTimePickerAustrittsdatum.Enabled = true;
+                    dateTimePickerAustrittsdatum.Format = DateTimePickerFormat.Short;
+                    //Wenn eingegebenes Datum Gleich oder grösser Aktuellem Datum ist dann 
+                    //Da Mitarbeiter nicht in der Vergangenheit gekündigt werden kann
+                    if (tmpAkt >= tmpDate)
+                    {
+                        con.AustrittMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID), tmpAkt);
+                        MessageBox.Show("Austrittsdatum wurde gespeichert!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Austrittsdatum muß Heute oder in der Zukunft sein!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-
-                    MessageBox.Show("Austrittsdatum muß Heute oder in der Zukunft sein!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dateTimePickerAustrittsdatum.Enabled = false;
+                    dateTimePickerAustrittsdatum.Format = DateTimePickerFormat.Custom;
+                    dateTimePickerAustrittsdatum.CustomFormat = " ";
+                    con.AustrittMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID), tmpAkt);
                 }
             }
             catch (Exception ex)
