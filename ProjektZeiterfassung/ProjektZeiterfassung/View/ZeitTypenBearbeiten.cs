@@ -32,6 +32,7 @@ namespace ProjektZeiterfassung.View
             {
                 // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
                 this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
+                ToolTips();
             }
             catch (Exception ex)
             {
@@ -40,7 +41,20 @@ namespace ProjektZeiterfassung.View
                 
             }
         }
-        
+        private void ToolTips()
+        {
+            DataGridViewColumn firstColumn = zeittypenDataGridView.Columns[0];
+            DataGridViewColumn secondColumn = zeittypenDataGridView.Columns[1];
+            DataGridViewColumn thirdColumn = zeittypenDataGridView.Columns[2];
+            DataGridViewColumn fourthColumn = zeittypenDataGridView.Columns[3];
+            DataGridViewColumn fifthColumn = zeittypenDataGridView.Columns[4];
+            firstColumn.ToolTipText = "Fortlaufende Nummer.";
+            secondColumn.ToolTipText = "Benennung des Zeittyp (max. 50 Zeichen).";
+            thirdColumn.ToolTipText = "Gibt an ob es der Anfang oder Ende des Zeittypes ist (A oder E).";
+            fourthColumn.ToolTipText = "Gibt die Abhängigkeit zu seinem Gegenstück an (z.B.: Typ 2 zu Typ 1).";
+            fifthColumn.ToolTipText = "Ein \"Anfangs-Zeittypen\" muss immer ein Hauptsatz sein." ;
+        }
+
         //private void fillComboBox()
         //{
 
