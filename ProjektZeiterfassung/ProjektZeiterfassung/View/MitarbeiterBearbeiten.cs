@@ -173,6 +173,10 @@ namespace ProjektZeiterfassung.View
             DateTime tmpAkt = Convert.ToDateTime(dateTimePickerAustrittsdatum.Text);
             try
             {
+                //m.Vorname = textBoxVorname.Text.Trim();
+                //m.Nachname = textBoxNachname.Text.Trim();
+                //ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+                //con.MitarbeiterUpdaten(m, ea);
                 if (dateTimePickerAustrittsdatum.Checked == true)
                 {
                     dateTimePickerAustrittsdatum.Enabled = true;
