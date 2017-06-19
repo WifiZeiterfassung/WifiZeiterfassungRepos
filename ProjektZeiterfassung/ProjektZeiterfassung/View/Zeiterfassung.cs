@@ -72,7 +72,7 @@ namespace ProjektZeiterfassung.View
         private void BtnBenutzerUpdate_Click(object sender, EventArgs e)
         {
             MitarbeiterAnlegen mitarbeiteranlegen = new MitarbeiterAnlegen();
-            mitarbeiteranlegen.ShowDialog();
+            mitarbeiteranlegen.Show();
         }
         /// <summary>
         /// Öffnet das Fenster zum Anlegen neuer Mitarbeiter
@@ -80,7 +80,7 @@ namespace ProjektZeiterfassung.View
         private void BtnBenutzerNeu_Click(object sender, EventArgs e)
         {
             MitarbeiterSuchen mitarbeitersuchen = new MitarbeiterSuchen();
-            mitarbeitersuchen.ShowDialog();
+            mitarbeitersuchen.Show();
         }
         /// <summary>
         /// Öffnet das Fenster für die Zeitkorrektur
@@ -88,7 +88,7 @@ namespace ProjektZeiterfassung.View
         private void BtnZeitkorrektur_Click(object sender, EventArgs e)
         {
             MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
-            mitarbeitersuchenzeitkorrektur.ShowDialog();
+            mitarbeitersuchenzeitkorrektur.Show();
         }
         /// <summary>
         /// Öffnet das Fenster für die Bearbeitung der Zeittypen
@@ -96,7 +96,7 @@ namespace ProjektZeiterfassung.View
         private void BtnZeittypenBearbeiten_Click(object sender, EventArgs e)
         {
             ZeittypenBearbeiten zeittypenbearbeiten = new ZeittypenBearbeiten();
-            zeittypenbearbeiten.ShowDialog();
+            zeittypenbearbeiten.Show();
         }
         /// <summary>
         ///Überprüft Personalnummer und PIN und schaltet dann die Schaltflächen frei.

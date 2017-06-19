@@ -81,14 +81,18 @@ namespace DatabaseConnections
             }
         }
 
+        private string _SqlStringAustritt = "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [AustrittsDatum] = @OutDate " +
+                                            "FROM[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
+                                            "JOIN[ZEIT2017].[dbo].[Mitarbeiter] AS m " +
+                                             "ON ea.FK_Mitarbeiter = m.ID WHERE ea.Personalnummer = @PNR";
         //SQL String fürs Update des AustrittsDatums
-        private string _SqlStringAustritt = "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [AustrittsDatum] = @OutDate WHERE [FK_Mitarbeiter] = @FK_ID;";
+        //private string _SqlStringAustritt = "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [AustrittsDatum] = @OutDate WHERE [FK_Mitarbeiter] = @PNR;";
         /// <summary>
         /// Methode speichert den Austritt eines Mitarbeiters
         /// </summary>
-        /// <param name="fk_id">Id des Mitarbeiters</param>
-        /// <param name="outdate">Hashwert des Klartextpassworts</param>
-        public void AustrittMitarbeiter(int fk_id, DateTime outdate)
+        /// <param name="Personalnummer">Personalnummer des Mitarbeiters</param>
+        /// <param name="outdate">Eingestelltes Datum</param>
+        public void AustrittMitarbeiter(string Personalnummer, DateTime outdate)
         {
             //Später wenn alles in Ortnung einen TRy Catch und finally block einfügen
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
@@ -96,7 +100,7 @@ namespace DatabaseConnections
                 Connection.Open();
                 using (var Befehl = new System.Data.SqlClient.SqlCommand(_SqlStringAustritt, Connection))
                 {
-                    Befehl.Parameters.Add("@FK_ID", System.Data.SqlDbType.Int).Value = fk_id;
+                    Befehl.Parameters.Add("@PNR", System.Data.SqlDbType.NVarChar).Value = Personalnummer;
                     Befehl.Parameters.Add("@OutDate", System.Data.SqlDbType.DateTime).Value = outdate;
                     Befehl.ExecuteNonQuery();
                 }
@@ -409,10 +413,6 @@ namespace DatabaseConnections
                         {
                             if (reader.HasRows)
                             { 
-                                //string tmpFK_Mitarbeiter = String.Empty;
-                                //tmpFK_Mitarbeiter = reader.GetValue(0).ToString();
-                                //FK_Mitarbeiter = Convert.ToInt32(tmpFK_Mitarbeiter);
-
                                 FK_Mitarbeiter = reader.GetInt32(reader.GetOrdinal("FK_Mitarbeiter"));
                             }
                         }
@@ -476,19 +476,48 @@ namespace DatabaseConnections
                     Befehl.Parameters.Add("@PNR", System.Data.SqlDbType.Int).Value = ea.Personalnummer;
                     Befehl.ExecuteNonQuery();
                 }
-                //Tabelle EintrittAustritt mit Id vom Mitarbeiter,Personalnummer,EintrittsDatum,SollZeit und IsAdmin befüllen
-                //using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.EintrittAustritt", Connection))
-                //{
-                //    Befehl.CommandText = this._sqlStringInsertEintrittAustritt;
-                //    Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = ea.FK_Mitarbeiter;
-                //    Befehl.Parameters.Add("@PerNr", System.Data.SqlDbType.NVarChar).Value = ea.Personalnummer;
-                //    Befehl.Parameters.Add("@EDatum", System.Data.SqlDbType.DateTime).Value = ea.EintrittsDatum;
-                //    Befehl.Parameters.Add("@SollZeit", System.Data.SqlDbType.Decimal).Value = ea.TagesSollZeit;
-                //    Befehl.Parameters.Add("@IsAdmin", System.Data.SqlDbType.Bit).Value = ea.IsAdmin;
-                //    Befehl.ExecuteNonQuery();
-                //}
                 Connection.Close();
             }
+        }
+
+
+        private string _sqlHolePasswort = "SELECT  m.Passwort " +
+                                             "FROM[ZEIT2017].[dbo].[Mitarbeiter] " + "AS m " +
+                                               "JOIN[ZEIT2017].[dbo].[EintrittAustritt] " + "AS ea " +
+                                                   "ON m.ID = ea.FK_Mitarbeiter " +
+                                             "WHERE m.ID = @ID; ";
+
+        /// <summary>
+        /// Holt aus der Datenbank den FK_Mitarbeiter 
+        /// </summary>
+        /// <param name="ea">Personalnummer des Mitrbeiters</param>
+        /// <returns>Personalnummer als Integer</returns>
+        public string HolePasswort(int ea)
+        {
+            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            string PasswortDB = string.Empty; 
+
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._sqlHolePasswort, Connection))
+                {
+                    Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = ea;
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader.HasRows)
+                            {
+                                PasswortDB = reader.GetValue(reader.GetOrdinal("Passwort")).ToString();
+                            }
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return PasswortDB;
         }
     }
 }

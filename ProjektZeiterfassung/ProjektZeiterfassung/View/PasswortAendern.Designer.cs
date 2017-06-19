@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswortAendern));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +40,13 @@
             this.TxtNeuesPasswort = new System.Windows.Forms.TextBox();
             this.TxtAltesPasswort = new System.Windows.Forms.TextBox();
             this.LblPasswortAendern = new System.Windows.Forms.Label();
+            this.errorProviderAltesPasswort = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderNeuesPasswort = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderNeuesPasswort1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAltesPasswort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNeuesPasswort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNeuesPasswort1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -142,6 +149,18 @@
             this.LblPasswortAendern.TabIndex = 6;
             this.LblPasswortAendern.Text = "Passwort ändern:";
             // 
+            // errorProviderAltesPasswort
+            // 
+            this.errorProviderAltesPasswort.ContainerControl = this;
+            // 
+            // errorProviderNeuesPasswort
+            // 
+            this.errorProviderNeuesPasswort.ContainerControl = this;
+            // 
+            // errorProviderNeuesPasswort1
+            // 
+            this.errorProviderNeuesPasswort1.ContainerControl = this;
+            // 
             // PasswortAendern
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +174,9 @@
             this.Text = "Wifi Arbeitszeitfassung";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAltesPasswort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNeuesPasswort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNeuesPasswort1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +194,8 @@
         private System.Windows.Forms.RichTextBox TextBoxPasswort;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNeuesPasswort1;
+        private System.Windows.Forms.ErrorProvider errorProviderAltesPasswort;
+        private System.Windows.Forms.ErrorProvider errorProviderNeuesPasswort;
+        private System.Windows.Forms.ErrorProvider errorProviderNeuesPasswort1;
     }
 }

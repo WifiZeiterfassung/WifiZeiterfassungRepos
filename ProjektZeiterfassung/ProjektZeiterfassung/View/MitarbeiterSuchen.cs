@@ -11,20 +11,27 @@ using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
+    /// <summary>
+    /// Das Formular zum Suchen des Mitarbeiters für die Mitarbeiterbearbeitung
+    /// </summary>
     public partial class MitarbeiterSuchen : Form
     {
-        DataTable datatable;
+        /// <summary>
+        /// Initialisiert das Fenster für die Suche des Mitarbeiters für die Mitarbeiterbearbeitung
+        /// </summary>
         public MitarbeiterSuchen()
         {
             InitializeComponent();
             textBoxSuche.Focus();
         }
-
+        /// <summary>
+        /// das Fenster für die Suche des Mitarbeiters für die Mitarbeiterbearbeitung wird geladen
+        /// </summary>
         private void MitarbeiterSuchen_Load(object sender, EventArgs e)
         {
             try
             {
-                // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.View_1". Sie können sie bei Bedarf verschieben oder entfernen.
+                // Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.View_1". Sie können sie bei Bedarf verschieben oder entfernen.
                 this.view_1TableAdapter.Fill(this.zEIT2017DataSet3.View_1);
             }
             catch (Exception ex)
@@ -34,7 +41,9 @@ namespace ProjektZeiterfassung.View
                 
             }
         }
-
+        /// <summary>
+        /// Dynamischer Filter für den Datagridview
+        /// </summary>
         private void textBoxSuche_TextChanged(object sender, EventArgs e)
         {
             try
@@ -48,22 +57,16 @@ namespace ProjektZeiterfassung.View
                 Helper.LogError(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Doppelklickevent um die Personalnummer an das Fenster MitarbeiterBearbeiten zu übergeben
+        /// </summary>
         private void view_1DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                string Personalnummer;
-                Personalnummer = view_1DataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
-                mitarbeiterbearbeiten.PersonalnummerBearbeiten = Personalnummer;
-                mitarbeiterbearbeiten.ShowDialog();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                Helper.LogError(ex.ToString());
-            }
+            string Personalnummer = view_1DataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            MitarbeiterBearbeiten mitarbeiterbearbeiten = new MitarbeiterBearbeiten();
+            mitarbeiterbearbeiten.PersonalnummerBearbeiten = Personalnummer;
+            mitarbeiterbearbeiten.Show();
+            this.Close();
         }
     }
 }

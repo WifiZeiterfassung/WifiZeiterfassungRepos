@@ -21,8 +21,9 @@ namespace ProjektZeiterfassung.View
         Mitarbeiter m = new Mitarbeiter();
         EintrittAustritt ea = new EintrittAustritt();
         DbConnections con = new DbConnections();
+
         /// <summary>
-        /// Konstruktor des Mitarbeiteranlegen Fensters
+        /// Initalisiert das Fenster "MitarbeiterAnlegen"
         /// </summary>
         public MitarbeiterAnlegen()
         {
@@ -30,11 +31,10 @@ namespace ProjektZeiterfassung.View
             BtnSpeichern.Enabled = false;
             TxtPersonalnummer.ReadOnly = true;
         }
+
         /// <summary>
-        /// Generiert eine neue Personalnummer
+        /// Generiert eine neue Personalnummer anhand der höchsten Personalnummer aus der Datenbank
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnPnGen_Click(object sender, EventArgs e)
         {
             //Aktuell höchste Personalnummer holen
@@ -53,8 +53,6 @@ namespace ProjektZeiterfassung.View
         /// <summary>
         /// Speichert einen neuen Mitarbeiter
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnSpeichern_Click(object sender, EventArgs e)
         {
             if(!String.IsNullOrWhiteSpace(TxtVorname.Text) && !String.IsNullOrWhiteSpace(TxtNachname.Text) && !String.IsNullOrWhiteSpace(TxtSollStunden.Text))
@@ -76,8 +74,7 @@ namespace ProjektZeiterfassung.View
                 TxtPersonalnummer.Text = String.Empty;
                 TxtVorname.Text = String.Empty;
                 TxtNachname.Text = String.Empty;
-                TxtSollStunden.Text = String.Empty;
-   
+                TxtSollStunden.Text = String.Empty;   
             }
             else
             {

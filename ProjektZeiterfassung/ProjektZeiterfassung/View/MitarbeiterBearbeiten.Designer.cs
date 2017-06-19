@@ -118,7 +118,7 @@
             // textBoxNachname
             // 
             this.textBoxNachname.Location = new System.Drawing.Point(250, 76);
-            this.textBoxNachname.MaxLength = 6;
+            this.textBoxNachname.MaxLength = 50;
             this.textBoxNachname.Name = "textBoxNachname";
             this.textBoxNachname.Size = new System.Drawing.Size(220, 20);
             this.textBoxNachname.TabIndex = 4;
@@ -161,6 +161,7 @@
             // textBoxVorname
             // 
             this.textBoxVorname.Location = new System.Drawing.Point(10, 75);
+            this.textBoxVorname.MaxLength = 50;
             this.textBoxVorname.Name = "textBoxVorname";
             this.textBoxVorname.Size = new System.Drawing.Size(210, 20);
             this.textBoxVorname.TabIndex = 3;
