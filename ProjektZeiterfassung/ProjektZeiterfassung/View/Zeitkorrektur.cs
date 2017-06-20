@@ -50,6 +50,10 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void Zeitkorrektur_Load(object sender, EventArgs e)
         {
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet4.Mitarbeiter". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.mitarbeiterTableAdapter.Fill(this.zEIT2017DataSet4.Mitarbeiter);
             try
             {
                 // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Stempelzeiten". Sie können sie bei Bedarf verschieben oder entfernen.

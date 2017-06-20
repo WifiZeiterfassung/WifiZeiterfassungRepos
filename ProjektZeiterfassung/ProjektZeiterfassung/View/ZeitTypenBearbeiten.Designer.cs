@@ -195,6 +195,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Neu hinzufügen";
+            this.bindingNavigatorAddNewItem.Visible = false;
             // 
             // bindingNavigatorCountItem
             // 
@@ -211,6 +212,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Löschen";
+            this.bindingNavigatorDeleteItem.Visible = false;
             // 
             // bindingNavigatorMoveFirstItem
             // 
