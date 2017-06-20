@@ -170,6 +170,7 @@
             // 
             this.TxtPersonalnummer.Location = new System.Drawing.Point(10, 23);
             this.TxtPersonalnummer.Name = "TxtPersonalnummer";
+            this.TxtPersonalnummer.ReadOnly = true;
             this.TxtPersonalnummer.Size = new System.Drawing.Size(210, 20);
             this.TxtPersonalnummer.TabIndex = 1;
             // 
