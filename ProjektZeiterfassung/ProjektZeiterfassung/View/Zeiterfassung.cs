@@ -115,7 +115,8 @@ namespace ProjektZeiterfassung.View
                     {
                         stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
                     }
-                    //Fälle für den Benutzer mit Admin rechten besser währe Fallentscheidung weniger wiederholungen
+                    //Fälle für den Benutzer mit Admin rechten
+                    //Fallentscheidung wäre vielleicht besser
                     if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
                     {
                         TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);

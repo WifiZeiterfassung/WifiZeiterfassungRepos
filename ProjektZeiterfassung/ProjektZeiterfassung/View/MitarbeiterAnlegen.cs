@@ -49,6 +49,7 @@ namespace ProjektZeiterfassung.View
             BtnPnGen.Enabled = false;
             //Speicherbutton enabeln
             BtnSpeichern.Enabled = true;
+            TxtMeldung.Text = string.Empty;
         }
         /// <summary>
         /// Speichert einen neuen Mitarbeiter

@@ -13,20 +13,25 @@ using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
+    /// <summary>
+    /// Fenster zum korrigieren der Stempelzeiten
+    /// </summary>
     public partial class Zeitkorrektur : Form
     {
-        public string Korrekturdatum
-        {
-            get { return dateTimePickerDatumBeginn.Text; }
-        }
-
+        /// <summary>
+        /// Fenster Zeitkorrektur wird initalisiert
+        /// </summary>
         public Zeitkorrektur()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Variable für die aktuelle Personalnummer
+        /// </summary>
         public string PersonalnummerBearbeiten { get; set; } 
-
+        /// <summary>
+        /// Nach den Mitarbeiterdaten in der Datenbank suchen und im Textfeld Vor- und Nachname anzeigen
+        /// </summary>
         private void BtnSuchen_Click(object sender, EventArgs e)
         {
             int Personalnummerint;
@@ -73,25 +78,32 @@ namespace ProjektZeiterfassung.View
                 Helper.LogError(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Bei Klick auf das Symbol werden die Daten in der Datenbank gespeichert
+        /// </summary>
         private void stempelzeitenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.stempelzeitenBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.zEIT2017DataSet3);
-
         }
-
+        /// <summary>
+        /// Event für Änderung des Wertes des DateTimePicker, wo das DataGridView aktualisiert wird
+        /// </summary>
         private void dateTimePickerDatum_ValueChanged(object sender, EventArgs e)
         {
             DataViewUpdater();
         }
-
+        /// <summary>
+        /// Event für Änderung des Wertes des DateTimePicker, wo das DataGridView aktualisiert wird
+        /// </summary>
         private void dateTimePickerDatumEnde_ValueChanged(object sender, EventArgs e)
         {
             DataViewUpdater();
         }
-
+        /// <summary>
+        /// Aktualisiert das DataGridView
+        /// </summary>
         private void DataViewUpdater()
         {
             try
