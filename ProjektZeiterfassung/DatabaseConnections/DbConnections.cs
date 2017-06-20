@@ -376,9 +376,12 @@ namespace DatabaseConnections
                     {
                         if (reader.Read())
                         {
-                            string tmpPersonalnummer = String.Empty;
-                            tmpPersonalnummer = reader.GetSqlString(reader.GetOrdinal("Personalnummer")).ToString();
-                            TopPersonalnummer = Convert.ToInt32(tmpPersonalnummer);                            
+                            if (reader.HasRows)
+                            {
+                                string tmpPersonalnummer = String.Empty;
+                                tmpPersonalnummer = reader.GetString(reader.GetOrdinal("Personalnummer")).ToString();
+                                TopPersonalnummer = Convert.ToInt32(tmpPersonalnummer); 
+                            }                            
                         }
                     }
                 }
