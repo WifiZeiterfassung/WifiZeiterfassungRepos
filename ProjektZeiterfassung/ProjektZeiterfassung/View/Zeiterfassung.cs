@@ -32,13 +32,6 @@ namespace ProjektZeiterfassung.View
 
         //******************************************************************************************************************
 
-
-
-        private string _SqlString = "SELECT [Personalnummer] AS Personalnummer, [Vorname] AS Vorname, [Nachname] AS Nachname, [IsAdmin] AS IsAdmin "+
-                                    "FROM[ZEIT2017].[dbo].[Mitarbeiter] "+
-                                    "JOIN[ZEIT2017].[dbo].[EintrittAustritt] "+
-                                    "ON FK_Mitarbeiter = [ZEIT2017].[dbo].[Mitarbeiter].ID "+
-                                    "WHERE Personalnummer = ";
         /// <summary>
         /// Initialisiert eine neue Instanz.
         /// </summary>
@@ -52,19 +45,24 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void BtnPasswortAendern_Click(object sender, EventArgs e)
         {
-            if(suche.Count > 0)
+            ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+            m.KlartextPasswort = TxtPin.Text.Trim();
+            m.Passwort = Helper.GetHash(m.KlartextPasswort);
+            suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
+
+            if (suche.Count > 0)
             {
                 //Daten in den Einstellungen zwischenspeichern für neues Fenster
                 Properties.Settings.Default.FKMitarbeiter = Convert.ToInt32(suche[0].ID);
                 Properties.Settings.Default.KlartextPasswort = m.KlartextPasswort;
                 PasswortAendern neuespasswort = new PasswortAendern();
                 neuespasswort.ShowDialog();
-               
-            }else
-            {
-                TxtBenutzerdaten.Text = "Bitte nochmal anmelden zum Passwort ändern!";
             }
-            
+            else
+            {
+                TxtBenutzerdaten.Text = "Bitte erneut mit dem geänderten Passwort anmelden!";
+            }
+
         }
         /// <summary>
         /// Öffnet das Fenster zum Bearbeiten der Mitarbeiterdaten
@@ -314,6 +312,7 @@ namespace ProjektZeiterfassung.View
                 TxtBenutzerdaten.Text = "Arbeitsende konnte nicht gespeichert werden!";
             }
         }
+
         /// <summary>
         /// Überprüft Personalnummer und PIN
         /// </summary>

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using ProjektZeiterfassung.Model;
+using System.Threading;
 //Klassenbibliothek DatabaseConnection einbinden
 using DatabaseConnections;
 using DatabaseConnections.Model;
@@ -31,11 +31,6 @@ namespace ProjektZeiterfassung.View
         }
 
         /// <summary>
-        /// Stellt die aktuell eingloggte Personalnummer zur Verfügung
-        /// </summary>
-        public string Personalnummer { get; internal set; }
-
-        /// <summary>
         /// Speichert das neue Passwort in die Datenbank
         /// </summary>
         private void BtnSpeichern_Click(object sender, EventArgs e)
@@ -45,49 +40,62 @@ namespace ProjektZeiterfassung.View
                 //© by Josef
                 // Id des Benutzers aus Einstellungsdatei sprich Zwischenspeicher holen für Formübergreifende Daten 
                 m.ID = Properties.Settings.Default.FKMitarbeiter;
-                string PasswortDB = con.HolePasswort(m.ID);
+                string aktuellesPasswort = string.Empty;
+                aktuellesPasswort= Properties.Settings.Default.KlartextPasswort;
+
                 //prüfe ob auf Id ein Wert ungleich 0 steht
                 if (m.ID != 0)
                 {
                     string tmpAltesPasswort = string.Empty;
                     string tmpNeuesPasswort = string.Empty;
                     string tmpNeuesPasswort1 = string.Empty;
+                    tmpAltesPasswort = TxtAltesPasswort.Text.Trim();
+                    tmpNeuesPasswort = TxtNeuesPasswort.Text.Trim();
+                    tmpNeuesPasswort1 = TxtNeuesPasswort1.Text.Trim();
 
-                    //Abfrage/Vergleich mit Eingabe Altes Passwort
-                    //Klartextpasswort aus Hauptfenster übernehmen
-                    //Prüfen ob Textboxen befüllt sind
+                    //Prüfen ob alle Eingaben gemacht wurden
                     if (!String.IsNullOrWhiteSpace(TxtAltesPasswort.Text) && !String.IsNullOrWhiteSpace(TxtNeuesPasswort.Text) && !String.IsNullOrWhiteSpace(TxtNeuesPasswort1.Text))
                     {
-                        //Mappen der Textboxdaten auf lokale Variable
-                        tmpAltesPasswort = TxtAltesPasswort.Text.Trim();
-                        tmpNeuesPasswort = TxtNeuesPasswort.Text.Trim();
-                        tmpNeuesPasswort1 = TxtNeuesPasswort1.Text.Trim();
-                        //Prüfe ob gleiche Eingaben
-                        if (tmpNeuesPasswort == tmpNeuesPasswort1)
+                        //Prüfen ob das alte Passwort korrekt ist
+                        if (tmpAltesPasswort == aktuellesPasswort)
                         {
-                            errorProviderAltesPasswort.SetError(TxtAltesPasswort, "Die neuen Passwörter stimmen nicht überein!!");
-                            //KlartextPasswort Hashen für Datenbank
-                            m.Passwort = Helper.GetHash(tmpNeuesPasswort);
-                            //Methode zum speichern der Daten in der Datenbank sprich Passwort des angemeldeten Benutzers
-                            con.PasswortAendern(m.ID, m.Passwort);
-                            //Meldung an Benutzer
-                            TextBoxPasswort.Text = "Passwort erfolgreich geändert!";
+                            //Prüfe ob die neuen Passwörter identisch sind
+                            if (tmpNeuesPasswort == tmpNeuesPasswort1)
+                            {
+                                //KlartextPasswort Hashen für Datenbank
+                                m.Passwort = Helper.GetHash(tmpNeuesPasswort);
+                                //Methode zum speichern der Daten in der Datenbank sprich Passwort des angemeldeten Benutzers
+                                con.PasswortAendern(m.ID, m.Passwort);
+                                //Meldung an Benutzer
+                                TextBoxPasswort.Text = "Passwort erfolgreich geändert!";
+                                //Die Form refreshen, da sonst der Text in der Textbox nicht angezeigt wird
+                                this.Refresh();                                
+                                //2 Sekunden warten und dann das Fenster schließen.
+                                Thread.Sleep(1000);                                                                
+                                this.Close();
+                            }
+                            else
+                            {
+                                errorProviderNeuesPasswort.SetError(TxtNeuesPasswort, "Die neuen Passwörter stimmen nicht überein!");
+                                errorProviderNeuesPasswort1.SetError(TxtNeuesPasswort1, "Die neuen Passwörter stimmen nicht überein!");
+                                TextBoxPasswort.Text = "Die neuen Passwörter stimmen nicht überein!";
+                            }
                         }
                         else
                         {
-                            TextBoxPasswort.Text = "Die neuen Passwörter stimmen nicht überein!";
+                            errorProviderAltesPasswort.SetError(TxtAltesPasswort, "Das alte Passwort ist nicht korrekt!");
+                            TextBoxPasswort.Text = "Das alte Passwort ist nicht korrekt!";
                         }
                     }
-
                     else
                     {
                         TextBoxPasswort.Text = "Eingaben fehlen!";
                     }
                 }
+
             }
             catch (Exception ex)
             {
-
                 Helper.LogError(ex.ToString());
             }
         }
