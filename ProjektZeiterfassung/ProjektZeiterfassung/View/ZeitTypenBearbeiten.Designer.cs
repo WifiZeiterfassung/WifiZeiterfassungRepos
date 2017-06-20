@@ -40,11 +40,9 @@
             this.zeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
             this.LblZeittypenBearbeiten = new System.Windows.Forms.Label();
-            this.view_1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.view_1TableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.View_1TableAdapter();
             this.tableAdapterManager = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.TableAdapterManager();
             this.zeittypenTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter();
-            this.stempelzeitenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.ZeittypenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -62,9 +60,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingNavigator)).BeginInit();
-            this.stempelzeitenBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZeittypenBindingNavigator)).BeginInit();
+            this.ZeittypenBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -149,15 +146,6 @@
             this.LblZeittypenBearbeiten.TabIndex = 42;
             this.LblZeittypenBearbeiten.Text = "Zeittypen bearbeiten:";
             // 
-            // view_1BindingSource
-            // 
-            this.view_1BindingSource.DataMember = "View_1";
-            this.view_1BindingSource.DataSource = this.zEIT2017DataSet3;
-            // 
-            // view_1TableAdapter
-            // 
-            this.view_1TableAdapter.ClearBeforeFill = true;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -170,12 +158,12 @@
             // 
             this.zeittypenTableAdapter.ClearBeforeFill = true;
             // 
-            // stempelzeitenBindingNavigator
+            // ZeittypenBindingNavigator
             // 
-            this.stempelzeitenBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.stempelzeitenBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.stempelzeitenBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.stempelzeitenBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ZeittypenBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.ZeittypenBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.ZeittypenBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.ZeittypenBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -188,16 +176,16 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.stempelzeitenBindingNavigatorSaveItem});
-            this.stempelzeitenBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.stempelzeitenBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.stempelzeitenBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.stempelzeitenBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.stempelzeitenBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.stempelzeitenBindingNavigator.Name = "stempelzeitenBindingNavigator";
-            this.stempelzeitenBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.stempelzeitenBindingNavigator.Size = new System.Drawing.Size(504, 25);
-            this.stempelzeitenBindingNavigator.TabIndex = 43;
-            this.stempelzeitenBindingNavigator.Text = "bindingNavigator1";
+            this.ZeittypenBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.ZeittypenBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.ZeittypenBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.ZeittypenBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.ZeittypenBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.ZeittypenBindingNavigator.Name = "ZeittypenBindingNavigator";
+            this.ZeittypenBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.ZeittypenBindingNavigator.Size = new System.Drawing.Size(504, 25);
+            this.ZeittypenBindingNavigator.TabIndex = 43;
+            this.ZeittypenBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -291,13 +279,14 @@
             this.stempelzeitenBindingNavigatorSaveItem.Name = "stempelzeitenBindingNavigatorSaveItem";
             this.stempelzeitenBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.stempelzeitenBindingNavigatorSaveItem.Text = "Daten speichern";
+            this.stempelzeitenBindingNavigatorSaveItem.Click += new System.EventHandler(this.ZeittypenBindingNavigatorSaveItem_Click);
             // 
             // ZeittypenBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 319);
-            this.Controls.Add(this.stempelzeitenBindingNavigator);
+            this.Controls.Add(this.ZeittypenBindingNavigator);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.LblZeittypenBearbeiten);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -309,10 +298,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingNavigator)).EndInit();
-            this.stempelzeitenBindingNavigator.ResumeLayout(false);
-            this.stempelzeitenBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZeittypenBindingNavigator)).EndInit();
+            this.ZeittypenBindingNavigator.ResumeLayout(false);
+            this.ZeittypenBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,15 +309,13 @@
         #endregion
 
         private ZEIT2017DataSet3 zEIT2017DataSet3;
-        private System.Windows.Forms.BindingSource view_1BindingSource;
-        private ZEIT2017DataSet3TableAdapters.View_1TableAdapter view_1TableAdapter;
         private ZEIT2017DataSet3TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label LblZeittypenBearbeiten;
         private System.Windows.Forms.BindingSource zeittypenBindingSource;
         private ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter zeittypenTableAdapter;
         private System.Windows.Forms.DataGridView zeittypenDataGridView;
-        private System.Windows.Forms.BindingNavigator stempelzeitenBindingNavigator;
+        private System.Windows.Forms.BindingNavigator ZeittypenBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;

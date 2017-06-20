@@ -55,6 +55,13 @@ namespace ProjektZeiterfassung.View
             fifthColumn.ToolTipText = "Ein \"Anfangs-Zeittypen\" muss immer ein Hauptsatz sein." ;
         }
 
+        private void ZeittypenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.zeittypenBindingSource.EndEdit();
+            this.zeittypenTableAdapter.Update(this.zEIT2017DataSet3.Zeittypen);
+        }
+
         //private void fillComboBox()
         //{
 

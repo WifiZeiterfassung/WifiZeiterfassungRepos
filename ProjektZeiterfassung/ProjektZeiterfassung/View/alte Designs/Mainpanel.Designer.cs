@@ -40,15 +40,19 @@
             this.BedienungsPanel = new System.Windows.Forms.Panel();
             this.BtnÜbersicht = new System.Windows.Forms.Button();
             this.BtnZeiterfassung = new System.Windows.Forms.Button();
-            this.AuswahlLabel = new System.Windows.Forms.Label();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.sdafToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dsafdsafafToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AnmeldePanel.SuspendLayout();
             this.PersonenDatenPanel.SuspendLayout();
             this.BedienungsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AnmeldePanel
@@ -128,7 +132,7 @@
             this.BedienungsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.BedienungsPanel.Controls.Add(this.BtnÜbersicht);
             this.BedienungsPanel.Controls.Add(this.BtnZeiterfassung);
-            this.BedienungsPanel.Controls.Add(this.AuswahlLabel);
+            this.BedienungsPanel.Controls.Add(this.menuStrip1);
             this.BedienungsPanel.Location = new System.Drawing.Point(9, 158);
             this.BedienungsPanel.Name = "BedienungsPanel";
             this.BedienungsPanel.Size = new System.Drawing.Size(480, 202);
@@ -137,7 +141,7 @@
             // BtnÜbersicht
             // 
             this.BtnÜbersicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnÜbersicht.Location = new System.Drawing.Point(21, 28);
+            this.BtnÜbersicht.Location = new System.Drawing.Point(19, 81);
             this.BtnÜbersicht.Name = "BtnÜbersicht";
             this.BtnÜbersicht.Padding = new System.Windows.Forms.Padding(5);
             this.BtnÜbersicht.Size = new System.Drawing.Size(140, 44);
@@ -148,23 +152,13 @@
             // BtnZeiterfassung
             // 
             this.BtnZeiterfassung.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnZeiterfassung.Location = new System.Drawing.Point(306, 28);
+            this.BtnZeiterfassung.Location = new System.Drawing.Point(285, 104);
             this.BtnZeiterfassung.Name = "BtnZeiterfassung";
             this.BtnZeiterfassung.Padding = new System.Windows.Forms.Padding(5);
             this.BtnZeiterfassung.Size = new System.Drawing.Size(140, 44);
             this.BtnZeiterfassung.TabIndex = 5;
             this.BtnZeiterfassung.Text = "Zeiterfassung...";
             this.BtnZeiterfassung.UseVisualStyleBackColor = true;
-            // 
-            // AuswahlLabel
-            // 
-            this.AuswahlLabel.AutoSize = true;
-            this.AuswahlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuswahlLabel.Location = new System.Drawing.Point(3, 0);
-            this.AuswahlLabel.Name = "AuswahlLabel";
-            this.AuswahlLabel.Size = new System.Drawing.Size(69, 20);
-            this.AuswahlLabel.TabIndex = 2;
-            this.AuswahlLabel.Text = "Auswahl";
             // 
             // mitarbeiterBindingSource
             // 
@@ -180,6 +174,36 @@
             // 
             this.mitarbeiterTableAdapter.ClearBeforeFill = true;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox1,
+            this.sdafToolStripMenuItem,
+            this.dsafdsafafToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(476, 27);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Text = "sdf";
+            // 
+            // sdafToolStripMenuItem
+            // 
+            this.sdafToolStripMenuItem.Name = "sdafToolStripMenuItem";
+            this.sdafToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
+            this.sdafToolStripMenuItem.Text = "sdaf";
+            // 
+            // dsafdsafafToolStripMenuItem
+            // 
+            this.dsafdsafafToolStripMenuItem.Name = "dsafdsafafToolStripMenuItem";
+            this.dsafdsafafToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
+            this.dsafdsafafToolStripMenuItem.Text = "dsafdsafaf";
+            // 
             // Mainpanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +215,7 @@
             this.Controls.Add(this.AnmeldePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Mainpanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptfenster Zeiterfassung";
@@ -203,6 +228,8 @@
             this.BedienungsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -219,9 +246,12 @@
         private System.Windows.Forms.Panel BedienungsPanel;
         private System.Windows.Forms.Button BtnÜbersicht;
         private System.Windows.Forms.Button BtnZeiterfassung;
-        private System.Windows.Forms.Label AuswahlLabel;
         private ZEIT2017DataSet zEIT2017DataSet;
         private System.Windows.Forms.BindingSource mitarbeiterBindingSource;
         private ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter mitarbeiterTableAdapter;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem sdafToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dsafdsafafToolStripMenuItem;
     }
 }

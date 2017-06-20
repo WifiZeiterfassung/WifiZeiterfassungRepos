@@ -32,14 +32,6 @@ namespace ProjektZeiterfassung.View
             int Personalnummerint;
             bool parsed = Int32.TryParse(TxtPersonalnummer.Text, out Personalnummerint);
 
-            //Sql Statement
-            //SELECT    Personalnummer AS DbPersonalnummer
-            //            ,Pin AS DbPin
-            //            ,IsAdmin AS DbAdmin
-            //            ,Vorname AS DbVorname
-            //            ,Nachname AS DbNachname
-            //            FROM dbo.Mitarbeiter WHERE Personalnummer = 'PersonalNummer'
-
             if (Personalnummerint == 1)
             {
                 TxtBenutzerdaten.Text = "DbVorname + DbNachname";
