@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DatabaseConnections.DbConnections">
+    <Position X="12.75" Y="1" Width="2" />
+    <Members>
+      <Field Name="_DbConnection" Hidden="true" />
+      <Field Name="_GetModus" Hidden="true" />
+      <Field Name="_HoleFK_Mitarbeiter" Hidden="true" />
+      <Field Name="_HoleTopPersonalnummer" Hidden="true" />
+      <Field Name="_SaveArbeitsBeginn" Hidden="true" />
+      <Field Name="_sqlHolePasswort" Hidden="true" />
+      <Field Name="_SqlString" Hidden="true" />
+      <Field Name="_SqlStringAustritt" Hidden="true" />
+      <Field Name="_sqlStringInsertEintrittAustritt" Hidden="true" />
+      <Field Name="_sqlStringInsertMitarbeiter" Hidden="true" />
+      <Field Name="_sqlSucheMitarbeiter" Hidden="true" />
+      <Field Name="_sqlSucheMitarbeiterPersonalnummer" Hidden="true" />
+      <Field Name="_StempelzeitAuslesen" Hidden="true" />
+      <Field Name="_SucheHoechsteMitarbeiterId" Hidden="true" />
+      <Field Name="_UpdateMitarbeiter" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QAAAYCAJAARAEAAEAgAAAAAEAIEAAAHICAAQAiQCgKg=</HashCode>
+      <FileName>DbConnections.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.EintrittAustritt">
+    <Position X="1" Y="3.25" Width="2" />
+    <Members>
+      <Field Name="_AustrittsDatum" Hidden="true" />
+      <Field Name="_EintrittsDatum" Hidden="true" />
+      <Field Name="_FK_Mitarbeiter" Hidden="true" />
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_IsAdmin" Hidden="true" />
+      <Field Name="_Personalnummer" Hidden="true" />
+      <Field Name="_TagesSollZeit" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIAAAAABIAAAgAEAAAAAAAAAGAAASAAAAAAAAAAEgyA=</HashCode>
+      <FileName>Model\EintrittAustritt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.Helper">
+    <Position X="10.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.Mitarbeiter">
+    <Position X="1" Y="1" Width="2" />
+    <Members>
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_KlartextPasswort" Hidden="true" />
+      <Field Name="_Nachname" Hidden="true" />
+      <Field Name="_Passwort" Hidden="true" />
+      <Field Name="_Vorname" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAIgEAAAAAAAAAAAAAAAAAAAAAAAgAkgkA=</HashCode>
+      <FileName>Model\Mitarbeiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.ListeMitarbeiter" Collapsed="true">
+    <Position X="3.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MitarbeiterListe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.MitarbeiterListe">
+    <Position X="3.25" Y="2" Width="2" />
+    <Members>
+      <Field Name="_AustrittsDatum" Hidden="true" />
+      <Field Name="_EintrittsDatum" Hidden="true" />
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_IsAdmin" Hidden="true" />
+      <Field Name="_Nachname" Hidden="true" />
+      <Field Name="_Personalnummer" Hidden="true" />
+      <Field Name="_TagesSollZeit" Hidden="true" />
+      <Field Name="_Vorname" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIACAAABAAAIgAEAAAAAAAAAGAAACAAAAAAAAgAEg2A=</HashCode>
+      <FileName>Model\MitarbeiterListe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.ListeStempelzeiten" Collapsed="true">
+    <Position X="5.75" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Stempelzeiten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.Stempelzeiten">
+    <Position X="5.75" Y="2" Width="2" />
+    <Members>
+      <Field Name="_FK_Mitarbeiter" Hidden="true" />
+      <Field Name="_Zeitpunkt" Hidden="true" />
+      <Field Name="_ZeitTyp" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAMAAAAAIAAAAAAAAAAAAAQAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\Stempelzeiten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.ListeZeittypen" Collapsed="true">
+    <Position X="8" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Zeittypen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseConnections.Model.Zeittypen">
+    <Position X="8" Y="2" Width="2" />
+    <Members>
+      <Field Name="_Bezeichnung" Hidden="true" />
+      <Field Name="_Hauptsatz" Hidden="true" />
+      <Field Name="_ID" Hidden="true" />
+      <Field Name="_Modus" Hidden="true" />
+      <Field Name="_Von" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACQAAgAAAAAAAAAAAAABgBAAAAAAAAAAEABA=</HashCode>
+      <FileName>Model\Zeittypen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
