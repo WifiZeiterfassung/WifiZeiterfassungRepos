@@ -111,13 +111,13 @@ namespace ProjektZeiterfassung.View
                     m.Passwort = Helper.GetHash(m.KlartextPasswort);
                     suche = con.MitarbeiterSuchen(m.Passwort, ea.Personalnummer);
                     //Absicherung wenn 0 bei Id daherkommt
-                    if (suche.Count > 0)
+                    if (suche.Count > 0 && suche.FirstOrDefault().EintrittsDatum <= DateTime.Now)
                     {
                         stList = con.StempelzeitMitarbeiter(Convert.ToInt32(suche.FirstOrDefault().ID));
                     }
                     //Fälle für den Benutzer mit Admin rechten
                     //Fallentscheidung wäre vielleicht besser
-                    if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin)
+                    if (suche.Count > 0 && suche.FirstOrDefault().IsAdmin && suche.FirstOrDefault().EintrittsDatum <= DateTime.Now)
                     {
                         TxtBenutzerdaten.Text = String.Format("Hallo Administrator {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
                         if (stList.Count > 0 && stList[0].ZeitTyp == 1)
@@ -158,7 +158,7 @@ namespace ProjektZeiterfassung.View
                         }
                     }
                     //Fälle für den Benutzer ohne Admin rechte
-                    else if (suche.Count > 0)
+                    else if (suche.Count > 0 && suche.FirstOrDefault().EintrittsDatum <= DateTime.Now)
                     {
                         TxtBenutzerdaten.Text = String.Format("Hallo {1} {2}", suche[0].ID, suche[0].Vorname, suche[0].Nachname);
                         if (stList.Count > 0 && stList[0].ZeitTyp == 1)
@@ -200,13 +200,15 @@ namespace ProjektZeiterfassung.View
                     }
                     else
                     {
-                        TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden!";
+                        TxtBenutzerdaten.Text = "Eingaben falsch oder nicht vorhanden oder Benutzer noch nicht aktiv!";
                     }
                 }
                 else
                 {
                     TxtBenutzerdaten.Text = "Eingabe Personalnummer oder Passwort fehlen!";
                 }
+                //leert die Liste mit den Stempelzeiten Mitarbeiter
+                stList = null;
             }
             catch (Exception ex)
             {                
