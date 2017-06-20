@@ -102,6 +102,7 @@ namespace ProjektZeiterfassung.View
         {
             try
             {
+                suche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
                 con.PasswortAendern(Convert.ToInt32(suche.FirstOrDefault().ID), Helper.GetHash("123user!"));
                 MessageBox.Show("Passwort wurde zurückgesetzt!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

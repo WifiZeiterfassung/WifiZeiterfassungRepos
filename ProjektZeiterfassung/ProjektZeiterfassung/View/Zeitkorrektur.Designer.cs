@@ -32,8 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeitkorrektur));
             this.panel3 = new System.Windows.Forms.Panel();
             this.stempelzeitenDataGridView = new System.Windows.Forms.DataGridView();
-            this.stempelzeitenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.zEIT2017DataSet4 = new ProjektZeiterfassung.ZEIT2017DataSet4();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.zeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.zEIT2017DataSet3BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
+            this.stempelzeitenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePickerDatumBeginn = new System.Windows.Forms.DateTimePicker();
             this.LblDatumBeginn = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -60,27 +67,20 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stempelzeitenBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.zEIT2017DataSet3BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zEIT2017DataSet4 = new ProjektZeiterfassung.ZEIT2017DataSet4();
-            this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mitarbeiterTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet4TableAdapters.MitarbeiterTableAdapter();
-            this.zEIT2017DataSet3BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.zeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zeittypenTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingNavigator)).BeginInit();
             this.stempelzeitenBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3BindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -107,15 +107,66 @@
             this.stempelzeitenDataGridView.Size = new System.Drawing.Size(474, 250);
             this.stempelzeitenDataGridView.TabIndex = 0;
             // 
-            // stempelzeitenBindingSource
+            // dataGridViewTextBoxColumn1
             // 
-            this.stempelzeitenBindingSource.DataMember = "Stempelzeiten";
-            this.stempelzeitenBindingSource.DataSource = this.zEIT2017DataSet3;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "FK_Mitarbeiter";
+            this.dataGridViewTextBoxColumn1.DataSource = this.mitarbeiterBindingSource;
+            this.dataGridViewTextBoxColumn1.DisplayMember = "Nachname";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mitarbeiter";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn1.ValueMember = "ID";
+            // 
+            // mitarbeiterBindingSource
+            // 
+            this.mitarbeiterBindingSource.DataMember = "Mitarbeiter";
+            this.mitarbeiterBindingSource.DataSource = this.zEIT2017DataSet4;
+            // 
+            // zEIT2017DataSet4
+            // 
+            this.zEIT2017DataSet4.DataSetName = "ZEIT2017DataSet4";
+            this.zEIT2017DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Zeitpunkt";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Zeitpunkt";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ZeitTyp";
+            this.dataGridViewTextBoxColumn3.DataSource = this.zeittypenBindingSource;
+            this.dataGridViewTextBoxColumn3.DisplayMember = "Bezeichnung";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ZeitTyp";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn3.ValueMember = "ID";
+            // 
+            // zeittypenBindingSource
+            // 
+            this.zeittypenBindingSource.DataMember = "Zeittypen";
+            this.zeittypenBindingSource.DataSource = this.zEIT2017DataSet3BindingSource1;
+            // 
+            // zEIT2017DataSet3BindingSource1
+            // 
+            this.zEIT2017DataSet3BindingSource1.DataSource = this.zEIT2017DataSet3;
+            this.zEIT2017DataSet3BindingSource1.Position = 0;
             // 
             // zEIT2017DataSet3
             // 
             this.zEIT2017DataSet3.DataSetName = "ZEIT2017DataSet3";
             this.zEIT2017DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // stempelzeitenBindingSource
+            // 
+            this.stempelzeitenBindingSource.DataMember = "Stempelzeiten";
+            this.stempelzeitenBindingSource.DataSource = this.zEIT2017DataSet3;
             // 
             // dateTimePickerDatumBeginn
             // 
@@ -370,64 +421,13 @@
             this.zEIT2017DataSet3BindingSource.DataSource = this.zEIT2017DataSet3;
             this.zEIT2017DataSet3BindingSource.Position = 0;
             // 
-            // zEIT2017DataSet4
-            // 
-            this.zEIT2017DataSet4.DataSetName = "ZEIT2017DataSet4";
-            this.zEIT2017DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mitarbeiterBindingSource
-            // 
-            this.mitarbeiterBindingSource.DataMember = "Mitarbeiter";
-            this.mitarbeiterBindingSource.DataSource = this.zEIT2017DataSet4;
-            // 
             // mitarbeiterTableAdapter
             // 
             this.mitarbeiterTableAdapter.ClearBeforeFill = true;
             // 
-            // zEIT2017DataSet3BindingSource1
-            // 
-            this.zEIT2017DataSet3BindingSource1.DataSource = this.zEIT2017DataSet3;
-            this.zEIT2017DataSet3BindingSource1.Position = 0;
-            // 
-            // zeittypenBindingSource
-            // 
-            this.zeittypenBindingSource.DataMember = "Zeittypen";
-            this.zeittypenBindingSource.DataSource = this.zEIT2017DataSet3BindingSource1;
-            // 
             // zeittypenTableAdapter
             // 
             this.zeittypenTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "FK_Mitarbeiter";
-            this.dataGridViewTextBoxColumn1.DataSource = this.mitarbeiterBindingSource;
-            this.dataGridViewTextBoxColumn1.DisplayMember = "Nachname";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mitarbeiter";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn1.ValueMember = "ID";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Zeitpunkt";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Zeitpunkt";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ZeitTyp";
-            this.dataGridViewTextBoxColumn3.DataSource = this.zeittypenBindingSource;
-            this.dataGridViewTextBoxColumn3.DisplayMember = "Bezeichnung";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ZeitTyp";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn3.ValueMember = "ID";
             // 
             // Zeitkorrektur
             // 
@@ -447,18 +447,18 @@
             this.Load += new System.EventHandler(this.Zeitkorrektur_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingNavigator)).EndInit();
             this.stempelzeitenBindingNavigator.ResumeLayout(false);
             this.stempelzeitenBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3BindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

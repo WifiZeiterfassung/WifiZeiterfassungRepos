@@ -16,6 +16,9 @@ using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
+    /// <summary>
+    /// Klasse für die Form in der der User das passwort ändern kann
+    /// </summary>
     public partial class PasswortAendern : Form
     {
         //Instanzen erzeugen für Windows Form
@@ -37,7 +40,6 @@ namespace ProjektZeiterfassung.View
         {
             try
             {
-                //© by Josef
                 // Id des Benutzers aus Einstellungsdatei sprich Zwischenspeicher holen für Formübergreifende Daten 
                 m.ID = Properties.Settings.Default.FKMitarbeiter;
                 string aktuellesPasswort = string.Empty;
