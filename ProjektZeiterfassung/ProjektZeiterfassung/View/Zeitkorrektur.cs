@@ -55,9 +55,15 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void Zeitkorrektur_Load(object sender, EventArgs e)
         {
+            //ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+            //TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+            //TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
+
+            DataViewUpdater();
+
             // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
             this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet4.Mitarbeiter". Sie können sie bei Bedarf verschieben oder entfernen.
+            //// TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet4.Mitarbeiter". Sie können sie bei Bedarf verschieben oder entfernen.
             this.mitarbeiterTableAdapter.Fill(this.zEIT2017DataSet4.Mitarbeiter);
             try
             {
@@ -65,12 +71,6 @@ namespace ProjektZeiterfassung.View
                 this.stempelzeitenTableAdapter.Fill(this.zEIT2017DataSet3.Stempelzeiten);
                 MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
                 mitarbeitersuchenzeitkorrektur.Close();
-
-                DataViewUpdater();
-
-                ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
-                TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
-                TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
             }
             catch (Exception ex)
             {
@@ -106,6 +106,9 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void DataViewUpdater()
         {
+            ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+            TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+            TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname); 
             try
             {
                 string DatumBeginn = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
