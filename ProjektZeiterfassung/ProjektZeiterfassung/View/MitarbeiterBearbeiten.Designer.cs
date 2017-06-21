@@ -43,6 +43,7 @@
             this.textBoxVorname = new System.Windows.Forms.TextBox();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
             this.LblMitarbeiterBerarbeiten = new System.Windows.Forms.Label();
+            this.ChkIsAdmin = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.CausesValidation = false;
+            this.panel2.Controls.Add(this.ChkIsAdmin);
             this.panel2.Controls.Add(this.dateTimePickerAustrittsdatum);
             this.panel2.Controls.Add(this.BtnPasswortZuruecksetzen);
             this.panel2.Controls.Add(this.LblAustrittsdatum);
@@ -79,9 +81,9 @@
             // BtnPasswortZuruecksetzen
             // 
             this.BtnPasswortZuruecksetzen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.BtnPasswortZuruecksetzen.Location = new System.Drawing.Point(10, 176);
+            this.BtnPasswortZuruecksetzen.Location = new System.Drawing.Point(250, 23);
             this.BtnPasswortZuruecksetzen.Name = "BtnPasswortZuruecksetzen";
-            this.BtnPasswortZuruecksetzen.Size = new System.Drawing.Size(210, 23);
+            this.BtnPasswortZuruecksetzen.Size = new System.Drawing.Size(220, 23);
             this.BtnPasswortZuruecksetzen.TabIndex = 7;
             this.BtnPasswortZuruecksetzen.Text = "Passwort zurücksetzen";
             this.BtnPasswortZuruecksetzen.UseVisualStyleBackColor = true;
@@ -185,6 +187,16 @@
             this.LblMitarbeiterBerarbeiten.TabIndex = 40;
             this.LblMitarbeiterBerarbeiten.Text = "Mitarbeiter bearbeiten:";
             // 
+            // ChkIsAdmin
+            // 
+            this.ChkIsAdmin.AutoSize = true;
+            this.ChkIsAdmin.Location = new System.Drawing.Point(10, 180);
+            this.ChkIsAdmin.Name = "ChkIsAdmin";
+            this.ChkIsAdmin.Size = new System.Drawing.Size(100, 17);
+            this.ChkIsAdmin.TabIndex = 15;
+            this.ChkIsAdmin.Text = "Ist Administrator";
+            this.ChkIsAdmin.UseVisualStyleBackColor = true;
+            // 
             // MitarbeiterBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +232,6 @@
         private System.Windows.Forms.Label LblMitarbeiterBerarbeiten;
         private System.Windows.Forms.Button BtnPasswortZuruecksetzen;
         private System.Windows.Forms.DateTimePicker dateTimePickerAustrittsdatum;
+        private System.Windows.Forms.CheckBox ChkIsAdmin;
     }
 }

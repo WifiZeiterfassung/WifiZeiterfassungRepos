@@ -455,8 +455,13 @@ namespace DatabaseConnections
 
         private string _UpdateMitarbeiter = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Vorname] = @Vorname, [Nachname]= @Nachname " +
                                             "FROM[ZEIT2017].[dbo].[Mitarbeiter] AS m " +
-                                            "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea "+
+                                            "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
                                              "ON m.ID = ea.FK_Mitarbeiter WHERE ea.Personalnummer = @PNR";
+
+        private string _UpdateIsAdmin =     "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [IsAdmin] = @Admin " +
+                                            "FROM[ZEIT2017].[dbo].[Mitarbeiter] AS m " +
+                                            "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
+                                            "ON m.ID = ea.FK_Mitarbeiter WHERE ea.Personalnummer = @PNR";
         /// <summary>
         /// Methode speichert geänderte Mitarbeiterdaten in die Datenbank nur für Admin. 
         /// Dafür müssen Daten in zwei Tabellen geschrieben werden dbo.Mitarbeiter und dbo.EintrittAustritt
@@ -476,6 +481,19 @@ namespace DatabaseConnections
                     Befehl.CommandText = this._UpdateMitarbeiter;
                     Befehl.Parameters.Add("@Vorname", System.Data.SqlDbType.NVarChar).Value = m.Vorname;
                     Befehl.Parameters.Add("@Nachname", System.Data.SqlDbType.NVarChar).Value = m.Nachname;
+                    Befehl.Parameters.Add("@PNR", System.Data.SqlDbType.Int).Value = ea.Personalnummer;
+                    Befehl.ExecuteNonQuery();
+                }
+                Connection.Close();
+            }
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+                //Tabelle EintrittAustritt mit IsAdmin wird befüllen 
+                using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.EintrittAustritt", Connection))
+                {
+                    Befehl.CommandText = this._UpdateIsAdmin;
+                    Befehl.Parameters.Add("@Admin", System.Data.SqlDbType.Bit).Value = ea.IsAdmin;
                     Befehl.Parameters.Add("@PNR", System.Data.SqlDbType.Int).Value = ea.Personalnummer;
                     Befehl.ExecuteNonQuery();
                 }

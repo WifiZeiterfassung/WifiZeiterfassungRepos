@@ -60,7 +60,17 @@ namespace ProjektZeiterfassung.View
             try
             {
                 ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
-
+                //Abfrage ob der Mitarbeiter der "Ur-Admin" mit der Personalnummer 1000 ist
+                //wenn ja, dann wird die CheckBox "IsAdmin" deaktiviert.
+                if (this.PersonalnummerBearbeiten != "1000")
+                {
+                    ChkIsAdmin.Checked = ErgebnisSuche.FirstOrDefault().IsAdmin;
+                }
+                else
+                {
+                    ChkIsAdmin.Enabled = false;
+                }                    
+                
                 textBoxVorname.Text = ErgebnisSuche.FirstOrDefault().Vorname;
                 textBoxNachname.Text = ErgebnisSuche.FirstOrDefault().Nachname;
                 textBoxEintrittsdatum.Text = ErgebnisSuche.FirstOrDefault().EintrittsDatum.ToShortDateString();
@@ -122,6 +132,7 @@ namespace ProjektZeiterfassung.View
                 m.Vorname = textBoxVorname.Text.Trim();
                 m.Nachname = textBoxNachname.Text.Trim();
                 ea.Personalnummer = TxtPersonalnummer.Text.Trim();
+                ea.IsAdmin = ChkIsAdmin.Checked; 
                 //Führt das SQL-Update für Vor- und Nachname aus
                 con.MitarbeiterUpdaten(m, ea);
                 //prüft ob díe Checkbox für den DateTimePicker "Austrittsdatum" aktiv ist
