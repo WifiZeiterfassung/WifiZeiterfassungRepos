@@ -425,11 +425,13 @@ namespace DatabaseConnections
             }
             return FK_Mitarbeiter;
         }
-
-        //sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank
+        /// <summary>
+        ///sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank 
+        /// </summary>
         private string _GetModus = "SELECT [Modus] FROM [ZEIT2017].[dbo].[Zeittypen]";
         /// <summary>
         /// Methode die die Zeit-Modi zurück gibt
+        /// Wird im Moment nicht verwendet
         /// </summary>
         /// <returns></returns>
         public DataTable GetModus()
@@ -539,6 +541,36 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return PasswortDB;
+        }
+
+        /// <summary>
+        ///sql-String welcher alle Vor-, Nachnamen und Personalnummern abruft
+        /// </summary>
+        private string _HoleMitarbeiterDaten = "SELECT [Vorname], [Nachname], [Personalnummer] FROM [ZEIT2017].[dbo].[Mitarbeiter] AS m " +
+                                                "JOIN [ZEIT2017].[dbo].[EintrittAustritt] AS ea ON m.ID = ea.FK_Mitarbeiter";
+        /// <summary>
+        /// DataTable der alle Vor-, Nachnamen und Personalnummern abruft
+        /// </summary>
+        /// <returns></returns>
+        public DataTable HoleMitarbeiterDaten()
+        {
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
+            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._HoleMitarbeiterDaten, Connection))
+                {
+                    adapter.SelectCommand = Befehl;
+                    table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                    adapter.Fill(table);
+                }
+                Connection.Close();
+            }
+            return table;
         }
     }
 }
