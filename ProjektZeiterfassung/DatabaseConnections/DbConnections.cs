@@ -7,6 +7,7 @@ using DatabaseConnections.Model;
 using System.Data.SqlTypes;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DatabaseConnections
 {
@@ -128,7 +129,7 @@ namespace DatabaseConnections
                     {
                         if (reader.Read())
                         {
-                            TopId = reader.GetInt32(reader.GetOrdinal("ID"));                          
+                            TopId = reader.GetInt32(reader.GetOrdinal("ID"));
                         }
                     }
                 }
@@ -217,21 +218,21 @@ namespace DatabaseConnections
                     {
                         if (reader.Read())
                         {
-                            if(reader.GetInt32(reader.GetOrdinal("ID")).ToString() != null)
+                            if (reader.GetInt32(reader.GetOrdinal("ID")).ToString() != null)
                                 ml.ID = reader.GetInt32(reader.GetOrdinal("ID")).ToString();
-                            if(reader.GetString(reader.GetOrdinal("Vorname")) != null)
+                            if (reader.GetString(reader.GetOrdinal("Vorname")) != null)
                                 ml.Vorname = reader.GetString(reader.GetOrdinal("Vorname"));
-                            if(reader.GetString(reader.GetOrdinal("Nachname")) != null)
+                            if (reader.GetString(reader.GetOrdinal("Nachname")) != null)
                                 ml.Nachname = reader.GetString(reader.GetOrdinal("Nachname"));
                             if (reader.GetString(reader.GetOrdinal("Personalnummer")) != null)
                                 ml.Personalnummer = reader.GetString(reader.GetOrdinal("Personalnummer"));
                             ml.EintrittsDatum = reader.GetDateTime(reader.GetOrdinal("EintrittsDatum"));
                             ml.IsAdmin = reader.GetBoolean(reader.GetOrdinal("IsAdmin"));
-                            ml.TagesSollZeit = reader.GetDecimal(reader.GetOrdinal("TagesSollZeit"));                           
+                            ml.TagesSollZeit = reader.GetDecimal(reader.GetOrdinal("TagesSollZeit"));
                             query.Add(ml);
                         }
                     }
-                }      
+                }
                 Connection.Close();
             }
             return query;
@@ -290,7 +291,7 @@ namespace DatabaseConnections
         }
 
         //SQL Speichert eine Arbeitszeit in der Datenbank
-        private string _SaveArbeitsBeginn = "INSERT INTO [ZEIT2017].[dbo].[Stempelzeiten](FK_Mitarbeiter,Zeitpunkt,ZeitTyp) VALUES (@IdMitarbeiter,@Zeitpunkt,@ZeitTyp);";
+        private string _SpeichernArbeitsBeginn = "INSERT INTO [ZEIT2017].[dbo].[Stempelzeiten](FK_Mitarbeiter,Zeitpunkt,ZeitTyp) VALUES (@IdMitarbeiter,@Zeitpunkt,@ZeitTyp);";
         /// <summary>
         /// Methode speichert einen Zeitpunkt in die Datenbank
         /// </summary>
@@ -305,7 +306,7 @@ namespace DatabaseConnections
             {
                 Connection.Open();
                 //Tabelle Mitarbeiter mit Vorname Nachnam und Passwort das übergeben wird befüllen 
-                using (var Befehl = new System.Data.SqlClient.SqlCommand(_SaveArbeitsBeginn, Connection))
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(_SpeichernArbeitsBeginn, Connection))
                 {
                     //Befehl.CommandText = this._SaveArbeitsBeginn;
                     Befehl.Parameters.Add("@IdMitarbeiter", System.Data.SqlDbType.Int).Value = mbId;
@@ -343,7 +344,7 @@ namespace DatabaseConnections
                     using (var reader = Befehl.ExecuteReader())
                     {
                         if (reader.Read())
-                        {                           
+                        {
                             s.FK_Mitarbeiter = reader.GetInt32(reader.GetOrdinal("FK_Mitarbeiter"));
                             s.Zeitpunkt = reader.GetDateTime(reader.GetOrdinal("Zeitpunkt"));
                             s.ZeitTyp = reader.GetInt32(reader.GetOrdinal("ZeitTyp"));
@@ -380,8 +381,8 @@ namespace DatabaseConnections
                             {
                                 string tmpPersonalnummer = String.Empty;
                                 tmpPersonalnummer = reader.GetString(reader.GetOrdinal("Personalnummer")).ToString();
-                                TopPersonalnummer = Convert.ToInt32(tmpPersonalnummer); 
-                            }                            
+                                TopPersonalnummer = Convert.ToInt32(tmpPersonalnummer);
+                            }
                         }
                     }
                 }
@@ -415,7 +416,7 @@ namespace DatabaseConnections
                         if (reader.Read())
                         {
                             if (reader.HasRows)
-                            { 
+                            {
                                 FK_Mitarbeiter = reader.GetInt32(reader.GetOrdinal("FK_Mitarbeiter"));
                             }
                         }
@@ -458,7 +459,7 @@ namespace DatabaseConnections
                                             "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
                                              "ON m.ID = ea.FK_Mitarbeiter WHERE ea.Personalnummer = @PNR";
 
-        private string _UpdateIsAdmin =     "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [IsAdmin] = @Admin " +
+        private string _UpdateIsAdmin = "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [IsAdmin] = @Admin " +
                                             "FROM[ZEIT2017].[dbo].[Mitarbeiter] AS m " +
                                             "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
                                             "ON m.ID = ea.FK_Mitarbeiter WHERE ea.Personalnummer = @PNR";
@@ -516,7 +517,7 @@ namespace DatabaseConnections
         public string HolePasswort(int ea)
         {
             //Später wenn keine Fehler noch einen Try Catch hinzufügen
-            string PasswortDB = string.Empty; 
+            string PasswortDB = string.Empty;
 
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
@@ -539,6 +540,37 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return PasswortDB;
+        }
+        private string _HoleNameUndPersonalnummer = "SELECT ea.Personalnummer, " +
+                                                            "m.Vorname, " +
+                                                            "m.Nachname " +
+                                                            "FROM [ZEIT2017].[dbo].[Mitarbeiter] " + "AS m " +
+                                                            "JOIN [ZEIT2017].[dbo].[EintrittAustritt] " + "AS ea " +
+                                                            "ON m.ID = ea.FK_Mitarbeiter ";
+
+
+        /// <summary>
+        /// Datatable der die Personalnummer, Vor- und Nachname enthält
+        /// </summary>
+        /// <returns></returns>
+        public DataTable DataGridViewerMitarbeitersuchen()
+        {
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._HoleNameUndPersonalnummer, Connection))
+                {
+                    adapter.SelectCommand = Befehl;
+                    table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                    adapter.Fill(table);
+                }
+                Connection.Close();
+            }
+            return table;
         }
     }
 }

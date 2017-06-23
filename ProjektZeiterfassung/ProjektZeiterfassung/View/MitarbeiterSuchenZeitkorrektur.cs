@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//Klassenbibliothek einbinden
+using DatabaseConnections;
+using DatabaseConnections.Model;
 
 namespace ProjektZeiterfassung.View
 {
@@ -15,6 +18,11 @@ namespace ProjektZeiterfassung.View
     /// </summary>
     public partial class MitarbeiterSuchenZeitkorrektur : Form
     {
+        /// <summary>
+        /// dsjfkljdkasjadskf
+        /// </summary>
+        DbConnections con = new DbConnections();
+        DataTable datatable = new DataTable();
         /// <summary>
         /// Initialisiert das Fenster für die Suche des Mitarbeiters für die Zeitkorrektur
         /// </summary>
@@ -28,15 +36,14 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void MitarbeiterSuchen_Load(object sender, EventArgs e)
         {
-            // Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.View_1". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.view_1TableAdapter.Fill(this.zEIT2017DataSet3.View_1);
+            FillDataGrid();
         }
         /// <summary>
         /// Dynamischer Filter für den Datagridview
         /// </summary>
         private void textBoxSuche_TextChanged(object sender, EventArgs e)
         {
-            DataView DV = new DataView(this.zEIT2017DataSet3.View_1);
+            DataView DV = new DataView(datatable);
             DV.RowFilter = string.Format("Personalnummer + Vorname + Nachname LIKE '%{0}%'", textBoxSuche.Text);
             view_1DataGridView.DataSource = DV;
         }
@@ -49,7 +56,16 @@ namespace ProjektZeiterfassung.View
             Zeitkorrektur zeitkorrektur = new Zeitkorrektur();
             zeitkorrektur.PersonalnummerBearbeiten = Personalnummer;
             zeitkorrektur.Show();
+            MessageBox.Show("dssfa");
             this.Close();
+        }
+        /// <summary>
+        /// Ruft die Daten für die DataGridView aus der Datenbank ab.
+        /// </summary>
+        private void FillDataGrid()
+        {
+            datatable = con.DataGridViewerMitarbeitersuchen();
+            view_1BindingSource.DataSource = datatable;
         }
     }
 }
