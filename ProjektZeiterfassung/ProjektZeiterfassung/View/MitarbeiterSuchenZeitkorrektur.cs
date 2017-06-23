@@ -21,11 +21,6 @@ namespace ProjektZeiterfassung.View
         DbConnections con = new DbConnections();
         DataTable datatable = new DataTable();
         /// <summary>
-        /// dsjfkljdkasjadskf
-        /// </summary>
-        DbConnections con = new DbConnections();
-        DataTable datatable = new DataTable();
-        /// <summary>
         /// Initialisiert das Fenster für die Suche des Mitarbeiters für die Zeitkorrektur
         /// </summary>
         public MitarbeiterSuchenZeitkorrektur()
@@ -58,7 +53,6 @@ namespace ProjektZeiterfassung.View
             Zeitkorrektur zeitkorrektur = new Zeitkorrektur();
             zeitkorrektur.PersonalnummerBearbeiten = Personalnummer;
             zeitkorrektur.Show();
-            MessageBox.Show("dssfa");
             this.Close();
         }
         /// <summary>
