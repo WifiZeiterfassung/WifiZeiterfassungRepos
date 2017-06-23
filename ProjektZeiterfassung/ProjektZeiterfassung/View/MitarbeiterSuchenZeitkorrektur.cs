@@ -18,6 +18,8 @@ namespace ProjektZeiterfassung.View
     /// </summary>
     public partial class MitarbeiterSuchenZeitkorrektur : Form
     {
+        DbConnections con = new DbConnections();
+        DataTable datatable = new DataTable();
         /// <summary>
         /// dsjfkljdkasjadskf
         /// </summary>
@@ -36,7 +38,7 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void MitarbeiterSuchen_Load(object sender, EventArgs e)
         {
-            FillDataGrid();
+            DataGridFüllen();
         }
         /// <summary>
         /// Dynamischer Filter für den Datagridview
@@ -60,11 +62,11 @@ namespace ProjektZeiterfassung.View
             this.Close();
         }
         /// <summary>
-        /// Ruft die Daten für die DataGridView aus der Datenbank ab.
+        /// Ruft den DataTable für das DataGridView ab
         /// </summary>
-        private void FillDataGrid()
+        private void DataGridFüllen()
         {
-            datatable = con.DataGridViewerMitarbeitersuchen();
+            datatable = con.HoleMitarbeiterDaten();
             view_1BindingSource.DataSource = datatable;
         }
     }
