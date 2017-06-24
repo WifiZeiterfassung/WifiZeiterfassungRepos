@@ -291,9 +291,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MS_Sql\Beschreibung Sql String.txt" />
+    <Content Include="MS_Sql\Klassendiagramm.JPG" />
     <Content Include="MS_Sql\UpdatePasswortMitarbeiter.sql" />
-    <Content Include="MS_Sql\Zeit2017V4.JPG" />
     <Content Include="MS_Sql\ZEIT2017.sql" />
+    <Content Include="MS_Sql\Zeit2017DB-Diagramm.JPG" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseConnections\DatabaseConnections.csproj">
