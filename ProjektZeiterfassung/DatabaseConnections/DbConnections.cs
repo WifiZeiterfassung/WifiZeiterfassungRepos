@@ -429,7 +429,7 @@ namespace DatabaseConnections
         /// <summary>
         ///sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank 
         /// </summary>
-        private string _GetModus = "SELECT [Modus] FROM [ZEIT2017].[dbo].[Zeittypen]";
+        public string _GetModus = "SELECT * FROM [ZEIT2017].[dbo].[Zeittypen]";
         /// <summary>
         /// Methode die die Zeit-Modi zurück gibt
         /// Wird im Moment nicht verwendet
@@ -547,7 +547,7 @@ namespace DatabaseConnections
         /// <summary>
         ///sql-String welcher alle Vor-, Nachnamen und Personalnummern abruft
         /// </summary>
-        private string _HoleMitarbeiterDaten = "SELECT [Vorname], [Nachname], [Personalnummer] FROM [ZEIT2017].[dbo].[Mitarbeiter] AS m " +
+        public string _HoleMitarbeiterDaten = "SELECT [Vorname], [Nachname], [Personalnummer] FROM [ZEIT2017].[dbo].[Mitarbeiter] AS m " +
                                                 "JOIN [ZEIT2017].[dbo].[EintrittAustritt] AS ea ON m.ID = ea.FK_Mitarbeiter";
         /// <summary>
         /// DataTable der alle Vor-, Nachnamen und Personalnummern abruft
@@ -573,5 +573,6 @@ namespace DatabaseConnections
             }
             return table;
         }
+
     }
 }

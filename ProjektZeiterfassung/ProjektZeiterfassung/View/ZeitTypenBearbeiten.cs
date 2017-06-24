@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,9 @@ namespace ProjektZeiterfassung.View
     /// </summary>
     public partial class ZeittypenBearbeiten : Form
     {
+        DbConnections con = new DbConnections();
+        private BindingSource bindingSource1 = new BindingSource();
+        private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         /// <summary>
         /// Initalisiert das Fenster "Zeittypen bearbeiten"
         /// </summary>
@@ -26,21 +30,27 @@ namespace ProjektZeiterfassung.View
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Lädt das Fenster ZeittypenBearbeiten
+        /// </summary>
         private void ZeittypenBearbeiten_Load(object sender, EventArgs e)
         {
             try
             {
-                // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
-                this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
+                bindingNavigatorDeleteItem.Enabled = true;
+                zeittypenDataGridView.DataSource = bindingSource1;
+                GetData(con._GetModus);
                 ToolTips();
             }
             catch (Exception ex)
             {
-
-                Helper.LogError(ex.ToString());
-                
+                Helper.LogError(ex.ToString());                
             }
         }
+        /// <summary>
+        /// Legt die Tooltips und den Modus für die automtische Spalten-Breiten-Anpassung fest.
+        /// </summary>
         private void ToolTips()
         {
             DataGridViewColumn firstColumn = zeittypenDataGridView.Columns[0];
@@ -53,14 +63,47 @@ namespace ProjektZeiterfassung.View
             thirdColumn.ToolTipText = "Gibt an ob es der Anfang oder Ende des Zeittypes ist (A oder E).";
             fourthColumn.ToolTipText = "Gibt die Abhängigkeit zu seinem Gegenstück an (z.B.: Typ 2 zu Typ 1).";
             fifthColumn.ToolTipText = "Ein \"Anfangs-Zeittypen\" muss immer ein Hauptsatz sein." ;
+            firstColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            secondColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            thirdColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            fourthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            fifthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
-
-        private void ZeittypenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Speichert die Änderungen in der Datenbank
+        /// </summary>
+        private void speichernToolStripButton_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.zeittypenBindingSource.EndEdit();
-            this.zeittypenTableAdapter.Update(this.zEIT2017DataSet3.Zeittypen);
+            dataAdapter.Update((DataTable)bindingSource1.DataSource);
         }
+
+        //private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.zeittypenBindingSource.EndEdit();
+        //    dataAdapter.Update((DataTable)bindingSource1.DataSource);
+        //}
+        /// <summary>
+        /// Ruft die Daten aus der Datenbank ab
+        /// </summary>
+        /// <param name="selectCommand"></param>
+        private void GetData(string selectCommand)
+        {
+                String connectionString = con.DbConnection;
+
+                dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                DataTable table = new DataTable();
+                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                dataAdapter.Fill(table);
+                bindingSource1.DataSource = table;
+        }
+
+
 
         //private void fillComboBox()
         //{
