@@ -38,7 +38,6 @@ namespace ProjektZeiterfassung.View
         {
             try
             {
-                bindingNavigatorDeleteItem.Enabled = true;
                 zeittypenDataGridView.DataSource = bindingSource1;
                 GetData(con._GetModus);
                 ToolTips();
@@ -72,19 +71,13 @@ namespace ProjektZeiterfassung.View
         /// <summary>
         /// Speichert die Änderungen in der Datenbank
         /// </summary>
-        private void speichernToolStripButton_Click(object sender, EventArgs e)
+        private void stempelzeitenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.zeittypenBindingSource.EndEdit();
-            dataAdapter.Update((DataTable)bindingSource1.DataSource);
+            dataAdapter.Update((DataTable)bindingSource1.DataSource);            
         }
 
-        //private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
-        //{
-        //    this.Validate();
-        //    this.zeittypenBindingSource.EndEdit();
-        //    dataAdapter.Update((DataTable)bindingSource1.DataSource);
-        //}
         /// <summary>
         /// Ruft die Daten aus der Datenbank ab
         /// </summary>
@@ -102,8 +95,6 @@ namespace ProjektZeiterfassung.View
                 dataAdapter.Fill(table);
                 bindingSource1.DataSource = table;
         }
-
-
 
         //private void fillComboBox()
         //{
