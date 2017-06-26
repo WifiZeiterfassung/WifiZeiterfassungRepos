@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormZeiterfassung));
             this.LblAdministrationsbereich = new System.Windows.Forms.Label();
             this.PanelAdministrationsbereich = new System.Windows.Forms.Panel();
+            this.BtnZeittypenBearbeiten = new System.Windows.Forms.Button();
             this.BtnBenutzerUpdate = new System.Windows.Forms.Button();
             this.BtnZeitkorrektur = new System.Windows.Forms.Button();
             this.BtnBenutzerNeu = new System.Windows.Forms.Button();
@@ -44,6 +45,9 @@
             this.LblPersonalnummer = new System.Windows.Forms.Label();
             this.BtnArbeitsende = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbWeiterZeittypen = new System.Windows.Forms.ComboBox();
+            this.zeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
             this.BtnAnmelden = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
@@ -54,9 +58,11 @@
             this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AnmeldeLabel = new System.Windows.Forms.Label();
-            this.BtnZeittypenBearbeiten = new System.Windows.Forms.Button();
+            this.zeittypenTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter();
             this.PanelAdministrationsbereich.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).BeginInit();
@@ -84,6 +90,16 @@
             this.PanelAdministrationsbereich.Name = "PanelAdministrationsbereich";
             this.PanelAdministrationsbereich.Size = new System.Drawing.Size(484, 70);
             this.PanelAdministrationsbereich.TabIndex = 26;
+            // 
+            // BtnZeittypenBearbeiten
+            // 
+            this.BtnZeittypenBearbeiten.Location = new System.Drawing.Point(369, 14);
+            this.BtnZeittypenBearbeiten.Name = "BtnZeittypenBearbeiten";
+            this.BtnZeittypenBearbeiten.Size = new System.Drawing.Size(100, 37);
+            this.BtnZeittypenBearbeiten.TabIndex = 16;
+            this.BtnZeittypenBearbeiten.Text = "Zeittypen bearbeiten";
+            this.BtnZeittypenBearbeiten.UseVisualStyleBackColor = true;
+            this.BtnZeittypenBearbeiten.Click += new System.EventHandler(this.BtnZeittypenBearbeiten_Click);
             // 
             // BtnBenutzerUpdate
             // 
@@ -118,9 +134,9 @@
             // BtnPausenbeginn
             // 
             this.BtnPausenbeginn.Enabled = false;
-            this.BtnPausenbeginn.Location = new System.Drawing.Point(129, 14);
+            this.BtnPausenbeginn.Location = new System.Drawing.Point(98, 17);
             this.BtnPausenbeginn.Name = "BtnPausenbeginn";
-            this.BtnPausenbeginn.Size = new System.Drawing.Size(100, 23);
+            this.BtnPausenbeginn.Size = new System.Drawing.Size(90, 23);
             this.BtnPausenbeginn.TabIndex = 10;
             this.BtnPausenbeginn.Text = "Pausenbeginn";
             this.BtnPausenbeginn.UseVisualStyleBackColor = true;
@@ -129,9 +145,9 @@
             // BtnPausenende
             // 
             this.BtnPausenende.Enabled = false;
-            this.BtnPausenende.Location = new System.Drawing.Point(249, 14);
+            this.BtnPausenende.Location = new System.Drawing.Point(194, 17);
             this.BtnPausenende.Name = "BtnPausenende";
-            this.BtnPausenende.Size = new System.Drawing.Size(100, 23);
+            this.BtnPausenende.Size = new System.Drawing.Size(90, 23);
             this.BtnPausenende.TabIndex = 11;
             this.BtnPausenende.Text = "Pausenende";
             this.BtnPausenende.UseVisualStyleBackColor = true;
@@ -140,9 +156,9 @@
             // BtnArbeitsbeginn
             // 
             this.BtnArbeitsbeginn.Enabled = false;
-            this.BtnArbeitsbeginn.Location = new System.Drawing.Point(9, 14);
+            this.BtnArbeitsbeginn.Location = new System.Drawing.Point(2, 17);
             this.BtnArbeitsbeginn.Name = "BtnArbeitsbeginn";
-            this.BtnArbeitsbeginn.Size = new System.Drawing.Size(100, 23);
+            this.BtnArbeitsbeginn.Size = new System.Drawing.Size(90, 23);
             this.BtnArbeitsbeginn.TabIndex = 9;
             this.BtnArbeitsbeginn.Text = "Arbeitsbeginn";
             this.BtnArbeitsbeginn.UseVisualStyleBackColor = true;
@@ -189,9 +205,9 @@
             // BtnArbeitsende
             // 
             this.BtnArbeitsende.Enabled = false;
-            this.BtnArbeitsende.Location = new System.Drawing.Point(369, 14);
+            this.BtnArbeitsende.Location = new System.Drawing.Point(290, 17);
             this.BtnArbeitsende.Name = "BtnArbeitsende";
-            this.BtnArbeitsende.Size = new System.Drawing.Size(100, 23);
+            this.BtnArbeitsende.Size = new System.Drawing.Size(90, 23);
             this.BtnArbeitsende.TabIndex = 12;
             this.BtnArbeitsende.Text = "Arbeitsende";
             this.BtnArbeitsende.UseVisualStyleBackColor = true;
@@ -200,14 +216,36 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.cmbWeiterZeittypen);
             this.panel3.Controls.Add(this.BtnArbeitsende);
             this.panel3.Controls.Add(this.BtnPausenbeginn);
             this.panel3.Controls.Add(this.BtnPausenende);
             this.panel3.Controls.Add(this.BtnArbeitsbeginn);
             this.panel3.Location = new System.Drawing.Point(12, 154);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(484, 53);
+            this.panel3.Size = new System.Drawing.Size(484, 61);
             this.panel3.TabIndex = 25;
+            // 
+            // cmbWeiterZeittypen
+            // 
+            this.cmbWeiterZeittypen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWeiterZeittypen.FormattingEnabled = true;
+            this.cmbWeiterZeittypen.Location = new System.Drawing.Point(387, 18);
+            this.cmbWeiterZeittypen.Name = "cmbWeiterZeittypen";
+            this.cmbWeiterZeittypen.Size = new System.Drawing.Size(90, 21);
+            this.cmbWeiterZeittypen.TabIndex = 13;
+            //this.cmbWeiterZeittypen.SelectedIndexChanged += new System.EventHandler(this.cmbWeiterZeittypen_SelectedIndexChanged);
+            this.cmbWeiterZeittypen.SelectionChangeCommitted += new System.EventHandler(this.cmbWeiterZeittypen_SelectionChangeCommitted);
+            // 
+            // zeittypenBindingSource
+            // 
+            this.zeittypenBindingSource.DataMember = "Zeittypen";
+            this.zeittypenBindingSource.DataSource = this.zEIT2017DataSet3;
+            // 
+            // zEIT2017DataSet3
+            // 
+            this.zEIT2017DataSet3.DataSetName = "ZEIT2017DataSet3";
+            this.zEIT2017DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // BtnAnmelden
             // 
@@ -296,21 +334,15 @@
             this.AnmeldeLabel.TabIndex = 22;
             this.AnmeldeLabel.Text = "Wifi Arbeitszeitfassung";
             // 
-            // BtnZeittypenBearbeiten
+            // zeittypenTableAdapter
             // 
-            this.BtnZeittypenBearbeiten.Location = new System.Drawing.Point(369, 14);
-            this.BtnZeittypenBearbeiten.Name = "BtnZeittypenBearbeiten";
-            this.BtnZeittypenBearbeiten.Size = new System.Drawing.Size(100, 37);
-            this.BtnZeittypenBearbeiten.TabIndex = 16;
-            this.BtnZeittypenBearbeiten.Text = "Zeittypen bearbeiten";
-            this.BtnZeittypenBearbeiten.UseVisualStyleBackColor = true;
-            this.BtnZeittypenBearbeiten.Click += new System.EventHandler(this.BtnZeittypenBearbeiten_Click);
+            this.zeittypenTableAdapter.ClearBeforeFill = true;
             // 
             // FormZeiterfassung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 319);
+            this.ClientSize = new System.Drawing.Size(510, 319);
             this.Controls.Add(this.LblAdministrationsbereich);
             this.Controls.Add(this.PanelAdministrationsbereich);
             this.Controls.Add(this.panel3);
@@ -322,8 +354,11 @@
             this.Name = "FormZeiterfassung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
+            this.Load += new System.EventHandler(this.FormZeiterfassung_Load);
             this.PanelAdministrationsbereich.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -362,5 +397,9 @@
         internal System.Windows.Forms.BindingSource mitarbeiterBindingSource;
         internal System.Windows.Forms.Label AnmeldeLabel;
         internal System.Windows.Forms.Button BtnZeittypenBearbeiten;
+        private System.Windows.Forms.ComboBox cmbWeiterZeittypen;
+        private ZEIT2017DataSet3 zEIT2017DataSet3;
+        private System.Windows.Forms.BindingSource zeittypenBindingSource;
+        private ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter zeittypenTableAdapter;
     }
 }

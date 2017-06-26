@@ -30,6 +30,9 @@ namespace ProjektZeiterfassung.View
         //Liste mit Stempelzeit eines Mitarbeiters
         ListeStempelzeiten stList = new ListeStempelzeiten();
 
+        private BindingSource bindingSource1 = new BindingSource();
+        private SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
         //******************************************************************************************************************
 
         /// <summary>
@@ -38,8 +41,16 @@ namespace ProjektZeiterfassung.View
         public FormZeiterfassung()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Lädt das Fenster für die Zeiterfasssung
+        /// </summary>
+        private void FormZeiterfassung_Load(object sender, EventArgs e)
+        {
             this.Height = 255;
         }
+
         /// <summary>
         /// Öffnet das Fenster zum Ändern des Mitarbeiterpasswort
         /// </summary>
@@ -156,6 +167,7 @@ namespace ProjektZeiterfassung.View
                             BtnPausenende.Enabled = false;
                             this.Height = 360;
                         }
+                        GetData(con._GetZeittypen);
                     }
                     //Fälle für den Benutzer ohne Admin rechte
                     else if (suche.Count > 0 && suche.FirstOrDefault().EintrittsDatum <= DateTime.Now)
@@ -197,6 +209,7 @@ namespace ProjektZeiterfassung.View
                             BtnPausenende.Enabled = false;
                             this.Height = 255;
                         }
+                        GetData(con._GetZeittypen);
                     }
                     else
                     {
@@ -316,6 +329,43 @@ namespace ProjektZeiterfassung.View
             }
         }
 
+
+        /// <summary>
+        /// Ruft die Daten aus der Datenbank ab
+        /// </summary>
+        /// <param name="selectCommand"></param>
+        private void GetData(string selectCommand)
+        {
+            String connectionString = con.DbConnection;
+            dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+            DataTable table = new DataTable();
+            table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            dataAdapter.Fill(table);
+            cmbWeiterZeittypen.DataSource = table.DefaultView;
+            cmbWeiterZeittypen.DisplayMember = "Bezeichnung";
+            cmbWeiterZeittypen.SelectedIndex = -1;
+            //cmbWeiterZeittypen.Text = "Zeittypen";
+            //cmbWeiterZeittypen.SelectedText = "Zeittypen";
+        }
+
+        /// <summary>
+        /// Wird ein neuer Wert im Drop-Down ausgewählt,
+        /// wird der neue Zeiteintrag gespeichert.
+        /// </summary>
+        private void cmbWeiterZeittypen_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string Zeittyp = cmbWeiterZeittypen.Text;
+            //Ruft die ID der Zeittype anhand der Bezeichnung ab
+            int IdZeittyp = con.GetZeittypenByBezeichnung(Zeittyp);
+
+            if (!String.IsNullOrWhiteSpace(Zeittyp.Trim()))
+            {
+                con.ZeitSpeichern(Convert.ToInt32(suche[0].ID), DateTime.Now, IdZeittyp);
+                TxtBenutzerdaten.Text = String.Format(Zeittyp + " {0} gespeichert!", DateTime.Now);
+            }
+
+        }
+
         /// <summary>
         /// Überprüft Personalnummer und PIN
         /// </summary>
@@ -420,6 +470,39 @@ namespace ProjektZeiterfassung.View
         //            MessageBox.Show("Eintrag fehlt");
         //            break;
         //    }
+        //}
+
+        /// <summary>
+        /// Überprüft den letzten Datenbankeintrag 
+        /// und Schaltet die zulässigen Button frei.
+        /// </summary>
+        //private void fillByToolStripButton_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        this.zeittypenTableAdapter.FillBy(this.zEIT2017DataSet3.Zeittypen);
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(ex.Message);
+        //    }
+
+        //}
+        /// <summary>
+        /// Überprüft den letzten Datenbankeintrag 
+        /// und Schaltet die zulässigen Button frei.
+        /// </summary>
+        //private void fillBy1ToolStripButton_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        this.zeittypenTableAdapter.FillBy1(this.zEIT2017DataSet3.Zeittypen);
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(ex.Message);
+        //    }
+
         //}
 
     }

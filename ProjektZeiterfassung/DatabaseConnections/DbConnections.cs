@@ -573,6 +573,45 @@ namespace DatabaseConnections
             }
             return table;
         }
+        /// <summary>
+        ///SQL-String welcher die Zeittypen (außer den 4 Standardtypen) aus der Datenbank abruft
+        /// </summary>
+        public string _GetZeittypen = "SELECT [ID],[Bezeichnung],[Modus],[Von],[Hauptsatz] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE ID > '4'";
+        /// <summary>
+        ///SQL-String welcher die ID des Zeittypen aus der Datenbank abruft
+        /// </summary>
+        public string _GetZeittypenByBezeichnung = "SELECT [ID] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE Bezeichnung = @BZ; ";
+        /// <summary>
+        /// Holt aus der Datenbank die ID des Zeittyp 
+        /// </summary>
+        /// <param name="ea">Bezeichnung des Zeittyp</param>
+        /// <returns>Personalnummer als Integer</returns>
+        public int GetZeittypenByBezeichnung(string ea)
+        {
+            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            int GetZeittypenByBezeichnung = 0;
 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._GetZeittypenByBezeichnung, Connection))
+                {
+                    Befehl.Parameters.Add("@BZ", System.Data.SqlDbType.NVarChar).Value = ea;
+                    using (var reader = Befehl.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader.HasRows)
+                            {
+                                GetZeittypenByBezeichnung = reader.GetInt32(reader.GetOrdinal("ID"));
+                            }
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return GetZeittypenByBezeichnung;
+        }
     }
 }

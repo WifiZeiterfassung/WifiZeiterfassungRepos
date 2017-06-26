@@ -148,7 +148,26 @@ SELECT ID, Bezeichnung, Modus, Von, Hauptsatz FROM Zeittypen WHERE (ID = @ID)</C
               <Mapping SourceColumn="Von" DataSetColumn="Von" />
               <Mapping SourceColumn="Hauptsatz" DataSetColumn="Hauptsatz" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ZEIT2017ConnectionString (Settings)" DbObjectName="ZEIT2017.dbo.Zeittypen" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Bezeichnung, Modus, Von, Hauptsatz FROM dbo.Zeittypen WHERE ID &gt; 3</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ZEIT2017ConnectionString (Settings)" DbObjectName="ZEIT2017.dbo.Zeittypen" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        ID, Bezeichnung, Modus, Von, Hauptsatz
+FROM            Zeittypen
+WHERE        (ID &gt; 4)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -158,7 +177,7 @@ SELECT ID, Bezeichnung, Modus, Von, Hauptsatz FROM Zeittypen WHERE (ID = @ID)</C
   <xs:element name="ZEIT2017DataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ZEIT2017DataSet3" msprop:Generator_UserDSName="ZEIT2017DataSet3">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="View_1" msprop:Generator_TableClassName="View_1DataTable" msprop:Generator_TableVarName="tableView_1" msprop:Generator_TablePropName="View_1" msprop:Generator_RowDeletingName="View_1RowDeleting" msprop:Generator_RowChangingName="View_1RowChanging" msprop:Generator_RowEvHandlerName="View_1RowChangeEventHandler" msprop:Generator_RowDeletedName="View_1RowDeleted" msprop:Generator_UserTableName="View_1" msprop:Generator_RowChangedName="View_1RowChanged" msprop:Generator_RowEvArgName="View_1RowChangeEvent" msprop:Generator_RowClassName="View_1Row">
+        <xs:element name="View_1" msprop:Generator_TableClassName="View_1DataTable" msprop:Generator_TableVarName="tableView_1" msprop:Generator_RowChangedName="View_1RowChanged" msprop:Generator_TablePropName="View_1" msprop:Generator_RowDeletingName="View_1RowDeleting" msprop:Generator_RowChangingName="View_1RowChanging" msprop:Generator_RowEvHandlerName="View_1RowChangeEventHandler" msprop:Generator_RowDeletedName="View_1RowDeleted" msprop:Generator_RowClassName="View_1Row" msprop:Generator_UserTableName="View_1" msprop:Generator_RowEvArgName="View_1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Personalnummer" msprop:Generator_ColumnVarNameInTable="columnPersonalnummer" msprop:Generator_ColumnPropNameInRow="Personalnummer" msprop:Generator_ColumnPropNameInTable="PersonalnummerColumn" msprop:Generator_UserColumnName="Personalnummer" minOccurs="0">
@@ -185,7 +204,7 @@ SELECT ID, Bezeichnung, Modus, Von, Hauptsatz FROM Zeittypen WHERE (ID = @ID)</C
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Stempelzeiten" msprop:Generator_TableClassName="StempelzeitenDataTable" msprop:Generator_TableVarName="tableStempelzeiten" msprop:Generator_RowChangedName="StempelzeitenRowChanged" msprop:Generator_TablePropName="Stempelzeiten" msprop:Generator_RowDeletingName="StempelzeitenRowDeleting" msprop:Generator_RowChangingName="StempelzeitenRowChanging" msprop:Generator_RowEvHandlerName="StempelzeitenRowChangeEventHandler" msprop:Generator_RowDeletedName="StempelzeitenRowDeleted" msprop:Generator_RowClassName="StempelzeitenRow" msprop:Generator_UserTableName="Stempelzeiten" msprop:Generator_RowEvArgName="StempelzeitenRowChangeEvent">
+        <xs:element name="Stempelzeiten" msprop:Generator_TableClassName="StempelzeitenDataTable" msprop:Generator_TableVarName="tableStempelzeiten" msprop:Generator_TablePropName="Stempelzeiten" msprop:Generator_RowDeletingName="StempelzeitenRowDeleting" msprop:Generator_RowChangingName="StempelzeitenRowChanging" msprop:Generator_RowEvHandlerName="StempelzeitenRowChangeEventHandler" msprop:Generator_RowDeletedName="StempelzeitenRowDeleted" msprop:Generator_UserTableName="Stempelzeiten" msprop:Generator_RowChangedName="StempelzeitenRowChanged" msprop:Generator_RowEvArgName="StempelzeitenRowChangeEvent" msprop:Generator_RowClassName="StempelzeitenRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="FK_Mitarbeiter" msprop:Generator_ColumnVarNameInTable="columnFK_Mitarbeiter" msprop:Generator_ColumnPropNameInRow="FK_Mitarbeiter" msprop:Generator_ColumnPropNameInTable="FK_MitarbeiterColumn" msprop:Generator_UserColumnName="FK_Mitarbeiter" type="xs:int" />
@@ -194,7 +213,7 @@ SELECT ID, Bezeichnung, Modus, Von, Hauptsatz FROM Zeittypen WHERE (ID = @ID)</C
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Zeittypen" msprop:Generator_TableClassName="ZeittypenDataTable" msprop:Generator_TableVarName="tableZeittypen" msprop:Generator_TablePropName="Zeittypen" msprop:Generator_RowDeletingName="ZeittypenRowDeleting" msprop:Generator_RowChangingName="ZeittypenRowChanging" msprop:Generator_RowEvHandlerName="ZeittypenRowChangeEventHandler" msprop:Generator_RowDeletedName="ZeittypenRowDeleted" msprop:Generator_UserTableName="Zeittypen" msprop:Generator_RowChangedName="ZeittypenRowChanged" msprop:Generator_RowEvArgName="ZeittypenRowChangeEvent" msprop:Generator_RowClassName="ZeittypenRow">
+        <xs:element name="Zeittypen" msprop:Generator_TableClassName="ZeittypenDataTable" msprop:Generator_TableVarName="tableZeittypen" msprop:Generator_RowChangedName="ZeittypenRowChanged" msprop:Generator_TablePropName="Zeittypen" msprop:Generator_RowDeletingName="ZeittypenRowDeleting" msprop:Generator_RowChangingName="ZeittypenRowChanging" msprop:Generator_RowEvHandlerName="ZeittypenRowChangeEventHandler" msprop:Generator_RowDeletedName="ZeittypenRowDeleted" msprop:Generator_RowClassName="ZeittypenRow" msprop:Generator_UserTableName="Zeittypen" msprop:Generator_RowEvArgName="ZeittypenRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -231,7 +250,7 @@ SELECT ID, Bezeichnung, Modus, Von, Hauptsatz FROM Zeittypen WHERE (ID = @ID)</C
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Stempelzeiten_Zeittypen" msdata:parent="Zeittypen" msdata:child="Stempelzeiten" msdata:parentkey="ID" msdata:childkey="ZeitTyp" msprop:Generator_UserChildTable="Stempelzeiten" msprop:Generator_ChildPropName="GetStempelzeitenRows" msprop:Generator_UserRelationName="FK_Stempelzeiten_Zeittypen" msprop:Generator_RelationVarName="relationFK_Stempelzeiten_Zeittypen" msprop:Generator_UserParentTable="Zeittypen" msprop:Generator_ParentPropName="ZeittypenRow" />
+      <msdata:Relationship name="FK_Stempelzeiten_Zeittypen" msdata:parent="Zeittypen" msdata:child="Stempelzeiten" msdata:parentkey="ID" msdata:childkey="ZeitTyp" msprop:Generator_UserChildTable="Stempelzeiten" msprop:Generator_ChildPropName="GetStempelzeitenRows" msprop:Generator_UserRelationName="FK_Stempelzeiten_Zeittypen" msprop:Generator_ParentPropName="ZeittypenRow" msprop:Generator_RelationVarName="relationFK_Stempelzeiten_Zeittypen" msprop:Generator_UserParentTable="Zeittypen" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
