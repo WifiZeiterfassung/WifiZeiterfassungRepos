@@ -79,7 +79,7 @@ namespace ProjektZeiterfassung.View
                             else
                             {
                                 errorProviderNeuesPasswort.SetError(TxtNeuesPasswort, "Die neuen Passwörter stimmen nicht überein!");
-                                errorProviderNeuesPasswort1.SetError(TxtNeuesPasswort1, "Die neuen Passwörter stimmen nicht überein!");
+                                //errorProviderNeuesPasswort1.SetError(TxtNeuesPasswort1, "Die neuen Passwörter stimmen nicht überein!");
                                 TextBoxPasswort.Text = "Die neuen Passwörter stimmen nicht überein!";
                             }
                         }
