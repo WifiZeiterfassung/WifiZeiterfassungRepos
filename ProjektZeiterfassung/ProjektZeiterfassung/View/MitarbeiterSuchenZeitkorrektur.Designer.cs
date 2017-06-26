@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.view_1DataGridView = new System.Windows.Forms.DataGridView();
             this.view_1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
-            this.view_1TableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.View_1TableAdapter();
-            this.tableAdapterManager = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.TableAdapterManager();
             this.textBoxSuche = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblSuchfeld = new System.Windows.Forms.Label();
@@ -43,7 +40,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.view_1DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.view_1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,22 +64,6 @@
             // view_1BindingSource
             // 
             this.view_1BindingSource.DataMember = "View_1";
-            this.view_1BindingSource.DataSource = this.zEIT2017DataSet3;
-            // 
-            // zEIT2017DataSet3
-            // 
-            this.zEIT2017DataSet3.DataSetName = "ZEIT2017DataSet3";
-            this.zEIT2017DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // view_1TableAdapter
-            // 
-            this.view_1TableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.UpdateOrder = ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // textBoxSuche
             // 
@@ -161,7 +141,6 @@
             this.Load += new System.EventHandler(this.MitarbeiterSuchen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.view_1DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.view_1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -171,10 +150,7 @@
 
         #endregion
 
-        private ZEIT2017DataSet3 zEIT2017DataSet3;
         private System.Windows.Forms.BindingSource view_1BindingSource;
-        private ZEIT2017DataSet3TableAdapters.View_1TableAdapter view_1TableAdapter;
-        private ZEIT2017DataSet3TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView view_1DataGridView;
         private System.Windows.Forms.TextBox textBoxSuche;
         private System.Windows.Forms.Panel panel2;

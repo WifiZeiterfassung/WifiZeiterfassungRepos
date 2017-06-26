@@ -47,25 +47,19 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.cmbWeiterZeittypen = new System.Windows.Forms.ComboBox();
             this.zeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
             this.BtnAnmelden = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TxtPersonalnummer = new System.Windows.Forms.TextBox();
             this.TxtBenutzerdaten = new System.Windows.Forms.TextBox();
             this.LblBenutzerdaten = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mitarbeiterTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter();
-            this.zEIT2017DataSet = new ProjektZeiterfassung.ZEIT2017DataSet();
             this.mitarbeiterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AnmeldeLabel = new System.Windows.Forms.Label();
-            this.zeittypenTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter();
             this.PanelAdministrationsbereich.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -240,12 +234,6 @@
             // zeittypenBindingSource
             // 
             this.zeittypenBindingSource.DataMember = "Zeittypen";
-            this.zeittypenBindingSource.DataSource = this.zEIT2017DataSet3;
-            // 
-            // zEIT2017DataSet3
-            // 
-            this.zEIT2017DataSet3.DataSetName = "ZEIT2017DataSet3";
-            this.zEIT2017DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // BtnAnmelden
             // 
@@ -310,19 +298,9 @@
             this.panel1.Size = new System.Drawing.Size(484, 55);
             this.panel1.TabIndex = 24;
             // 
-            // mitarbeiterTableAdapter
-            // 
-            this.mitarbeiterTableAdapter.ClearBeforeFill = true;
-            // 
-            // zEIT2017DataSet
-            // 
-            this.zEIT2017DataSet.DataSetName = "ZEIT2017DataSet";
-            this.zEIT2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // mitarbeiterBindingSource
             // 
             this.mitarbeiterBindingSource.DataMember = "Mitarbeiter";
-            this.mitarbeiterBindingSource.DataSource = this.zEIT2017DataSet;
             // 
             // AnmeldeLabel
             // 
@@ -333,10 +311,6 @@
             this.AnmeldeLabel.Size = new System.Drawing.Size(171, 20);
             this.AnmeldeLabel.TabIndex = 22;
             this.AnmeldeLabel.Text = "Wifi Arbeitszeitfassung";
-            // 
-            // zeittypenTableAdapter
-            // 
-            this.zeittypenTableAdapter.ClearBeforeFill = true;
             // 
             // FormZeiterfassung
             // 
@@ -358,12 +332,10 @@
             this.PanelAdministrationsbereich.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mitarbeiterBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -392,14 +364,10 @@
         internal System.Windows.Forms.TextBox TxtBenutzerdaten;
         internal System.Windows.Forms.Label LblBenutzerdaten;
         internal System.Windows.Forms.Panel panel1;
-        internal ZEIT2017DataSetTableAdapters.MitarbeiterTableAdapter mitarbeiterTableAdapter;
-        internal ZEIT2017DataSet zEIT2017DataSet;
         internal System.Windows.Forms.BindingSource mitarbeiterBindingSource;
         internal System.Windows.Forms.Label AnmeldeLabel;
         internal System.Windows.Forms.Button BtnZeittypenBearbeiten;
         private System.Windows.Forms.ComboBox cmbWeiterZeittypen;
-        private ZEIT2017DataSet3 zEIT2017DataSet3;
         private System.Windows.Forms.BindingSource zeittypenBindingSource;
-        private ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter zeittypenTableAdapter;
     }
 }

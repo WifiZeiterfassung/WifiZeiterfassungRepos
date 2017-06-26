@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,12 @@ namespace ProjektZeiterfassung.View
     /// </summary>
     public partial class Zeitkorrektur : Form
     {
+        private BindingSource bindingSource1 = new BindingSource();
+        private SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
+        DbConnections con = new DbConnections();
+        DataTable datatable = new DataTable();
+
         /// <summary>
         /// Fenster Zeitkorrektur wird initalisiert
         /// </summary>
@@ -29,63 +36,13 @@ namespace ProjektZeiterfassung.View
         /// Variable für die aktuelle Personalnummer
         /// </summary>
         public string PersonalnummerBearbeiten { get; set; } 
-        /// <summary>
-        /// Nach den Mitarbeiterdaten in der Datenbank suchen und im Textfeld Vor- und Nachname anzeigen
-        /// </summary>
-        private void BtnSuchen_Click(object sender, EventArgs e)
-        {
-            int Personalnummerint;
-            bool parsed = Int32.TryParse(TxtPersonalnummer.Text, out Personalnummerint);
-
-            if (Personalnummerint == 1)
-            {
-                TxtBenutzerdaten.Text = "DbVorname + DbNachname";
-            }
-            else
-            {
-                MessageBox.Show("Personalnummer wurde nicht gefunden!");
-            }
-        }
-
-        DbConnections con = new DbConnections();
-        ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
 
         /// <summary>
         /// Lädt das Fenster Zeitkorrektur mit der gewählten Personalnummer
         /// </summary>
         private void Zeitkorrektur_Load(object sender, EventArgs e)
         {
-            //ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
-            //TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
-            //TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
-
-            DataViewUpdater();
-
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Zeittypen". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.zeittypenTableAdapter.Fill(this.zEIT2017DataSet3.Zeittypen);
-            //// TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet4.Mitarbeiter". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.mitarbeiterTableAdapter.Fill(this.zEIT2017DataSet4.Mitarbeiter);
-            try
-            {
-                // TODO: Diese Codezeile lädt Daten in die Tabelle "zEIT2017DataSet3.Stempelzeiten". Sie können sie bei Bedarf verschieben oder entfernen.
-                this.stempelzeitenTableAdapter.Fill(this.zEIT2017DataSet3.Stempelzeiten);
-                MitarbeiterSuchenZeitkorrektur mitarbeitersuchenzeitkorrektur = new MitarbeiterSuchenZeitkorrektur();
-                mitarbeitersuchenzeitkorrektur.Close();
-            }
-            catch (Exception ex)
-            {
-
-                Helper.LogError(ex.ToString());
-            }
-        }
-        /// <summary>
-        /// Bei Klick auf das Symbol werden die Daten in der Datenbank gespeichert
-        /// </summary>
-        private void stempelzeitenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.stempelzeitenBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.zEIT2017DataSet3);
+                DataViewUpdater();
         }
         /// <summary>
         /// Event für Änderung des Wertes des DateTimePicker, wo das DataGridView aktualisiert wird
@@ -101,6 +58,7 @@ namespace ProjektZeiterfassung.View
         {
             DataViewUpdater();
         }
+
         /// <summary>
         /// Aktualisiert das DataGridView
         /// </summary>
@@ -108,16 +66,23 @@ namespace ProjektZeiterfassung.View
         {
             ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
             TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
-            TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname); 
+            TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
             try
             {
                 string DatumBeginn = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
                 string DatumEnde = dateTimePickerDatumEnde.Value.AddDays(1).Date.ToString("MM/dd/yyyy").Replace(".", "/");
                 int FKMitarbeiter = con.HoleFK_Mitarbeiter(TxtPersonalnummer.Text);
 
-                DataView DV = new DataView(this.zEIT2017DataSet3.Stempelzeiten);
+                String connectionString = con.DbConnection;
+                dataAdapter = new SqlDataAdapter(con.GetStempelzeiten, connectionString);
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                datatable = con.Stempelzeiten();
+                bindingSource1.DataSource = datatable;
+
+                DataView DV = new DataView(datatable);
                 DV.RowFilter = "Zeitpunkt > #" + DatumBeginn + "# And Zeitpunkt < #" + DatumEnde + "# And FK_Mitarbeiter = '" + FKMitarbeiter + "'";
-                stempelzeitenDataGridView.DataSource = DV;
+                dataGridView1.DataSource = DV;
             }
             catch (Exception ex)
             {
@@ -125,5 +90,22 @@ namespace ProjektZeiterfassung.View
                 Helper.LogError(ex.ToString());
             }
         }
+        /// <summary>
+        /// Bei Klick auf das Symbol werden die Daten in der Datenbank gespeichert
+        /// </summary>
+        private void stempelzeitenBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.bindingSource1.EndEdit();
+                dataAdapter.Update((DataTable)bindingSource1.DataSource);
+            }
+            catch (Exception ex)
+            {
+
+                Helper.LogError(ex.ToString());
+            }
+}
     }
 }

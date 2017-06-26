@@ -68,15 +68,8 @@ namespace ProjektZeiterfassung.View
             fourthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             fifthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
-        /// <summary>
-        /// Speichert die Änderungen in der Datenbank
-        /// </summary>
-        private void stempelzeitenBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.zeittypenBindingSource.EndEdit();
-            dataAdapter.Update((DataTable)bindingSource1.DataSource);            
-        }
+
+
 
         /// <summary>
         /// Ruft die Daten aus der Datenbank ab
@@ -94,6 +87,22 @@ namespace ProjektZeiterfassung.View
                 table.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataAdapter.Fill(table);
                 bindingSource1.DataSource = table;
+        }
+        /// <summary>
+        /// Speichert die Änderungen in der Datenbank
+        /// </summary>
+        private void stempelzeitenBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.bindingSource1.EndEdit();
+                dataAdapter.Update((DataTable)bindingSource1.DataSource);
+            }
+            catch (Exception ex)
+            {
+                Helper.LogError(ex.ToString());
+            }
         }
 
         //private void fillComboBox()

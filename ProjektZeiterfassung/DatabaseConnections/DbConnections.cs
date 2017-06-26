@@ -323,6 +323,7 @@ namespace DatabaseConnections
           ORDER BY s.Zeitpunkt DESC;*/
         //sql-String welcher die aktuelle Stempelzeit eines bestimmten Mitarbeiters ausliest aus der Datenbank
         private string _StempelzeitAuslesen = "SELECT TOP(1)* FROM [ZEIT2017].[dbo].[Stempelzeiten] AS s WHERE s.FK_Mitarbeiter = @FkMitarbeiter ORDER BY s.Zeitpunkt DESC;";
+
         /// <summary>
         /// Methode die eine Liste von stempelzeiten einer bestimmten Person liefert
         /// </summary>
@@ -612,6 +613,34 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return GetZeittypenByBezeichnung;
+        }
+
+        /// <summary>
+        /// SQL-String welcher alle Stempelzeiten aus der Datenbank ausliest
+        /// </summary>
+        public string GetStempelzeiten = "SELECT * FROM [ZEIT2017].[dbo].[Stempelzeiten] ORDER BY Zeitpunkt DESC;";
+        /// <summary>
+        /// Methode die eine Liste von stempelzeiten einer bestimmten Person liefert
+        /// </summary>
+        public DataTable Stempelzeiten()
+        {
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
+            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this.GetStempelzeiten, Connection))
+                {
+                    adapter.SelectCommand = Befehl;
+                    table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                    adapter.Fill(table);
+                }
+                Connection.Close();
+            }
+            return table;
         }
     }
 }

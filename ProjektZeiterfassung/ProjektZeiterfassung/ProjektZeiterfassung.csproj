@@ -57,24 +57,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\alte Designs\DatenbankEinstellen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\alte Designs\DatenbankEinstellen.Designer.cs">
-      <DependentUpon>DatenbankEinstellen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\alte Designs\Mainpanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\alte Designs\Mainpanel.Designer.cs">
-      <DependentUpon>Mainpanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\alte Designs\Mainpanel2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\alte Designs\Mainpanel2.Designer.cs">
-      <DependentUpon>Mainpanel2.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\MitarbeiterAnlegen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,45 +105,6 @@
     <Compile Include="View\Zeitkorrektur.Designer.cs">
       <DependentUpon>Zeitkorrektur.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\alte Designs\Zeituebersicht.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\alte Designs\Zeituebersicht.Designer.cs">
-      <DependentUpon>Zeituebersicht.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZEIT2017DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZEIT2017DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017DataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZEIT2017DataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017DataSet3.cs">
-      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017DataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017DataSet41.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZEIT2017DataSet41.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ZEIT2017FullDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -171,15 +114,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\alte Designs\DatenbankEinstellen.resx">
-      <DependentUpon>DatenbankEinstellen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\alte Designs\Mainpanel.resx">
-      <DependentUpon>Mainpanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\alte Designs\Mainpanel2.resx">
-      <DependentUpon>Mainpanel2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\MitarbeiterAnlegen.resx">
       <DependentUpon>MitarbeiterAnlegen.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,9 +138,6 @@
     <EmbeddedResource Include="View\Zeitkorrektur.resx">
       <DependentUpon>Zeitkorrektur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\alte Designs\Zeituebersicht.resx">
-      <DependentUpon>Zeituebersicht.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -216,78 +147,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ZEIT2017DataSet.xsc">
-      <DependentUpon>ZEIT2017DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZEIT2017DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZEIT2017DataSet.xss">
-      <DependentUpon>ZEIT2017DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet1.xsc">
-      <DependentUpon>ZEIT2017DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZEIT2017DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZEIT2017DataSet1.xss">
-      <DependentUpon>ZEIT2017DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet2.xsc">
-      <DependentUpon>ZEIT2017DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZEIT2017DataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZEIT2017DataSet2.xss">
-      <DependentUpon>ZEIT2017DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet3.xsc">
-      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZEIT2017DataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZEIT2017DataSet3.xss">
-      <DependentUpon>ZEIT2017DataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet41.xsc">
-      <DependentUpon>ZEIT2017DataSet41.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017DataSet41.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZEIT2017DataSet41.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZEIT2017DataSet41.xss">
-      <DependentUpon>ZEIT2017DataSet41.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017FullDataSet.xsc">
-      <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ZEIT2017FullDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZEIT2017FullDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZEIT2017FullDataSet.xss">
-      <DependentUpon>ZEIT2017FullDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
+    <Folder Include="View\alte Designs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MS_Sql\Beschreibung Sql String.txt" />

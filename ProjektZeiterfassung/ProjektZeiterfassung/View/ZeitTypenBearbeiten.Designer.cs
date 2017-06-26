@@ -31,20 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZeittypenBearbeiten));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.zeittypenDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.zeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zEIT2017DataSet3 = new ProjektZeiterfassung.ZEIT2017DataSet3();
             this.LblZeittypenBearbeiten = new System.Windows.Forms.Label();
-            this.tableAdapterManager = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.TableAdapterManager();
-            this.zeittypenTableAdapter = new ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.zeittypenBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.stempelzeitenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.zeittypenDataGridView = new System.Windows.Forms.DataGridView();
+            this.ZeittypenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -59,11 +48,8 @@
             this.stempelzeitenBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingNavigator)).BeginInit();
-            this.stempelzeitenBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZeittypenBindingNavigator)).BeginInit();
+            this.ZeittypenBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -75,70 +61,6 @@
             this.panel2.Size = new System.Drawing.Size(480, 261);
             this.panel2.TabIndex = 41;
             // 
-            // zeittypenDataGridView
-            // 
-            this.zeittypenDataGridView.AutoGenerateColumns = false;
-            this.zeittypenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.zeittypenDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.Modus,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewCheckBoxColumn1});
-            this.zeittypenDataGridView.DataSource = this.zeittypenBindingSource;
-            this.zeittypenDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.zeittypenDataGridView.Name = "zeittypenDataGridView";
-            this.zeittypenDataGridView.Size = new System.Drawing.Size(470, 251);
-            this.zeittypenDataGridView.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 43;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Bezeichnung";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Bezeichnung";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Modus
-            // 
-            this.Modus.DataPropertyName = "Modus";
-            this.Modus.HeaderText = "Modus";
-            this.Modus.Name = "Modus";
-            this.Modus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Von";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Von";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 51;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Hauptsatz";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Hauptsatz";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 61;
-            // 
-            // zeittypenBindingSource
-            // 
-            this.zeittypenBindingSource.DataMember = "Zeittypen";
-            this.zeittypenBindingSource.DataSource = this.zEIT2017DataSet3;
-            // 
-            // zEIT2017DataSet3
-            // 
-            this.zEIT2017DataSet3.DataSetName = "ZEIT2017DataSet3";
-            this.zEIT2017DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // LblZeittypenBearbeiten
             // 
             this.LblZeittypenBearbeiten.AutoSize = true;
@@ -149,29 +71,21 @@
             this.LblZeittypenBearbeiten.TabIndex = 42;
             this.LblZeittypenBearbeiten.Text = "Zeittypen bearbeiten:";
             // 
-            // tableAdapterManager
+            // zeittypenDataGridView
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.StempelzeitenTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = ProjektZeiterfassung.ZEIT2017DataSet3TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.ZeittypenTableAdapter = null;
+            this.zeittypenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.zeittypenDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zeittypenDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.zeittypenDataGridView.Name = "zeittypenDataGridView";
+            this.zeittypenDataGridView.Size = new System.Drawing.Size(476, 257);
+            this.zeittypenDataGridView.TabIndex = 0;
             // 
-            // zeittypenTableAdapter
+            // ZeittypenBindingNavigator
             // 
-            this.zeittypenTableAdapter.ClearBeforeFill = true;
-            // 
-            // zeittypenBindingSource1
-            // 
-            this.zeittypenBindingSource1.DataMember = "Zeittypen";
-            this.zeittypenBindingSource1.DataSource = this.zEIT2017DataSet3;
-            // 
-            // stempelzeitenBindingNavigator
-            // 
-            this.stempelzeitenBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.stempelzeitenBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.stempelzeitenBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.stempelzeitenBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ZeittypenBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.ZeittypenBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.ZeittypenBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.ZeittypenBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -184,16 +98,16 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.stempelzeitenBindingNavigatorSaveItem});
-            this.stempelzeitenBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.stempelzeitenBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.stempelzeitenBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.stempelzeitenBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.stempelzeitenBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.stempelzeitenBindingNavigator.Name = "stempelzeitenBindingNavigator";
-            this.stempelzeitenBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.stempelzeitenBindingNavigator.Size = new System.Drawing.Size(504, 25);
-            this.stempelzeitenBindingNavigator.TabIndex = 43;
-            this.stempelzeitenBindingNavigator.Text = "bindingNavigator1";
+            this.ZeittypenBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.ZeittypenBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.ZeittypenBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.ZeittypenBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.ZeittypenBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.ZeittypenBindingNavigator.Name = "ZeittypenBindingNavigator";
+            this.ZeittypenBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.ZeittypenBindingNavigator.Size = new System.Drawing.Size(504, 25);
+            this.ZeittypenBindingNavigator.TabIndex = 45;
+            this.ZeittypenBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -298,14 +212,14 @@
             this.stempelzeitenBindingNavigatorSaveItem.Name = "stempelzeitenBindingNavigatorSaveItem";
             this.stempelzeitenBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.stempelzeitenBindingNavigatorSaveItem.Text = "Daten speichern";
-            this.stempelzeitenBindingNavigatorSaveItem.Click += new System.EventHandler(this.stempelzeitenBindingNavigatorSaveItem_Click);
+            this.stempelzeitenBindingNavigatorSaveItem.Click += new System.EventHandler(this.stempelzeitenBindingNavigatorSaveItem_Click_1);
             // 
             // ZeittypenBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 319);
-            this.Controls.Add(this.stempelzeitenBindingNavigator);
+            this.Controls.Add(this.ZeittypenBindingNavigator);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.LblZeittypenBearbeiten);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -315,12 +229,9 @@
             this.Load += new System.EventHandler(this.ZeittypenBearbeiten_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zEIT2017DataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zeittypenBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stempelzeitenBindingNavigator)).EndInit();
-            this.stempelzeitenBindingNavigator.ResumeLayout(false);
-            this.stempelzeitenBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZeittypenBindingNavigator)).EndInit();
+            this.ZeittypenBindingNavigator.ResumeLayout(false);
+            this.ZeittypenBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,21 +239,15 @@
 
         #endregion
 
-        private ZEIT2017DataSet3 zEIT2017DataSet3;
-        private ZEIT2017DataSet3TableAdapters.TableAdapterManager tableAdapterManager;
+
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label LblZeittypenBearbeiten;
-        private System.Windows.Forms.BindingSource zeittypenBindingSource;
-        private ZEIT2017DataSet3TableAdapters.ZeittypenTableAdapter zeittypenTableAdapter;
-        private System.Windows.Forms.DataGridView zeittypenDataGridView;
-        private System.Windows.Forms.HelpProvider helpProvider1;
-        private System.Windows.Forms.BindingSource zeittypenBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.BindingNavigator stempelzeitenBindingNavigator;
+        private System.Windows.Forms.DataGridView zeittypenDataGridView;
+        private System.Windows.Forms.BindingNavigator ZeittypenBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
