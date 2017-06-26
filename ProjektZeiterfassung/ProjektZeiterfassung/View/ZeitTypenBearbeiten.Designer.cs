@@ -226,6 +226,7 @@
             this.Name = "ZeittypenBearbeiten";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZeittypenBearbeiten_FormClosing);
             this.Load += new System.EventHandler(this.ZeittypenBearbeiten_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zeittypenDataGridView)).EndInit();

@@ -331,6 +331,7 @@
             this.Name = "Zeitkorrektur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Zeitkorrektur_FormClosing);
             this.Load += new System.EventHandler(this.Zeitkorrektur_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

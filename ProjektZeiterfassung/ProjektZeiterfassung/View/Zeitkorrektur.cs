@@ -107,5 +107,28 @@ namespace ProjektZeiterfassung.View
                 Helper.LogError(ex.ToString());
             }
 }
+
+        private void Zeitkorrektur_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Sollen die Änderungen gespeichert werden?", "Wifi Arbeitszeiterfassung",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                try
+                {
+                    this.Validate();
+                    this.bindingSource1.EndEdit();
+                    dataAdapter.Update((DataTable)bindingSource1.DataSource);
+                }
+                catch (Exception ex)
+                {
+
+                    Helper.LogError(ex.ToString());
+                }
+            }
+        }
     }
 }

@@ -153,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="View\alte Designs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MS_Sql\Beschreibung Sql String.txt" />
