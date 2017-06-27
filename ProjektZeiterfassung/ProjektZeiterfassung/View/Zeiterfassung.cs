@@ -343,9 +343,10 @@ namespace ProjektZeiterfassung.View
             dataAdapter.Fill(table);
             cmbWeiterZeittypen.DataSource = table.DefaultView;
             cmbWeiterZeittypen.DisplayMember = "Bezeichnung";
+            cmbWeiterZeittypen.SelectedText = "Nix do";
             cmbWeiterZeittypen.SelectedIndex = -1;
-            //cmbWeiterZeittypen.Text = "Zeittypen";
-            //cmbWeiterZeittypen.SelectedText = "Zeittypen";
+            
+                
         }
 
         /// <summary>

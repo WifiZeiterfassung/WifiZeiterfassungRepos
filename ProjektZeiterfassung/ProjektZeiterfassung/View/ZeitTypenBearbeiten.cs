@@ -16,11 +16,12 @@ using DatabaseConnections.Model;
 namespace ProjektZeiterfassung.View
 {
     /// <summary>
-    /// Methode um die Datenbankeinträge für die Zeittypen zu bearbeiten
+    /// Klasse um die Datenbankeinträge für die Zeittypen zu bearbeiten
     /// </summary>
     public partial class ZeittypenBearbeiten : Form
     {
-        DbConnections con = new DbConnections();
+        //instanzieren der zu verwendenden Klasse
+        private DbConnections con = new DbConnections();
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         /// <summary>
@@ -44,6 +45,7 @@ namespace ProjektZeiterfassung.View
             }
             catch (Exception ex)
             {
+                //Ans Logfile wird die exception angehängt
                 Helper.LogError(ex.ToString());                
             }
         }
@@ -95,18 +97,23 @@ namespace ProjektZeiterfassung.View
         {
             try
             {
+                //Überprüft den Wert des Steuerelements
                 this.Validate();
+                //Anwenden der Änderungen
                 this.bindingSource1.EndEdit();
+                //für die gewünschen Änderungen in der Datenbank aus
                 dataAdapter.Update((DataTable)bindingSource1.DataSource);
             }
             catch (Exception ex)
             {
+                //Falls ein Fehler auftritt wir er im bestehenden Logfile angehängt
                 Helper.LogError(ex.ToString());
             }
         }
 
         private void ZeittypenBearbeiten_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //Sicherheitsabfrage für den Benutzer ob die Änderungen gespeichert werden sollen
             if (MessageBox.Show("Sollen die Änderungen gespeichert werden?", "Wifi Arbeitszeiterfassung",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -126,26 +133,5 @@ namespace ProjektZeiterfassung.View
                 }
             }
         }
-
-        //private void fillComboBox()
-        //{
-
-        //    datatable = con.GetModus();
-        //    DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-        //    combo.HeaderText = "Modus";
-        //    combo.Name = "combo";
-        //    //combo.DataSource = datatable;
-
-        //    ArrayList row = new ArrayList();
-        //    foreach (DataRow r in datatable.Rows)
-        //    {
-        //        combo.Items.Add(r["Modus"].ToString());
-        //    }
-
-        //    //ADD THE COMBO TO DATAGRIDVIEW
-        //    zeittypenDataGridView.Columns.Add(combo);
-        //    combo.DefaultCellStyle.NullValue = datatable.Rows[0][0].ToString();
-        //    combo.DefaultCellStyle.DataSourceNullValue = datatable.Rows[0][0].ToString();
-        //}
     }
 }

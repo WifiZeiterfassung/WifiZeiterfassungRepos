@@ -456,12 +456,12 @@ namespace DatabaseConnections
             }
             return table;
         }
-
+        //Sql-String welcher ein Update für den gewünschten Mitarbeiter in der Mitarbeiter Tabelle ausführt
         private string _UpdateMitarbeiter = "UPDATE [ZEIT2017].[dbo].[Mitarbeiter] SET [Vorname] = @Vorname, [Nachname]= @Nachname " +
                                             "FROM[ZEIT2017].[dbo].[Mitarbeiter] AS m " +
                                             "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
                                              "ON m.ID = ea.FK_Mitarbeiter WHERE ea.Personalnummer = @PNR";
-
+        //Sql-String welcher ein Update für IstAdmin des gewünschen Mitarbeiters in der Tabelle EintrittAustritt ausführt 
         private string _UpdateIsAdmin = "UPDATE [ZEIT2017].[dbo].[EintrittAustritt] SET [IsAdmin] = @Admin " +
                                             "FROM[ZEIT2017].[dbo].[Mitarbeiter] AS m " +
                                             "JOIN[ZEIT2017].[dbo].[EintrittAustritt] AS ea " +
@@ -474,8 +474,7 @@ namespace DatabaseConnections
         /// <param name="ea">EintrittAustritt Objekt</param>
         public void MitarbeiterUpdaten(Mitarbeiter m, EintrittAustritt ea)
         {
-            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
-            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
+            // hier werden die gewünschten Daten des Mitarbeiters in die Tabelle Mitarbeiter upgedatet
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
@@ -490,10 +489,11 @@ namespace DatabaseConnections
                 }
                 Connection.Close();
             }
+            //update auf IsAdmin eines gewünschen Mitarbeiters
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
-                //Tabelle EintrittAustritt mit IsAdmin wird befüllen 
+                //Tabelle EintrittAustritt mit IsAdmin wird befüllt
                 using (var Befehl = new System.Data.SqlClient.SqlCommand("dbo.EintrittAustritt", Connection))
                 {
                     Befehl.CommandText = this._UpdateIsAdmin;
@@ -505,7 +505,7 @@ namespace DatabaseConnections
             }
         }
 
-
+        //SQL-String welcher das Passwort des gewünschen Mitarbeiters holt
         private string _sqlHolePasswort = "SELECT  m.Passwort " +
                                              "FROM[ZEIT2017].[dbo].[Mitarbeiter] " + "AS m " +
                                                "JOIN[ZEIT2017].[dbo].[EintrittAustritt] " + "AS ea " +
@@ -519,16 +519,17 @@ namespace DatabaseConnections
         /// <returns>Personalnummer als Integer</returns>
         public string HolePasswort(int ea)
         {
-            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            //lokale Hilfsvariable für Rückgabe
             string PasswortDB = string.Empty;
-
+            //Verbindung zur Datenbank öffnen
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
-
+                //Sql Command der Datenbankverbindung übergeben
                 using (var Befehl = new System.Data.SqlClient.SqlCommand(this._sqlHolePasswort, Connection))
                 {
                     Befehl.Parameters.Add("@ID", System.Data.SqlDbType.Int).Value = ea;
+                    //Da nur Ein Datensatz benötigt wird mit if falls eine Liste befüllt werden soll hier while verwenden
                     using (var reader = Befehl.ExecuteReader())
                     {
                         if (reader.Read())
@@ -558,8 +559,6 @@ namespace DatabaseConnections
         {
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
-            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
@@ -589,13 +588,13 @@ namespace DatabaseConnections
         /// <returns>Personalnummer als Integer</returns>
         public int GetZeittypenByBezeichnung(string ea)
         {
-            //Später wenn keine Fehler noch einen Try Catch hinzufügen
+            //lokale Hilfsvariable
             int GetZeittypenByBezeichnung = 0;
-
+            //Öffnen der Datenbankverbindung
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();
-
+                //SQL-Commands übergeben
                 using (var Befehl = new System.Data.SqlClient.SqlCommand(this._GetZeittypenByBezeichnung, Connection))
                 {
                     Befehl.Parameters.Add("@BZ", System.Data.SqlDbType.NVarChar).Value = ea;
@@ -626,8 +625,6 @@ namespace DatabaseConnections
         {
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            //Später wenn alles in Ortnung und ohne Fehler läuft mit einen Try Catch und finally block absichern
-            //Methode vielleicht noch ändern damit ein Rückgabewert retourniert wird 
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
                 Connection.Open();

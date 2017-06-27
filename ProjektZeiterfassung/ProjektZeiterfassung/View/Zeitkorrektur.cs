@@ -19,11 +19,12 @@ namespace ProjektZeiterfassung.View
     /// </summary>
     public partial class Zeitkorrektur : Form
     {
+        //instanzieren der zu verwendenden Klassen
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
-        ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
-        DbConnections con = new DbConnections();
-        DataTable datatable = new DataTable();
+        private ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
+        private DbConnections con = new DbConnections();
+        private DataTable datatable = new DataTable();
 
         /// <summary>
         /// Fenster Zeitkorrektur wird initalisiert
@@ -42,7 +43,8 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void Zeitkorrektur_Load(object sender, EventArgs e)
         {
-                DataViewUpdater();
+            //Aktualisierung des Datagrids
+            DataViewUpdater();
         }
         /// <summary>
         /// Event für Änderung des Wertes des DateTimePicker, wo das DataGridView aktualisiert wird
@@ -64,19 +66,25 @@ namespace ProjektZeiterfassung.View
         /// </summary>
         private void DataViewUpdater()
         {
-            ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+            //Ermitteln der Daten des gewünschen Mitarbeiters und schreib diese in eine Liste für die Verarbeitung
+            this.ErgebnisSuche = con.MitarbeiterPersonalnummerSuchen(this.PersonalnummerBearbeiten);
+            //holt aus der aktuellen Liste die Personalnummer und schreib diese in die textbox zur Ansicht
             TxtPersonalnummer.Text = ErgebnisSuche.FirstOrDefault().Personalnummer;
+            //holt den Vor und Nachnamen aus der liste und zeigt ihn in der Meldungstextbox an
             TxtBenutzerdaten.Text = string.Format("{0} {1}", ErgebnisSuche.FirstOrDefault().Vorname, ErgebnisSuche.FirstOrDefault().Nachname);
             try
             {
+                //Datumsbeginn DatTime objekt aus dem Datetimepicker wird im richtigen Format übergeben
                 string DatumBeginn = dateTimePickerDatumBeginn.Value.Date.ToString("MM/dd/yyyy").Replace(".", "/");
+                //Datumsende
                 string DatumEnde = dateTimePickerDatumEnde.Value.AddDays(1).Date.ToString("MM/dd/yyyy").Replace(".", "/");
+                //Mitarbeiter Id wird geholt
                 int FKMitarbeiter = con.HoleFK_Mitarbeiter(TxtPersonalnummer.Text);
-
-                String connectionString = con.DbConnection;
+                //sql-Connection string wird geholt 
+                string connectionString = con.DbConnection;
+                //connection und Sql Command wird übergeben
                 dataAdapter = new SqlDataAdapter(con.GetStempelzeiten, connectionString);
                 SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-
                 datatable = con.Stempelzeiten();
                 bindingSource1.DataSource = datatable;
 
@@ -106,8 +114,12 @@ namespace ProjektZeiterfassung.View
 
                 Helper.LogError(ex.ToString());
             }
-}
-
+        }
+        /// <summary>
+        /// Methode welche vor dem speicher fragt ob die Änderungen gespeichert werden sollen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Zeitkorrektur_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Sollen die Änderungen gespeichert werden?", "Wifi Arbeitszeiterfassung",

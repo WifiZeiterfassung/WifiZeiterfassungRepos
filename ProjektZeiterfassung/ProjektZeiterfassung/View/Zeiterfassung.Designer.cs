@@ -222,13 +222,15 @@
             // 
             // cmbWeiterZeittypen
             // 
+            this.cmbWeiterZeittypen.DisplayMember = "Auswahl";
             this.cmbWeiterZeittypen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWeiterZeittypen.FormattingEnabled = true;
+            this.cmbWeiterZeittypen.Items.AddRange(new object[] {
+            "Auswahl"});
             this.cmbWeiterZeittypen.Location = new System.Drawing.Point(387, 18);
             this.cmbWeiterZeittypen.Name = "cmbWeiterZeittypen";
             this.cmbWeiterZeittypen.Size = new System.Drawing.Size(90, 21);
             this.cmbWeiterZeittypen.TabIndex = 13;
-            //this.cmbWeiterZeittypen.SelectedIndexChanged += new System.EventHandler(this.cmbWeiterZeittypen_SelectedIndexChanged);
             this.cmbWeiterZeittypen.SelectionChangeCommitted += new System.EventHandler(this.cmbWeiterZeittypen_SelectionChangeCommitted);
             // 
             // zeittypenBindingSource
