@@ -5,8 +5,12 @@
     <Members>
       <Field Name="_DbConnection" Hidden="true" />
       <Field Name="_GetModus" Hidden="true" />
+      <Field Name="_GetZeittypen" Hidden="true" />
+      <Field Name="_GetZeittypenByBezeichnung" Hidden="true" />
       <Field Name="_HoleFK_Mitarbeiter" Hidden="true" />
+      <Field Name="_HoleMitarbeiterDaten" Hidden="true" />
       <Field Name="_HoleTopPersonalnummer" Hidden="true" />
+      <Field Name="_SpeichernArbeitsBeginn" Hidden="true" />
       <Field Name="_sqlHolePasswort" Hidden="true" />
       <Field Name="_SqlString" Hidden="true" />
       <Field Name="_SqlStringAustritt" Hidden="true" />
@@ -16,15 +20,17 @@
       <Field Name="_sqlSucheMitarbeiterPersonalnummer" Hidden="true" />
       <Field Name="_StempelzeitAuslesen" Hidden="true" />
       <Field Name="_SucheHoechsteMitarbeiterId" Hidden="true" />
+      <Field Name="_UpdateIsAdmin" Hidden="true" />
       <Field Name="_UpdateMitarbeiter" Hidden="true" />
+      <Field Name="GetStempelzeiten" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>QAAAIiAJAARAEAgEAgAAAAAFAIEAAAHICAAQAiQCgKk=</HashCode>
+      <HashCode>QACAIiAJAARAEAgEIgAAAAAFAIEBAQHICAAQAiQCgLk=</HashCode>
       <FileName>DbConnections.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DatabaseConnections.Model.EintrittAustritt">
-    <Position X="1" Y="6.5" Width="2" />
+    <Position X="1" Y="3.75" Width="2" />
     <Members>
       <Field Name="_AustrittsDatum" Hidden="true" />
       <Field Name="_EintrittsDatum" Hidden="true" />
@@ -47,7 +53,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DatabaseConnections.Model.Mitarbeiter">
-    <Position X="1" Y="4.25" Width="2" />
+    <Position X="1" Y="1.5" Width="2" />
     <Members>
       <Field Name="_ID" Hidden="true" />
       <Field Name="_KlartextPasswort" Hidden="true" />
@@ -64,23 +70,6 @@
     <Position X="1" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\MitarbeiterListe.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DatabaseConnections.Model.MitarbeiterListe">
-    <Position X="1" Y="1.5" Width="2" />
-    <Members>
-      <Field Name="_AustrittsDatum" Hidden="true" />
-      <Field Name="_EintrittsDatum" Hidden="true" />
-      <Field Name="_ID" Hidden="true" />
-      <Field Name="_IsAdmin" Hidden="true" />
-      <Field Name="_Nachname" Hidden="true" />
-      <Field Name="_Personalnummer" Hidden="true" />
-      <Field Name="_TagesSollZeit" Hidden="true" />
-      <Field Name="_Vorname" Hidden="true" />
-    </Members>
-    <TypeIdentifier>
-      <HashCode>AIACAAABAAAIgAEAAAAAAAAAGAAACAAAAAAAAgAEg2A=</HashCode>
       <FileName>Model\MitarbeiterListe.cs</FileName>
     </TypeIdentifier>
   </Class>
