@@ -41,6 +41,15 @@ namespace ProjektZeiterfassung.View
             {
                 zeittypenDataGridView.DataSource = bindingSource1;
                 GetData(con._GetModus);
+                //foreach (DataGridViewRow row in zeittypenDataGridView.Rows)
+                //{
+                //    bool? Checkbox = null;
+                //    Checkbox = Convert.ToBoolean(row.Cells[4].Value);
+                //    if (Checkbox == null)
+                //    {
+                //        row.Cells[4].Value = true;
+                //    }
+                //}
                 ToolTips();
             }
             catch (Exception ex)
@@ -70,7 +79,6 @@ namespace ProjektZeiterfassung.View
             fourthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             fifthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
-
 
 
         /// <summary>
@@ -103,6 +111,7 @@ namespace ProjektZeiterfassung.View
                 this.bindingSource1.EndEdit();
                 //für die gewünschen Änderungen in der Datenbank aus
                 dataAdapter.Update((DataTable)bindingSource1.DataSource);
+
             }
             catch (Exception ex)
             {

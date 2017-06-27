@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZeittypenBearbeiten));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.LblZeittypenBearbeiten = new System.Windows.Forms.Label();
             this.zeittypenDataGridView = new System.Windows.Forms.DataGridView();
+            this.LblZeittypenBearbeiten = new System.Windows.Forms.Label();
             this.ZeittypenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -61,6 +61,15 @@
             this.panel2.Size = new System.Drawing.Size(480, 261);
             this.panel2.TabIndex = 41;
             // 
+            // zeittypenDataGridView
+            // 
+            this.zeittypenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.zeittypenDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zeittypenDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.zeittypenDataGridView.Name = "zeittypenDataGridView";
+            this.zeittypenDataGridView.Size = new System.Drawing.Size(476, 257);
+            this.zeittypenDataGridView.TabIndex = 0;
+            // 
             // LblZeittypenBearbeiten
             // 
             this.LblZeittypenBearbeiten.AutoSize = true;
@@ -70,15 +79,6 @@
             this.LblZeittypenBearbeiten.Size = new System.Drawing.Size(159, 20);
             this.LblZeittypenBearbeiten.TabIndex = 42;
             this.LblZeittypenBearbeiten.Text = "Zeittypen bearbeiten:";
-            // 
-            // zeittypenDataGridView
-            // 
-            this.zeittypenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.zeittypenDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zeittypenDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.zeittypenDataGridView.Name = "zeittypenDataGridView";
-            this.zeittypenDataGridView.Size = new System.Drawing.Size(476, 257);
-            this.zeittypenDataGridView.TabIndex = 0;
             // 
             // ZeittypenBindingNavigator
             // 
