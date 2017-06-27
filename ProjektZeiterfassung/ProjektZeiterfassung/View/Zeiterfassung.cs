@@ -49,6 +49,7 @@ namespace ProjektZeiterfassung.View
         private void FormZeiterfassung_Load(object sender, EventArgs e)
         {
             this.Height = 255;
+            cmbWeiterZeittypen.Enabled = false;
         }
 
         /// <summary>
@@ -167,6 +168,7 @@ namespace ProjektZeiterfassung.View
                             BtnPausenende.Enabled = false;
                             this.Height = 360;
                         }
+                        cmbWeiterZeittypen.Enabled = true;
                         GetData(con._GetZeittypen);
                     }
                     //Fälle für den Benutzer ohne Admin rechte
@@ -209,6 +211,7 @@ namespace ProjektZeiterfassung.View
                             BtnPausenende.Enabled = false;
                             this.Height = 255;
                         }
+                        cmbWeiterZeittypen.Enabled = true;
                         GetData(con._GetZeittypen);
                     }
                     else
@@ -341,12 +344,18 @@ namespace ProjektZeiterfassung.View
             DataTable table = new DataTable();
             table.Locale = System.Globalization.CultureInfo.InvariantCulture;
             dataAdapter.Fill(table);
-            cmbWeiterZeittypen.DataSource = table.DefaultView;
-            cmbWeiterZeittypen.DisplayMember = "Bezeichnung";
-            cmbWeiterZeittypen.SelectedText = "Nix do";
-            cmbWeiterZeittypen.SelectedIndex = -1;
-            
-                
+            if (table.Rows.Count > 0)
+            {
+                cmbWeiterZeittypen.DataSource = table.DefaultView;
+                cmbWeiterZeittypen.DisplayMember = "Bezeichnung";
+                //cmbWeiterZeittypen.SelectedIndex = -1;
+                //cmbWeiterZeittypen.Text = "Zeittypen";
+                //cmbWeiterZeittypen.SelectedText = "Zeittypen";
+            }
+            else
+            {
+                cmbWeiterZeittypen.Enabled = false;
+            }
         }
 
         /// <summary>
