@@ -50,6 +50,7 @@ namespace ProjektZeiterfassung.View
         {
             this.Height = 255;
             cmbWeiterZeittypen.Enabled = false;
+            cmbWeiterZeittypen.Width = 90;
         }
 
         /// <summary>
@@ -169,6 +170,7 @@ namespace ProjektZeiterfassung.View
                             this.Height = 360;
                         }
                         cmbWeiterZeittypen.Enabled = true;
+                        
                         breiteAnpassen(cmbWeiterZeittypen);
                         GetData(con._GetZeittypen);
                     }
@@ -360,12 +362,13 @@ namespace ProjektZeiterfassung.View
         private void breiteAnpassen (ComboBox cmbWeiterZeittypen)
         {
             Graphics g = cmbWeiterZeittypen.CreateGraphics();
-            float breite, maxBreite = 0F;
+            float breite, maxBreite = 70;
             foreach (Object element in cmbWeiterZeittypen.Items)
             {
                 breite = g.MeasureString(element.ToString(), cmbWeiterZeittypen.Font).Width;
                 if (breite > maxBreite) maxBreite = breite;
             }
+
             cmbWeiterZeittypen.Width = (int)maxBreite + 20;
         }
 
