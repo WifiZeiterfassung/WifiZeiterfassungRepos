@@ -41,15 +41,8 @@ namespace ProjektZeiterfassung.View
             {
                 zeittypenDataGridView.DataSource = bindingSource1;
                 GetData(con._GetModus);
-                //foreach (DataGridViewRow row in zeittypenDataGridView.Rows)
-                //{
-                //    bool? Checkbox = null;
-                //    Checkbox = Convert.ToBoolean(row.Cells[4].Value);
-                //    if (Checkbox == null)
-                //    {
-                //        row.Cells[4].Value = true;
-                //    }
-                //}
+
+
                 ToolTips();
             }
             catch (Exception ex)
@@ -109,9 +102,11 @@ namespace ProjektZeiterfassung.View
                 this.Validate();
                 //Anwenden der Änderungen
                 this.bindingSource1.EndEdit();
+                //NULL der CheckBox für Hauptsatz mit 0 überschreiben
+                NULLÜberschreiben();
                 //für die gewünschen Änderungen in der Datenbank aus
                 dataAdapter.Update((DataTable)bindingSource1.DataSource);
-
+                
             }
             catch (Exception ex)
             {
@@ -132,13 +127,32 @@ namespace ProjektZeiterfassung.View
             {
                 try
                 {
+                    //Überprüft den Wert des Steuerelements
                     this.Validate();
+                    //Anwenden der Änderungen
                     this.bindingSource1.EndEdit();
-                    dataAdapter.Update((DataTable)bindingSource1.DataSource);
+                    //NULL der CheckBox für Hauptsatz mit 0 überschreiben
+                    NULLÜberschreiben();
+                    //für die gewünschen Änderungen in der Datenbank aus
+                    dataAdapter.Update((DataTable)bindingSource1.DataSource);                    
                 }
                 catch (Exception ex)
                 {
                     Helper.LogError(ex.ToString());
+                }
+            }
+        }
+        /// <summary>
+        /// Überschreibt NULL der Checkbox für den Hauptsatz mit 0,
+        /// da dieser als Standard NULL ist.
+        /// </summary>
+        private void NULLÜberschreiben()
+        {
+            foreach (DataGridViewRow row in zeittypenDataGridView.Rows)
+            {
+                if (row.Cells[4].Value == System.DBNull.Value)
+                {
+                    row.Cells[4].Value = false;
                 }
             }
         }
