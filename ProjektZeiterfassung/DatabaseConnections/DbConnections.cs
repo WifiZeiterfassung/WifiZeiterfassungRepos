@@ -578,10 +578,6 @@ namespace DatabaseConnections
         /// </summary>
         public string _GetZeittypen = "SELECT [ID],[Bezeichnung],[Modus],[Von],[Hauptsatz] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE ID > '4'";
         /// <summary>
-        ///SQL-String welcher die Zeittypen (außer den 4 Standardtypen) aus der Datenbank abruft
-        /// </summary>
-        public string _GetZeittypen1 = "SELECT ZeitTyp, Bezeichnung FROM [ZEIT2017].[dbo].[Stempelzeiten] JOIN [Zeittypen] on ID = ZeitTyp GROUP BY ZeitTyp, Bezeichnung";
-        /// <summary>
         ///SQL-String welcher die ID des Zeittypen aus der Datenbank abruft
         /// </summary>
         public string _GetZeittypenByBezeichnung = "SELECT [ID] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE Bezeichnung = @BZ; ";
