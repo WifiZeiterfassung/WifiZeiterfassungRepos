@@ -40,9 +40,14 @@ namespace ProjektZeiterfassung.View
             try
             {
                 zeittypenDataGridView.DataSource = bindingSource1;
+                //Die Daten werden abgerufen
                 GetData(con._GetModus);
-
-
+                //Die ersten 4 "Standard"-Einträge werden für die Bearbeitung gesperrt.
+                zeittypenDataGridView.Rows[0].ReadOnly = true;
+                zeittypenDataGridView.Rows[1].ReadOnly = true;
+                zeittypenDataGridView.Rows[2].ReadOnly = true;
+                zeittypenDataGridView.Rows[3].ReadOnly = true;
+                //Die Tooltips und Formatierungen werden geladen
                 ToolTips();
             }
             catch (Exception ex)
@@ -71,6 +76,7 @@ namespace ProjektZeiterfassung.View
             thirdColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             fourthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             fifthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            
         }
 
 
