@@ -23,7 +23,7 @@ namespace ProjektZeiterfassung.View
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
-        private ListeZeittypen ListZeittypen = new ListeZeittypen();
+        private ListeZeittypen TypenListe = new ListeZeittypen();
         private DbConnections con = new DbConnections();
         private DataTable datatable = new DataTable();
 
@@ -46,14 +46,20 @@ namespace ProjektZeiterfassung.View
         {
             //Aktualisierung des Datagrids
             DataViewUpdater();
-            //ListZeittypen = con.GetAlleZeittypen();
-            ////ListViewItem item = new ListViewItem(ListZeittypen);
-            //foreach(var row in ListZeittypen)
-            //{
-            //    var item = new ListViewItem(listViewZeittypen.Items.Count.ToString());
-            //    item.SubItems.AddRange(row);
-            //    listViewZeittypen.Items.Add(item);
-            //}
+            TypenListe = con.GetAlleZeittypen();
+            List<string> MyList = new List<string>();
+            //Headertext in der ListBox
+            MyList.Add("ZeitTyp" + "   " + "Bezeichnung");
+            //leerzeile
+            MyList.Add("---------------------------------");
+            foreach (var item in TypenListe)
+            {                
+                MyList.Add("        " + item.ID.ToString() + "\t" + item.Bezeichnung);
+            }
+            listBoxZeitTypen.DataSource = MyList;
+
+
+
         }
         /// <summary>
         /// Event für Änderung des Wertes des DateTimePicker, wo das DataGridView aktualisiert wird

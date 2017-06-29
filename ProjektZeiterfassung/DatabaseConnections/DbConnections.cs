@@ -651,7 +651,6 @@ namespace DatabaseConnections
         public ListeZeittypen GetAlleZeittypen()
         {
             ListeZeittypen Liste = new ListeZeittypen();
-            Zeittypen zt = new Zeittypen();
 
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
@@ -663,6 +662,7 @@ namespace DatabaseConnections
                     {
                         while (reader.Read())
                         {
+                            Zeittypen zt = new Zeittypen();
                             zt.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                             zt.Bezeichnung = reader.GetString(reader.GetOrdinal("Bezeichnung"));
                             Liste.Add(zt);
