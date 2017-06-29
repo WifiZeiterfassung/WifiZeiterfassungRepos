@@ -169,6 +169,7 @@ namespace ProjektZeiterfassung.View
                             this.Height = 360;
                         }
                         cmbWeiterZeittypen.Enabled = true;
+                        breiteAnpassen(cmbWeiterZeittypen);
                         GetData(con._GetZeittypen);
                     }
                     //Fälle für den Benutzer ohne Admin rechte
@@ -212,6 +213,7 @@ namespace ProjektZeiterfassung.View
                             this.Height = 255;
                         }
                         cmbWeiterZeittypen.Enabled = true;
+                        breiteAnpassen(cmbWeiterZeittypen);
                         GetData(con._GetZeittypen);
                     }
                     else
@@ -348,14 +350,23 @@ namespace ProjektZeiterfassung.View
             {
                 cmbWeiterZeittypen.DataSource = table.DefaultView;
                 cmbWeiterZeittypen.DisplayMember = "Bezeichnung";
-                //cmbWeiterZeittypen.SelectedIndex = -1;
-                //cmbWeiterZeittypen.Text = "Zeittypen";
-                //cmbWeiterZeittypen.SelectedText = "Zeittypen";
             }
             else
             {
                 cmbWeiterZeittypen.Enabled = false;
             }
+        }
+
+        private void breiteAnpassen (ComboBox cmbWeiterZeittypen)
+        {
+            Graphics g = cmbWeiterZeittypen.CreateGraphics();
+            float breite, maxBreite = 0F;
+            foreach (Object element in cmbWeiterZeittypen.Items)
+            {
+                breite = g.MeasureString(element.ToString(), cmbWeiterZeittypen.Font).Width;
+                if (breite > maxBreite) maxBreite = breite;
+            }
+            cmbWeiterZeittypen.Width = (int)maxBreite + 20;
         }
 
         /// <summary>
@@ -375,6 +386,7 @@ namespace ProjektZeiterfassung.View
             }
 
         }
+
 
         /// <summary>
         /// Überprüft Personalnummer und PIN
