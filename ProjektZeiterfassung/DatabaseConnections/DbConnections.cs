@@ -578,6 +578,10 @@ namespace DatabaseConnections
         /// </summary>
         public string _GetZeittypen = "SELECT [ID],[Bezeichnung],[Modus],[Von],[Hauptsatz] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE ID > '4'";
         /// <summary>
+        ///SQL-String welcher die Zeittypen (außer den 4 Standardtypen) aus der Datenbank abruft
+        /// </summary>
+        public string _GetZeittypen1 = "SELECT ZeitTyp, Bezeichnung FROM [ZEIT2017].[dbo].[Stempelzeiten] JOIN [Zeittypen] on ID = ZeitTyp GROUP BY ZeitTyp, Bezeichnung";
+        /// <summary>
         ///SQL-String welcher die ID des Zeittypen aus der Datenbank abruft
         /// </summary>
         public string _GetZeittypenByBezeichnung = "SELECT [ID] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE Bezeichnung = @BZ; ";
@@ -638,6 +642,40 @@ namespace DatabaseConnections
                 Connection.Close();
             }
             return table;
+        }
+
+        /// <summary>
+        ///SQL-String welcher die ID und Bezeichnung der Zeittypen aus der Datenbank abruft
+        /// </summary>
+        public string _GetAlleZeittypen = "SELECT [ID], [Bezeichnung] FROM [ZEIT2017].[dbo].[Zeittypen]; ";
+        /// <summary>
+        /// Liste mit der Id und Bezeichnung aller Zeittypen
+        /// </summary>
+        /// <returns></returns>
+        public ListeZeittypen GetAlleZeittypen()
+        {
+            ListeZeittypen Liste = new ListeZeittypen();
+            Zeittypen zt = new Zeittypen();
+
+            using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
+            {
+                Connection.Open();
+
+                using (var Befehl = new System.Data.SqlClient.SqlCommand(this._GetAlleZeittypen, Connection))
+                {
+                    using(var reader = Befehl.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            zt.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                            zt.Bezeichnung = reader.GetString(reader.GetOrdinal("Bezeichnung"));
+                            Liste.Add(zt);
+                        }
+                    }
+                }
+                Connection.Close();
+            }
+            return Liste;
         }
     }
 }

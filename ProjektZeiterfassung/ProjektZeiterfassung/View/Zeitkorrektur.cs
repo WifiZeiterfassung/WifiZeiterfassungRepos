@@ -23,6 +23,7 @@ namespace ProjektZeiterfassung.View
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private ListeMitarbeiter ErgebnisSuche = new ListeMitarbeiter();
+        private ListeZeittypen ListZeittypen = new ListeZeittypen();
         private DbConnections con = new DbConnections();
         private DataTable datatable = new DataTable();
 
@@ -36,7 +37,7 @@ namespace ProjektZeiterfassung.View
         /// <summary>
         /// Variable für die aktuelle Personalnummer
         /// </summary>
-        public string PersonalnummerBearbeiten { get; set; } 
+        public string PersonalnummerBearbeiten { get; set; }
 
         /// <summary>
         /// Lädt das Fenster Zeitkorrektur mit der gewählten Personalnummer
@@ -45,6 +46,14 @@ namespace ProjektZeiterfassung.View
         {
             //Aktualisierung des Datagrids
             DataViewUpdater();
+            //ListZeittypen = con.GetAlleZeittypen();
+            ////ListViewItem item = new ListViewItem(ListZeittypen);
+            //foreach(var row in ListZeittypen)
+            //{
+            //    var item = new ListViewItem(listViewZeittypen.Items.Count.ToString());
+            //    item.SubItems.AddRange(row);
+            //    listViewZeittypen.Items.Add(item);
+            //}
         }
         /// <summary>
         /// Event für Änderung des Wertes des DateTimePicker, wo das DataGridView aktualisiert wird
@@ -91,12 +100,34 @@ namespace ProjektZeiterfassung.View
                 DataView DV = new DataView(datatable);
                 DV.RowFilter = "Zeitpunkt > #" + DatumBeginn + "# And Zeitpunkt < #" + DatumEnde + "# And FK_Mitarbeiter = '" + FKMitarbeiter + "'";
                 dataGridView1.DataSource = DV;
+
+                dataGridView1.Columns[2].Width = 56;
+
+
+
             }
             catch (Exception ex)
             {
 
                 Helper.LogError(ex.ToString());
             }
+        }
+        /// <summary>
+        /// Legt die Tooltips und den Modus für die automtische Spalten-Breiten-Anpassung fest.
+        /// </summary>
+        private void ToolTips()
+        {
+            DataGridViewColumn firstColumn = dataGridView1.Columns[0];
+            DataGridViewColumn secondColumn = dataGridView1.Columns[1];
+            DataGridViewColumn thirdColumn = dataGridView1.Columns[2];
+
+            firstColumn.ToolTipText = "Fortlaufende Nummer.";
+            secondColumn.ToolTipText = "Benennung des Zeittyp (max. 50 Zeichen).";
+            thirdColumn.ToolTipText = "Gibt an ob es der Anfang oder Ende des Zeittypes ist (A oder E).";
+
+            firstColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            secondColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            thirdColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
         /// <summary>
         /// Bei Klick auf das Symbol werden die Daten in der Datenbank gespeichert
@@ -108,6 +139,7 @@ namespace ProjektZeiterfassung.View
                 this.Validate();
                 this.bindingSource1.EndEdit();
                 dataAdapter.Update((DataTable)bindingSource1.DataSource);
+                
             }
             catch (Exception ex)
             {
@@ -142,5 +174,30 @@ namespace ProjektZeiterfassung.View
                 }
             }
         }
+
+        //private void DropDown(string selectCommand)
+        //{
+        //    //sql-Connection string wird geholt 
+        //    string connectionString = con.DbConnection;
+
+        //    dataGridView1.Columns[0].ReadOnly = true;
+        //    dataGridView1.Columns.Remove(dataGridView1.Columns[2]);
+
+        //    dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+        //    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+        //    DataTable table = new DataTable();
+        //    table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        //    dataAdapter.Fill(table);
+
+        //    DataGridViewComboBoxColumn cmb = new DataGridViewComboBoxColumn();
+        //    cmb.HeaderText = "Zeit Typ";
+        //    cmb.Name = "cmb";
+        //    cmb.DataSource = table;
+        //    cmb.DataPropertyName = "ZeitTyp";
+        //    cmb.DisplayMember = "Bezeichnung";
+        //    cmb.ValueMember = "ZeitTyp";
+
+        //    dataGridView1.Columns.Add(cmb);
+        //}
     }
 }

@@ -55,6 +55,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stempelzeitenBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.listViewZeittypen = new System.Windows.Forms.ListView();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -65,6 +66,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.listViewZeittypen);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Location = new System.Drawing.Point(12, 151);
             this.panel3.Name = "panel3";
@@ -74,10 +76,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(480, 244);
+            this.dataGridView1.Size = new System.Drawing.Size(299, 241);
             this.dataGridView1.TabIndex = 0;
             // 
             // dateTimePickerDatumBeginn
@@ -316,6 +317,15 @@
             this.stempelzeitenBindingNavigatorSaveItem.Text = "Daten speichern";
             this.stempelzeitenBindingNavigatorSaveItem.Click += new System.EventHandler(this.stempelzeitenBindingNavigatorSaveItem_Click_1);
             // 
+            // listViewZeittypen
+            // 
+            this.listViewZeittypen.BackColor = System.Drawing.Color.PeachPuff;
+            this.listViewZeittypen.Location = new System.Drawing.Point(306, 4);
+            this.listViewZeittypen.Name = "listViewZeittypen";
+            this.listViewZeittypen.Size = new System.Drawing.Size(171, 237);
+            this.listViewZeittypen.TabIndex = 1;
+            this.listViewZeittypen.UseCompatibleStateImageBehavior = false;
+            // 
             // Zeitkorrektur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,5 +384,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton stempelzeitenBindingNavigatorSaveItem;
+        private System.Windows.Forms.ListView listViewZeittypen;
     }
 }

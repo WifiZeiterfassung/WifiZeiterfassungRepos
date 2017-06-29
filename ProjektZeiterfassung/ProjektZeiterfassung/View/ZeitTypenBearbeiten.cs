@@ -75,8 +75,7 @@ namespace ProjektZeiterfassung.View
             secondColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             thirdColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             fourthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            fifthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            
+            fifthColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;            
         }
 
 
