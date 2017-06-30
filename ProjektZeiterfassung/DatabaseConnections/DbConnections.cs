@@ -550,7 +550,8 @@ namespace DatabaseConnections
         ///sql-String welcher alle Vor-, Nachnamen und Personalnummern abruft
         /// </summary>
         public string _HoleMitarbeiterDaten = "SELECT [Vorname], [Nachname], [Personalnummer] FROM [ZEIT2017].[dbo].[Mitarbeiter] AS m " +
-                                                "JOIN [ZEIT2017].[dbo].[EintrittAustritt] AS ea ON m.ID = ea.FK_Mitarbeiter";
+                                              "JOIN [ZEIT2017].[dbo].[EintrittAustritt] AS ea ON m.ID = ea.FK_Mitarbeiter " + 
+                                              "ORDER BY Personalnummer";
         /// <summary>
         /// DataTable der alle Vor-, Nachnamen und Personalnummern abruft
         /// </summary>
