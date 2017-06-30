@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zeitkorrektur));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.listBoxZeitTypen = new System.Windows.Forms.ListBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dateTimePickerDatumBeginn = new System.Windows.Forms.DateTimePicker();
             this.LblDatumBeginn = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stempelzeitenBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.listBoxZeitTypen = new System.Windows.Forms.ListBox();
             this.listeZeittypenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,6 +74,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(484, 248);
             this.panel3.TabIndex = 25;
+            // 
+            // listBoxZeitTypen
+            // 
+            this.listBoxZeitTypen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.listBoxZeitTypen.FormattingEnabled = true;
+            this.listBoxZeitTypen.Location = new System.Drawing.Point(305, 0);
+            this.listBoxZeitTypen.Margin = new System.Windows.Forms.Padding(0);
+            this.listBoxZeitTypen.Name = "listBoxZeitTypen";
+            this.listBoxZeitTypen.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxZeitTypen.Size = new System.Drawing.Size(172, 238);
+            this.listBoxZeitTypen.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -318,18 +329,6 @@
             this.stempelzeitenBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.stempelzeitenBindingNavigatorSaveItem.Text = "Daten speichern";
             this.stempelzeitenBindingNavigatorSaveItem.Click += new System.EventHandler(this.stempelzeitenBindingNavigatorSaveItem_Click_1);
-            // 
-            // listBoxZeitTypen
-            // 
-            this.listBoxZeitTypen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxZeitTypen.FormattingEnabled = true;
-            this.listBoxZeitTypen.ItemHeight = 16;
-            this.listBoxZeitTypen.Location = new System.Drawing.Point(305, 0);
-            this.listBoxZeitTypen.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            this.listBoxZeitTypen.Name = "listBoxZeitTypen";
-            this.listBoxZeitTypen.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxZeitTypen.Size = new System.Drawing.Size(172, 244);
-            this.listBoxZeitTypen.TabIndex = 1;
             // 
             // listeZeittypenBindingSource
             // 

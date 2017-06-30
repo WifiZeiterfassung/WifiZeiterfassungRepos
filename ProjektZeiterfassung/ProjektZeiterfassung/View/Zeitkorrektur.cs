@@ -51,10 +51,10 @@ namespace ProjektZeiterfassung.View
             //Headertext in der ListBox
             MyList.Add("ZeitTyp" + "   " + "Bezeichnung");
             //leerzeile
-            MyList.Add("---------------------------------");
+            MyList.Add("------------------------------------------------------");
             foreach (var item in TypenListe)
             {                
-                MyList.Add("        " + item.ID.ToString() + "\t" + item.Bezeichnung);
+                MyList.Add("     " + item.ID.ToString() + "\t" + item.Bezeichnung);
             }
             listBoxZeitTypen.DataSource = MyList;
 
