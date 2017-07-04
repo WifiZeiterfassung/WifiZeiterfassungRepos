@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MitarbeiterSuchen));
             this.view_1DataGridView = new System.Windows.Forms.DataGridView();
             this.view_1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxSuche = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblSuchfeld = new System.Windows.Forms.Label();
             this.LblMitarbeiterSuchen = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.view_1DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.view_1BindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -49,10 +47,6 @@
             this.view_1DataGridView.AllowUserToDeleteRows = false;
             this.view_1DataGridView.AutoGenerateColumns = false;
             this.view_1DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_1DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
             this.view_1DataGridView.DataSource = this.view_1BindingSource;
             this.view_1DataGridView.Location = new System.Drawing.Point(10, 62);
             this.view_1DataGridView.Name = "view_1DataGridView";
@@ -103,30 +97,6 @@
             this.LblMitarbeiterSuchen.TabIndex = 42;
             this.LblMitarbeiterSuchen.Text = "Mitarbeiter suchen:";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Personalnummer";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Personalnummer";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Vorname";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Vorname";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Nachname";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nachname";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
             // MitarbeiterSuchen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,6 +105,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.LblMitarbeiterSuchen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MitarbeiterSuchen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wifi Arbeitszeitfassung";
