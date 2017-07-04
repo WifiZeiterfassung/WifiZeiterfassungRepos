@@ -550,7 +550,8 @@ namespace DatabaseConnections
         ///sql-String welcher alle Vor-, Nachnamen und Personalnummern abruft
         /// </summary>
         public string _HoleMitarbeiterDaten = "SELECT [Vorname], [Nachname], [Personalnummer] FROM [ZEIT2017].[dbo].[Mitarbeiter] AS m " +
-                                                "JOIN [ZEIT2017].[dbo].[EintrittAustritt] AS ea ON m.ID = ea.FK_Mitarbeiter";
+                                              "JOIN [ZEIT2017].[dbo].[EintrittAustritt] AS ea ON m.ID = ea.FK_Mitarbeiter " + 
+                                              "ORDER BY Personalnummer";
         /// <summary>
         /// DataTable der alle Vor-, Nachnamen und Personalnummern abruft
         /// </summary>
@@ -577,10 +578,6 @@ namespace DatabaseConnections
         ///SQL-String welcher die Zeittypen (außer den 4 Standardtypen) aus der Datenbank abruft
         /// </summary>
         public string _GetZeittypen = "SELECT [ID],[Bezeichnung],[Modus],[Von],[Hauptsatz] FROM [ZEIT2017].[dbo].[Zeittypen] WHERE ID > '4'";
-        /// <summary>
-        ///SQL-String welcher die Zeittypen (außer den 4 Standardtypen) aus der Datenbank abruft
-        /// </summary>
-        public string _GetZeittypen1 = "SELECT ZeitTyp, Bezeichnung FROM [ZEIT2017].[dbo].[Stempelzeiten] JOIN [Zeittypen] on ID = ZeitTyp GROUP BY ZeitTyp, Bezeichnung";
         /// <summary>
         ///SQL-String welcher die ID des Zeittypen aus der Datenbank abruft
         /// </summary>
@@ -655,7 +652,6 @@ namespace DatabaseConnections
         public ListeZeittypen GetAlleZeittypen()
         {
             ListeZeittypen Liste = new ListeZeittypen();
-            Zeittypen zt = new Zeittypen();
 
             using (var Connection = new System.Data.SqlClient.SqlConnection(this.Con()))
             {
@@ -667,6 +663,7 @@ namespace DatabaseConnections
                     {
                         while (reader.Read())
                         {
+                            Zeittypen zt = new Zeittypen();
                             zt.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                             zt.Bezeichnung = reader.GetString(reader.GetOrdinal("Bezeichnung"));
                             Liste.Add(zt);
